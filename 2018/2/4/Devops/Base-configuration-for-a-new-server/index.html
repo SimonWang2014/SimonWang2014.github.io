@@ -14,7 +14,7 @@
 <meta property="og:description" content="Some base configuration for a new server.">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2650331-494786b4facec3e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-02-04T14:44:50.000Z">
+<meta property="og:updated_time" content="2018-02-04T14:52:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对一台新服务器的简单的配置">
 <meta name="twitter:description" content="Some base configuration for a new server.">
@@ -62,7 +62,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://xydida.com"></form>
@@ -103,24 +103,30 @@
 <h6 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adduser jack  //创建非根用户</div><div class="line">usermod -a -G sudo jack  // 让jack用户拥有sudo权限(即通过密码认证后可以执行特殊的权限的命令)</div></pre></td></tr></table></figure>
 <h6 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adduser jack</div><div class="line">passwd jack  // 为jack用户设置密码</div><div class="line">usermod -a -G wheel jack  // 把jack加入wheel用户组</div></pre></td></tr></table></figure>
 <h2 id="2-SSH密钥对认证"><a href="#2-SSH密钥对认证" class="headerlink" title="2. SSH密钥对认证"></a>2. SSH密钥对认证</h2><p>上面创建完jack用户后，就可以执行下面的命令登录：</p>
-<figure class="highlight plain"><figcaption><span>jack@123.123.78.90```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">此时，会要求你输入jack的密码，但密码认证也有漏洞，而且会受到暴力破解，不怀好意的人会不断尝试猜测你的密码，而且，每次登录时都要求你输入密码，是不是很麻烦呢？这时我们就需要创建SSH密码对认证（所谓密钥对，就是一对“密钥”，其中一个是私钥，保存在自己的电脑中，另一个是公钥，保存在服务器中，公钥加密的消息只能使用对应的私钥解密）。</div></pre></td></tr></table></figure>
-<p>ssh-keygen  // 创建密钥对<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">然后按照屏幕提示输入所需要的信息，这个命令会在电脑创建两个文件：`~/.ssh/id_rsa.pub(公钥)`和`~/.ssh/id.rsa(私钥)`，私钥应该保存在本地电脑中，公钥上传到服务器。</div></pre></td></tr></table></figure></p>
-<p>// 把公钥上传到服务器中jack用户的家目录，后面一定要有”:”<br>sup ~/.ssh/id_rsa.pub jack@123.123.78.90:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">登录服务器，创建.ssh目录：</div></pre></td></tr></table></figure></p>
-<p>mkdir ~/.ssh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">创建~/.ssh/authorized_keys文件，这个文件的内容是一系列允许登录这台服务器的公钥：</div></pre></td></tr></table></figure></p>
-<p>touch ~/.ssh/authorized_keys<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">把上传的公钥添加到~/.ssh/authorized_keys文件中：</div></pre></td></tr></table></figure></p>
-<p>cat ~/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">最后修改下面几个目录和文件的访问权限，让jack用户访问~/.ssh目录和~/.ssh/ahthorized_keys文件：</div></pre></td></tr></table></figure></p>
-<p>chown -R jack:jack ~/.ssh<br>chmod 700 ~/.ssh<br>chmod 600 ~/.ssh/authorized_keys<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 禁用密码和根用户登录</div><div class="line"></div><div class="line">为了让服务器再安全一些，我们要禁止用户通过密码登录，还要禁止根用户登录。</div></pre></td></tr></table></figure></p>
-<p>vim /etc/ssh/sshd_config<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">上打开的配置文件中，这样修改：</div></pre></td></tr></table></figure></p>
-<p>// /etc/ssh/sshd_config<br>PasswordAuthentication no // 或者注释掉<br>PermitRootLogin     no      // 或者注释掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">改动之后，重启ssh服务：</div></pre></td></tr></table></figure></p>
-<h1 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h1><p>sudo service ssh restart</p>
-<h1 id="CentOS-1"><a href="#CentOS-1" class="headerlink" title="CentOS"></a>CentOS</h1><p>sudo systemctl restart sshd.service<br>```</p>
+<figure class="highlight plain"><figcaption><span>jack@123.123.78.90```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">此时，会要求你输入jack的密码，但密码认证也有漏洞，而且会受到暴力破解，不怀好意的人会不断尝试猜测你的密码，而且，每次登录时都要求你输入密码，是不是很麻烦呢？这时我们就需要创建SSH密码对认证（所谓密钥对，就是一对“密钥”，其中一个是私钥，保存在自己的电脑中，另一个是公钥，保存在服务器中，公钥加密的消息只能使用对应的私钥解密）。</div><div class="line"></div><div class="line">```bash</div><div class="line">ssh-keygen  // 创建密钥对</div></pre></td></tr></table></figure>
+<p>然后按照屏幕提示输入所需要的信息，这个命令会在电脑创建两个文件：<code>~/.ssh/id_rsa.pub(公钥)</code>和<code>~/.ssh/id.rsa(私钥)</code>，私钥应该保存在本地电脑中，公钥上传到服务器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 把公钥上传到服务器中jack用户的家目录，后面一定要有&quot;:&quot;</div><div class="line">sup ~/.ssh/id_rsa.pub jack@123.123.78.90:</div></pre></td></tr></table></figure>
+<p>登录服务器，创建.ssh目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir ~/.ssh</div></pre></td></tr></table></figure>
+<p>创建~/.ssh/authorized_keys文件，这个文件的内容是一系列允许登录这台服务器的公钥：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch ~/.ssh/authorized_keys</div></pre></td></tr></table></figure>
+<p>把上传的公钥添加到~/.ssh/authorized_keys文件中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat ~/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</div></pre></td></tr></table></figure>
+<p>最后修改下面几个目录和文件的访问权限，让jack用户访问~/.ssh目录和~/.ssh/ahthorized_keys文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chown -R jack:jack ~/.ssh</div><div class="line">chmod 700 ~/.ssh</div><div class="line">chmod 600 ~/.ssh/authorized_keys</div></pre></td></tr></table></figure>
+<h2 id="禁用密码和根用户登录"><a href="#禁用密码和根用户登录" class="headerlink" title="禁用密码和根用户登录"></a>禁用密码和根用户登录</h2><p>为了让服务器再安全一些，我们要禁止用户通过密码登录，还要禁止根用户登录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
+<p>上打开的配置文件中，这样修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// /etc/ssh/sshd_config</div><div class="line">PasswordAuthentication no // 或者注释掉</div><div class="line">PermitRootLogin     no      // 或者注释掉</div></pre></td></tr></table></figure>
+<p>改动之后，重启ssh服务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># ubuntu</div><div class="line">sudo service ssh restart</div><div class="line"></div><div class="line"># CentOS</div><div class="line">sudo systemctl restart sshd.service</div></pre></td></tr></table></figure>
 <p>运行完上面的命令，我们的服务器就安全很多了。</p>
 <hr>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xydida.com/2018/2/4/Devops/Base-configuration-for-a-new-server/" data-id="cjd8whsjx00000zjboj0fmyrm" class="article-share-link">Delen</a>
+      <a data-url="http://xydida.com/2018/2/4/Devops/Base-configuration-for-a-new-server/" data-id="cjea00bph0000lcjdcypqpwye" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Server/">Server</a></li></ul>
@@ -133,7 +139,7 @@
   
   
     <a href="/2017/12/19/Algorithm/sieve-stream/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ouder</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">用厄拉多塞法筛选素数</div>
     </a>
   
@@ -148,7 +154,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categorieën</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Devops/">Devops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li></ul>
     </div>
@@ -158,7 +164,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Labels</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SICP/">SICP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Something/">Something</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interviews/">interviews</a></li></ul>
     </div>
@@ -177,7 +183,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li></ul>
     </div>
@@ -187,7 +193,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
