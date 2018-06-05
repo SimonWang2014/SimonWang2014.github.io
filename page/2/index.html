@@ -69,6 +69,103 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Routing-Selection" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/5/14/Networks/Routing-Selection/" class="article-date">
+  <time datetime="2018-05-14T09:32:37.000Z" itemprop="datePublished">2018-05-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Networks/">Networks</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/5/14/Networks/Routing-Selection/">IP中的路由选择</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://p8m3309kb.bkt.clouddn.com/%E5%B0%8F%E5%9E%8B%E7%BD%91%E7%BB%9C.png" alt="一个小型网络"></p>
+<p>​    网络这个东西是很复杂得，像一张蜘蛛网一样，将每一台通信设备连在一起，在上图中，工作站A想要访问工作站C，有不止一条路可以走，在现实中可能这样的路有非常多，这些路有远有近，有快的有慢得，那么在连接网络时，设备是如何知道哪一条路是最优的呢？通常，通信设备中都会有一个路由表（Routing Table），其实就是一张二维表格，记录着这台设备如果要去某个地方需要线通过哪些设备中转。</p>
+<p>​    下面是我本机（mac系统）中的路由表（只是部分截图），不光是路由器，每个接入网络的设备都会有路由表：</p>
+<p><img src="http://p8m3309kb.bkt.clouddn.com/netstate%20-rn.png" alt="netstat -rn命令"></p>
+<p>​    上图是一张典型的主机路由表，执行<code>netstate</code>命令，<code>-r</code>选项是列出路由表，<code>-n</code>选项是以数字格式打印出IP地址（默认情况会打印网络名加主机名），本机的路由表大致由7列组成，下面介绍一下每一列的作用：</p>
+<ul>
+<li>Destination：目标网络地址；</li>
+<li>Gateway：网关地址，要去目标网络，需要先走这条路；</li>
+<li>Flags：此条路由记录的标志，可以设置的标志大致有：<ol>
+<li>U Up，该路由可以被使用；</li>
+<li>G Gateway，该路由是到一个网关（路由器），如果没有设置该标志，说明该条路由不是一个网关，是一条直接路由，Gateway列给出的是外出接口的IP地址；</li>
+<li>H Host，该路由是到一个主机，即Destination列给出的是一个完整的主机地址，如果没有设置该标志，说明该路由是到一个网络，而Destination列出的是一个网络地址：一个网络号，或者网络号与子网号的组合；</li>
+<li>D Dynamically，该路由是由ICMP重定向报文创建的；</li>
+<li>M Modified，该路由已被重定向报文修改；</li>
+</ol>
+</li>
+<li>Refs：正在使用该路由的活动进程个数，面向连接的协议如TCP在建立连接时需要固定路由，如果我们用Telnet连接<code>10.158.51.78</code>，它的值将增加1；</li>
+<li>Use：通过该路由发送的分组数；</li>
+<li>Netif：该记录使用的网络接口;</li>
+<li>Expire：该记录过期时间。</li>
+</ul>
+<p>​    标志G是非常重要的，因为它区分了直接路由和间接路由（对于直接路由来说没有标志G）。间接和直接路由的区别在于，发往直接路由的分组中不但具有指明目的端的IP地址，还具有链路层地址，可以理解为数据报中的目的IP地址和链路层目的地址是一样的。当分组被发往一个间接路由时，IP地址指明的是最终的目的地，但是链路层地址指明的是网关（即下一站路由器），可以理解为可以理解为数据报中的目的IP地址和链路层目的地址是不一样的。</p>
+<p>​    标志G和H之间的区别：都代表通行设备，不过功能不一样，G标志区分了直接路由和间接路由，而H标志表明目的地址是一个完整的主机地址。若没有设置H标志，则说明目的地只是一个网络地址（主机号部分为0）。当为某个目的IP地址搜索路由表时，主机地址项必须与目的地址完全匹配，而网络地址项只需要匹配目的地址的网络号和子网号。</p>
+<h2 id="路由算法"><a href="#路由算法" class="headerlink" title="路由算法"></a>路由算法</h2><h3 id="静态路由选择策略"><a href="#静态路由选择策略" class="headerlink" title="静态路由选择策略"></a>静态路由选择策略</h3><p>​    静态路由选择策略即非自适应路由选择，只在交换机启动时计算和交换路由，此后路由不再改变。特点是简单并且开销较小，但不能及时适应网络状态的变化。具体可以分为以下三种：</p>
+<ol>
+<li><p>扩散式路由选择</p>
+<p>一个网络节点从A线路收到分组后，立即把分组发向除A线路外的所有其他输出线路上，任何节点只接受最先到达的报文分组，不接受重复报文。适用于规模较小，对可靠性、健壮性要求很高的场合，还可被用于分发信息、判断可达性、寻找最短路径等。</p>
+</li>
+<li><p>固定路由选择</p>
+<p>所有网络节点都保存一张路由表，路由表中记录着所有为了到达某个目的节点而选择的下一个节点或链路，并不记录到该目的节点的所有中间节点。所以当一个分组到达节点时，只需要在查找这个路由表查找到对应的下一个节点，并发送分组。因为所有的路由都保存在一张表中，所以很简单，适合于一个负载稳定拓扑变化不大的网络中运行，但灵活度很差，无法对网络的拥塞和故障做出及时地反映。</p>
+</li>
+<li><p>随即路由选择</p>
+<p>当分组到达某节点后，随意选择一条线路进行分组转发。随即选择的路由不一定是最佳路由，增加了不必要的负载，而且分组传播延迟不可预期。</p>
+</li>
+</ol>
+<h3 id="动态路由选择策略"><a href="#动态路由选择策略" class="headerlink" title="动态路由选择策略"></a>动态路由选择策略</h3><p>​    动态路由选择策略即自适应路由选择，在交换机启动时进行初始化，当网络发生阻塞或故障时能够随时进行更新。</p>
+<ol>
+<li><p>孤立路由选择</p>
+<p>每个节点并不利用其他节点来的网络信息，仅根据本节点看到的信息来确定路由。最短等待法，将具有最短队列的链路作为最好路由你想学习算法（backward learning），将逆向的路由节点数最少的链路作为最好路由。</p>
+</li>
+<li><p>集中路由选择</p>
+<p>和固定路由选择一样，所有节点都保存一张路由表，和固定路由的区别在于固定路由算法中路由表的建立是手工完成的，而集中路由选择中路由表的建立是由网络中设置的一个路由控制中心RCC来几种完成的（收集、计算、分发）。缺点：离RCC较近的地方通信量的开销比较大，因为要周期性地从所有节点手机网络的状态信息的报告，同时还要生成路由表并从RCC发送到网内的所有节点；另一个是可靠性问题，一旦RCC出现故障，则整个网络就失去控制。</p>
+</li>
+<li><p>分布路由选择</p>
+<p>根据来自于相邻节点的信息，并通过一个最短花费路由算法计算出到每个目的地的路由。</p>
+</li>
+</ol>
+<h4 id="动态路由选择中常用的两种算法："><a href="#动态路由选择中常用的两种算法：" class="headerlink" title="动态路由选择中常用的两种算法："></a>动态路由选择中常用的两种算法：</h4><ol>
+<li><p>距离向量路由协议（Distance Vector Routing，DVR）</p>
+</li>
+<li><p>链路状态路由协议（Link State Routing）</p>
+</li>
+</ol>
+<p>​    路由选择是个非常复杂的问题，它既要 网络中所有节点协同工作，也需要路由选择适应环境的不断变化，并且这种变化是事先无法知道的，比如节点故障、网络拥塞等。</p>
+<p>参考：《TCP／IP详解 卷1:协议》</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xydida.com/2018/5/14/Networks/Routing-Selection/" data-id="cji1sx32r0005sosevvtae1im" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/networks/">networks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/routing/">routing</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Base-configuration-for-a-new-server" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/2/4/Devops/Base-configuration-for-a-new-server/" class="article-date">
@@ -126,7 +223,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xydida.com/2018/2/4/Devops/Base-configuration-for-a-new-server/" data-id="cjhzsn9p20002vljdb2berbln" class="article-share-link">Share</a>
+      <a data-url="http://xydida.com/2018/2/4/Devops/Base-configuration-for-a-new-server/" data-id="cji1sx3270000sose3jkvd5dr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Server/">Server</a></li></ul>
@@ -178,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xydida.com/2017/12/19/Algorithm/sieve-stream/" data-id="cjhzsn9pn000gvljd7pmpxqy3" class="article-share-link">Share</a>
+      <a data-url="http://xydida.com/2017/12/19/Algorithm/sieve-stream/" data-id="cji1sx33d000gsose25znggwt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SICP/">SICP</a></li></ul>
@@ -243,7 +340,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xydida.com/2017/10/31/notes/My-first-experience-of-a-telephone-interview/" data-id="cjhzsn9o30000vljdvfsb5hz4" class="article-share-link">Share</a>
+      <a data-url="http://xydida.com/2017/10/31/notes/My-first-experience-of-a-telephone-interview/" data-id="cji1sx32g0002sosefutfz6wt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interviews/">interviews</a></li></ul>
@@ -317,56 +414,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xydida.com/2017/10/28/frontend/box-sizing-in-css3/" data-id="cjhzsn9pl000cvljdciz8dp73" class="article-share-link">Share</a>
+      <a data-url="http://xydida.com/2017/10/28/frontend/box-sizing-in-css3/" data-id="cji1sx33n000psoseakesgmh8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-zh/first-test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/20/notes/zh/first-test/" class="article-date">
-  <time datetime="2017-10-20T08:13:44.000Z" itemprop="datePublished">2017-10-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/notes/">notes</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/20/notes/zh/first-test/">博客迁移到Github啦^ _ ^</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="新的博客，新的起点，新的征程"><a href="#新的博客，新的起点，新的征程" class="headerlink" title="新的博客，新的起点，新的征程"></a>新的博客，新的起点，新的征程</h4><p>博客地址先甩上来：<a href="http://xydida.com">http://xydida.com</a></p>
-<p><code>echo &quot;Welcome to my Blog&quot;</code></p>
-<p>先说明一下，由于博客之前一直是放在<a href="https://www.openshift.com" target="_blank" rel="external">OpenShift</a>上面的，不过由于OpenShift最近更新了V3版本，这个版本的更新还挺大的，已经完全是一个容器云服务的平台，但感觉在上面搭一个wordpress比较麻烦，而且受限于国内的网络，之前早就想换到GitHub了，正好趁此机会，尝试一下<a href="https://hexo.io" target="_blank" rel="external">Hexo</a>，哈哈😄。下图是最新版本的OpenShift的控制台：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-28569747d2d05234.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="openshift-manager"><br>由于之前博客上并没有写多少有深度的文章，我也就没有备份，以后将会多输出优质文章，记录生活点滴。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://xydida.com/2017/10/20/notes/zh/first-test/" data-id="cjhzsn9qu001lvljdjxyzq1yh" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Something/">Something</a></li></ul>
 
     </footer>
   </div>
@@ -430,6 +481,10 @@
       <ul>
         
           <li>
+            <a href="/2018/6/5/PHP/The-secret-you-do-not-know-the-static-in-PHP/">PHP中的static关键字</a>
+          </li>
+        
+          <li>
             <a href="/2018/6/3/PHP/What-is-PSR/">什么是PSR规范？</a>
           </li>
         
@@ -443,10 +498,6 @@
         
           <li>
             <a href="/2018/5/15/Linux/Use-screen-to-manage-your-remote-session/">使用Screen管理远程回话</a>
-          </li>
-        
-          <li>
-            <a href="/2018/5/14/Networks/Routing-Selection/">IP中的路由选择</a>
           </li>
         
       </ul>
