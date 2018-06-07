@@ -151,7 +151,7 @@
 </ol>
 <p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fs2ecup96cj30t00220t8.jpg" alt=""></p>
 <p>注意，由于MySQL默认会忽略少于4个字符的单词，所以执行上面的SQL命令时，应该先修改<code>ft_min_word_len</code>参数。</p>
-<h1 id="所以选取的注意事项"><a href="#所以选取的注意事项" class="headerlink" title="所以选取的注意事项"></a>所以选取的注意事项</h1><ol>
+<h1 id="索引选取的注意事项"><a href="#索引选取的注意事项" class="headerlink" title="索引选取的注意事项"></a>索引选取的注意事项</h1><ol>
 <li>只对<code>WHERE</code>和<code>ORDER BY</code>子句中需要的列添加索引，过多的索引会占用很多硬盘空间，在修改数据时还会降低性能，因为每次修改数据时都需要更新索引。</li>
 <li>如果创建如<code>INDEX(firstname, lastname)</code>的索引时，不要再创建<code>INDEX(firstname)</code>，因为MySQL的索引采用最左前缀策略。</li>
 <li>需要索引的列要不为空（NOT NULL），保证构建索引时不存储NULL值。</li>
