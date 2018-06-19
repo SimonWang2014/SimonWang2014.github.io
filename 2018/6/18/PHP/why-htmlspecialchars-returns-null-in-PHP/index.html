@@ -3,18 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2017 | Hello</title>
+  <title>解决PHP中htmlspecialchars返回null的问题 | Hello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Bilberry Blog, hexo blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hello">
-<meta property="og:url" content="http://xydida.com/archives/2017/index.html">
+  <meta name="description" content="在开发中，经常需要对用户传过来的数据进行过滤，来阻止一些用户的恶意输入，在PHP中常用到htmlspecialchars()、htmlentities()和strip_tags()函数来处理。 今天在使用htmlspecialchars()做特殊字符的转换时，一直返回null，当我换成htmlentities()也是同样的问题，查官方手册才发现原来是编码的问题。 函数声明：  问题主要处在第三个参">
+<meta name="keywords" content="PHP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决PHP中htmlspecialchars返回null的问题">
+<meta property="og:url" content="http://xydida.com/2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/index.html">
 <meta property="og:site_name" content="Hello">
-<meta property="og:description" content="Bilberry Blog, hexo blog">
+<meta property="og:description" content="在开发中，经常需要对用户传过来的数据进行过滤，来阻止一些用户的恶意输入，在PHP中常用到htmlspecialchars()、htmlentities()和strip_tags()函数来处理。 今天在使用htmlspecialchars()做特殊字符的转换时，一直返回null，当我换成htmlentities()也是同样的问题，查官方手册才发现原来是编码的问题。 函数声明：  问题主要处在第三个参">
 <meta property="og:locale" content="zh">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fsg8j0lpb8j30oj01r3yx.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fsg8jbqp36j30sq05tmyn.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fsg8jl4onxj30r80ir0xa.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fsg8js1l1aj30sk05jab6.jpg">
+<meta property="og:updated_time" content="2018-06-19T01:35:14.604Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello">
-<meta name="twitter:description" content="Bilberry Blog, hexo blog">
+<meta name="twitter:title" content="解决PHP中htmlspecialchars返回null的问题">
+<meta name="twitter:description" content="在开发中，经常需要对用户传过来的数据进行过滤，来阻止一些用户的恶意输入，在PHP中常用到htmlspecialchars()、htmlentities()和strip_tags()函数来处理。 今天在使用htmlspecialchars()做特殊字符的转换时，一直返回null，当我换成htmlentities()也是同样的问题，查官方手册才发现原来是编码的问题。 函数声明：  问题主要处在第三个参">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fsg8j0lpb8j30oj01r3yx.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Hello" type="application/atom+xml">
   
@@ -67,115 +74,72 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/12/19/Algorithm/sieve-stream/" class="archive-article-date">
-  <time datetime="2017-12-19T04:22:03.000Z" itemprop="datePublished">Dec 19</time>
+        <section id="main"><article id="post-why-htmlspecialchars-returns-null-in-PHP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/" class="article-date">
+  <time datetime="2018-06-18T15:08:01.000Z" itemprop="datePublished">2018-06-18</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/19/Algorithm/sieve-stream/">用厄拉多塞法筛选素数</a>
+    <h1 class="article-title" itemprop="name">
+      解决PHP中htmlspecialchars返回null的问题
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/31/notes/My-first-experience-of-a-telephone-interview/" class="archive-article-date">
-  <time datetime="2017-10-31T09:19:05.000Z" itemprop="datePublished">Oct 31</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/31/notes/My-first-experience-of-a-telephone-interview/">听了这么多年的播客，终于也做了一回嘉宾</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/28/frontend/box-sizing-in-css3/" class="archive-article-date">
-  <time datetime="2017-10-28T10:21:19.000Z" itemprop="datePublished">Oct 28</time>
-</a>
+        <p>在开发中，经常需要对用户传过来的数据进行过滤，来阻止一些用户的恶意输入，在PHP中常用到<code>htmlspecialchars()</code>、<code>htmlentities()</code>和<code>strip_tags()</code>函数来处理。</p>
+<p>今天在使用<code>htmlspecialchars()</code>做特殊字符的转换时，一直返回<code>null</code>，当我换成<code>htmlentities()</code>也是同样的问题，查官方手册才发现原来是编码的问题。</p>
+<p>函数声明：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fsg8j0lpb8j30oj01r3yx.jpg" alt=""></p>
+<p>问题主要处在第三个参数上，对于第三个参数官方是这么说的：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fsg8jbqp36j30sq05tmyn.jpg" alt=""></p>
+<p>这个参数的作用是设置转换字符时采用的编码，在PHP 5.4 和5.5中使用了<strong>UTF-8</strong>作为默认编码，而在PHP 5.4之前使用<strong>ISO-8859-1</strong>作为默认编码，从PHP 5.6开始就使用PHP配置文件中的<code>default_charset</code>参数作为默认编码。<code>encoding</code>参数支持的字符集：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fsg8jl4onxj30r80ir0xa.jpg" alt=""></p>
+<p>从PHP的更新日志也能看到这个参数的变化：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fsg8js1l1aj30sk05jab6.jpg" alt=""></p>
+<p>一般我们是这么使用的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$str=&apos;&lt;a href=&quot;test.html&quot;&gt;\&apos;测试页面\&apos;&lt;/a&gt;&lt;script&gt;alert(213)&lt;/script&gt;&apos;;</div><div class="line">echo htmlspecialchars($str);</div><div class="line">// 输出：&amp;lt;a href=&amp;quot;test.html&amp;quot;&amp;gt;&apos;测试页面&apos;&amp;lt;/a&amp;gt;&amp;lt;script&amp;gt;alert(213)&amp;lt;/script&amp;gt;</div></pre></td></tr></table></figure>
+<p>今天在使用的时候，结果一直返回null，其实就是编码的问题，这个时候就需要用到第三个参数了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo htmlspecialchars($string, ENT_COMPAT,&apos;ISO-8859-1&apos;, true);</div></pre></td></tr></table></figure>
+<p>同样，也适用于<code>htmlentities</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo htmlentities($string, ENT_COMPAT,&apos;ISO-8859-1&apos;, true);</div></pre></td></tr></table></figure>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/28/frontend/box-sizing-in-css3/">CSS3中的box-sizing属性</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/20/notes/zh/first-test/" class="archive-article-date">
-  <time datetime="2017-10-20T08:13:44.000Z" itemprop="datePublished">Oct 20</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xydida.com/2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/" data-id="cjil0on65000o8p3q48jlcq0b" class="article-share-link">Partager</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/20/notes/zh/first-test/">博客迁移到Github啦^ _ ^</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/20/notes/hello-world/" class="archive-article-date">
-  <time datetime="2017-10-20T07:18:54.000Z" itemprop="datePublished">Oct 20</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/20/notes/hello-world/">Hello World</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/6/6/MySQL/Learn-MySQL-indexes/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">MySQL中的索引学习</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         
