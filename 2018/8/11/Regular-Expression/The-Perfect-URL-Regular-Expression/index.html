@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>部分语言URL正则匹配 | Hello</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="正则匹配URL">
+<meta name="keywords" content="PHP,Java,Python,Javascript,Perl,Ruby,Go,Objective-C,Swift,VB.NET,C#,MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部分语言URL正则匹配">
+<meta property="og:url" content="http://xydida.com/2018/8/11/Regular-Expression/The-Perfect-URL-Regular-Expression/index.html">
+<meta property="og:site_name" content="Hello">
+<meta property="og:description" content="正则匹配URL">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2018-08-11T14:29:49.593Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="部分语言URL正则匹配">
+<meta name="twitter:description" content="正则匹配URL">
+  
+    <link rel="alternate" href="/atom.xml" title="Hello" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hello</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">能找到我的也不是等闲之辈</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://xydida.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-The-Perfect-URL-Regular-Expression" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/8/11/Regular-Expression/The-Perfect-URL-Regular-Expression/" class="article-date">
+  <time datetime="2018-08-11T04:33:30.000Z" itemprop="datePublished">2018-08-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Regular-Expression/">Regular Expression</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      部分语言URL正则匹配
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>开发中，经常会需要做一些正则匹配，比如手机号验证，email验证，URL匹配等，写此篇文章主要是记录如何使用正则表达式匹配URL，方便以后再遇到此问题时不必到处搜索而得不到满意的答案。</p>
+<h2 id="PHP（使用preg-match"><a href="#PHP（使用preg-match" class="headerlink" title="PHP（使用preg_match)"></a>PHP（使用<a href="http://php.net/manual/en/function.preg-match.php" target="_blank" rel="external">preg_match</a>)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">%^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@|\d&#123;1,3&#125;(?:\.\d&#123;1,3&#125;)&#123;3&#125;|(?:(?:[a-z\d\x&#123;00a1&#125;-\x&#123;ffff&#125;]+-?)*[a-z\d\x&#123;00a1&#125;-\x&#123;ffff&#125;]+)(?:\.(?:[a-z\d\x&#123;00a1&#125;-\x&#123;ffff&#125;]+-?)*[a-z\d\x&#123;00a1&#125;-\x&#123;ffff&#125;]+)*(?:\.[a-z\x&#123;00a1&#125;-\x&#123;ffff&#125;]&#123;2,6&#125;))(?::\d+)?(?:[^\s]*)?$%iu</div></pre></td></tr></table></figure>
+<h2 id="PHP（使用validate-filter"><a href="#PHP（使用validate-filter" class="headerlink" title="PHP（使用validate filter)"></a>PHP（使用<a href="http://php.net/manual/en/filter.filters.validate.php" target="_blank" rel="external">validate filter</a>)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">if (filter_var($url, FILTER_VALIDATE_URL) !== false)...</div></pre></td></tr></table></figure>
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&amp;+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+</div></pre></td></tr></table></figure>
+<h2 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/((([A-Za-z]&#123;3,9&#125;:(?:\/\/)?)(?:[\-;:&amp;=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&amp;=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&amp;;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/</div></pre></td></tr></table></figure>
+<h2 id="HTML5"><a href="#HTML5" class="headerlink" title="HTML5"></a>HTML5</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;url&quot; /&gt;</div></pre></td></tr></table></figure>
+<p>匹配上面<code>input</code>输入的URL（<a href="https://www.ietf.org/rfc/rfc3986.txt" target="_blank" rel="external">RFC3986</a>）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?</div></pre></td></tr></table></figure>
+<h2 id="Perl"><a href="#Perl" class="headerlink" title="Perl"></a>Perl</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">^(((ht|f)tp(s?))\://)?(www.|[a-zA-Z].)[a-zA-Z0-9\-\.]+\.(com|edu|gov|mil|net|org|biz|info|name|museum|us|ca|uk)(\:[0-9]+)*(/($|[a-zA-Z0-9\.\,\;\?\&apos;\\\+&amp;%\$#\=~_\-]+))*$</div></pre></td></tr></table></figure>
+<h2 id="Ruby"><a href="#Ruby" class="headerlink" title="Ruby"></a>Ruby</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/\A(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d&#123;1,3&#125;)&#123;3&#125;)(?!127(?:\.\d&#123;1,3&#125;)&#123;3&#125;)(?!169\.254(?:\.\d&#123;1,3&#125;)&#123;2&#125;)(?!192\.168(?:\.\d&#123;1,3&#125;)&#123;2&#125;)(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d&#123;1,3&#125;)&#123;2&#125;)(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d&#123;1,2&#125;|2[0-4]\d|25[0-5]))&#123;2&#125;(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]&#123;2,&#125;)))(?::\d&#123;2,5&#125;)?(?:\/[^\s]*)?\z/i</div></pre></td></tr></table></figure>
+<h2 id="Go-使用govalidator-IsURL"><a href="#Go-使用govalidator-IsURL" class="headerlink" title="Go (使用govalidator.IsURL)"></a>Go (使用govalidator.IsURL)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package main</div><div class="line"> import (</div><div class="line">         &quot;fmt&quot;</div><div class="line">         &quot;github.com/asaskevich/govalidator&quot;</div><div class="line"> )</div><div class="line"> func main() &#123;</div><div class="line">         str := &quot;http://www.urlregex.com&quot;</div><div class="line">         validURL := govalidator.IsURL(str)</div><div class="line">         fmt.Printf(&quot;%s is a valid URL : %v \n&quot;, str, validURL)</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<h2 id="Objective-C"><a href="#Objective-C" class="headerlink" title="Objective-C"></a>Objective-C</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+</div></pre></td></tr></table></figure>
+<h2 id="Swift"><a href="#Swift" class="headerlink" title="Swift"></a>Swift</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w&#123;2,3&#125;(\\.\\w&#123;2&#125;)?(/(?&lt;=/)(?:[\\w\\d\\-./_]+)?)?</div></pre></td></tr></table></figure>
+<p>定义一个函数方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">func canOpenURL(string: String?) -&gt; Bool &#123;</div><div class="line">    let regEx = &quot;((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+&quot;</div><div class="line">    let predicate = NSPredicate(format:&quot;SELF MATCHES %@&quot;, argumentArray:[regEx])</div><div class="line">    return predicate.evaluateWithObject(string)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if canOpenURL(&quot;http://www.urlregex.com&quot;) &#123;</div><div class="line">    print(&quot;valid url.&quot;)</div><div class="line">&#125; else &#123;</div><div class="line">    print(&quot;invalid url.&quot;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Swift-使用官方提供的canOpenURL"><a href="#Swift-使用官方提供的canOpenURL" class="headerlink" title="Swift (使用官方提供的canOpenURL)"></a>Swift (使用官方提供的<a href="https://developer.apple.com/documentation/uikit/uiapplication/1622952-canopenurl" target="_blank" rel="external">canOpenURL</a>)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UIApplication.sharedApplication().canOpenURL(urlString)</div></pre></td></tr></table></figure>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">^(https?|ftp|file)://[-a-zA-Z0-9+&amp;@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&amp;@#/%=~_|]</div></pre></td></tr></table></figure>
+<h2 id="VB-NET"><a href="#VB-NET" class="headerlink" title="VB.NET"></a>VB.NET</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(http(s)?://)?([\w-]+\.)+[\w-]+[.com]+(/[/?%&amp;=]*)?</div></pre></td></tr></table></figure>
+<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">^(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\&apos;\/\\\+&amp;%\$#_]*)?$</div></pre></td></tr></table></figure>
+<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT field FROM table </div><div class="line">WHERE field </div><div class="line">REGEXP &quot;^(https?://|www\\.)[\.A-Za-z0-9\-]+\\.[a-zA-Z]&#123;2,4&#125;</div></pre></td></tr></table></figure>
+<p>整理自：<a href="http://urlregex.com" target="_blank" rel="external">http://urlregex.com</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xydida.com/2018/8/11/Regular-Expression/The-Perfect-URL-Regular-Expression/" data-id="cjkpiolgu0000049kv4enhein" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Go/">Go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Perl/">Perl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby/">Ruby</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VB-NET/">VB.NET</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">解决PHP中htmlspecialchars返回null的问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Devops/">Devops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Networks/">Networks</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Object-Oriented/">Object Oriented</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Regular-Expression/">Regular Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-Oriented/">Object Oriented</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PSR/">PSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Perl/">Perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SICP/">SICP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Something/">Something</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VB-NET/">VB.NET</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/autoload/">autoload</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interviews/">interviews</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/networks/">networks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/routing/">routing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="/tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PSR/" style="font-size: 10px;">PSR</a> <a href="/tags/Perl/" style="font-size: 10px;">Perl</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SICP/" style="font-size: 10px;">SICP</a> <a href="/tags/Server/" style="font-size: 15px;">Server</a> <a href="/tags/Something/" style="font-size: 10px;">Something</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="/tags/autoload/" style="font-size: 10px;">autoload</a> <a href="/tags/interviews/" style="font-size: 10px;">interviews</a> <a href="/tags/networks/" style="font-size: 10px;">networks</a> <a href="/tags/routing/" style="font-size: 10px;">routing</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/8/11/Regular-Expression/The-Perfect-URL-Regular-Expression/">部分语言URL正则匹配</a>
+          </li>
+        
+          <li>
+            <a href="/2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/">解决PHP中htmlspecialchars返回null的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/6/6/MySQL/Learn-MySQL-indexes/">MySQL中的索引学习</a>
+          </li>
+        
+          <li>
+            <a href="/2018/6/5/PHP/The-secret-you-do-not-know-the-static-in-PHP/">PHP中的static关键字</a>
+          </li>
+        
+          <li>
+            <a href="/2018/6/3/PHP/What-is-PSR/">什么是PSR规范？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Bilberry<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
