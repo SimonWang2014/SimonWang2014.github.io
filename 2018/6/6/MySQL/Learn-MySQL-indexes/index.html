@@ -122,9 +122,9 @@
 <p>通过上面三本书的目录的对比，很明显第一本书的目录写的很简单，第二本书稍详细一点，而第三本书的目录最详细，目录写得越详细，读者在阅读的时候就越方便。</p>
 <p>不管是词典中的音节表还是书的目录，它们实际都是索引的一种存在形式，都是为了能够提高查找的效率。</p>
 <h2 id="数据库中索引的本质"><a href="#数据库中索引的本质" class="headerlink" title="数据库中索引的本质"></a>数据库中索引的本质</h2><p>本质上，索引其实是数据库表中字段值的复制，该字段称为索引的关键字。</p>
-<h2 id="索引在计算机中的存储"><a href="#索引在计算机中的存储" class="headerlink" title="索引在计算机中的存储"></a>索引在计算机中的存储</h2><p>在学习数据结构时，曾讲到文件的概念，而数据库中所有的数据都是以文件的形式保存的计算机中的，所以文件系统是数据库系统的基础。而数据库在操作这些文件时，都是先将文件中的数据加载到内存，然后再以某种数据结构来操作这些数据，通常的数据结构可以是<a href="http://lib.csdn.net/article/datastructure/9204" target="_blank" rel="external">AVL树</a>、<a href="https://blog.csdn.net/v_july_v/article/details/6530142" target="_blank" rel="external">B树</a>、<a href="https://blog.csdn.net/v_july_v/article/details/6530142" target="_blank" rel="external">B+树</a>等。数据库中的往往是要存大量的数据的，而所有的数据不可能一次性全部加载到内存中，这时候就需要索引与分块加载来提高查询的速度，不过一般初学者不会体验到索引带来的高效，因为他们的电脑内存足够大完全可以一次性加载完所有数据，这也导致初学者忽略了对索引的仔细学习。如下是MyISAM存储引擎的索引示意图：</p>
+<h2 id="索引在计算机中的存储"><a href="#索引在计算机中的存储" class="headerlink" title="索引在计算机中的存储"></a>索引在计算机中的存储</h2><p>在学习数据结构时，曾讲到文件的概念，而数据库中所有的数据都是以文件的形式保存的计算机中的，所以文件系统是数据库系统的基础。而数据库在操作这些文件时，都是先将文件中的数据加载到内存，然后再以某种数据结构来操作这些数据，通常的数据结构可以是<a href="http://lib.csdn.net/article/datastructure/9204" target="_blank" rel="noopener">AVL树</a>、<a href="https://blog.csdn.net/v_july_v/article/details/6530142" target="_blank" rel="noopener">B树</a>、<a href="https://blog.csdn.net/v_july_v/article/details/6530142" target="_blank" rel="noopener">B+树</a>等。数据库中的往往是要存大量的数据的，而所有的数据不可能一次性全部加载到内存中，这时候就需要索引与分块加载来提高查询的速度，不过一般初学者不会体验到索引带来的高效，因为他们的电脑内存足够大完全可以一次性加载完所有数据，这也导致初学者忽略了对索引的仔细学习。如下是MyISAM存储引擎的索引示意图：</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs1qj978vfj30qe0cigms.jpg" alt="MyISAM存储引擎teacher表的主索引及普通索引"></p>
-<p>更多关于数据库索引背后的数据结构和算法原理，请查看：<a href="https://www.cnblogs.com/tgycoder/p/5410057.html" target="_blank" rel="external">https://www.cnblogs.com/tgycoder/p/5410057.html</a></p>
+<p>更多关于数据库索引背后的数据结构和算法原理，请查看：<a href="https://www.cnblogs.com/tgycoder/p/5410057.html" target="_blank" rel="noopener">https://www.cnblogs.com/tgycoder/p/5410057.html</a></p>
 <h1 id="MySQL中的索引"><a href="#MySQL中的索引" class="headerlink" title="MySQL中的索引"></a>MySQL中的索引</h1><p>在MySQL中，共有4类索引：主键索引、唯一索引、常规索引和全文索引。</p>
 <h2 id="主键索引-Primary-key"><a href="#主键索引-Primary-key" class="headerlink" title="主键索引(Primary key)"></a>主键索引(Primary key)</h2><p>主键索引是关系数据库中最常见的索引类型。它根据主键自身的唯一性来唯一标识每条记录。因此该键必须是表中的唯一值。创建主键索引很简单，如下：</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fs1r9yjm69j30mi06kgnw.jpg" alt=""></p>
@@ -140,7 +140,7 @@
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fs2e082sw6j30lu07edif.jpg" alt=""></p>
 <p>同时，MySQL还提供了创建局部字段索引的特性，方式是：将某一字段的前N的字符作为索引，相比于单列常规索引，局部索引需要更少的磁盘空间，同时由于索引的数据短，因此效率会高一点。修改前面的示例，因为通常lastname的前5个字符就足以确保获取到唯一的数据，修改如下：</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fs2e0s2v9ij30lu07edif.jpg" alt=""></p>
-<h3 id="多列常规索引"><a href="#多列常规索引" class="headerlink" title="多列常规索引"></a>多列常规索引</h3><p>一般查询时，通常需要包含多列，我们可以指定一些经常被查询的列为多列常规索引。MySQL的多列常规索引方法基于一种<a href="https://www.zhihu.com/question/36996520" target="_blank" rel="external">最左前缀(leftmost prefixing)</a>的策略。最左前缀指出包含列A、B和C的任何多列索引都可以提高涉及如下列组合的查询的性能：</p>
+<h3 id="多列常规索引"><a href="#多列常规索引" class="headerlink" title="多列常规索引"></a>多列常规索引</h3><p>一般查询时，通常需要包含多列，我们可以指定一些经常被查询的列为多列常规索引。MySQL的多列常规索引方法基于一种<a href="https://www.zhihu.com/question/36996520" target="_blank" rel="noopener">最左前缀(leftmost prefixing)</a>的策略。最左前缀指出包含列A、B和C的任何多列索引都可以提高涉及如下列组合的查询的性能：</p>
 <ul>
 <li>A、B、C</li>
 <li>A、B</li>
@@ -160,11 +160,11 @@
 <li>返回包含Nginx，但不包含manual的记录：</li>
 </ol>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fs2e7333k8j30tw01yt98.jpg" alt=""></p>
-<ol>
+<ol start="2">
 <li>返回包含单词Nginx，但不包含Apache或Tomcat的记录：</li>
 </ol>
 <p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fs2e9gd0sqj30t201wwf2.jpg" alt=""></p>
-<ol>
+<ol start="3">
 <li>返回包含web和scripting或者php和scripting的记录，但web scripting的搜索级别低于php scripting：</li>
 </ol>
 <p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fs2ecup96cj30t00220t8.jpg" alt=""></p>
@@ -180,7 +180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xydida.com/2018/6/6/MySQL/Learn-MySQL-indexes/" data-id="cjkvbg2y20002p09kdnsod11q" class="article-share-link">Share</a>
+      <a data-url="http://xydida.com/2018/6/6/MySQL/Learn-MySQL-indexes/" data-id="cjm257nws0027289k6x9e0la5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
@@ -229,7 +229,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-Oriented/">Object Oriented</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PSR/">PSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Perl/">Perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SICP/">SICP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Something/">Something</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VB-NET/">VB.NET</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/autoload/">autoload</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interviews/">interviews</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/networks/">networks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/routing/">routing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-Oriented/">Object Oriented</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PSR/">PSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Perl/">Perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SICP/">SICP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Something/">Something</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VB-NET/">VB.NET</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/autoload/">autoload</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interviews/">interviews</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/networks/">networks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/routing/">routing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li></ul>
     </div>
   </div>
 
@@ -239,7 +239,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="/tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PSR/" style="font-size: 10px;">PSR</a> <a href="/tags/Perl/" style="font-size: 10px;">Perl</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SICP/" style="font-size: 10px;">SICP</a> <a href="/tags/Server/" style="font-size: 15px;">Server</a> <a href="/tags/Something/" style="font-size: 10px;">Something</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="/tags/autoload/" style="font-size: 10px;">autoload</a> <a href="/tags/interviews/" style="font-size: 10px;">interviews</a> <a href="/tags/networks/" style="font-size: 10px;">networks</a> <a href="/tags/routing/" style="font-size: 10px;">routing</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a>
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="/tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PSR/" style="font-size: 10px;">PSR</a> <a href="/tags/Perl/" style="font-size: 10px;">Perl</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SICP/" style="font-size: 10px;">SICP</a> <a href="/tags/Server/" style="font-size: 15px;">Server</a> <a href="/tags/Something/" style="font-size: 10px;">Something</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="/tags/autoload/" style="font-size: 10px;">autoload</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/interviews/" style="font-size: 10px;">interviews</a> <a href="/tags/networks/" style="font-size: 10px;">networks</a> <a href="/tags/routing/" style="font-size: 10px;">routing</a> <a href="/tags/小程序/" style="font-size: 15px;">小程序</a>
     </div>
   </div>
 
@@ -248,7 +248,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li></ul>
     </div>
   </div>
 
@@ -259,6 +259,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/9/14/小程序/The-measureText-function-in-Wechat-miniprogram-canvas/">在小程序Canvas中使用measureText</a>
+          </li>
         
           <li>
             <a href="/2018/8/15/小程序/WeChat-miniprogram-data-analysis-custom-analysis/">微信小程序数据分析之自定义分析</a>
@@ -274,10 +278,6 @@
         
           <li>
             <a href="/2018/6/6/MySQL/Learn-MySQL-indexes/">MySQL中的索引学习</a>
-          </li>
-        
-          <li>
-            <a href="/2018/6/5/PHP/The-secret-you-do-not-know-the-static-in-PHP/">PHP中的static关键字</a>
           </li>
         
       </ul>

@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fsg8jbqp36j30sq05tmyn.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fsg8jl4onxj30r80ir0xa.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fsg8js1l1aj30sk05jab6.jpg">
-<meta property="og:updated_time" content="2018-06-19T01:35:14.604Z">
+<meta property="og:updated_time" content="2018-06-19T01:35:14.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决PHP中htmlspecialchars返回null的问题">
 <meta name="twitter:description" content="在开发中，经常需要对用户传过来的数据进行过滤，来阻止一些用户的恶意输入，在PHP中常用到htmlspecialchars()、htmlentities()和strip_tags()函数来处理。 今天在使用htmlspecialchars()做特殊字符的转换时，一直返回null，当我换成htmlentities()也是同样的问题，查官方手册才发现原来是编码的问题。 函数声明：  问题主要处在第三个参">
@@ -111,15 +111,15 @@
 <p>从PHP的更新日志也能看到这个参数的变化：</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fsg8js1l1aj30sk05jab6.jpg" alt=""></p>
 <p>一般我们是这么使用的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$str=&apos;&lt;a href=&quot;test.html&quot;&gt;\&apos;测试页面\&apos;&lt;/a&gt;&lt;script&gt;alert(213)&lt;/script&gt;&apos;;</div><div class="line">echo htmlspecialchars($str);</div><div class="line">// 输出：&amp;lt;a href=&amp;quot;test.html&amp;quot;&amp;gt;&apos;测试页面&apos;&amp;lt;/a&amp;gt;&amp;lt;script&amp;gt;alert(213)&amp;lt;/script&amp;gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$str=&apos;&lt;a href=&quot;test.html&quot;&gt;\&apos;测试页面\&apos;&lt;/a&gt;&lt;script&gt;alert(213)&lt;/script&gt;&apos;;</span><br><span class="line">echo htmlspecialchars($str);</span><br><span class="line">// 输出：&amp;lt;a href=&amp;quot;test.html&amp;quot;&amp;gt;&apos;测试页面&apos;&amp;lt;/a&amp;gt;&amp;lt;script&amp;gt;alert(213)&amp;lt;/script&amp;gt;</span><br></pre></td></tr></table></figure>
 <p>今天在使用的时候，结果一直返回null，其实就是编码的问题，这个时候就需要用到第三个参数了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo htmlspecialchars($string, ENT_COMPAT,&apos;ISO-8859-1&apos;, true);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo htmlspecialchars($string, ENT_COMPAT,&apos;ISO-8859-1&apos;, true);</span><br></pre></td></tr></table></figure>
 <p>同样，也适用于<code>htmlentities</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo htmlentities($string, ENT_COMPAT,&apos;ISO-8859-1&apos;, true);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo htmlentities($string, ENT_COMPAT,&apos;ISO-8859-1&apos;, true);</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xydida.com/2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/" data-id="cjkvbg2zk000vp09k8498bf1f" class="article-share-link">Share</a>
+      <a data-url="http://xydida.com/2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/" data-id="cjm257nvz000m289k35caeegj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
@@ -168,7 +168,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-Oriented/">Object Oriented</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PSR/">PSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Perl/">Perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SICP/">SICP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Something/">Something</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VB-NET/">VB.NET</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/autoload/">autoload</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interviews/">interviews</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/networks/">networks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/routing/">routing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-Oriented/">Object Oriented</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PSR/">PSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Perl/">Perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SICP/">SICP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Something/">Something</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VB-NET/">VB.NET</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/autoload/">autoload</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interviews/">interviews</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/networks/">networks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/routing/">routing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li></ul>
     </div>
   </div>
 
@@ -178,7 +178,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="/tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PSR/" style="font-size: 10px;">PSR</a> <a href="/tags/Perl/" style="font-size: 10px;">Perl</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SICP/" style="font-size: 10px;">SICP</a> <a href="/tags/Server/" style="font-size: 15px;">Server</a> <a href="/tags/Something/" style="font-size: 10px;">Something</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="/tags/autoload/" style="font-size: 10px;">autoload</a> <a href="/tags/interviews/" style="font-size: 10px;">interviews</a> <a href="/tags/networks/" style="font-size: 10px;">networks</a> <a href="/tags/routing/" style="font-size: 10px;">routing</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a>
+      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="/tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PSR/" style="font-size: 10px;">PSR</a> <a href="/tags/Perl/" style="font-size: 10px;">Perl</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SICP/" style="font-size: 10px;">SICP</a> <a href="/tags/Server/" style="font-size: 15px;">Server</a> <a href="/tags/Something/" style="font-size: 10px;">Something</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="/tags/autoload/" style="font-size: 10px;">autoload</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/interviews/" style="font-size: 10px;">interviews</a> <a href="/tags/networks/" style="font-size: 10px;">networks</a> <a href="/tags/routing/" style="font-size: 10px;">routing</a> <a href="/tags/小程序/" style="font-size: 15px;">小程序</a>
     </div>
   </div>
 
@@ -187,7 +187,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li></ul>
     </div>
   </div>
 
@@ -198,6 +198,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/9/14/小程序/The-measureText-function-in-Wechat-miniprogram-canvas/">在小程序Canvas中使用measureText</a>
+          </li>
         
           <li>
             <a href="/2018/8/15/小程序/WeChat-miniprogram-data-analysis-custom-analysis/">微信小程序数据分析之自定义分析</a>
@@ -213,10 +217,6 @@
         
           <li>
             <a href="/2018/6/6/MySQL/Learn-MySQL-indexes/">MySQL中的索引学习</a>
-          </li>
-        
-          <li>
-            <a href="/2018/6/5/PHP/The-secret-you-do-not-know-the-static-in-PHP/">PHP中的static关键字</a>
           </li>
         
       </ul>
