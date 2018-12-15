@@ -69,6 +69,111 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Learn-MySQL-indexes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/6/6/MySQL/Learn-MySQL-indexes/" class="article-date">
+  <time datetime="2018-06-06T11:10:04.000Z" itemprop="datePublished">2018-06-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/MySQL/">MySQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/6/6/MySQL/Learn-MySQL-indexes/">MySQL中的索引学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs2f97s3m4j31kw16o1kz.jpg" alt=""></p>
+<h1 id="什么是索引？"><a href="#什么是索引？" class="headerlink" title="什么是索引？"></a>什么是索引？</h1><p>在没有学数据库之前，大多数人对索引还是比较陌生（可能学完之后还是比较陌生：），今天我想告诉大家索引很有用，而且面试的时候都会问到。那么索引是什么呢？</p>
+<p>其实索引这个东西我们很早就接触过了，想象一下当初学习《现代汉语词典》的时候，老师是如何教我们使用的，就可以理解什么是索引了。《现代汉语词典》有将近1800页，里面的汉字大概有1.3万多个，我们是如何在这么多的汉字中找到某个字呢？老师大概是这么教我们的：词典提供了“音节表”，“音节表”将所有汉子的汉语拼音编入其中，并且“音节表”按’a’到’z’的顺序排序，故而我们可以轻松的在音节表中找到某个字所对应的页数。其实不光是词典，我们看的书大部分都有目录，而这个目录就相当于索引的作用，如下是三本书的目录：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fs1onskl51j31kw23vx6p.jpg" alt="《禅与摩托车维修艺术》的目录"></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fs1opioucuj31kw23vu0y.jpg" alt="《黑客与画家》的目录"></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs1oq9j6zuj31kw23vx6q.jpg" alt="《计算机程序的构造和解释》的目录"></p>
+<p>通过上面三本书的目录的对比，很明显第一本书的目录写的很简单，第二本书稍详细一点，而第三本书的目录最详细，目录写得越详细，读者在阅读的时候就越方便。</p>
+<p>不管是词典中的音节表还是书的目录，它们实际都是索引的一种存在形式，都是为了能够提高查找的效率。</p>
+<h2 id="数据库中索引的本质"><a href="#数据库中索引的本质" class="headerlink" title="数据库中索引的本质"></a>数据库中索引的本质</h2><p>本质上，索引其实是数据库表中字段值的复制，该字段称为索引的关键字。</p>
+<h2 id="索引在计算机中的存储"><a href="#索引在计算机中的存储" class="headerlink" title="索引在计算机中的存储"></a>索引在计算机中的存储</h2><p>在学习数据结构时，曾讲到文件的概念，而数据库中所有的数据都是以文件的形式保存的计算机中的，所以文件系统是数据库系统的基础。而数据库在操作这些文件时，都是先将文件中的数据加载到内存，然后再以某种数据结构来操作这些数据，通常的数据结构可以是<a href="http://lib.csdn.net/article/datastructure/9204" target="_blank" rel="noopener">AVL树</a>、<a href="https://blog.csdn.net/v_july_v/article/details/6530142" target="_blank" rel="noopener">B树</a>、<a href="https://blog.csdn.net/v_july_v/article/details/6530142" target="_blank" rel="noopener">B+树</a>等。数据库中的往往是要存大量的数据的，而所有的数据不可能一次性全部加载到内存中，这时候就需要索引与分块加载来提高查询的速度，不过一般初学者不会体验到索引带来的高效，因为他们的电脑内存足够大完全可以一次性加载完所有数据，这也导致初学者忽略了对索引的仔细学习。如下是MyISAM存储引擎的索引示意图：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs1qj978vfj30qe0cigms.jpg" alt="MyISAM存储引擎teacher表的主索引及普通索引"></p>
+<p>更多关于数据库索引背后的数据结构和算法原理，请查看：<a href="https://www.cnblogs.com/tgycoder/p/5410057.html" target="_blank" rel="noopener">https://www.cnblogs.com/tgycoder/p/5410057.html</a></p>
+<h1 id="MySQL中的索引"><a href="#MySQL中的索引" class="headerlink" title="MySQL中的索引"></a>MySQL中的索引</h1><p>在MySQL中，共有4类索引：主键索引、唯一索引、常规索引和全文索引。</p>
+<h2 id="主键索引-Primary-key"><a href="#主键索引-Primary-key" class="headerlink" title="主键索引(Primary key)"></a>主键索引(Primary key)</h2><p>主键索引是关系数据库中最常见的索引类型。它根据主键自身的唯一性来唯一标识每条记录。因此该键必须是表中的唯一值。创建主键索引很简单，如下：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fs1r9yjm69j30mi06kgnw.jpg" alt=""></p>
+<p>每个表只能有一个自增字段，该字段必须指定为主键。此外，任何指定为主键的字段不能是NULL，即使没有声明为NOT NULL，MySQL会自己设置。</p>
+<h2 id="唯一索引-Unique"><a href="#唯一索引-Unique" class="headerlink" title="唯一索引(Unique)"></a>唯一索引(Unique)</h2><p>与主键索引一样，唯一索引可以防止创建重复的值。不同之处在于每个表只能有一个主键索引，但可以有多个唯一索引。修改上面的sql语句来增加唯一索引：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fs1sopkc84j30la068ac3.jpg" alt=""></p>
+<p>如前面所讲，表中可以指定多个唯一字段，我们现在将<code>name</code>字段也设置为唯一：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs1sqt9824j30l206iwgr.jpg" alt=""></p>
+<p>还可以指定多列唯一索引，比如上面的表结构中，允许用户插入重复的url，甚至可以插入重复的name值，但不希望出现重复的name和url的组合。可以创建多列唯一索引来强制这种约束，如下：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs1suh963uj30m207oacm.jpg" alt=""></p>
+<h2 id="常规索引-Index"><a href="#常规索引-Index" class="headerlink" title="常规索引(Index)"></a>常规索引(Index)</h2><p>可能经常需要对数据库的搜索效率进行优化，以便能够根据并非主键甚至并非唯一的列获取数据行。为此，最有效的方法是采用某种方式索引列，是的数据库尽可能快的查找想要的值。这就称为常规索引。</p>
+<h3 id="单列常规索引"><a href="#单列常规索引" class="headerlink" title="单列常规索引"></a>单列常规索引</h3><p>如果表中的某个列经常需要被查询到，就应该使用单列常规索引。假如，一张员工表you 4列：主键id，名字，姓氏和电子邮箱，若果大多数的查询操作都会针对员工的姓氏或者电子邮箱，因为员工的姓氏可以有重复的，而电子邮箱必须唯一，我们就可以给姓氏创建一个常规索引，电子邮箱创建一个唯一索引，如下：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fs2e082sw6j30lu07edif.jpg" alt=""></p>
+<p>同时，MySQL还提供了创建局部字段索引的特性，方式是：将某一字段的前N的字符作为索引，相比于单列常规索引，局部索引需要更少的磁盘空间，同时由于索引的数据短，因此效率会高一点。修改前面的示例，因为通常lastname的前5个字符就足以确保获取到唯一的数据，修改如下：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fs2e0s2v9ij30lu07edif.jpg" alt=""></p>
+<h3 id="多列常规索引"><a href="#多列常规索引" class="headerlink" title="多列常规索引"></a>多列常规索引</h3><p>一般查询时，通常需要包含多列，我们可以指定一些经常被查询的列为多列常规索引。MySQL的多列常规索引方法基于一种<a href="https://www.zhihu.com/question/36996520" target="_blank" rel="noopener">最左前缀(leftmost prefixing)</a>的策略。最左前缀指出包含列A、B和C的任何多列索引都可以提高涉及如下列组合的查询的性能：</p>
+<ul>
+<li>A、B、C</li>
+<li>A、B</li>
+<li>A</li>
+</ul>
+<p>创建多列索引：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fs2e0z82f0j30km07cmzr.jpg" alt=""></p>
+<p>上图中创建了三个索引，第一个是主键索引，第二个是电子邮箱的唯一索引，第三个就是多列索引，包括两列：lastname和firstname。</p>
+<h3 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h3><p>当字段类型为char、varchar或text时，我们可以使用全文索引。在MySQL中，对大量自然语言做全文搜索时，它提供了一种数据获取的机制，并生成最符合用户需要的结果。比如在对这样“Nginx is the world’s most popular web server”的字符串进行搜索时，单词is和the对结果几乎起不了任何作用，MySQL在搜索时，将文本分解为单词，默认忽略少于4个字符的单词。创建全文索引：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fs2e17ph34j30ku07ajtu.jpg" alt=""></p>
+<p>创建全文索引的方式与创建其他索引没什么区别，但基于全文索引的查询却有一点不同。在查询时，select语句需要使用两个特殊的MySQL函数<code>match()</code>和<code>againet()</code>。查询方式如下：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs2e1enqvrj314c010mxp.jpg" alt=""></p>
+<h4 id="Boolean全文搜索"><a href="#Boolean全文搜索" class="headerlink" title="Boolean全文搜索"></a>Boolean全文搜索</h4><p>Boolean全文搜索对查询提供了更加细的控制允许显示地标识候选结果中应当或不应当出现哪些词（MySQL默认会忽略少于4个字符的关键词）。以下是关于Boolean操作符的描述：</p>
+<p>+ 前导加号确保后面的单词出现在每个结果记录中<br>- 前导减号确保后面的单词不出现在任何结果记录中<br>* 结尾处的星号允许接受关键字变体，只要该变体以星号前面的单词所制定的字符串开头<br>“ “ 外围的双引号确保结果记录包含所包围的字符串，要严格按照输入时的形式出现<br>&lt; &gt; 前导的大于号和小于号分别用于增加和减少后面单词的搜索级别相关度<br>( ) 小括号用于将单词分组为子表达式</p>
+<p>如下是几个简单的例子：</p>
+<ol>
+<li>返回包含Nginx，但不包含manual的记录：</li>
+</ol>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fs2e7333k8j30tw01yt98.jpg" alt=""></p>
+<ol start="2">
+<li>返回包含单词Nginx，但不包含Apache或Tomcat的记录：</li>
+</ol>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fs2e9gd0sqj30t201wwf2.jpg" alt=""></p>
+<ol start="3">
+<li>返回包含web和scripting或者php和scripting的记录，但web scripting的搜索级别低于php scripting：</li>
+</ol>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fs2ecup96cj30t00220t8.jpg" alt=""></p>
+<p>注意，由于MySQL默认会忽略少于4个字符的单词，所以执行上面的SQL命令时，应该先修改<code>ft_min_word_len</code>参数。</p>
+<h1 id="索引选取的注意事项"><a href="#索引选取的注意事项" class="headerlink" title="索引选取的注意事项"></a>索引选取的注意事项</h1><ol>
+<li>只对<code>WHERE</code>和<code>ORDER BY</code>子句中需要的列添加索引，过多的索引会占用很多硬盘空间，在修改数据时还会降低性能，因为每次修改数据时都需要更新索引。</li>
+<li>如果创建如<code>INDEX(firstname, lastname)</code>的索引时，不要再创建<code>INDEX(firstname)</code>，因为MySQL的索引采用最左前缀策略。</li>
+<li>需要索引的列要不为空（NOT NULL），保证构建索引时不存储NULL值。</li>
+<li>可以开启慢查询日志，通过对慢查询日志的分析来优化索引。</li>
+</ol>
+<p>参考：<br>《PHP与MySQL程序设计（第四版）》</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xydida.com/2018/6/6/MySQL/Learn-MySQL-indexes/" data-id="cjpp6697x002a4a9k2ws0wuu2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-The-secret-you-do-not-know-the-static-in-PHP" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/6/5/PHP/The-secret-you-do-not-know-the-static-in-PHP/" class="article-date">
@@ -154,7 +259,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xydida.com/2018/6/5/PHP/The-secret-you-do-not-know-the-static-in-PHP/" data-id="cjm257nwu0028289kmyoq3slw" class="article-share-link">Share</a>
+      <a data-url="http://xydida.com/2018/6/5/PHP/The-secret-you-do-not-know-the-static-in-PHP/" data-id="cjpp6697z002c4a9ka39d9dyi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
@@ -277,7 +382,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xydida.com/2018/6/3/PHP/What-is-PSR/" data-id="cjm257nxa002p289k8xsw53pp" class="article-share-link">Share</a>
+      <a data-url="http://xydida.com/2018/6/3/PHP/What-is-PSR/" data-id="cjpp6698e002t4a9khjd9osj5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PSR/">PSR</a></li></ul>
@@ -366,7 +471,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xydida.com/2018/6/1/Object-Oriented/rethinking-in-Object-Oriented/" data-id="cjm257nwy002d289klrobvhzh" class="article-share-link">Share</a>
+      <a data-url="http://xydida.com/2018/6/1/Object-Oriented/rethinking-in-Object-Oriented/" data-id="cjpp66984002h4a9kf809yeqw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Object-Oriented/">Object Oriented</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
@@ -466,96 +571,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xydida.com/2018/5/31/PHP/the-autoload-of-php/" data-id="cjm257nwv002b289kwlw7v6yo" class="article-share-link">Share</a>
+      <a data-url="http://xydida.com/2018/5/31/PHP/the-autoload-of-php/" data-id="cjpp66981002f4a9ki9hm7mfn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/autoload/">autoload</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Use-screen-to-manage-your-remote-session" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/5/15/Linux/Use-screen-to-manage-your-remote-session/" class="article-date">
-  <time datetime="2018-05-15T09:33:36.000Z" itemprop="datePublished">2018-05-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/5/15/Linux/Use-screen-to-manage-your-remote-session/">使用Screen管理远程回话</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>​    在本地开发时，经常需要使用远程连接到Linux服务器，一开始我自己都是有几个远程就开几个SSH窗口，这种方法很原始很直接，但每次都受够了密码输入，即使用了SSH免密码登录，也会觉得每次输入SSH的命令一点都不快速，况且况且窗口开多了，也会很混乱，不易管理，这种情况，Linux上的工具也有很多，今天就学习一下<code>screen</code>工具。</p>
-<p>​    在介绍<code>screen</code>工具时，先讨论一下，为什么连接服务器后，当执行长时间的任务时，我们关闭远程连接窗口，这个任务就被杀掉了呢？</p>
-<h3 id="元凶：SIGUP信号"><a href="#元凶：SIGUP信号" class="headerlink" title="元凶：SIGUP信号"></a>元凶：SIGUP信号</h3><p>​    在Linux／Unix中，有以下几个概念：</p>
-<ul>
-<li>进程组（process group）：一个或多个进程的集合，每个进程组都有一个唯一的进程组ID；</li>
-<li>会话期（session）：一个或多个进程组的集合，有唯一一个会话首进程（session leader），会话期ID为首进程ID；</li>
-<li>会话期可以有一个单独的会话终端，与控制终端连接的会话期首进程叫控制进程（controlling process），当前与终端交互的进程称为前台进程组，其余进程组称为后台进程组。</li>
-</ul>
-<p>​工具POSIX.1定义：</p>
-<ul>
-<li>挂断信号（SIGHUP）默认的动作是终止程序；</li>
-<li>当终端接口检测到网络连接断开，将发送SIGHUP信号给控制进程（会话期首进程）；</li>
-<li>如果会话期首进程终止，则该信号发送到该会话期前台进程组；</li>
-<li>一个进程退出导致一个孤儿进程组产生时，如果人一个孤儿进程组进程处于STOP状态，则发送SIGHUP和SIGCONT信号到该进程组中所有进程。</li>
-</ul>
-<p>因此当网络断开或窗口关闭时，控制进程收到SIGHUP信号退出，会导致该会话期内其他进程退出。</p>
-<h3 id="一个简单例子"><a href="#一个简单例子" class="headerlink" title="一个简单例子"></a>一个简单例子</h3><p>打开两个SSH终端窗口，在第一个中执行<code>ping</code>命令：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc6u7rhvyj30il0f9te8.jpg" alt=""></p>
-<p>再另一个终端窗口中，找到<code>ping</code>的进程ID为22132，其父进程ID为21803，即登录zsh：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc6yf26ygj30g801d748.jpg" alt=""></p>
-<p>使用<code>ps -xj</code>可以看到，登录zsh（PID 21803）和ping在同一会话期，zsh为会话期首进程，所以进程组PGID为21803，ping所在的进程组PGID为22132，为前台进程组。</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc7190pf9j30gn01w0st.jpg" alt=""></p>
-<p>这时，我们关闭第一个SSH远程窗口，在另一个窗口中看到ping进程被杀掉了：</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1frc780f1bgj30df00z3yb.jpg" alt=""></p>
-<p>这就发现，当我们执行一个耗时的任务时，如果关闭了这个窗口，这个任务进程也就被杀掉了，并不是我们所期望的那样在后台继续执行。</p>
-<h2 id="使用screen"><a href="#使用screen" class="headerlink" title="使用screen"></a>使用screen</h2><p>​    现在，也不需要多说<code>screen</code>到底是干什么的了，直接说怎么使用吧。</p>
-<ol>
-<li>直接执行<code>screen</code>命令</li>
-</ol>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1frc7gskgthj30p302zmx8.jpg" alt=""></p>
-<p><code>screen</code>将创建一个执行shell的全屏窗口，可以看到窗口的title已经提示处于<code>screen</code>程序中，在这个窗口中你可以随便执行命令，如果要退出输入<code>exit</code>命令。</p>
-<ol start="2">
-<li>如果你想新开一个窗口执行另一个任务，可以执行：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 方法1</span><br><span class="line">按键盘Ctrl+a +c, 会心打开一个screen窗口</span><br><span class="line"></span><br><span class="line">// 方法2</span><br><span class="line">screen 需要执行的任务的命令，比如：</span><br><span class="line">screen ping www.baidu.com</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>多个<code>screen</code>窗口切换</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">方法1</span><br><span class="line">键盘Ctrl+a +[0..9]</span><br><span class="line"></span><br><span class="line">方法2</span><br><span class="line">键盘Ctrl+a +n, 下一个screen窗口</span><br><span class="line">键盘Ctrl+a +p, 上一个screen窗口</span><br></pre></td></tr></table></figure>
-<p>更多命令可以看下图：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc7u10k57j30lt0i40um.jpg" alt=""></p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1frc7zis4jxj310z0dzgo5.jpg" alt=""></p>
-<p>Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器，Screen中还有会话的概念，用户可以在一个screen会话中创建多个screen窗口，而在每一个screen窗口中就像操作一个真实的SSH连接窗口那样。</p>
-<p>参考：<a href="https://www.ibm.com/developerworks/cn/linux/l-cn-screen/" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/linux/l-cn-screen/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://xydida.com/2018/5/15/Linux/Use-screen-to-manage-your-remote-session/" data-id="cjm257nvo000a289k0htjmi4w" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Server/">Server</a></li></ul>
 
     </footer>
   </div>
@@ -606,7 +625,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li></ul>
     </div>
   </div>
 
@@ -617,6 +636,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/">Valet problem: Unable to determine linked PHP</a>
+          </li>
         
           <li>
             <a href="/2018/9/14/小程序/The-measureText-function-in-Wechat-miniprogram-canvas/">在小程序Canvas中使用measureText</a>
@@ -632,10 +655,6 @@
         
           <li>
             <a href="/2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/">解决PHP中htmlspecialchars返回null的问题</a>
-          </li>
-        
-          <li>
-            <a href="/2018/6/6/MySQL/Learn-MySQL-indexes/">MySQL中的索引学习</a>
           </li>
         
       </ul>
