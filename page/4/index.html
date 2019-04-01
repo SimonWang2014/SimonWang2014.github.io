@@ -69,6 +69,92 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Use-screen-to-manage-your-remote-session" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/5/15/Linux/Use-screen-to-manage-your-remote-session/" class="article-date">
+  <time datetime="2018-05-15T09:33:36.000Z" itemprop="datePublished">2018-05-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/5/15/Linux/Use-screen-to-manage-your-remote-session/">使用Screen管理远程回话</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>​    在本地开发时，经常需要使用远程连接到Linux服务器，一开始我自己都是有几个远程就开几个SSH窗口，这种方法很原始很直接，但每次都受够了密码输入，即使用了SSH免密码登录，也会觉得每次输入SSH的命令一点都不快速，况且况且窗口开多了，也会很混乱，不易管理，这种情况，Linux上的工具也有很多，今天就学习一下<code>screen</code>工具。</p>
+<p>​    在介绍<code>screen</code>工具时，先讨论一下，为什么连接服务器后，当执行长时间的任务时，我们关闭远程连接窗口，这个任务就被杀掉了呢？</p>
+<h3 id="元凶：SIGUP信号"><a href="#元凶：SIGUP信号" class="headerlink" title="元凶：SIGUP信号"></a>元凶：SIGUP信号</h3><p>​    在Linux／Unix中，有以下几个概念：</p>
+<ul>
+<li>进程组（process group）：一个或多个进程的集合，每个进程组都有一个唯一的进程组ID；</li>
+<li>会话期（session）：一个或多个进程组的集合，有唯一一个会话首进程（session leader），会话期ID为首进程ID；</li>
+<li>会话期可以有一个单独的会话终端，与控制终端连接的会话期首进程叫控制进程（controlling process），当前与终端交互的进程称为前台进程组，其余进程组称为后台进程组。</li>
+</ul>
+<p>​工具POSIX.1定义：</p>
+<ul>
+<li>挂断信号（SIGHUP）默认的动作是终止程序；</li>
+<li>当终端接口检测到网络连接断开，将发送SIGHUP信号给控制进程（会话期首进程）；</li>
+<li>如果会话期首进程终止，则该信号发送到该会话期前台进程组；</li>
+<li>一个进程退出导致一个孤儿进程组产生时，如果人一个孤儿进程组进程处于STOP状态，则发送SIGHUP和SIGCONT信号到该进程组中所有进程。</li>
+</ul>
+<p>因此当网络断开或窗口关闭时，控制进程收到SIGHUP信号退出，会导致该会话期内其他进程退出。</p>
+<h3 id="一个简单例子"><a href="#一个简单例子" class="headerlink" title="一个简单例子"></a>一个简单例子</h3><p>打开两个SSH终端窗口，在第一个中执行<code>ping</code>命令：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc6u7rhvyj30il0f9te8.jpg" alt=""></p>
+<p>再另一个终端窗口中，找到<code>ping</code>的进程ID为22132，其父进程ID为21803，即登录zsh：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc6yf26ygj30g801d748.jpg" alt=""></p>
+<p>使用<code>ps -xj</code>可以看到，登录zsh（PID 21803）和ping在同一会话期，zsh为会话期首进程，所以进程组PGID为21803，ping所在的进程组PGID为22132，为前台进程组。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc7190pf9j30gn01w0st.jpg" alt=""></p>
+<p>这时，我们关闭第一个SSH远程窗口，在另一个窗口中看到ping进程被杀掉了：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1frc780f1bgj30df00z3yb.jpg" alt=""></p>
+<p>这就发现，当我们执行一个耗时的任务时，如果关闭了这个窗口，这个任务进程也就被杀掉了，并不是我们所期望的那样在后台继续执行。</p>
+<h2 id="使用screen"><a href="#使用screen" class="headerlink" title="使用screen"></a>使用screen</h2><p>​    现在，也不需要多说<code>screen</code>到底是干什么的了，直接说怎么使用吧。</p>
+<ol>
+<li>直接执行<code>screen</code>命令</li>
+</ol>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1frc7gskgthj30p302zmx8.jpg" alt=""></p>
+<p><code>screen</code>将创建一个执行shell的全屏窗口，可以看到窗口的title已经提示处于<code>screen</code>程序中，在这个窗口中你可以随便执行命令，如果要退出输入<code>exit</code>命令。</p>
+<ol start="2">
+<li>如果你想新开一个窗口执行另一个任务，可以执行：</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法1</span></span><br><span class="line">按键盘Ctrl+<span class="selector-tag">a</span> +c, 会心打开一个screen窗口</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法2</span></span><br><span class="line">screen 需要执行的任务的命令，比如：</span><br><span class="line">screen ping www<span class="selector-class">.baidu</span><span class="selector-class">.com</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>多个<code>screen</code>窗口切换</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">方法<span class="number">1</span></span><br><span class="line">键盘Ctrl+<span class="selector-tag">a</span> +[<span class="number">0</span>..<span class="number">9</span>]</span><br><span class="line"></span><br><span class="line">方法<span class="number">2</span></span><br><span class="line">键盘Ctrl+<span class="selector-tag">a</span> +n, 下一个screen窗口</span><br><span class="line">键盘Ctrl+<span class="selector-tag">a</span> +<span class="selector-tag">p</span>, 上一个screen窗口</span><br></pre></td></tr></table></figure>
+<p>更多命令可以看下图：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc7u10k57j30lt0i40um.jpg" alt=""></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1frc7zis4jxj310z0dzgo5.jpg" alt=""></p>
+<p>Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器，Screen中还有会话的概念，用户可以在一个screen会话中创建多个screen窗口，而在每一个screen窗口中就像操作一个真实的SSH连接窗口那样。</p>
+<p>参考：<a href="https://www.ibm.com/developerworks/cn/linux/l-cn-screen/" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/linux/l-cn-screen/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xydida.com/2018/5/15/Linux/Use-screen-to-manage-your-remote-session/" data-id="cjtye62os000ggt9kofyjpf3i" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Server/">Server</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Routing-Selection" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/5/14/Networks/Routing-Selection/" class="article-date">
@@ -154,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xydida.com/2018/5/14/Networks/Routing-Selection/" data-id="cjt77drvr0006za9kvwbojd4l" class="article-share-link">Share</a>
+      <a data-url="http://xydida.com/2018/5/14/Networks/Routing-Selection/" data-id="cjtye62og0006gt9kqbnnpm77" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/networks/">networks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/routing/">routing</a></li></ul>
@@ -223,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xydida.com/2018/2/4/Devops/Base-configuration-for-a-new-server/" data-id="cjt77drvd0000za9kj89px3b9" class="article-share-link">Share</a>
+      <a data-url="http://xydida.com/2018/2/4/Devops/Base-configuration-for-a-new-server/" data-id="cjtye62on000cgt9k2n2nhmms" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Server/">Server</a></li></ul>
@@ -275,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xydida.com/2017/12/19/Algorithm/sieve-stream/" data-id="cjt77drwc000zza9kzlrjdzka" class="article-share-link">Share</a>
+      <a data-url="http://xydida.com/2017/12/19/Algorithm/sieve-stream/" data-id="cjtye62pb0010gt9ksb9j9bqf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SICP/">SICP</a></li></ul>
@@ -340,84 +426,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xydida.com/2017/10/31/notes/My-first-experience-of-a-telephone-interview/" data-id="cjt77drvp0005za9koo7scbgz" class="article-share-link">Share</a>
+      <a data-url="http://xydida.com/2017/10/31/notes/My-first-experience-of-a-telephone-interview/" data-id="cjtye62o50002gt9k96da7291" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interviews/">interviews</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-box-sizing-in-css3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/28/frontend/box-sizing-in-css3/" class="article-date">
-  <time datetime="2017-10-28T10:21:19.000Z" itemprop="datePublished">2017-10-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/frontend/">frontend</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/28/frontend/box-sizing-in-css3/">CSS3中的box-sizing属性</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://upload-images.jianshu.io/upload_images/2650331-c4e9975c93ab0893.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>box-sizing属性是css3中新添加的属性，用来替换原来的<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model" target="_blank" rel="noopener">css盒子模型</a>，box-sizing属性值的不同，元素的高度和宽度的计算方法也不同。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* box-sizing的三个属性值，我们只针对前两个说明 */</span></span><br><span class="line"><span class="selector-tag">box-sizing</span>: <span class="selector-tag">content-box</span>;</span><br><span class="line"><span class="selector-tag">box-sizing</span>: <span class="selector-tag">border-box</span>;</span><br><span class="line"><span class="selector-tag">box-sizing</span>: <span class="selector-tag">padding-box</span>;</span><br></pre></td></tr></table></figure>
-<p>在默认情况下，设置的<code>width</code>和<code>height</code>属性都是指元素内容（content box）的高度和宽度，如果这个元素设置了<code>border</code>或<code>padding</code>的话，那么整个元素的高度和宽度就是：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">totalWidth = border-left + padding-left + width + padding-right + border-right</span><br><span class="line">totalHeight = border-top + padding-top + height + padding-bottom + border-bottom</span><br></pre></td></tr></table></figure></p>
-<p>所以，这个在做相应式设计的时候还是比较复杂的，现在，有了box-sizing属性，就可以根据不同的属性值计算元素的高度和宽度。</p>
-<ul>
-<li><code>content-box</code>：这是默认情况，根据这个属性值的名字也能大概猜出会是什么情况，整个元素的高度和宽度其实就是上面的两个公式</li>
-<li><code>border-box</code>：这种情况下，你设置的<code>width</code>和<code>height</code>属性值就是针对整个元素，包括了border，padding，和元素内容。</li>
-</ul>
-<h4 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h4><h5 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">5px</span> solid blue;</span><br><span class="line">    <span class="attribute">background-color</span>: orange;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box1</span> &#123;</span><br><span class="line">    <span class="attribute">box-sizing</span>: content-box;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box2</span> &#123;</span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box box1"</span>&gt;</span></span><br><span class="line">    content-box</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box box2"</span>&gt;</span></span><br><span class="line">    border-box</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>代码中，我们对两个div设置了相同的height、width、border和padding，可是现实效果却完全不同：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-f495dd644346ee59.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="demo"></p>
-<p>我们仔细分析下，两个div不同的地方在于box-sizing属性，第一个是<code>content-box</code>，第二个是<code>border-box</code>，针对第一个div，</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-877a3ce0e581d752.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-612a1672b0d750f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第一个div"></p>
-<p>我们发现，整个元素的高度和宽度是260x260，而元素的内容的高度和宽度是150x150，正好是我们想要的，对于260这个大小是怎么来的，我们不妨计算一下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5+50+150+50+5=260  // 高度</span><br><span class="line">5+50+150+50+5=260  // 宽度</span><br></pre></td></tr></table></figure></p>
-<p>正好是260，符合最上面的两个公式，所以最后元素的尺寸是260x260，并不是我们设置的150x150</p>
-<p>对于第二个div：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-ae3596bd4483e47f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-f80a425bad255ca7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第二个div"></p>
-<p>很明显可以看到，第二个div里面的内容已经被挤了换行了，这个div的真实的高度和宽度和我们设置的一样，可以它的内容部分的尺寸只有40x40，远小于150，可以看到，这就是<code>content-box</code>和<code>border-box</code>的区别了，再来计算一下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">150 = 5+50+40+50+5 // 高度</span><br><span class="line">150 = 5+50+40+50+5 // 宽度</span><br></pre></td></tr></table></figure>
-<p>可知，整个元素的高度其实是包括了border、padding和内容的高度，宽度也是如此。</p>
-<h4 id="浏览器的兼容性"><a href="#浏览器的兼容性" class="headerlink" title="浏览器的兼容性"></a>浏览器的兼容性</h4><ul>
-<li><p>桌面端<br><img src="http://upload-images.jianshu.io/upload_images/2650331-3a56c6fe15ff93e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-</li>
-<li><p>手机端<br><img src="http://upload-images.jianshu.io/upload_images/2650331-6bb890ae10bdf791.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-</li>
-</ul>
-<p>可以看到，不管是手机端还是桌面端大部分都是不支持<code>padding-box</code>的，所以建议实际开发中避免使用<code>padding-box</code>。</p>
-<p>跟多详细内容请参考：<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://xydida.com/2017/10/28/frontend/box-sizing-in-css3/" data-id="cjt77drwb000wza9kyg6i5s51" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
 
     </footer>
   </div>
@@ -468,7 +480,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li></ul>
     </div>
   </div>
 
@@ -479,6 +491,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/4/1/PHP/PHP处理高分辨率图片引起的思考/">PHP处理高分辨率图片引起的思考</a>
+          </li>
         
           <li>
             <a href="/2019/3/13/PHP/array-push-in-PHP/">PHP代码优化—array_push</a>
@@ -494,10 +510,6 @@
         
           <li>
             <a href="/2018/12/16/Linux/my-Tmux-notes/">我的Tmux笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/">Valet problem: Unable to determine linked PHP</a>
           </li>
         
       </ul>
