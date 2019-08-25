@@ -14,8 +14,8 @@
 <meta property="og:description" content="《A Philosophy of Software Design》读书笔记（1）  通常，在描述一款软件系统的开发过程时，都会使用复杂性来衡量，而这里所说的复杂性是指：任何与软件系统结构有关并使整个系统难以理解和修改的设计。在软件设计时，复杂性有很多不同形式的体现，比如：某一段代码很难理解；一些小的代码修改却要花费很大的精力，或者是修改代码时不确定这段代码是否必须修改；修改一个 bug又会引入">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="https://i.loli.net/2019/08/25/dHjVozCPY3Gwbe6.jpg">
-<meta property="og:image" content="http://xydida.com/Users/wanghui/Downloads/CodeCogsEqn.png">
-<meta property="og:updated_time" content="2019-08-25T14:59:16.222Z">
+<meta property="og:image" content="https://i.loli.net/2019/08/25/6ECOi3mpxH1PhMy.png">
+<meta property="og:updated_time" content="2019-08-25T15:15:07.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于软件设计的复杂性">
 <meta name="twitter:description" content="《A Philosophy of Software Design》读书笔记（1）  通常，在描述一款软件系统的开发过程时，都会使用复杂性来衡量，而这里所说的复杂性是指：任何与软件系统结构有关并使整个系统难以理解和修改的设计。在软件设计时，复杂性有很多不同形式的体现，比如：某一段代码很难理解；一些小的代码修改却要花费很大的精力，或者是修改代码时不确定这段代码是否必须修改；修改一个 bug又会引入">
@@ -103,7 +103,7 @@
 <p>上面所说的复杂性是开发人员在尝试实现特定目标时在特定时间点所体验到的，它不一定与系统的整体大小或功能有关。人们通常用“复杂”这个词来描述一个有很多复杂功能的系统，但如果这个系统使用起来很方便，那么使用我们上面说的“复杂性”衡量是有失偏颇的。</p>
 <p>当然，鱼和熊掌不能兼得。事实上几乎大多数大型的复杂的软件系统使用起来都不简单。</p>
 <p>软件设计的复杂性通常是由一些常见的活动决定的，如果一个系统中有些部分特别复杂，但是这些部分从来不会被使用到，那么它们就不会影响到整个系统的复杂性，我们可以用如下的数学公式来描述一下：</p>
-<p><img src="/Users/wanghui/Downloads/CodeCogsEqn.png" alt=""></p>
+<p><img src="https://i.loli.net/2019/08/25/6ECOi3mpxH1PhMy.png" alt=""></p>
 <p>整个系统的复杂性（C）是由每个部分的复杂性(cp)决定的，cp的权重是开发人员在该部分花费的时间(tp)的比例。</p>
 <p>相较于开发人员，复杂性对使用者来说更加明显。比如你写了一段自认为很简单的代码，如果别人阅读你的代码时感觉到复杂，那就说明这段代码是复杂的。当遇到这种情况时，我觉得有必要向别人讨论复杂的原因，与别人交流观点也是很有意思的。工程师的职责并不只是写出你认为简单的代码，也需要让同事之间的合作更方便。</p>
 
