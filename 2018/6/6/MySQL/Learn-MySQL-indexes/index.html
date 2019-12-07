@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>MySQL中的索引学习 | Hello</title>
+  <title>MySQL中的索引学习 | 我的博客</title>
+  <meta name="baidu-site-verification" content="yXEzwss0jm" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
+  
   <meta name="description" content="什么是索引？在没有学数据库之前，大多数人对索引还是比较陌生（可能学完之后还是比较陌生：），今天我想告诉大家索引很有用，而且面试的时候都会问到。那么索引是什么呢？ 其实索引这个东西我们很早就接触过了，想象一下当初学习《现代汉语词典》的时候，老师是如何教我们使用的，就可以理解什么是索引了。《现代汉语词典》有将近1800页，里面的汉字大概有1.3万多个，我们是如何在这么多的汉字中找到某个字呢？老师大概">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL中的索引学习">
 <meta property="og:url" content="http://xydida.com/2018/6/6/MySQL/Learn-MySQL-indexes/index.html">
-<meta property="og:site_name" content="Hello">
+<meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="什么是索引？在没有学数据库之前，大多数人对索引还是比较陌生（可能学完之后还是比较陌生：），今天我想告诉大家索引很有用，而且面试的时候都会问到。那么索引是什么呢？ 其实索引这个东西我们很早就接触过了，想象一下当初学习《现代汉语词典》的时候，老师是如何教我们使用的，就可以理解什么是索引了。《现代汉语词典》有将近1800页，里面的汉字大概有1.3万多个，我们是如何在这么多的汉字中找到某个字呢？老师大概">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fs2f97s3m4j31kw16o1kz.jpg">
@@ -36,7 +40,7 @@
 <meta name="twitter:description" content="什么是索引？在没有学数据库之前，大多数人对索引还是比较陌生（可能学完之后还是比较陌生：），今天我想告诉大家索引很有用，而且面试的时候都会问到。那么索引是什么呢？ 其实索引这个东西我们很早就接触过了，想象一下当初学习《现代汉语词典》的时候，老师是如何教我们使用的，就可以理解什么是索引了。《现代汉语词典》有将近1800页，里面的汉字大概有1.3万多个，我们是如何在这么多的汉字中找到某个字呢？老师大概">
 <meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fs2f97s3m4j31kw16o1kz.jpg">
   
-    <link rel="alternate" href="/atom.xml" title="Hello" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="我的博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -57,7 +61,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hello</a>
+        <a href="/" id="logo">我的博客</a>
       </h1>
       
         <h2 id="subtitle-wrap">
