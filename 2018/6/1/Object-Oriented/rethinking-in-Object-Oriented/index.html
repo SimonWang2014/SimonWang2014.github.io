@@ -1,145 +1,112 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-<!-- Head tag -->
+<html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <!--Description-->
   
-  <meta name="description" content="php开发，laravel学习，vue.js教程，全栈工程师博客">
-  
-
-  <!--Author-->
-  
-  <meta name="author" content="bilberry">
-  
-
-  <!--Open Graph Title-->
-  
-      <meta property="og:title" content="面向对象的再思考"/>
-  
-  <!--Open Graph Description-->
-  
-      <meta property="og:description" content="php开发，laravel学习，vue.js教程，全栈工程师博客" />
-  
-  <!--Open Graph Site Name-->
-  <meta property="og:site_name" content="我的博客"/>
-  <!--Type page-->
-  
-      <meta property="og:type" content="article" />
-  
-  <!--Page Cover-->
-  
-
+  <title>面向对象的再思考 | 我的博客</title>
+  <meta name="baidu-site-verification" content="yXEzwss0jm" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <!-- Title -->
   
-  <title>面向对象的再思考 - 我的博客</title>
-
-
-  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
-
-  <!-- Custom CSS/Sass -->
+    <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
+  
+  <meta name="description" content="为什么要再次思考临近毕业，自己投了很多简历，也参加了好多轮的面试，不论结果如何，自己也从中收获了很多，发现了自己的诸多不足。大多数的面试都会提到面向对象的问题，虽然自己上了很多面向对象编程的课，学习了几门面向对象的语言，但当坐在面试官面前面对面讨论面向对象问题时，自己的无知立马显现出来，所以我觉得有必要再次思考什么是面向对象（Object Oriented）。 什么是对象？面向对象中的对象（Ob">
+<meta name="keywords" content="PHP,Object Oriented">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象的再思考">
+<meta property="og:url" content="https://www.xydida.com/2018/6/1/Object-Oriented/rethinking-in-Object-Oriented/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="为什么要再次思考临近毕业，自己投了很多简历，也参加了好多轮的面试，不论结果如何，自己也从中收获了很多，发现了自己的诸多不足。大多数的面试都会提到面向对象的问题，虽然自己上了很多面向对象编程的课，学习了几门面向对象的语言，但当坐在面试官面前面对面讨论面向对象问题时，自己的无知立马显现出来，所以我觉得有必要再次思考什么是面向对象（Object Oriented）。 什么是对象？面向对象中的对象（Ob">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2650331-029d8ef8e50a83c6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1frwpw3h749j308s0aot9m.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1frwv81be0gj31eu09ytb5.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1frwvqlo1wdj31d2084mze.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1frwvuiyoi8j311e02sq3w.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1frwzd3yly0j30li0abdfu.jpg">
+<meta property="og:updated_time" content="2018-06-03T03:43:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面向对象的再思考">
+<meta name="twitter:description" content="为什么要再次思考临近毕业，自己投了很多简历，也参加了好多轮的面试，不论结果如何，自己也从中收获了很多，发现了自己的诸多不足。大多数的面试都会提到面向对象的问题，虽然自己上了很多面向对象编程的课，学习了几门面向对象的语言，但当坐在面试官面前面对面讨论面向对象问题时，自己的无知立马显现出来，所以我觉得有必要再次思考什么是面向对象（Object Oriented）。 什么是对象？面向对象中的对象（Ob">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2650331-029d8ef8e50a83c6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternate" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
   <link rel="stylesheet" href="../../../../../css/style.css">
-
-  <!----------------------------
-  https://github.com/GallenHu/hexo-theme-Daily
-
- _____            _   _
-|  __ \          (_) | |
-| |  | |   __ _   _  | |  _   _
-| |  | |  / _` | | | | | | | | |
-| |__| | | (_| | | | | | | |_| |
-|_____/   \__,_| |_| |_|  \__, |
-                          __/ |
-                         |___/
-
-    --------------------------->
+  
 
 </head>
 
-
 <body>
-
-  <!-- Nav -->
-  <header class="site-header">
-  <div class="header-inside">
-    <div class="logo">
-      <a href="../../../../../index.html" rel="home">
-        
-        <img src="https://hexo.io/logo.svg" alt="我的博客" height="60">
-        
-      </a>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../../../../index.html" id="logo">我的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../../../../index.html" id="subtitle">能找到我的也不是等闲之辈</a>
+        </h2>
+      
     </div>
-    <!-- Navigation -->
-    <nav class="navbar">
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse">
-        <ul class="navbar-nav">
-          
-          
-            <li>
-              <a href="../../../../../.">
-                
-                  home
-                
-              </a>
-            </li>
-          
-            <li>
-              <a href="../../../../../archives">
-                
-                  archive
-                
-              </a>
-            </li>
-          
-        </ul>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="../../../../../index.html">Home</a>
+        
+          <a class="main-nav-link" href="../../../../../archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.xydida.com"></form>
       </div>
-      <!-- /.navbar-collapse -->
-    </nav>
-    <div class="button-wrap">
-      <button class="menu-toggle">Primary Menu</button>
     </div>
   </div>
 </header>
+      <div class="outer">
+        <section id="main"><article id="post-rethinking-in-Object-Oriented" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../../../../2018/6/1/Object-Oriented/rethinking-in-Object-Oriented/" class="article-date">
+  <time datetime="2018-06-01T07:00:57.000Z" itemprop="datePublished">2018-06-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../../../../categories/Object-Oriented/">Object Oriented</a>
+  </div>
 
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      面向对象的再思考
+    </h1>
+  
 
-  <!-- Main Content -->
-  <div class="content-area">
-  <div class="post">
-    <!-- Post Content -->
-    <div class="container">
-      <article>
-        <!-- Title date & tags -->
-        <div class="post-header">
-          <h1 class="entry-title">
-            面向对象的再思考
-            
-          </h1>
-          <p class="posted-on">
-          2018-06-01
-          </p>
-          <div class="tags-links">
-            
-              
-                <a href="/tags/PHP/" rel="tag">
-                  PHP
-                </a>
-              
-                <a href="/tags/Object Oriented/" rel="tag">
-                  Object Oriented
-                </a>
-              
-            
-          </div>
-        </div>
-        <!-- Post Main Content -->
-        <div class="entry-content">
-          <p><img src="https://upload-images.jianshu.io/upload_images/2650331-029d8ef8e50a83c6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://upload-images.jianshu.io/upload_images/2650331-029d8ef8e50a83c6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <h1 id="为什么要再次思考"><a href="#为什么要再次思考" class="headerlink" title="为什么要再次思考"></a>为什么要再次思考</h1><p>临近毕业，自己投了很多简历，也参加了好多轮的面试，不论结果如何，自己也从中收获了很多，发现了自己的诸多不足。大多数的面试都会提到面向对象的问题，虽然自己上了很多面向对象编程的课，学习了几门面向对象的语言，但当坐在面试官面前面对面讨论面向对象问题时，自己的无知立马显现出来，所以我觉得有必要再次思考什么是面向对象（Object Oriented）。</p>
 <h1 id="什么是对象？"><a href="#什么是对象？" class="headerlink" title="什么是对象？"></a>什么是对象？</h1><p>面向对象中的对象（Object）是什么呢？面向对象程序设计（OOP）及时使用对象来进行程序设计，对象就是代表现实世界中可以明确分辨的一个实体，一个人、一辆车、一个圆、一次交易都可以看作是一个对象，不管是真实存在的还是虚拟的。一个对象通常都有自己的特征和行为。</p>
 <ul>
@@ -187,98 +154,135 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span></span>&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">abstract</span> <span class="function"><span class="keyword">function</span> <span class="title">continueToWork</span><span class="params">()</span></span>;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">Sales</span> <span class="keyword">extends</span> <span class="title">Employee</span></span>&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">makeSalePlan</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">echo</span> <span class="string">"make sale plan"</span>;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">continueToWork</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;makeSalePlan();</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">Market</span> <span class="keyword">extends</span> <span class="title">Employee</span></span>&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">makeProductPrice</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">echo</span> <span class="string">"make product price"</span>;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">continueToWork</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;makeProductPrice();</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">Engineer</span> <span class="keyword">extends</span> <span class="title">Employee</span></span>&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">makeNewProduct</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">echo</span> <span class="string">"make new product"</span>;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">continueToWork</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;makeNewProduct();</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span></span>&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">Work</span><span class="params">($employeeObj)</span></span>&#123;</span></span><br><span class="line"><span class="php">        $employeeObj-&gt;continueToWork();</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"><span class="comment">//调用</span></span></span><br><span class="line"><span class="php">$obj = <span class="keyword">new</span> Demo();</span></span><br><span class="line"><span class="php">$obj-&gt;Work(<span class="keyword">new</span> Sales());</span></span><br><span class="line"><span class="php">$obj-&gt;Work(<span class="keyword">new</span> Market());</span></span><br><span class="line"><span class="php">$obj-&gt;Work(<span class="keyword">new</span> Engineer());</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>面向对象能将相同的属性封装在一起，同时又能复用很多代码，同时针对不同情况，还能实现多种形态，这就是面向对象的强大之处，有了它我们可以更方便地写出易于管理的代码，但作为初学者，要深刻理解它的三大特点，灵活运用也并非易事。<br>上课时，老师稍微对一个知识多讲了几遍就觉得不耐烦，觉得自己已经懂了，但自己真正遇到的时候，又觉得自己什么都不懂，书到用时方恨少，学习不能浅尝辄止，蜻蜓点水，要静下心来学习。</p>
 
-        </div>
-      </article>
-    </div>
-    <!-- Comments -->
-    <div class="container">
       
-<section id="comment">
-  <!-- <h1 class="title">Comments</h1> -->
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2018/6/1/Object-Oriented/rethinking-in-Object-Oriented/" data-id="cka144asd003ozgcao6zk2x4a" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/Object-Oriented/">Object Oriented</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/PHP/">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../../../../../2018/6/3/PHP/What-is-PSR/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          什么是PSR规范？
+        
+      </div>
+    </a>
+  
+  
+    <a href="../../../../../2018/5/31/PHP/the-autoload-of-php/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PHP的自动加载机制</div>
+    </a>
+  
+</nav>
 
   
+</article>
+
 </section>
-
-
-    </div>
-    <!-- Pre or Next -->
-    <div class="nav-links">
-      
-        <div class="nav-previous">
-          <a href="//2018/6/3/PHP/What-is-PSR/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> Older Posts</a>
-        </div>
-      
-      
-        <div class="nav-next">
-          <a href="//2018/5/31/PHP/the-autoload-of-php/" rel="prev">Newer Posts <span class="meta-arraw meta-arraw-right"></span></a>
-        </div>
-      
-    </div>
-
-  </div>
-</div>
-
-
-  <!-- Footer -->
-  <!-- Footer-widgets -->
-<div class="footer-widgets">
-  <div class="row inside-wrapper">
-    <div class="col-1-3">
-      <aside>
-        <h1 class="widget-title">关于本站</h1>
-        <div class="custom-widget-content">
-          
-          php开发，laravel学习，vue.js教程，全栈工程师博客
-        </div>
-      </aside>
-    </div>
-    <div class="col-1-3">
-      <aside>
-        <h1 class="widget-title">Contact</h1>
-        <div class="widget-text">
-          
-            
-              <a href="https://github.com/GallenHu" class="icon icon-github" target="_blank">github</a>
-            
-          
-        </div>
-      </aside>
-    </div>
-    <div class="col-1-3">
-      <aside>
-        <h1 class="widget-title">Search</h1>
-        <div class="widget-text">
-          <form onSubmit="return appDaily.submitSearch('')">
-            <p>
-              <input type="text" placeholder="search..." id="homeSearchInput">
-            </p>
-            <!-- <input type="submit" value="GO"> -->
-          </form>
-        </div>
-      </aside>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Devops/">Devops</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Networks/">Networks</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Object-Oriented/">Object Oriented</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Regular-Expression/">Regular Expression</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/frontend/">frontend</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/小程序/">小程序</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/微信/">微信</a></li></ul>
     </div>
   </div>
-</div>
-<!-- Footer -->
-<footer class="site-info">
-  <p>
-    <span>我的博客 &copy; 2020</span>
+
+
+  
     
-      <span class="split">|</span>
-      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/GallenHu/hexo-theme-Daily" target="_blank">Daily</a></span>
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="../../../../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../../../../tags/CSS/" style="font-size: 10px;">CSS</a> <a href="../../../../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../../../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../../../../tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="../../../../../tags/Laravel/" style="font-size: 10px;">Laravel</a> <a href="../../../../../tags/Linux/" style="font-size: 15px;">Linux</a> <a href="../../../../../tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="../../../../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../../../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../../../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../../../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../../../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../../../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../../../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../../../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../../../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../../../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../../../../tags/Server/" style="font-size: 15px;">Server</a> <a href="../../../../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../../../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../../../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../../../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../../../../tags/Vue/" style="font-size: 10px;">Vue</a> <a href="../../../../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../../../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../../../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../../../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../../../../tags/networks/" style="font-size: 10px;">networks</a> <a href="../../../../../tags/notes/" style="font-size: 10px;">notes</a> <a href="../../../../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../../../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../../../../tags/小程序/" style="font-size: 15px;">小程序</a> <a href="../../../../../tags/微信/" style="font-size: 10px;">微信</a>
+    </div>
+  </div>
+
+  
     
-  </p>
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2017/10/">October 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="../../../../../2020/5/10/微信/jssdk-invalid-signature/">微信jssdk踩坑—invalid signature</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2019/10/3/PHP/building-SPA-with-Vue-and-Laravel/">如何使用Laravel 和 Vue 构建一个简单的SPA</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2019/8/25/notes/reading-notes-2-about-a-philosophy-of-software-design/">软件设计复杂性的体现</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2019/8/25/notes/reading-notes-1-about-a-philosophy-of-software-design/">关于软件设计的复杂性</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2019/5/31/Tools/Hot-key-to-select-same-occurrence-in-PHPStorm/">PHPStorm中快速选中多个相同的单词</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 bilberry<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
 </footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <!-- After footer scripts -->
-  <!-- scripts -->
-<script src="../../../../../js/app.js"></script>
+  <link rel="stylesheet" href="../../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../../fancybox/jquery.fancybox.pack.js"></script>
 
 
+<script src="../../../../../js/script.js"></script>
 
-
-
+  </div>
 </body>
-
 </html>
