@@ -9,17 +9,17 @@
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="Bilberry Blog">
+  <meta name="description" content="php开发，laravel学习，vue.js教程，全栈工程师博客">
 <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="我的博客">
 <meta property="og:url" content="https://www.xydida.com/page/5/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="Bilberry Blog">
+<meta property="og:description" content="php开发，laravel学习，vue.js教程，全栈工程师博客">
 <meta property="og:locale" content="zh">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我的博客">
-<meta name="twitter:description" content="Bilberry Blog">
+<meta name="twitter:description" content="php开发，laravel学习，vue.js教程，全栈工程师博客">
   
     <link rel="alternate" href="/atom.xml" title="我的博客" type="application/atom+xml">
   
@@ -29,7 +29,7 @@
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="../../css/style.css">
   
 
 </head>
@@ -42,11 +42,11 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">我的博客</a>
+        <a href="../../index.html" id="logo">我的博客</a>
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">能找到我的也不是等闲之辈</a>
+          <a href="../../index.html" id="subtitle">能找到我的也不是等闲之辈</a>
         </h2>
       
     </div>
@@ -54,9 +54,9 @@
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-          <a class="main-nav-link" href="/">Home</a>
+          <a class="main-nav-link" href="../../index.html">Home</a>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          <a class="main-nav-link" href="../../archives">Archives</a>
         
       </nav>
       <nav id="sub-nav">
@@ -74,14 +74,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-rethinking-in-Object-Oriented" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Valet-problem-Unable-to-determine-linked-PHP" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/6/1/Object-Oriented/rethinking-in-Object-Oriented/" class="article-date">
-  <time datetime="2018-06-01T07:00:57.000Z" itemprop="datePublished">2018-06-01</time>
+    <a href="../../2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/" class="article-date">
+  <time datetime="2018-12-15T07:36:02.000Z" itemprop="datePublished">2018-12-15</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Object-Oriented/">Object Oriented</a>
+    <a class="article-category-link" href="../../categories/PHP/">PHP</a>
   </div>
 
   </div>
@@ -92,7 +92,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/6/1/Object-Oriented/rethinking-in-Object-Oriented/">面向对象的再思考</a>
+      <a class="article-title" href="../../2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/">Valet problem: Unable to determine linked PHP</a>
     </h1>
   
 
@@ -100,61 +100,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://upload-images.jianshu.io/upload_images/2650331-029d8ef8e50a83c6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h1 id="为什么要再次思考"><a href="#为什么要再次思考" class="headerlink" title="为什么要再次思考"></a>为什么要再次思考</h1><p>临近毕业，自己投了很多简历，也参加了好多轮的面试，不论结果如何，自己也从中收获了很多，发现了自己的诸多不足。大多数的面试都会提到面向对象的问题，虽然自己上了很多面向对象编程的课，学习了几门面向对象的语言，但当坐在面试官面前面对面讨论面向对象问题时，自己的无知立马显现出来，所以我觉得有必要再次思考什么是面向对象（Object Oriented）。</p>
-<h1 id="什么是对象？"><a href="#什么是对象？" class="headerlink" title="什么是对象？"></a>什么是对象？</h1><p>面向对象中的对象（Object）是什么呢？面向对象程序设计（OOP）及时使用对象来进行程序设计，对象就是代表现实世界中可以明确分辨的一个实体，一个人、一辆车、一个圆、一次交易都可以看作是一个对象，不管是真实存在的还是虚拟的。一个对象通常都有自己的特征和行为。</p>
-<ul>
-<li>对象的特征（property），也可以称为属性（attribute），是一个数据域</li>
-<li>对象的行为（behavior），也可以称为动作（action），只这个对象可以去做什么</li>
-</ul>
-<h2 id="面向过程到面向对象的过渡"><a href="#面向过程到面向对象的过渡" class="headerlink" title="面向过程到面向对象的过渡"></a>面向过程到面向对象的过渡</h2><p>刚开始接触编程时，还是学的C语言（多么古老而又不可替代的语言啊），慢慢接触到了C++，Java，PHP等面向对象的语言，面向过程到面向对象的转换并非易事，首先就是思考问题的方式，落到实际行动就是面向过程首先关注这个函数怎么写，面向对象首先关注如何把要解决的问题抽象出来，编写父类、子类。</p>
-<h2 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h2><p>面向对象中的类是一个模版、蓝本或者说是合约，用来定义一个对象的数据域是什么以及方法是做什么的。一个对象就是一个类的实例，可以从类中创建多个实例，类和对象之间的关系类似于生产玩具汽车的铸模和玩具汽车。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $branch = <span class="string">"default branch"</span>;</span><br><span class="line">    <span class="keyword">public</span> $no = <span class="string">"A123"</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($branch, $no)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;branch = $branch;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;no = $no;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"The car is running!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$car1 = <span class="keyword">new</span> Car(<span class="string">"奔驰"</span>, <span class="string">"B111"</span>);</span><br><span class="line">$car2 = <span class="keyword">new</span> Car(<span class="string">"宝马"</span>, <span class="string">"C222"</span>);</span><br><span class="line"></span><br><span class="line">var_dump($car1);</span><br><span class="line">var_dump($car2);</span><br></pre></td></tr></table></figure>
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1frwpw3h749j308s0aot9m.jpg" alt=""></p>
-<h1 id="什么是面向对象？"><a href="#什么是面向对象？" class="headerlink" title="什么是面向对象？"></a>什么是面向对象？</h1><p>在学习面向对象时，经常会谈到面向对象的三大特点：封装、继承和多态，正是由于这三大特点，面向对象的世界才如此的丰富。对于我来说，尽管接触了这么长时间的面向对象，但如果要我具体说一下这三大特点，我可能还要查资料才说的明白，所以还是有必要把整个学习的过程记录下来。</p>
-<h2 id="封装-Encapsulation"><a href="#封装-Encapsulation" class="headerlink" title="封装 Encapsulation"></a>封装 Encapsulation</h2><p>在讨论这三大特点时，往往最容易忽视的就是封装，而在开始学习的时候，初学者并没有太在意这个问题，因为刚开始接触的时候，不管是声明属性还是方法，直接<code>public ...</code>，因为这是最简单而且有效的，当然书上包括老师上课也讲了<code>public</code>、<code>protected</code>、<code>private</code>的一些关系，但新手并不会对项目的工程化做太多的思考，代码跑起来就行了，这在阅读别人的代码时一眼就能看出些这个代码的人是新手还是老手，是否真正理解封装，善用访问修饰符。</p>
-<p><code>public</code>可以用啊，为什么还要使用其他的访问修饰符呢？<code>public</code>, <code>protected</code>, <code>private</code>的访问权限：</p>
-<ul>
-<li>任何地方都可以访问<code>public</code>属性和方法</li>
-<li>当前类才能访问<code>private</code>属性和方法，子类也不能访问</li>
-<li>当前类和子类都可以访问<code>protected</code>属性和方法，其他的外部代码都不能访问</li>
-</ul>
-<p>先理解什么是封装？简单的说，封装就是通过众所周知的接口将用户与实际应用程序的内部工作原理分离。人都有好奇心，总喜欢朝着未知探索，喜欢把东西拆开，了解里面的小零件如何工作，虽然能得到精神上的满足，但有时深入了解事物内部的工作原理并不是必要的，我们每天都在使用计算机和手机，但很少有人真正了解它的工作原理，但即便不理解原理，也不想我们使用它们，因为接口隐藏了这些细节。</p>
-<p>要怎么实现呢？最简单的方式就是给属性和方法添加访问修饰符（<code>public</code>, <code>protected</code>, <code>private</code>）。通过对客户端代码隐藏属性，就可以防止对对象的属性恶意修改了。其次还可以通过制作接口，把细节隐藏起来。</p>
-<p><code>public</code>这里不多讲，先来讲<code>protected</code>吧，代码如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">protected</span> $name = <span class="string">"default name"</span>;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">say</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">echo</span> <span class="string">"Name: "</span> . <span class="keyword">$this</span>-&gt;name . <span class="string">"\n"</span>;</span></span><br><span class="line"><span class="php">        <span class="keyword">echo</span> <span class="string">"animal say\n"</span>;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">f1</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;say();</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">$dog = <span class="keyword">new</span> Dog();</span></span><br><span class="line"><span class="php">$animal = <span class="keyword">new</span> Animal();</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> $dog-&gt;f1();</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> $animal-&gt;name;</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1frwv81be0gj31eu09ytb5.jpg" alt=""></p>
-<p>可以看到<code>Dog</code>类继承自<code>Animal</code>类，在<code>Dog</code>类中可以获取到<code>name</code>属性，还能执行<code>say()</code>方法，结果中我们还看到，程序执行到23行就报错了，很明显，我们在外面定义了一个<code>Animal</code>变量，并试图访问<code>protected</code>修饰的<code>name</code>属性，导致程序出错。</p>
-<p>再来看看<code>private</code>：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span></span></span><br><span class="line"><span class="php">&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">private</span> $key = <span class="string">"This is a private value"</span>;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">$foo = <span class="keyword">new</span> Foo;</span></span><br><span class="line"><span class="php"><span class="keyword">echo</span> $foo-&gt;key;     <span class="comment">// Error  类外不能访问private属性</span></span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1frwvqlo1wdj31d2084mze.jpg" alt="类外不能访问private属性"></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span></span></span><br><span class="line"><span class="php">&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">private</span> $key = <span class="string">"This is a private value"</span>;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span></span></span></span><br><span class="line"><span class="php">&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">f1</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;key . <span class="string">'\n'</span>;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">$bar = <span class="keyword">new</span> Bar;</span></span><br><span class="line"><span class="php">$bar-&gt;f1();     <span class="comment">// Error  子类中也不能访问private属性</span></span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1frwvuiyoi8j311e02sq3w.jpg" alt="子类中也不能访问private属性"></p>
-<p>看到子类<code>Bar</code>并没有从父类<code>Foo</code>继承<code>private</code>属性。</p>
-<h2 id="继承-Inheritance"><a href="#继承-Inheritance" class="headerlink" title="继承 Inheritance"></a>继承 Inheritance</h2><p>继承是从一个基类得到一个或多个派生类的机制。通过定义一个从其他类继承过来的类，我们可以确保一个类拥有其自由的功能和父类的功能（除private方法或属性），另一种理解继承的思路是“搜索”，当我们调用一个变量或方法时，会先在当前调用的类中查找有没有这个属性或方法，如果没有就查找父类中的默认实现。</p>
-<p>现在有<code>CDProduct</code>和<code>BookProduct</code>两种商品，我么分别用继承和不继承来对比下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">CDProduct</span> </span>&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> $playLength;</span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> $title;</span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> $mainName;</span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> $firstName;</span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> $price;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($title, $mainName, $firstName, $price, $playLength)</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;title = $title;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;mainName = $mainName;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;firstName = $firstName;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;price = $price;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;playLength = $playLength;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getPlayLength</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;playLength;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getSummaryLine</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        $base = <span class="string">"&#123;$this-&gt;title&#125; ( &#123;$this-&gt;mainName&#125;, &#123;$this-&gt;firstName&#125;)"</span>;</span></span><br><span class="line"><span class="php">        $base .= <span class="string">" playing time = &#123;$this-&gt;playLength&#125;"</span>;</span></span><br><span class="line"><span class="php">        <span class="keyword">return</span> $base;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProucer</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">return</span> <span class="string">"&#123;$this-&gt;firstName&#125; &#123;$this-&gt;mainName&#125;"</span>;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">BookProduct</span> </span>&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> $numPages;</span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> $title;</span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> $mainName;</span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> $firstName;</span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> $price;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($title, $mainName, $firstName, $price, $numPages)</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;title = $title;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;mainName = $mainName;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;firstName = $firstName;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;price = $price;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;numPages = $numPages;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getNumberOfPages</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;numPages;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getSummaryLine</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        $base = <span class="string">"&#123;$this-&gt;title&#125; ( &#123;$this-&gt;mainName&#125;, &#123;$this-&gt;firstName&#125;)"</span>;</span></span><br><span class="line"><span class="php">        $base .= <span class="string">" page count = &#123;$this-&gt;numPages&#125;"</span>;</span></span><br><span class="line"><span class="php">        <span class="keyword">return</span> $base;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProucer</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">return</span> <span class="string">"&#123;$this-&gt;firstName&#125; &#123;$this-&gt;mainName&#125;"</span>;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>可以看到，在没有使用继承的情况下，我们做了很多重复的劳动，每个产品都有<code>getSummaryLine()</code>方法，每个类中的<code>getProducer()</code>方法完全相同，他们的构造方法中用同样的方法设置了许多相同的属性，这样的代码看起来一点都不干净，即使我们我可以不停地复制、粘贴，仍然存在问题，不利于后期代码的重构。我们现在使用继承来优化它：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">Product</span></span></span></span><br><span class="line"><span class="php">&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">private</span> $title;</span></span><br><span class="line"><span class="php">    <span class="keyword">private</span> $mainName;</span></span><br><span class="line"><span class="php">    <span class="keyword">private</span> $firstName;</span></span><br><span class="line"><span class="php">    <span class="keyword">protected</span> $price;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($title, $firstName, $mainName, $price)</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;title = $title;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;firstName = $firstName;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;mainName = $mainName;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;price = $price;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getFirstName</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;firstName;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getMainName</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;mainName;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getTitle</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;title;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getPrice</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;price;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">    </span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProucer</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">return</span> <span class="string">"&#123;$this-&gt;firstName&#125; &#123;$this-&gt;mainName&#125;"</span>;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getSummaryLine</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        $base = <span class="string">"&#123;$this-&gt;title&#125; ( &#123;$this-&gt;mainName&#125;, &#123;$this-&gt;firstName&#125;)"</span>;</span></span><br><span class="line"><span class="php">        <span class="keyword">return</span> $base;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">CDProduct</span> <span class="keyword">extends</span> <span class="title">Product</span> </span>&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">private</span> $playLength = <span class="number">0</span>;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($title, $firstName, $mainName, $price, $playLength)</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">parent</span>::__construct($title, $firstName, $mainName, $price);</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;playLength = $playLength;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getPlayLength</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;playLength;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getSummaryLine</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        $base = <span class="keyword">parent</span>::getSummaryLine();</span></span><br><span class="line"><span class="php">        $base .= <span class="string">" : playing time = &#123;$this-&gt;playLength&#125;"</span>;</span></span><br><span class="line"><span class="php">        <span class="keyword">return</span> $base;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">BookProduct</span> <span class="keyword">extends</span> <span class="title">Product</span> </span>&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">private</span> $numPages = <span class="number">0</span>;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($title, $firstName, $mainName, $price, $numPages)</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">parent</span>::__construct($title, $firstName, $mainName, $price);</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;numPages = $numPages;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getNumberOfPages</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;numPages;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getSummaryLine</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        $base = <span class="keyword">parent</span>::getSummaryLine();</span></span><br><span class="line"><span class="php">        $base .= <span class="string">" : plage count = &#123;$this-&gt;numPages&#125;"</span>;</span></span><br><span class="line"><span class="php">        <span class="keyword">return</span> $base;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br></pre></td></tr></table></figure>
-<h2 id="多态-Polymorphism"><a href="#多态-Polymorphism" class="headerlink" title="多态 Polymorphism"></a>多态 Polymorphism</h2><p>多态是来自希腊语的一个术语，原来的意思是“有多种形态”。多态的三大特征：</p>
-<ul>
-<li>子类继承父类</li>
-<li>子类重写父类</li>
-<li>父类指向子类</li>
-</ul>
-<p>多态实现的前提：必须是类与类之间要有关系，要么继承，要么实现，存在重写（override），其实就是抽象函数或接口。<br>多态的应用：父类对象的引用指向子类对象，其实本质上就是一个向上转型。<br>多态的好处：大大提高程序的扩展，增强系统的灵活性，降低模块间的耦合。</p>
-<p>举个模型例子，一家公司有员工类（Employee），还有其子类：销售（Sales）、市场（Market）、工程师（Engineer）等。某一天老板招待所有的员工开了个短会，完了之后对所有的员工（Employee）说，大家回去工作吧。在这里我们可以认为老板调用了所有员工对象的continueToWork()方法，而不是对一个个员工细说做什么工作，比如对销售部说你去制定销售计划（调用makeSalePlan();），对市场部说你去制定产品的价格（调用makeProductPrice();）….这种逐个细说的方式并不是面向对象，而是面向个体。可以确定的是，员工类应该有一个方法continueToWork()。而员工如何实现他们工作的方法却只有精确到子类才能确定，因为不同的员工的工作方式是不一样的。因此，我们很多时候只需要关心对象的父类型，而忽略更精确的子类型，比如上面老板叫大家回去工作时，他对全体员工说的，主要指的是全体员工类型。<br>上述的UML图：</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1frwzd3yly0j30li0abdfu.jpg" alt=""></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span></span>&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">abstract</span> <span class="function"><span class="keyword">function</span> <span class="title">continueToWork</span><span class="params">()</span></span>;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">Sales</span> <span class="keyword">extends</span> <span class="title">Employee</span></span>&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">makeSalePlan</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">echo</span> <span class="string">"make sale plan"</span>;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">continueToWork</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;makeSalePlan();</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">Market</span> <span class="keyword">extends</span> <span class="title">Employee</span></span>&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">makeProductPrice</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">echo</span> <span class="string">"make product price"</span>;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">continueToWork</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;makeProductPrice();</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">Engineer</span> <span class="keyword">extends</span> <span class="title">Employee</span></span>&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">makeNewProduct</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">echo</span> <span class="string">"make new product"</span>;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">continueToWork</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">$this</span>-&gt;makeNewProduct();</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span></span>&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">Work</span><span class="params">($employeeObj)</span></span>&#123;</span></span><br><span class="line"><span class="php">        $employeeObj-&gt;continueToWork();</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"><span class="comment">//调用</span></span></span><br><span class="line"><span class="php">$obj = <span class="keyword">new</span> Demo();</span></span><br><span class="line"><span class="php">$obj-&gt;Work(<span class="keyword">new</span> Sales());</span></span><br><span class="line"><span class="php">$obj-&gt;Work(<span class="keyword">new</span> Market());</span></span><br><span class="line"><span class="php">$obj-&gt;Work(<span class="keyword">new</span> Engineer());</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>面向对象能将相同的属性封装在一起，同时又能复用很多代码，同时针对不同情况，还能实现多种形态，这就是面向对象的强大之处，有了它我们可以更方便地写出易于管理的代码，但作为初学者，要深刻理解它的三大特点，灵活运用也并非易事。<br>上课时，老师稍微对一个知识多讲了几遍就觉得不耐烦，觉得自己已经懂了，但自己真正遇到的时候，又觉得自己什么都不懂，书到用时方恨少，学习不能浅尝辄止，蜻蜓点水，要静下心来学习。</p>
+        <p>Mac上更新PHP 7.2后，再次使用<code>Valet</code>时提示无法定位到PHP，如下所示：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fy7hi8ormwj308902hglj.jpg" alt=""></p>
+<p>一条命令解决：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s <span class="regexp">/usr/</span>local<span class="regexp">/opt/</span>php@<span class="number">7.2</span><span class="regexp">/bin/</span>php <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>php</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/6/1/Object-Oriented/rethinking-in-Object-Oriented/" data-id="cka144asd003ozgcao6zk2x4a" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/" data-id="cka144aqi000nzgcaujbaevrf" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Object-Oriented/">Object Oriented</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
 
     </footer>
   </div>
@@ -163,14 +120,14 @@
 
 
   
-    <article id="post-the-autoload-of-php" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-The-measureText-function-in-Wechat-miniprogram-canvas" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/5/31/PHP/the-autoload-of-php/" class="article-date">
-  <time datetime="2018-05-31T02:10:15.000Z" itemprop="datePublished">2018-05-31</time>
+    <a href="../../2018/9/14/小程序/The-measureText-function-in-Wechat-miniprogram-canvas/" class="article-date">
+  <time datetime="2018-09-14T14:48:10.000Z" itemprop="datePublished">2018-09-14</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+    <a class="article-category-link" href="../../categories/小程序/">小程序</a>
   </div>
 
   </div>
@@ -181,7 +138,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/5/31/PHP/the-autoload-of-php/">PHP的自动加载机制</a>
+      <a class="article-title" href="../../2018/9/14/小程序/The-measureText-function-in-Wechat-miniprogram-canvas/">在小程序Canvas中使用measureText</a>
     </h1>
   
 
@@ -189,72 +146,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="什么是自动加载？"><a href="#什么是自动加载？" class="headerlink" title="什么是自动加载？"></a>什么是自动加载？</h1><p>​    顾名思义，就是当我们在使用一个东西的时候，如果这个东西还不存在，于是我们所处的环境就自动帮我们把需要的那个东西拿过来供我们使用，通俗地讲就是这个意思。</p>
-<h1 id="PHP中的自动加载"><a href="#PHP中的自动加载" class="headerlink" title="PHP中的自动加载"></a>PHP中的自动加载</h1><p>​    我们在开始接触PHP时，会先写一个PHP文件，当项目比较大了，就会写好多PHP文件，在不同的PHP文件中，如果要用到其他PHP文件中的内容，比如实例化其他文件中的类，就会使用到<code>require</code>、<code>include</code>等函数。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Foo.php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Bar.php</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'Foo.php'</span>;</span><br><span class="line"></span><br><span class="line">$foo = <span class="keyword">new</span> Foo;</span><br></pre></td></tr></table></figure>
-<p>​    这种方法看起来很好，确实在一些古老的PHP项目中确实是这样做的，比如ECShop，但一旦这个项目变大，并且还使用了面向对象技术，各种各样的类文件多到很难管理时，<code>require</code>、<code>include</code>等技术还方便吗？</p>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.php</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'A.class.php'</span>;</span><br><span class="line"><span class="keyword">require</span> <span class="string">'B.class.php'</span>;</span><br><span class="line"><span class="keyword">require</span> <span class="string">'C.class.php'</span>;</span><br><span class="line"><span class="keyword">require</span> <span class="string">'D.class.php'</span>;</span><br><span class="line"><span class="keyword">require</span> <span class="string">'E.class.php'</span>;</span><br><span class="line"><span class="params">...</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'Z.class.php'</span>;</span><br><span class="line"></span><br><span class="line">$a = <span class="literal">new</span> A;</span><br><span class="line">$b = <span class="literal">new</span> B;</span><br><span class="line"><span class="params">...</span></span><br><span class="line"><span class="params">...</span></span><br></pre></td></tr></table></figure>
-<p>​    这么多的<code>require</code>，你不会在一个现代PHP框架中见到。那么，在现代PHP中是怎么解决这种问题的呢？</p>
-<p>​    在PHP 5以后，PHP拥有了完善的面向对象部分，PHP中使用了autoload技术来解决在一个文件中include多个PHP脚本。</p>
-<h2 id="相关技术"><a href="#相关技术" class="headerlink" title="相关技术"></a>相关技术</h2><ul>
-<li><a href="http://php.net/manual/en/function.autoload.php" target="_blank" rel="noopener">__autoload</a></li>
-<li><a href="http://php.net/manual/en/function.spl-autoload.php" target="_blank" rel="noopener">spl_autoload</a></li>
-<li><a href="http://php.net/manual/en/function.spl-autoload-register.php" target="_blank" rel="noopener">spl_autoload_register</a></li>
-</ul>
-<h3 id="autoload"><a href="#autoload" class="headerlink" title="_autoload"></a>_autoload</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="markdown">/**</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>用于加载未定义的类</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>@param $class 需要加载的类名</span></span></span><br><span class="line"><span class="comment"><span class="markdown">*/</span></span></span><br><span class="line"><span class="keyword">void</span> __auto(string $<span class="class"><span class="keyword">class</span>)</span></span><br></pre></td></tr></table></figure>
+        <p>有时候我们在使用Canvas绘制一段文本时，会需要通过<code>measureText()</code>方法获取文本的宽度，例如：</p>
+<h3 id="创建canvas标签"><a href="#创建canvas标签" class="headerlink" title="创建canvas标签"></a>创建canvas标签</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="获取一段文本的宽度"><a href="#获取一段文本的宽度" class="headerlink" title="获取一段文本的宽度"></a>获取一段文本的宽度</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>);</span><br><span class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> text = ctx.measureText(<span class="string">'foo'</span>); <span class="comment">// TextMetrics object</span></span><br><span class="line">text.width; <span class="comment">// 16;</span></span><br></pre></td></tr></table></figure>
+<p>如上所示，<code>measureText</code>返回的其实是一个<code>TextMetrics</code>对象，它包含了文本的宽度，<a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/measureText" target="_blank" rel="noopener">MDN</a>上的解释如下：</p>
 <blockquote>
-<p>注意：此方法已经在PHP 7.2中标记为<em>DEPRECATED</em>，不建议继续使用</p>
+<p>The CanvasRenderingContext2D.measureText() method returns a TextMetrics object that contains information about the measured text (such as its width for example).</p>
 </blockquote>
-<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//myClass.php</span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">myClass</span> </span>&#123;</span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="php">        <span class="keyword">echo</span> <span class="string">"myClass init'ed successfuly!!!"</span>;</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br><span class="line"></span><br><span class="line">// index.php</span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php"><span class="function"><span class="keyword">function</span> <span class="title">__autoload</span><span class="params">($classname)</span> </span>&#123;</span></span><br><span class="line"><span class="php">    $filename = <span class="string">"./"</span>. $classname .<span class="string">".php"</span>;</span></span><br><span class="line"><span class="php">    <span class="keyword">include_once</span>($filename);</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php">$obj = <span class="keyword">new</span> myClass();	<span class="comment">// 输出：myClass init'ed successfuly!!!</span></span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p><img src="http://p8m3309kb.bkt.clouddn.com/__autoload%20example1.png" alt=""></p>
-<p>​    在<code>index.php</code>中我们并没有指明把<code>myClass.php</code>加载进来，但是依然可以实例化<code>myClass</code>对象。</p>
-<h3 id="spl-autoload"><a href="#spl-autoload" class="headerlink" title="spl_autoload"></a>spl_autoload</h3><figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* __autoload()的默认实现</span></span><br><span class="line"><span class="comment">* @param $class_name 需要被实例化的小写类名或命名空间</span></span><br><span class="line"><span class="comment">* @param $file_extensions 文件扩展名，默认为.inc或.php</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="literal">void</span> spl_autoload ( <span class="built_in">string</span> $class_name <span class="meta">[</span>, <span class="built_in">string</span> $file_extensions = spl_autoload_extensions() <span class="meta">]</span> )</span><br></pre></td></tr></table></figure>
-<p>​    该函数是<code>__autoload()</code>函数的默认实现，如果在调用<code>spl_autoload_register()</code>函数时没有设置任何参数，那么此函数将作为默认加载函数被注册，意思是说如果使用<code>spl_autoload_register()</code>来自动加载时，如果没有指定特殊的加载器，那么将通过<code>spl_autoload()</code>来加载。</p>
-<p>​    通常使用该函数时，还需要一些其他的函数配合使用，比如<code>set_include_path()</code>、<code>spl_autoload_extensions()</code>等。</p>
-<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a>Example</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class/Foo.class.php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"Foo init successfully!!!"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// index.php</span></span><br><span class="line">set_include_path(<span class="string">'class/'</span>);</span><br><span class="line">spl_autoload_extensions(<span class="string">'.class.php'</span>);</span><br><span class="line">spl_autoload(<span class="string">'Foo'</span>);</span><br><span class="line"></span><br><span class="line">$foo = <span class="keyword">new</span> Foo;</span><br></pre></td></tr></table></figure>
-<p><img src="http://p8m3309kb.bkt.clouddn.com/spl_autoload%20example1.png" alt=""></p>
-<p>​    可以看到，在<code>spl_autoload()</code>中不能对传过来的<code>class_name</code>做一些判断或修改，需要配合其他函数来设置，此时如果想要在自动加载时做一些判断修改，只能使用<code>__autoload()</code>或者下面的<code>spl_autoload_register()</code>。</p>
-<h3 id="spl-autoload-register"><a href="#spl-autoload-register" class="headerlink" title="spl_autoload_register"></a>spl_autoload_register</h3><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* 注册一个自动加载器，这个注册的加载器可以替换__autoload()</span><br><span class="line">* @param $autoload_<span class="keyword">function</span> 需要被注册的自动加载函数，如果没有指定，会将spl_autoload()函数注册</span><br><span class="line">* @param $throw 是否允许函数抛出异常，默认为<span class="literal">true</span></span><br><span class="line">* @param $prepend 是否将这个函数加载器放在队列的最前面，默认为<span class="literal">false</span></span><br><span class="line">* @<span class="keyword">return</span> bool</span><br><span class="line">*/</span><br><span class="line">bool spl_autoload_register([ callable $autoload_<span class="keyword">function</span> [, bool $throw = TRUE [, bool $prepend = FALSE ]]])</span><br></pre></td></tr></table></figure>
-<p>​    此函数可以可以注册一个带有<code>spl __autoload</code>队列的函数，并且将会启用这个队列。</p>
-<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example"></a>Example</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class/Foo.class.php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"Foo init successfully by spl_autoload_register!!!"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// index.php</span></span><br><span class="line"><span class="comment">// 自定义一个加载器，再加载器中可以对参数$class 做一些判断</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">my_autoloader</span><span class="params">($class)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">include</span> <span class="string">'classes/'</span> . $class . <span class="string">'.class.php'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">spl_autoload_register(<span class="string">'my_autoloader'</span>);</span><br><span class="line"><span class="comment">// 或者使用一个匿名函数作为加载器</span></span><br><span class="line">spl_autoload_register(<span class="function"><span class="keyword">function</span> <span class="params">($class)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">include</span> <span class="string">'class/'</span> . $class . <span class="string">'.class.php'</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$foo = <span class="keyword">new</span> Foo;</span><br></pre></td></tr></table></figure>
-<p><img src="http://p8m3309kb.bkt.clouddn.com/spl_autoload_register%20example1.png" alt=""></p>
-<p>通过命令空间来注册：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Foobar</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">($class)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> $class . <span class="string">" autoloaded by namespace"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">spl_autoload_register(<span class="keyword">__NAMESPACE__</span> .<span class="string">'\Foo::test'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> AClass;</span><br></pre></td></tr></table></figure>
-<p><img src="http://p8m3309kb.bkt.clouddn.com/spl_autoload_register%20example2.png" alt=""></p>
-<p>​    学了这么多，我们知道了什么是自动加载技术。再来回到文章开头，那个不存在的东西就是我们将要实例化的类，我们所处的环境就是PHP这个环境，自动把没有的东西拿过来给我们用就是使用以上技术加载所需要的类文件，以供我们实例化所需。</p>
-<h2 id="Laravel中的自动加载"><a href="#Laravel中的自动加载" class="headerlink" title="Laravel中的自动加载"></a>Laravel中的自动加载</h2><h4 id="从Nginx的配置文件说起"><a href="#从Nginx的配置文件说起" class="headerlink" title="从Nginx的配置文件说起"></a>从Nginx的配置文件说起</h4><p>官方建议的Nginx服务配置：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> example.com;</span><br><span class="line">    <span class="attribute">root</span> /example.com/public;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">add_header</span> X-Frame-Options <span class="string">"SAMEORIGIN"</span>;   </span><br><span class="line">    <span class="attribute">add_header</span> X-XSS-Protection <span class="string">"1; mode=block"</span>; </span><br><span class="line">    <span class="attribute">add_header</span> X-Content-Type-Options <span class="string">"nosniff"</span>; </span><br><span class="line"></span><br><span class="line">    <span class="attribute">index</span> index.html index.htm index.php;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">charset</span> utf-<span class="number">8</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">        <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.php?<span class="variable">$query_string</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">location</span> = /favicon.ico &#123; <span class="attribute">access_log</span> <span class="literal">off</span>; <span class="attribute">log_not_found</span> <span class="literal">off</span>; &#125;  </span><br><span class="line">    <span class="attribute">location</span> = /robots.txt  &#123; <span class="attribute">access_log</span> <span class="literal">off</span>; <span class="attribute">log_not_found</span> <span class="literal">off</span>; &#125;  </span><br><span class="line"></span><br><span class="line">    <span class="attribute">error_page</span> <span class="number">404</span> /index.php;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">location</span> <span class="regexp">~ \.php$</span> &#123;</span><br><span class="line">        <span class="attribute">fastcgi_split_path_info</span><span class="regexp"> ^(.+\.php)(/.+)$</span>;</span><br><span class="line">        <span class="attribute">fastcgi_pass</span> unix:/var/run/php/php7.1-fpm.sock;</span><br><span class="line">        <span class="attribute">fastcgi_index</span> index.php;</span><br><span class="line">        <span class="attribute">include</span> fastcgi_params;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">location</span> <span class="regexp">~ /\.(?!well-known).*</span> &#123;</span><br><span class="line">        <span class="attribute">deny</span> all;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>关于该配置为详细说明，就不在此说了，有兴趣的可以查看这篇文章：<a href="https://segmentfault.com/a/1190000011404105" target="_blank" rel="noopener">Laravel 5.5 官方推荐 Nginx 配置学习</a> 。从配置文件中发现Laravel项目的入口文件是<code>public/index.php</code>，于是，就从该文件开始分析。</p>
-<p>public/index.php文件中：</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">|<span class="comment">--------------------------------------------------------------------------</span></span><br><span class="line">| Register The Auto Loader</span><br><span class="line">|<span class="comment">--------------------------------------------------------------------------</span></span><br><span class="line">|</span><br><span class="line">| Composer provides a convenient, automatically generated <span class="built_in">class</span> loader <span class="keyword">for</span></span><br><span class="line">| our <span class="built_in">application</span>. We just need <span class="keyword">to</span> utilize <span class="keyword">it</span>! We'll simply require <span class="keyword">it</span></span><br><span class="line">| <span class="keyword">into</span> <span class="keyword">the</span> <span class="keyword">script</span> here so <span class="keyword">that</span> we don't have <span class="keyword">to</span> worry <span class="keyword">about</span> manual</span><br><span class="line">| loading any <span class="keyword">of</span> our classes later <span class="keyword">on</span>. It feels nice <span class="keyword">to</span> relax.</span><br><span class="line">|</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">require __DIR__.'/../bootstrap/autoload.php';</span><br></pre></td></tr></table></figure>
-<p>可以看到，在入口文件中引入了<code>bootstrap/autoload.php</code>这个文件，根据文件名可以大致猜出和自动加载有点关系，而且看注释，就是使用了<code>Composer</code>的自动加载，因为Laravel本身会从<code>vendor</code>目录引用很多第三方库，继续看<code>bootstrap/autoload.php</code>。</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">|<span class="comment">--------------------------------------------------------------------------</span></span><br><span class="line">| Register The Composer Auto Loader</span><br><span class="line">|<span class="comment">--------------------------------------------------------------------------</span></span><br><span class="line">|</span><br><span class="line">| Composer provides a convenient, automatically generated <span class="built_in">class</span> loader</span><br><span class="line">| <span class="keyword">for</span> our <span class="built_in">application</span>. We just need <span class="keyword">to</span> utilize <span class="keyword">it</span>! We'll require <span class="keyword">it</span></span><br><span class="line">| <span class="keyword">into</span> <span class="keyword">the</span> <span class="keyword">script</span> here so <span class="keyword">that</span> we do <span class="keyword">not</span> have <span class="keyword">to</span> worry <span class="keyword">about</span> <span class="keyword">the</span></span><br><span class="line">| loading <span class="keyword">of</span> any our classes <span class="string">"manually"</span>. Feels great <span class="keyword">to</span> relax.</span><br><span class="line">|</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">require __DIR__.'/../vendor/autoload.php';</span><br></pre></td></tr></table></figure>
-<p>在<code>bootstrap/autoload.php</code>文件中引入了<code>vendor/autoload.php</code>，<code>vendor/</code>里面保存的是第三方库，继续查看<code>vendor/autoload.php</code>。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="comment">// autoload.php @generated by Composer</span></span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="keyword">require_once</span> <span class="keyword">__DIR__</span> . <span class="string">'/composer/autoload_real.php'</span>;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="keyword">return</span> ComposerAutoloaderInit9794f3f3ddfd00f32b75ea45e287b507::getLoader();</span></span><br></pre></td></tr></table></figure>
-<p>只有两行代码，一个是引入<code>vendor/composer/autoload_real.php</code>，最后调用<code>ComposerAutoloaderInit9794f3f3ddfd00f32b75ea45e287b507::getLoader()</code>返回，看到这里知道既然从这里返回，那么<code>getLoader()</code>方法里面肯定做了一些自动加载的事情。查看该方法。</p>
-<p><img src="http://p8m3309kb.bkt.clouddn.com/getLoader%20function.png" alt=""></p>
-<p>这是一个静态方法，首先检查静态属性loader是否被实例化，如果已经实例化了则直接返回，否则继续执行下面的代码，很明显这是一个单例模式，Laravel项目中每次只保留一个loader。接下来就用到了<code>spl_autoload_register()</code>函数：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注册loadClassLoader加载器</span></span><br><span class="line">spl_autoload_register(<span class="keyword">array</span>(<span class="string">'ComposerAutoloaderInit9794f3f3ddfd00f32b75ea45e287b507'</span>, <span class="string">'loadClassLoader'</span>), <span class="keyword">true</span>, <span class="keyword">true</span>);</span><br><span class="line"><span class="comment">// 创建一个loadClassLoader实例</span></span><br><span class="line"><span class="keyword">self</span>::$loader = $loader = <span class="keyword">new</span> \Composer\Autoload\ClassLoader();</span><br></pre></td></tr></table></figure>
-<p>可以看到，先是注册了一个函数名叫<code>loadClassLoader</code>的加载器，再通过这个加载器开始类的加载。看一下这个加载器的实现：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">loadClassLoader</span><span class="params">($class)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">'Composer\Autoload\ClassLoader'</span> === $class) &#123;</span><br><span class="line">        <span class="keyword">require</span> <span class="keyword">__DIR__</span> . <span class="string">'/ClassLoader.php'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>很简单，就是判断要加载的不是<code>Composer\Autoload\ClassLoader</code>这个类，如果是就引入该类，否则什么也不做，这就是自动加载。</p>
-<p>我们来检验一下，分析的是否正确，修改<code>loadClassLoader()</code>函数如下：</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public static <span class="keyword">function</span> loadClassLoader(<span class="variable">$class</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="regexp">//</span> 引入Foo这个类</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">'Foo'</span> === <span class="variable">$class</span>) &#123;</span><br><span class="line">        echo <span class="string">'Foo from loadClassLoader'</span>;</span><br><span class="line">        <span class="keyword">exit</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">'Composer\Autoload\ClassLoader'</span> === <span class="variable">$class</span>) &#123;</span><br><span class="line">         require __DIR__ . <span class="string">'/ClassLoader.php'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在<code>getLoader()</code>中添加一段代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getLoader</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 单例模式</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> !== <span class="keyword">self</span>::$loader) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">self</span>::$loader;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 注册loadClassLoader加载器</span></span><br><span class="line">    spl_autoload_register(<span class="keyword">array</span>(<span class="string">'ComposerAutoloaderInit9794f3f3ddfd00f32b75ea45e287b507'</span>, <span class="string">'loadClassLoader'</span>), <span class="keyword">true</span>, <span class="keyword">true</span>);</span><br><span class="line">    <span class="comment">// 创建一个loadClassLoader实例</span></span><br><span class="line">    <span class="keyword">self</span>::$loader = $loader = <span class="keyword">new</span> \Composer\Autoload\ClassLoader();</span><br><span class="line">    <span class="comment">// 创建为定义的类的实例</span></span><br><span class="line">    $foo = <span class="keyword">new</span> Foo;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>运行结果如下：</p>
-<p><img src="http://p8m3309kb.bkt.clouddn.com/load%20undefined%20class%20foo.png" alt=""></p>
-<p>运行结果和我们猜想的一样。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>​    学习了PHP自动加载技术，发现其实一点也不神奇，主要就是依靠<code>spl_autoload_register()</code>和<code>spl_autoload()</code>函数，底层还是使用了<code>include</code>的方式，所谓的自动，只是不需要我们每次都在PHP文件的顶部写很多<code>include</code>命令，只要把使用了自动加载函数的文件引入进来，当执行到未定义的类时，就会自动引入相关的类文件。为达到效果，其实也完全可以用一个循环来引入所需要的类，只是在循环引用前，需要把类名和类所在的文件做一个映射，但这样做完全没有使用自动加载函数来的优雅，而且还不灵活，还没有使用到命名空间。</p>
-<p>参考：<a href="http://php.net/manual/en/language.oop5.autoload.php" target="_blank" rel="noopener">http://php.net/manual/en/language.oop5.autoload.php</a></p>
+<p>在微信小程序现在的版本（v2.13.7）中，小程序的canvas还不支持<code>measureText</code>，所以我自己写了个类似于<code>measureText</code>方法，<strong>通过canvas获取文本的宽度</strong>，方法如下：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">function measureText (<span class="built_in">text</span>, fontSize=<span class="number">10</span>) &#123;</span><br><span class="line">    <span class="built_in">text</span> = <span class="keyword">String</span>(<span class="built_in">text</span>);</span><br><span class="line">    var <span class="built_in">text</span> = <span class="built_in">text</span>.<span class="built_in">split</span>(<span class="string">''</span>);</span><br><span class="line">    var <span class="built_in">width</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">text</span>.forEach(function(item) &#123;</span><br><span class="line">        <span class="keyword">if</span> (/[a-zA-Z]/.test(item)) &#123;</span><br><span class="line">            <span class="built_in">width</span> += <span class="number">7</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (/[<span class="number">0</span><span class="number">-9</span>]/.test(item)) &#123;</span><br><span class="line">            <span class="built_in">width</span> += <span class="number">5.5</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (/\./.test(item)) &#123;</span><br><span class="line">            <span class="built_in">width</span> += <span class="number">2.7</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (/-/.test(item)) &#123;</span><br><span class="line">            <span class="built_in">width</span> += <span class="number">3.25</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (/[\u4e00-\u9fa5]/.test(item)) &#123;  <span class="comment">//中文匹配</span></span><br><span class="line">            <span class="built_in">width</span> += <span class="number">10</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (/\(|\)/.test(item)) &#123;</span><br><span class="line">            <span class="built_in">width</span> += <span class="number">3.73</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (/\s/.test(item)) &#123;</span><br><span class="line">            <span class="built_in">width</span> += <span class="number">2.5</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (/%/.test(item)) &#123;</span><br><span class="line">            <span class="built_in">width</span> += <span class="number">8</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">width</span> += <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">width</span> * fontSize / <span class="number">10</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/5/31/PHP/the-autoload-of-php/" data-id="cka144ase003rzgca91cz2zm1" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2018/9/14/小程序/The-measureText-function-in-Wechat-miniprogram-canvas/" data-id="cka144aqd000gzgcawlxyed3y" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/autoload/">autoload</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/canvas/">canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/小程序/">小程序</a></li></ul>
 
     </footer>
   </div>
@@ -263,14 +171,14 @@
 
 
   
-    <article id="post-Use-screen-to-manage-your-remote-session" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-WeChat-miniprogram-data-analysis-custom-analysis" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/5/15/Linux/Use-screen-to-manage-your-remote-session/" class="article-date">
-  <time datetime="2018-05-15T09:33:36.000Z" itemprop="datePublished">2018-05-15</time>
+    <a href="../../2018/8/15/小程序/WeChat-miniprogram-data-analysis-custom-analysis/" class="article-date">
+  <time datetime="2018-08-15T14:16:31.000Z" itemprop="datePublished">2018-08-15</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    <a class="article-category-link" href="../../categories/小程序/">小程序</a>
   </div>
 
   </div>
@@ -281,7 +189,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/5/15/Linux/Use-screen-to-manage-your-remote-session/">使用Screen管理远程回话</a>
+      <a class="article-title" href="../../2018/8/15/小程序/WeChat-miniprogram-data-analysis-custom-analysis/">微信小程序数据分析之自定义分析</a>
     </h1>
   
 
@@ -289,224 +197,100 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>​    在本地开发时，经常需要使用远程连接到Linux服务器，一开始我自己都是有几个远程就开几个SSH窗口，这种方法很原始很直接，但每次都受够了密码输入，即使用了SSH免密码登录，也会觉得每次输入SSH的命令一点都不快速，况且况且窗口开多了，也会很混乱，不易管理，这种情况，Linux上的工具也有很多，今天就学习一下<code>screen</code>工具。</p>
-<p>​    在介绍<code>screen</code>工具时，先讨论一下，为什么连接服务器后，当执行长时间的任务时，我们关闭远程连接窗口，这个任务就被杀掉了呢？</p>
-<h3 id="元凶：SIGUP信号"><a href="#元凶：SIGUP信号" class="headerlink" title="元凶：SIGUP信号"></a>元凶：SIGUP信号</h3><p>​    在Linux／Unix中，有以下几个概念：</p>
+        <p>在小程序后台，微信已经提供了强大的数据分析功能，包括实时统计、访问分析、来源分析和用户画像功能，可以说对一般的数据分析已经完全足够了，但有时应用需要做一些更加精准的数据分析，比如具体到某一个页面的分享，页面中某一个button的点击等，这时候就需要用到自定义分析功能。</p>
+<h3 id="什么是自定义分析？"><a href="#什么是自定义分析？" class="headerlink" title="什么是自定义分析？"></a>什么是自定义分析？</h3><p>引用下官方文档：</p>
+<blockquote>
+<p>自定义分析支持灵活多维和近实时的用户行为分析，可以通过自定义上报，对用户在小程序内的行为做精细化跟踪，满足页面访问等标准统计以外的个性化分析需求。</p>
+</blockquote>
+<h3 id="创建自定义事件"><a href="#创建自定义事件" class="headerlink" title="创建自定义事件"></a>创建自定义事件</h3><p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fuarhk0wg3j310t0r741g.jpg" alt="进入自定义事件页面"></p>
 <ul>
-<li>进程组（process group）：一个或多个进程的集合，每个进程组都有一个唯一的进程组ID；</li>
-<li>会话期（session）：一个或多个进程组的集合，有唯一一个会话首进程（session leader），会话期ID为首进程ID；</li>
-<li>会话期可以有一个单独的会话终端，与控制终端连接的会话期首进程叫控制进程（controlling process），当前与终端交互的进程称为前台进程组，其余进程组称为后台进程组。</li>
+<li>事件英文名称和事件中文名称按照说明要求填写，这两个名称都是唯一的，不能设置成已经设置过的，而且设置的时候尽量简洁、还要见名知意</li>
+<li>配置方式有：填写配置、API上报。</li>
+<li>配置模版：官方已经提供了一些自定义事件模版，直接使用就可以，包括有：进入页面、离开页面、小程序内分享，不过这些事件的分析粒度都比较粗，针对整个应用，可以自己修改只针对某一页</li>
+<li>填写配置的方式支持以下几种统计触发器，有：</li>
 </ul>
-<p>​工具POSIX.1定义：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">click 点击时触发</span><br><span class="line">enterPage 进入页面时触发，包括新开、后退、切换到前台都属于进入页面</span><br><span class="line">leavePage 离开页面时触发，包括离开、切换到后台都属于离开页面</span><br><span class="line">pageLoad 新开页面时触发，即第一次进入页面</span><br><span class="line">pageUnload 回收页面时触发</span><br><span class="line">pullDownRefresh 下拉刷新时触发</span><br><span class="line">launch 加载小程序时触发</span><br><span class="line"><span class="keyword">background </span>切换到后台触发</span><br><span class="line">foreground 切换到前台触发</span><br><span class="line"><span class="keyword">share </span>右上角菜单分享</span><br><span class="line"><span class="keyword">switchTab </span>调用<span class="keyword">switchTab接口切换页面时触发</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuas1d6p2aj31050rjdib.jpg" alt="配置信息"></p>
 <ul>
-<li>挂断信号（SIGHUP）默认的动作是终止程序；</li>
-<li>当终端接口检测到网络连接断开，将发送SIGHUP信号给控制进程（会话期首进程）；</li>
-<li>如果会话期首进程终止，则该信号发送到该会话期前台进程组；</li>
-<li>一个进程退出导致一个孤儿进程组产生时，如果人一个孤儿进程组进程处于STOP状态，则发送SIGHUP和SIGCONT信号到该进程组中所有进程。</li>
+<li>action指出发时的动作，一次性上报，表示在每一次 click 中，收集数据并上报一条数据；分步骤上报我也还没搞懂 😅</li>
+<li>page指要触发该事件的页面，这里填写的内容必须要和<code>app.json</code>中配置的页面路径一样</li>
+<li>data是选填的，是用来给事件触发时传递一些数据的，其中，字段值就是当前page的<code>data</code>中的数据名称</li>
 </ul>
-<p>因此当网络断开或窗口关闭时，控制进程收到SIGHUP信号退出，会导致该会话期内其他进程退出。</p>
-<h3 id="一个简单例子"><a href="#一个简单例子" class="headerlink" title="一个简单例子"></a>一个简单例子</h3><p>打开两个SSH终端窗口，在第一个中执行<code>ping</code>命令：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc6u7rhvyj30il0f9te8.jpg" alt=""></p>
-<p>再另一个终端窗口中，找到<code>ping</code>的进程ID为22132，其父进程ID为21803，即登录zsh：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc6yf26ygj30g801d748.jpg" alt=""></p>
-<p>使用<code>ps -xj</code>可以看到，登录zsh（PID 21803）和ping在同一会话期，zsh为会话期首进程，所以进程组PGID为21803，ping所在的进程组PGID为22132，为前台进程组。</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc7190pf9j30gn01w0st.jpg" alt=""></p>
-<p>这时，我们关闭第一个SSH远程窗口，在另一个窗口中看到ping进程被杀掉了：</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1frc780f1bgj30df00z3yb.jpg" alt=""></p>
-<p>这就发现，当我们执行一个耗时的任务时，如果关闭了这个窗口，这个任务进程也就被杀掉了，并不是我们所期望的那样在后台继续执行。</p>
-<h2 id="使用screen"><a href="#使用screen" class="headerlink" title="使用screen"></a>使用screen</h2><p>​    现在，也不需要多说<code>screen</code>到底是干什么的了，直接说怎么使用吧。</p>
+<h4 id="举个例子🌰"><a href="#举个例子🌰" class="headerlink" title="举个例子🌰"></a>举个例子🌰</h4><p>电商类小程序中，用户会有一个点击商品添加到购物车的动作，我们可以对这个动作进行数据分析，以下是<code>填写配置</code>的方式：</p>
 <ol>
-<li>直接执行<code>screen</code>命令</li>
+<li>填写事件英文和中文名称：</li>
 </ol>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1frc7gskgthj30p302zmx8.jpg" alt=""></p>
-<p><code>screen</code>将创建一个执行shell的全屏窗口，可以看到窗口的title已经提示处于<code>screen</code>程序中，在这个窗口中你可以随便执行命令，如果要退出输入<code>exit</code>命令。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuashtxxsxj30o008igml.jpg" alt="填写事件英文和中文名称"></p>
 <ol start="2">
-<li>如果你想新开一个窗口执行另一个任务，可以执行：</li>
+<li>填写事件配置，定义如何收集数据：</li>
 </ol>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法1</span></span><br><span class="line">按键盘Ctrl+<span class="selector-tag">a</span> +c, 会心打开一个screen窗口</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法2</span></span><br><span class="line">screen 需要执行的任务的命令，比如：</span><br><span class="line">screen ping www<span class="selector-class">.baidu</span><span class="selector-class">.com</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>多个<code>screen</code>窗口切换</li>
-</ol>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">方法<span class="number">1</span></span><br><span class="line">键盘Ctrl+<span class="selector-tag">a</span> +[<span class="number">0</span>..<span class="number">9</span>]</span><br><span class="line"></span><br><span class="line">方法<span class="number">2</span></span><br><span class="line">键盘Ctrl+<span class="selector-tag">a</span> +n, 下一个screen窗口</span><br><span class="line">键盘Ctrl+<span class="selector-tag">a</span> +<span class="selector-tag">p</span>, 上一个screen窗口</span><br></pre></td></tr></table></figure>
-<p>更多命令可以看下图：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc7u10k57j30lt0i40um.jpg" alt=""></p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1frc7zis4jxj310z0dzgo5.jpg" alt=""></p>
-<p>Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器，Screen中还有会话的概念，用户可以在一个screen会话中创建多个screen窗口，而在每一个screen窗口中就像操作一个真实的SSH连接窗口那样。</p>
-<p>参考：<a href="https://www.ibm.com/developerworks/cn/linux/l-cn-screen/" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/linux/l-cn-screen/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/5/15/Linux/Use-screen-to-manage-your-remote-session/" data-id="cka144aqf000izgcaypnjjbg7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Server/">Server</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Routing-Selection" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/5/14/Networks/Routing-Selection/" class="article-date">
-  <time datetime="2018-05-14T09:32:37.000Z" itemprop="datePublished">2018-05-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Networks/">Networks</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/5/14/Networks/Routing-Selection/">IP中的路由选择</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://p8m3309kb.bkt.clouddn.com/%E5%B0%8F%E5%9E%8B%E7%BD%91%E7%BB%9C.png" alt="一个小型网络"></p>
-<p>​    网络这个东西是很复杂得，像一张蜘蛛网一样，将每一台通信设备连在一起，在上图中，工作站A想要访问工作站C，有不止一条路可以走，在现实中可能这样的路有非常多，这些路有远有近，有快的有慢得，那么在连接网络时，设备是如何知道哪一条路是最优的呢？通常，通信设备中都会有一个路由表（Routing Table），其实就是一张二维表格，记录着这台设备如果要去某个地方需要线通过哪些设备中转。</p>
-<p>​    下面是我本机（mac系统）中的路由表（只是部分截图），不光是路由器，每个接入网络的设备都会有路由表：</p>
-<p><img src="http://p8m3309kb.bkt.clouddn.com/netstate%20-rn.png" alt="netstat -rn命令"></p>
-<p>​    上图是一张典型的主机路由表，执行<code>netstate</code>命令，<code>-r</code>选项是列出路由表，<code>-n</code>选项是以数字格式打印出IP地址（默认情况会打印网络名加主机名），本机的路由表大致由7列组成，下面介绍一下每一列的作用：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fuasijuqzdj30wh0o9myn.jpg" alt="填写事件配置"></p>
+<p>这个例子中，用一个动作上报“加入购物车”事件。</p>
 <ul>
-<li>Destination：目标网络地址；</li>
-<li>Gateway：网关地址，要去目标网络，需要先走这条路；</li>
-<li>Flags：此条路由记录的标志，可以设置的标志大致有：<ol>
-<li>U Up，该路由可以被使用；</li>
-<li>G Gateway，该路由是到一个网关（路由器），如果没有设置该标志，说明该条路由不是一个网关，是一条直接路由，Gateway列给出的是外出接口的IP地址；</li>
-<li>H Host，该路由是到一个主机，即Destination列给出的是一个完整的主机地址，如果没有设置该标志，说明该路由是到一个网络，而Destination列出的是一个网络地址：一个网络号，或者网络号与子网号的组合；</li>
-<li>D Dynamically，该路由是由ICMP重定向报文创建的；</li>
-<li>M Modified，该路由已被重定向报文修改；</li>
-</ol>
-</li>
-<li>Refs：正在使用该路由的活动进程个数，面向连接的协议如TCP在建立连接时需要固定路由，如果我们用Telnet连接<code>10.158.51.78</code>，它的值将增加1；</li>
-<li>Use：通过该路由发送的分组数；</li>
-<li>Netif：该记录使用的网络接口;</li>
-<li>Expire：该记录过期时间。</li>
+<li>trigger：触发条件，click，表示点击操作触发；</li>
+<li>action：触发时动作，一次性上报，表示在每一次 click 中，收集数据并上报一条数据；</li>
+<li>page：触发页面，填 viewProduct（viewProduct 是商品详情页）；</li>
+<li>element：触发元素，填 .addToCart（.addToCart 是一个“加入购物车”的按钮）；</li>
+<li>data：事件的数据及其来源，用“字段名 字段值”来表示，其中字段值是页面上的一个变量。</li>
 </ul>
-<p>​    标志G是非常重要的，因为它区分了直接路由和间接路由（对于直接路由来说没有标志G）。间接和直接路由的区别在于，发往直接路由的分组中不但具有指明目的端的IP地址，还具有链路层地址，可以理解为数据报中的目的IP地址和链路层目的地址是一样的。当分组被发往一个间接路由时，IP地址指明的是最终的目的地，但是链路层地址指明的是网关（即下一站路由器），可以理解为可以理解为数据报中的目的IP地址和链路层目的地址是不一样的。</p>
-<p>​    标志G和H之间的区别：都代表通行设备，不过功能不一样，G标志区分了直接路由和间接路由，而H标志表明目的地址是一个完整的主机地址。若没有设置H标志，则说明目的地只是一个网络地址（主机号部分为0）。当为某个目的IP地址搜索路由表时，主机地址项必须与目的地址完全匹配，而网络地址项只需要匹配目的地址的网络号和子网号。</p>
-<h2 id="路由算法"><a href="#路由算法" class="headerlink" title="路由算法"></a>路由算法</h2><h3 id="静态路由选择策略"><a href="#静态路由选择策略" class="headerlink" title="静态路由选择策略"></a>静态路由选择策略</h3><p>​    静态路由选择策略即非自适应路由选择，只在交换机启动时计算和交换路由，此后路由不再改变。特点是简单并且开销较小，但不能及时适应网络状态的变化。具体可以分为以下三种：</p>
-<ol>
-<li><p>扩散式路由选择</p>
-<p>一个网络节点从A线路收到分组后，立即把分组发向除A线路外的所有其他输出线路上，任何节点只接受最先到达的报文分组，不接受重复报文。适用于规模较小，对可靠性、健壮性要求很高的场合，还可被用于分发信息、判断可达性、寻找最短路径等。</p>
-</li>
-<li><p>固定路由选择</p>
-<p>所有网络节点都保存一张路由表，路由表中记录着所有为了到达某个目的节点而选择的下一个节点或链路，并不记录到该目的节点的所有中间节点。所以当一个分组到达节点时，只需要在查找这个路由表查找到对应的下一个节点，并发送分组。因为所有的路由都保存在一张表中，所以很简单，适合于一个负载稳定拓扑变化不大的网络中运行，但灵活度很差，无法对网络的拥塞和故障做出及时地反映。</p>
-</li>
-<li><p>随即路由选择</p>
-<p>当分组到达某节点后，随意选择一条线路进行分组转发。随即选择的路由不一定是最佳路由，增加了不必要的负载，而且分组传播延迟不可预期。</p>
-</li>
-</ol>
-<h3 id="动态路由选择策略"><a href="#动态路由选择策略" class="headerlink" title="动态路由选择策略"></a>动态路由选择策略</h3><p>​    动态路由选择策略即自适应路由选择，在交换机启动时进行初始化，当网络发生阻塞或故障时能够随时进行更新。</p>
-<ol>
-<li><p>孤立路由选择</p>
-<p>每个节点并不利用其他节点来的网络信息，仅根据本节点看到的信息来确定路由。最短等待法，将具有最短队列的链路作为最好路由你想学习算法（backward learning），将逆向的路由节点数最少的链路作为最好路由。</p>
-</li>
-<li><p>集中路由选择</p>
-<p>和固定路由选择一样，所有节点都保存一张路由表，和固定路由的区别在于固定路由算法中路由表的建立是手工完成的，而集中路由选择中路由表的建立是由网络中设置的一个路由控制中心RCC来几种完成的（收集、计算、分发）。缺点：离RCC较近的地方通信量的开销比较大，因为要周期性地从所有节点手机网络的状态信息的报告，同时还要生成路由表并从RCC发送到网内的所有节点；另一个是可靠性问题，一旦RCC出现故障，则整个网络就失去控制。</p>
-</li>
-<li><p>分布路由选择</p>
-<p>根据来自于相邻节点的信息，并通过一个最短花费路由算法计算出到每个目的地的路由。</p>
-</li>
-</ol>
-<h4 id="动态路由选择中常用的两种算法："><a href="#动态路由选择中常用的两种算法：" class="headerlink" title="动态路由选择中常用的两种算法："></a>动态路由选择中常用的两种算法：</h4><ol>
-<li><p>距离向量路由协议（Distance Vector Routing，DVR）</p>
-</li>
-<li><p>链路状态路由协议（Link State Routing）</p>
-</li>
-</ol>
-<p>​    路由选择是个非常复杂的问题，它既要 网络中所有节点协同工作，也需要路由选择适应环境的不断变化，并且这种变化是事先无法知道的，比如节点故障、网络拥塞等。</p>
-<p>参考：《TCP／IP详解 卷1:协议》</p>
+<p>详细说一下字段值，他有如下规则：</p>
+<ul>
+<li>填写的变量名，默认从page实例的data字段中获取</li>
+<li>若想收集由list变量渲染的列表中的某一项数据，则可用list[].*表示，这里会根据当前填写的element（只能是class）得到的NodeList的第几个来决定数组下标。</li>
+<li>若列表是二维的，则可用list[][].*表示，这里element需填写两个class（空格隔开）分别表示父列表与子列表。</li>
+<li>若想取得数组的下标，则可用list[].$INDEX表示</li>
+<li>若想取得wxml中data-<em>系列属性的值，则可用$DATASET.</em>表示</li>
+<li>若想取得app实例的数据，则可用$APP.*表示，只支持获取基本类型的数据，如number、string、boolean。</li>
+</ul>
+<p>除此之外，还可以填写一些提供的系统属性，以“$”开头，目前支持以下属性：</p>
+<ul>
+<li><code>$PAGE_TIME</code> 用户从进入本页面到当前的时间(触发action的时间点)</li>
+<li><code>$APP_TIME</code> 用户进入小程序到当前的时间(触发action的时间点)</li>
+<li><code>$CURRENT_PAGE</code> 当前用户所在的页面</li>
+<li><code>$LAST_PAGE</code> 上一页</li>
+</ul>
+<blockquote>
+<p>注：data可以为空，为空时该事件上报仅收集系统默认字段的数据</p>
+</blockquote>
+<p>这个例子中，data有四项：</p>
+<p>product_id: itemID</p>
+<p>product_name: itemName</p>
+<p>product_price: price</p>
+<p>product_category: category</p>
+<p>即：</p>
+<p>事件的product_id字段，收集viewProduct页面上page实例的data中的itemID字段；</p>
+<p>事件的product_name字段，收集viewProduct页面上page实例的data中的itemName字段；</p>
+<p>事件的product_price字段，收集viewProduct页面上page实例的data中的price字段；</p>
+<p>事件的product_category字段，收集viewProduct页面上page实例的data中的category字段；</p>
+<p>以上内容表示：当用户点击 viewProduct 页面上的 .addToCart 按钮时，上报一条记录到 add_to_cart 事件，事件的 product_id, product_name, product_price, product_category 字段， 取值分别是页面上的 itemID, itemName, price, category。</p>
+<p>填写完配置后，还要点击<code>检查字段</code>。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuaslz88fdj30o00dr0tm.jpg" alt=""></p>
+<p>此时会提示 add_to_cart 事件包含的具体字段，继续补充字段的名称、数据类型和备注信息。</p>
+<h4 id="关于API上报"><a href="#关于API上报" class="headerlink" title="关于API上报"></a>关于API上报</h4><p>API上报比填写配置的方式更加灵活，但这也涉及到一些代码的更改，需要发布新版本，而填写配置的方式几乎不需要更改代码，所以无需发布新版本。当我们选择<code>API上报</code>后，我们可以设置需要上报的一下参数：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fuat0h1b9zj30x50dh3zb.jpg" alt="API上报"></p>
+<p>点击生成代码：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fuat1kc176j30wl0hrwfs.jpg" alt=""></p>
+<p>时间创建完成后，点击保存，后台就生成了一条事件记录，并有唯一的ID与它对应：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fuat5j1zfzj30zv086dgi.jpg" alt=""></p>
+<p>接着，我们在小程序代码中可以插入生成的代码，如下是我在转发成功后的<code>success()</code>回掉函数中提交API上报。</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">// 转发成功</span><br><span class="line"><span class="keyword">success: </span>function (res) &#123;</span><br><span class="line">       wx.reportAnalytics('click_share', &#123;</span><br><span class="line">          page_path: current_page_path,</span><br><span class="line">          from: from,</span><br><span class="line">       &#125;);</span><br><span class="line">&#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>不管是填写配置还是API上报，都需要在填写完配置后保存并测试。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fuat6s7eezj30o108ygme.jpg" alt=""></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fuat73bhhpj30o10el760.jpg" alt=""></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fuat7qug37j30o20dqdgf.jpg" alt=""></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fuat81vmj9j30o00dqgm9.jpg" alt=""></p>
+<p>我们在测试事件的时候，往往要过一段时间才能接收到数据，大概1-2分钟，为了能够及时判断正确性，我们可以在手机上的小程序应用中，打开调试，这样，每次触发事件时，都会在控制台的Log中看到<code>[自定义分析]上报成功的字样</code>，点击查看还能看到更多数据，比如上报的参数等，里面的<code>eventID</code>就对应事件的英文名称，可以通过这种方式快速判断事件触发是否符合预期，如下截图：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fuatn0zeyrj30f50qywoz.jpg" alt=""></p>
+<p>通过使用，我们发现小程序的自定义分析功能很强大，你可以在页面上分析任何元素、任何事件，使我们可以全方位的了解到小程序的使用情况，对数据加以分析总结，并以数据来驱动产品的迭代，提高用户留存。</p>
+<p>参考：小程序官方文档 <a href="https://developers.weixin.qq.com/miniprogram/analysis/custom" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/analysis/custom</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/5/14/Networks/Routing-Selection/" data-id="cka144aq8000azgcafni5h68h" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2018/8/15/小程序/WeChat-miniprogram-data-analysis-custom-analysis/" data-id="cka144aql000ozgcaxyy41poe" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/networks/">networks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/routing/">routing</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Base-configuration-for-a-new-server" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/2/4/Devops/Base-configuration-for-a-new-server/" class="article-date">
-  <time datetime="2018-02-04T12:03:02.000Z" itemprop="datePublished">2018-02-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Devops/">Devops</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/2/4/Devops/Base-configuration-for-a-new-server/">对一台新服务器的简单的配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://upload-images.jianshu.io/upload_images/2650331-494786b4facec3e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Linode"></p>
-<p>虽然不是专业的系统管理员，作为程序员还是会经常折腾一些VPS，势必要学会怎么配置一台服务器，而且，对于公司面试，掌握基本的系统管理知识还是有利的。况且，如今的网络安全环境下，掌握一些服务器安全方面的配置是非常有必要的。</p>
-<h2 id="1-远程登录用户"><a href="#1-远程登录用户" class="headerlink" title="1. 远程登录用户"></a>1. 远程登录用户</h2><p>在使用SSH远程登录时，由于root用户有着无限的权利，它能执行任何命令，所以尽量不要使用root用户登录。</p>
-<h6 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h6><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adduser jack  <span class="comment">//创建非根用户</span></span><br><span class="line">usermod -<span class="selector-tag">a</span> -G sudo jack  <span class="comment">// 让jack用户拥有sudo权限(即通过密码认证后可以执行特殊的权限的命令)</span></span><br></pre></td></tr></table></figure>
-<h6 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h6><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adduser jack</span><br><span class="line">passwd jack  <span class="comment">// 为jack用户设置密码</span></span><br><span class="line">usermod -<span class="selector-tag">a</span> -G wheel jack  <span class="comment">// 把jack加入wheel用户组</span></span><br></pre></td></tr></table></figure>
-<h2 id="2-SSH密钥对认证"><a href="#2-SSH密钥对认证" class="headerlink" title="2. SSH密钥对认证"></a>2. SSH密钥对认证</h2><p>上面创建完jack用户后，就可以执行下面的命令登录：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ssh</span> <span class="selector-tag">jack</span>@<span class="keyword">123</span>.<span class="keyword">123</span>.<span class="keyword">78</span>.<span class="keyword">90</span></span><br></pre></td></tr></table></figure>
-<p>此时，会要求你输入jack的密码，但密码认证也有漏洞，而且会受到暴力破解，不怀好意的人会不断尝试猜测你的密码，而且，每次登录时都要求你输入密码，是不是很麻烦呢？这时我们就需要创建SSH密码对认证（所谓密钥对，就是一对“密钥”，其中一个是私钥，保存在自己的电脑中，另一个是公钥，保存在服务器中，公钥加密的消息只能使用对应的私钥解密）。</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen  <span class="comment">// 创建密钥对</span></span><br></pre></td></tr></table></figure>
-<p>然后按照屏幕提示输入所需要的信息，这个命令会在电脑创建两个文件：<code>~/.ssh/id_rsa.pub(公钥)</code>和<code>~/.ssh/id.rsa(私钥)</code>，私钥应该保存在本地电脑中，公钥上传到服务器。</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 把公钥上传到服务器中jack用户的家目录，后面一定要有":"</span></span><br><span class="line"><span class="selector-tag">sup</span> ~/.ssh/id_rsa<span class="selector-class">.pub</span> jack@<span class="number">123.123</span>.<span class="number">78.90</span>:</span><br></pre></td></tr></table></figure>
-<p>登录服务器，创建.ssh目录：</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/.ssh</span><br></pre></td></tr></table></figure>
-<p>创建~/.ssh/authorized_keys文件，这个文件的内容是一系列允许登录这台服务器的公钥：</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch ~<span class="regexp">/.ssh/</span>authorized_keys</span><br></pre></td></tr></table></figure>
-<p>把上传的公钥添加到~/.ssh/authorized_keys文件中：</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~<span class="string">/id_rsa.pub</span> &gt;&gt; ~<span class="string">/.ssh/authorized_keys</span></span><br></pre></td></tr></table></figure>
-<p>最后修改下面几个目录和文件的访问权限，让jack用户访问~/.ssh目录和~/.ssh/ahthorized_keys文件：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chown -R jack:jack ~/.ssh</span><br><span class="line">chmod <span class="number">700</span> ~/.ssh</span><br><span class="line">chmod <span class="number">600</span> ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-<h2 id="禁用密码和根用户登录"><a href="#禁用密码和根用户登录" class="headerlink" title="禁用密码和根用户登录"></a>禁用密码和根用户登录</h2><p>为了让服务器再安全一些，我们要禁止用户通过密码登录，还要禁止根用户登录。</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim <span class="regexp">/etc/</span>ssh<span class="regexp">/sshd_config</span></span><br></pre></td></tr></table></figure>
-<p>上打开的配置文件中，这样修改：</p>
-<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /etc/ssh/sshd_config</span></span><br><span class="line">PasswordAuthentication <span class="keyword">no</span> <span class="comment">// 或者注释掉</span></span><br><span class="line">PermitRootLogin     <span class="keyword">no</span>      <span class="comment">// 或者注释掉</span></span><br></pre></td></tr></table></figure>
-<p>改动之后，重启ssh服务：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ubuntu</span></span><br><span class="line">sudo<span class="built_in"> service </span>ssh restart</span><br><span class="line"></span><br><span class="line"><span class="comment"># CentOS</span></span><br><span class="line">sudo systemctl restart sshd.service</span><br></pre></td></tr></table></figure>
-<p>运行完上面的命令，我们的服务器就安全很多了。</p>
-<hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/2/4/Devops/Base-configuration-for-a-new-server/" data-id="cka144apq0000zgcajwxgxnuj" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Server/">Server</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/小程序/">小程序</a></li></ul>
 
     </footer>
   </div>
@@ -518,7 +302,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="../4/">&laquo; __('prev')</a><a class="page-number" href="../../">1</a><span class="space">&hellip;</span><a class="page-number" href="../3/">3</a><a class="page-number" href="../4/">4</a><span class="page-number current">5</span><a class="page-number" href="../6/">6</a><a class="page-number" href="../7/">7</a><span class="space">&hellip;</span><a class="page-number" href="../10/">10</a><a class="extend next" rel="next" href="../6/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -528,7 +312,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Devops/">Devops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Networks/">Networks</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Object-Oriented/">Object Oriented</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Regular-Expression/">Regular Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小程序/">小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/微信/">微信</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Devops/">Devops</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Networks/">Networks</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Object-Oriented/">Object Oriented</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Regular-Expression/">Regular Expression</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/frontend/">frontend</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/小程序/">小程序</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/微信/">微信</a></li></ul>
     </div>
   </div>
 
@@ -538,7 +322,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-Oriented/">Object Oriented</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPStorm/">PHPStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PSR/">PSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Perl/">Perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reflection/">Reflection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SICP/">SICP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Something/">Something</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tmux/">Tmux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VB-NET/">VB.NET</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/autoload/">autoload</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/efficiency/">efficiency</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interviews/">interviews</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/networks/">networks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/notes/">notes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/routing/">routing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Go/">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Laravel/">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Object-Oriented/">Object Oriented</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PHPStorm/">PHPStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PSR/">PSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Perl/">Perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Reflection/">Reflection</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Ruby/">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SICP/">SICP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Something/">Something</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Tmux/">Tmux</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/VB-NET/">VB.NET</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/autoload/">autoload</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/canvas/">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/efficiency/">efficiency</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/interviews/">interviews</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/networks/">networks</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/notes/">notes</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/routing/">routing</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/微信/">微信</a></li></ul>
     </div>
   </div>
 
@@ -548,7 +332,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Laravel/" style="font-size: 10px;">Laravel</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="/tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="/tags/PSR/" style="font-size: 10px;">PSR</a> <a href="/tags/Perl/" style="font-size: 10px;">Perl</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SICP/" style="font-size: 10px;">SICP</a> <a href="/tags/Server/" style="font-size: 15px;">Server</a> <a href="/tags/Something/" style="font-size: 10px;">Something</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="/tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/autoload/" style="font-size: 10px;">autoload</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="/tags/interviews/" style="font-size: 10px;">interviews</a> <a href="/tags/networks/" style="font-size: 10px;">networks</a> <a href="/tags/notes/" style="font-size: 10px;">notes</a> <a href="/tags/routing/" style="font-size: 10px;">routing</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/小程序/" style="font-size: 15px;">小程序</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a>
+      <a href="../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../tags/CSS/" style="font-size: 10px;">CSS</a> <a href="../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="../../tags/Laravel/" style="font-size: 10px;">Laravel</a> <a href="../../tags/Linux/" style="font-size: 15px;">Linux</a> <a href="../../tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../tags/Server/" style="font-size: 15px;">Server</a> <a href="../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../tags/Vue/" style="font-size: 10px;">Vue</a> <a href="../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../tags/networks/" style="font-size: 10px;">networks</a> <a href="../../tags/notes/" style="font-size: 10px;">notes</a> <a href="../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../tags/小程序/" style="font-size: 15px;">小程序</a> <a href="../../tags/微信/" style="font-size: 10px;">微信</a>
     </div>
   </div>
 
@@ -557,7 +341,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">October 2017</a></li></ul>
     </div>
   </div>
 
@@ -570,23 +354,23 @@
       <ul>
         
           <li>
-            <a href="/2020/5/10/微信/jssdk-invalid-signature/">微信jssdk踩坑—invalid signature</a>
+            <a href="../../2020/5/10/微信/jssdk-invalid-signature/">微信jssdk踩坑—invalid signature</a>
           </li>
         
           <li>
-            <a href="/2019/10/3/PHP/building-SPA-with-Vue-and-Laravel/">如何使用Laravel 和 Vue 构建一个简单的SPA</a>
+            <a href="../../2019/10/3/PHP/building-SPA-with-Vue-and-Laravel/">如何使用Laravel 和 Vue 构建一个简单的SPA</a>
           </li>
         
           <li>
-            <a href="/2019/8/25/notes/reading-notes-2-about-a-philosophy-of-software-design/">软件设计复杂性的体现</a>
+            <a href="../../2019/8/25/notes/reading-notes-2-about-a-philosophy-of-software-design/">软件设计复杂性的体现</a>
           </li>
         
           <li>
-            <a href="/2019/8/25/notes/reading-notes-1-about-a-philosophy-of-software-design/">关于软件设计的复杂性</a>
+            <a href="../../2019/8/25/notes/reading-notes-1-about-a-philosophy-of-software-design/">关于软件设计的复杂性</a>
           </li>
         
           <li>
-            <a href="/2019/5/31/Tools/Hot-key-to-select-same-occurrence-in-PHPStorm/">PHPStorm中快速选中多个相同的单词</a>
+            <a href="../../2019/5/31/Tools/Hot-key-to-select-same-occurrence-in-PHPStorm/">PHPStorm中快速选中多个相同的单词</a>
           </li>
         
       </ul>
@@ -601,7 +385,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 Bilberry<br>
+      &copy; 2020 bilberry<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -609,9 +393,9 @@
     </div>
     <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">Home</a>
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
   
 </nav>
     
@@ -619,11 +403,11 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  <link rel="stylesheet" href="../../fancybox/jquery.fancybox.css">
+  <script src="../../fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js"></script>
+<script src="../../js/script.js"></script>
 
   </div>
 </body>

@@ -9,17 +9,17 @@
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="Bilberry Blog">
+  <meta name="description" content="php开发，laravel学习，vue.js教程，全栈工程师博客">
 <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="我的博客">
 <meta property="og:url" content="https://www.xydida.com/page/6/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="Bilberry Blog">
+<meta property="og:description" content="php开发，laravel学习，vue.js教程，全栈工程师博客">
 <meta property="og:locale" content="zh">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我的博客">
-<meta name="twitter:description" content="Bilberry Blog">
+<meta name="twitter:description" content="php开发，laravel学习，vue.js教程，全栈工程师博客">
   
     <link rel="alternate" href="/atom.xml" title="我的博客" type="application/atom+xml">
   
@@ -29,7 +29,7 @@
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="../../css/style.css">
   
 
 </head>
@@ -42,11 +42,11 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">我的博客</a>
+        <a href="../../index.html" id="logo">我的博客</a>
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">能找到我的也不是等闲之辈</a>
+          <a href="../../index.html" id="subtitle">能找到我的也不是等闲之辈</a>
         </h2>
       
     </div>
@@ -54,9 +54,9 @@
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-          <a class="main-nav-link" href="/">Home</a>
+          <a class="main-nav-link" href="../../index.html">Home</a>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          <a class="main-nav-link" href="../../archives">Archives</a>
         
       </nav>
       <nav id="sub-nav">
@@ -74,14 +74,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-sieve-stream" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-The-Perfect-URL-Regular-Expression" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/12/19/Algorithm/sieve-stream/" class="article-date">
-  <time datetime="2017-12-19T04:22:03.000Z" itemprop="datePublished">2017-12-19</time>
+    <a href="../../2018/8/11/Regular-Expression/The-Perfect-URL-Regular-Expression/" class="article-date">
+  <time datetime="2018-08-11T04:33:30.000Z" itemprop="datePublished">2018-08-11</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>
+    <a class="article-category-link" href="../../categories/Regular-Expression/">Regular Expression</a>
   </div>
 
   </div>
@@ -92,7 +92,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/19/Algorithm/sieve-stream/">用厄拉多塞法筛选素数</a>
+      <a class="article-title" href="../../2018/8/11/Regular-Expression/The-Perfect-URL-Regular-Expression/">部分语言URL正则匹配</a>
     </h1>
   
 
@@ -100,24 +100,37 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近在看<code>SICP</code>，这本书写的确实不错。3.5节中讲到了无穷流对素数的一个应用：用厄拉多塞筛法来构造出素数的无穷流。这个筛选思路值得记录一下。</p>
-<blockquote>
-<p>厄拉多塞是公元前3世纪希腊亚历山大的哲学家。他由于第一个给出了地球的圆周的精确估计而闻名。他的计算方式是观察夏至日正午影子的角度。虽然厄拉多塞筛法历史如此悠久，但仍成为专用硬件“筛”的基础，直至最近都一直是确定大素数存在的有力工具。直到20世纪70年代，这种算法被概率算法超越。</p>
-</blockquote>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>（前面关于流和无穷流的定义以及说明直接略过了，感兴趣的可以自己看）首先，这个无穷流从整数2开始，因为这是第一个素数。为了得到其余的素数，就需要从2后面的整数中过滤掉所有2的倍数，这样就留下一个从3开始的无穷流，而3也就是下一个素数。现在再从这个流的后面部分过滤掉所有3的倍数，这样就留下一个从5开头的无穷流，而5又是下一个素数，就这样继续下去。换句话说，这种方法就是通过一个筛选过程构造出各个素数。</p>
-<h4 id="筛选过程描述如下"><a href="#筛选过程描述如下" class="headerlink" title="筛选过程描述如下"></a>筛选过程描述如下</h4><p>对流S做筛选就是形成一个流，其中的第一个元素就是S的第一个元素，得到其随后的元素的方式是从S的其余元素中过滤掉所有S的第一个元素的倍数，而后再对得到的结果进行同样的筛选。</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sieve</span> stream)</span><br><span class="line">  (<span class="name">cons-stream</span></span><br><span class="line">    (<span class="name">stream-car</span> stream)</span><br><span class="line">    (<span class="name">sieve</span> (<span class="name">stream-filter</span></span><br><span class="line">                 (<span class="name"><span class="builtin-name">lambda</span></span>  (x)</span><br><span class="line">                      (<span class="name"><span class="builtin-name">not</span></span> (<span class="name">divisible?</span> x (<span class="name">stream-car</span> stream))))</span><br><span class="line">                (<span class="name">stream-car</span> stream)))))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> primes (<span class="name">sieve</span> (<span class="name">integers-starting-from</span> <span class="number">2</span>)))</span><br></pre></td></tr></table></figure>
-<p>上面的Lisp代码写得还是很精练的，没有任何多余的代码。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-8b12448528e629e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="将素数筛看作一个信号处理系统"></p>
-<p>我们可以将上面的厄拉多塞筛法看作是一个信号处理系统。出入流溃入“<code>反cons</code>”，分解出这个流的首元素和其余元素，用这个首元素去构造一个可除性过滤取，让该流的其余部分穿过这个过滤器，这个过滤器的输出再溃入到另一个筛块，而后将原来的首元素<code>cons</code>到这个内部筛的输出上，形成最终的输出流。这样，不仅输入流是无穷的，信息处理器也是无穷的。</p>
+        <p>开发中，经常会需要做一些正则匹配，比如手机号验证，email验证，URL匹配等，写此篇文章主要是记录如何使用正则表达式匹配URL，方便以后再遇到此问题时不必到处搜索而得不到满意的答案。</p>
+<h2 id="PHP（使用preg-match"><a href="#PHP（使用preg-match" class="headerlink" title="PHP（使用preg_match)"></a>PHP（使用<a href="http://php.net/manual/en/function.preg-match.php" target="_blank" rel="noopener">preg_match</a>)</h2><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@|\d&#123;<span class="number">1</span>,<span class="number">3</span>&#125;(?:\.\d&#123;<span class="number">1</span>,<span class="number">3</span>&#125;)&#123;<span class="number">3</span>&#125;|(?:(?:[a-z\d\x&#123;<span class="number">00</span>a1&#125;-\x&#123;ffff&#125;]+-?)*[a-z\d\x&#123;<span class="number">00</span>a1&#125;-\x&#123;ffff&#125;]+)(?:\.(?:[a-z\d\x&#123;<span class="number">00</span>a1&#125;-\x&#123;ffff&#125;]+-?)*[a-z\d\x&#123;<span class="number">00</span>a1&#125;-\x&#123;ffff&#125;]+)*(?:\.[a-z\x&#123;<span class="number">00</span>a1&#125;-\x&#123;ffff&#125;]&#123;<span class="number">2</span>,<span class="number">6</span>&#125;))(?::\d+)?(?:[^\s]*)?$<span class="meta">%iu</span></span><br></pre></td></tr></table></figure>
+<h2 id="PHP（使用validate-filter"><a href="#PHP（使用validate-filter" class="headerlink" title="PHP（使用validate filter)"></a>PHP（使用<a href="http://php.net/manual/en/filter.filters.validate.php" target="_blank" rel="noopener">validate filter</a>)</h2><figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (filter_var($url, FILTER_VALIDATE_URL) !== <span class="literal">false</span>)<span class="params">...</span></span><br></pre></td></tr></table></figure>
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http[<span class="string">s</span>]?://(?:[<span class="string">a-zA-Z</span>]|[<span class="string">0-9</span>]|[<span class="string">$-_@.&amp;+</span>]|[<span class="string">!*\(\),</span>]|(?:%[<span class="string">0-9a-fA-F</span>][<span class="symbol">0-9a-fA-F</span>]))+</span><br></pre></td></tr></table></figure>
+<h2 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h2><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/((([A-Za-z]&#123;3,9&#125;:(?:<span class="symbol">\/</span><span class="symbol">\/</span>)?)(?:[<span class="symbol">\-</span>;:&amp;=<span class="symbol">\+</span><span class="symbol">\$</span>,<span class="symbol">\w</span>]+@)?[A-Za-z0-9<span class="symbol">\.</span><span class="symbol">\-</span>]+|(?:www<span class="symbol">\.</span>|[<span class="symbol">\-</span>;:&amp;=<span class="symbol">\+</span><span class="symbol">\$</span>,<span class="symbol">\w</span>]+@)[A-Za-z0-9<span class="symbol">\.</span><span class="symbol">\-</span>]+)((?:<span class="symbol">\/</span>[<span class="symbol">\+</span>~<span class="variable">%\/\.\w\-_]*)?\??(?:[\-\+=&amp;;%</span>@<span class="symbol">\.</span><span class="symbol">\w</span>_]*)#?(?:[<span class="symbol">\.</span><span class="symbol">\!</span><span class="symbol">\/</span><span class="symbol">\\</span><span class="symbol">\w</span>]*))?)/</span><br></pre></td></tr></table></figure>
+<h2 id="HTML5"><a href="#HTML5" class="headerlink" title="HTML5"></a>HTML5</h2><figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="class"><span class="keyword">type</span></span>=<span class="string">"url"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>匹配上面<code>input</code>输入的URL（<a href="https://www.ietf.org/rfc/rfc3986.txt" target="_blank" rel="noopener">RFC3986</a>）</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^<span class="comment">(([^:/?#]+)</span>:)?<span class="comment">(//([^/?#]*)</span>)?<span class="comment">([^?#]*)</span><span class="comment">(\?([^#]*)</span>)?<span class="comment">(#(.*)</span>)?</span><br></pre></td></tr></table></figure>
+<h2 id="Perl"><a href="#Perl" class="headerlink" title="Perl"></a>Perl</h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(((ht|<span class="type">f</span>)tp(s?))\://)?(www.|<span class="type">[a</span>-zA-Z].)[a-zA-Z0<span class="number">-9</span>\-\.]+\.(com|<span class="type">edu</span>|<span class="type">gov</span>|<span class="type">mil</span>|<span class="type">net</span>|<span class="type">org</span>|<span class="type">biz</span>|<span class="type">info</span>|<span class="type">name</span>|<span class="type">museum</span>|<span class="type">us</span>|<span class="type">ca</span>|<span class="type">uk</span>)(\:[<span class="number">0</span><span class="number">-9</span>]+)*(/($|<span class="type">[a</span>-zA-Z0<span class="number">-9</span>\.\,\;\?\'\\\+&amp;%\$#\=~<span class="keyword">_</span>\-]+))*$</span><br></pre></td></tr></table></figure>
+<h2 id="Ruby"><a href="#Ruby" class="headerlink" title="Ruby"></a>Ruby</h2><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/<span class="tag">\<span class="name">A</span></span>(?:(?:https?|ftp):<span class="tag">\<span class="name">/</span></span><span class="tag">\<span class="name">/</span></span>)(?:<span class="tag">\<span class="name">S</span></span>+(?::<span class="tag">\<span class="name">S*</span></span>)?@)?(?:(?!10(?:<span class="tag">\<span class="name">.</span></span><span class="tag">\<span class="name">d</span><span class="string">&#123;1,3&#125;</span></span>)&#123;3&#125;)(?!127(?:<span class="tag">\<span class="name">.</span></span><span class="tag">\<span class="name">d</span><span class="string">&#123;1,3&#125;</span></span>)&#123;3&#125;)(?!169<span class="tag">\<span class="name">.</span></span>254(?:<span class="tag">\<span class="name">.</span></span><span class="tag">\<span class="name">d</span><span class="string">&#123;1,3&#125;</span></span>)&#123;2&#125;)(?!192<span class="tag">\<span class="name">.</span></span>168(?:<span class="tag">\<span class="name">.</span></span><span class="tag">\<span class="name">d</span><span class="string">&#123;1,3&#125;</span></span>)&#123;2&#125;)(?!172<span class="tag">\<span class="name">.</span></span>(?:1[6-9]|2<span class="tag">\<span class="name">d</span></span>|3[0-1])(?:<span class="tag">\<span class="name">.</span></span><span class="tag">\<span class="name">d</span><span class="string">&#123;1,3&#125;</span></span>)&#123;2&#125;)(?:[1-9]<span class="tag">\<span class="name">d</span></span>?|1<span class="tag">\<span class="name">d</span></span><span class="tag">\<span class="name">d</span></span>|2[01]<span class="tag">\<span class="name">d</span></span>|22[0-3])(?:<span class="tag">\<span class="name">.</span></span>(?:1?<span class="tag">\<span class="name">d</span><span class="string">&#123;1,2&#125;</span></span>|2[0-4]<span class="tag">\<span class="name">d</span></span>|25[0-5]))&#123;2&#125;(?:<span class="tag">\<span class="name">.</span></span>(?:[1-9]<span class="tag">\<span class="name">d</span></span>?|1<span class="tag">\<span class="name">d</span></span><span class="tag">\<span class="name">d</span></span>|2[0-4]<span class="tag">\<span class="name">d</span></span>|25[0-4]))|(?:(?:[a-z<span class="tag">\<span class="name">u</span></span>00a1-<span class="tag">\<span class="name">uffff</span></span>0-9]+-?)*[a-z<span class="tag">\<span class="name">u</span></span>00a1-<span class="tag">\<span class="name">uffff</span></span>0-9]+)(?:<span class="tag">\<span class="name">.</span></span>(?:[a-z<span class="tag">\<span class="name">u</span></span>00a1-<span class="tag">\<span class="name">uffff</span></span>0-9]+-?)*[a-z<span class="tag">\<span class="name">u</span></span>00a1-<span class="tag">\<span class="name">uffff</span></span>0-9]+)*(?:<span class="tag">\<span class="name">.</span></span>(?:[a-z<span class="tag">\<span class="name">u</span></span>00a1-<span class="tag">\<span class="name">uffff</span></span>]&#123;2,&#125;)))(?::<span class="tag">\<span class="name">d</span><span class="string">&#123;2,5&#125;</span></span>)?(?:<span class="tag">\<span class="name">/</span><span class="string">[^\s]</span></span>*)?<span class="tag">\<span class="name">z</span></span>/i</span><br></pre></td></tr></table></figure>
+<h2 id="Go-使用govalidator-IsURL"><a href="#Go-使用govalidator-IsURL" class="headerlink" title="Go (使用govalidator.IsURL)"></a>Go (使用govalidator.IsURL)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"> <span class="keyword">import</span> (</span><br><span class="line">         <span class="string">"fmt"</span></span><br><span class="line">         <span class="string">"github.com/asaskevich/govalidator"</span></span><br><span class="line"> )</span><br><span class="line"> <span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">         str := <span class="string">"http://www.urlregex.com"</span></span><br><span class="line">         validURL := govalidator.IsURL(str)</span><br><span class="line">         fmt.Printf(<span class="string">"%s is a valid URL : %v \n"</span>, str, validURL)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Objective-C"><a href="#Objective-C" class="headerlink" title="Objective-C"></a>Objective-C</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(http|https)://((\\w)<span class="emphasis">*|([0-9]*</span>)|([<span class="string">-|_</span>])<span class="emphasis">*)+([\\.|/]((\\w)*</span>|([0-9]<span class="emphasis">*)|([-|_])*</span>))+</span><br></pre></td></tr></table></figure>
+<h2 id="Swift"><a href="#Swift" class="headerlink" title="Swift"></a>Swift</h2><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((?:http|https)://)?(?:www<span class="symbol">\\</span>.)?[<span class="symbol">\\</span>w<span class="symbol">\\</span>d<span class="symbol">\\</span>-_]+<span class="symbol">\\</span>.<span class="symbol">\\</span>w&#123;2,3&#125;(<span class="symbol">\\</span>.<span class="symbol">\\</span>w&#123;2&#125;)?(/(?&lt;=/)(?:[<span class="symbol">\\</span>w<span class="symbol">\\</span>d<span class="symbol">\\</span>-./_]+)?)?</span><br></pre></td></tr></table></figure>
+<p>定义一个函数方法：</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func canOpenURL(<span class="keyword">string</span>: <span class="keyword">String</span>?) -&gt; <span class="keyword">Bool</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> regEx = <span class="string">"((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"</span></span><br><span class="line">    <span class="keyword">let</span> predicate = NSPredicate(<span class="keyword">format</span>:<span class="string">"SELF MATCHES %@"</span>, argumentArray:[regEx])</span><br><span class="line">    <span class="keyword">return</span> predicate.evaluateWithObject(<span class="keyword">string</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> canOpenURL(<span class="string">"http://www.urlregex.com"</span>) &#123;</span><br><span class="line">    <span class="builtin-name">print</span>(<span class="string">"valid url."</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="builtin-name">print</span>(<span class="string">"invalid url."</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Swift-使用官方提供的canOpenURL"><a href="#Swift-使用官方提供的canOpenURL" class="headerlink" title="Swift (使用官方提供的canOpenURL)"></a>Swift (使用官方提供的<a href="https://developer.apple.com/documentation/uikit/uiapplication/1622952-canopenurl" target="_blank" rel="noopener">canOpenURL</a>)</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">UIApplication</span><span class="selector-class">.sharedApplication</span>()<span class="selector-class">.canOpenURL</span>(<span class="selector-tag">urlString</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(https?|<span class="type">ftp</span>|<span class="type">file</span>)://[-a-zA-Z0<span class="number">-9</span>+&amp;@#/%?=~<span class="keyword">_</span>|<span class="type">!:,.;]*[-a</span>-zA-Z0<span class="number">-9</span>+&amp;@#/%=~<span class="keyword">_</span>|<span class="type">]</span></span><br></pre></td></tr></table></figure>
+<h2 id="VB-NET"><a href="#VB-NET" class="headerlink" title="VB.NET"></a>VB.NET</h2><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(http(s)?://)?(<span class="string">[\w-]</span>+\.)+<span class="string">[\w-]</span>+<span class="string">[.com]</span>+(/<span class="string">[/?%&amp;=]</span>*)?</span><br></pre></td></tr></table></figure>
+<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(ht|f)tp(s?)<span class="tag">\<span class="name">:</span></span><span class="tag">\<span class="name">/</span></span><span class="tag">\<span class="name">/</span><span class="string">[0-9a-zA-Z]</span></span>([-.<span class="tag">\<span class="name">w</span></span>]*[0-9a-zA-Z])*(:(0-9)*)*(<span class="tag">\<span class="name">/</span></span>?)([a-zA-Z0-9<span class="tag">\<span class="name">-</span></span><span class="tag">\<span class="name">.</span></span><span class="tag">\<span class="name">?</span></span><span class="tag">\<span class="name">,</span></span><span class="tag">\<span class="name">'</span></span><span class="tag">\<span class="name">/</span></span><span class="tag">\<span class="name">\</span></span><span class="tag">\<span class="name">+</span></span>&amp;<span class="comment">%\$#_]*)?$</span></span><br></pre></td></tr></table></figure>
+<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">field</span> <span class="keyword">FROM</span> <span class="keyword">table</span> </span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">field</span> </span><br><span class="line">REGEXP <span class="string">"^(https?://|www\\.)[\.A-Za-z0-9\-]+\\.[a-zA-Z]&#123;2,4&#125;</span></span><br></pre></td></tr></table></figure>
+<p>整理自：<a href="http://urlregex.com" target="_blank" rel="noopener">http://urlregex.com</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2017/12/19/Algorithm/sieve-stream/" data-id="cka144ar0001gzgcag7n9n7jk" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2018/8/11/Regular-Expression/The-Perfect-URL-Regular-Expression/" data-id="cka144aqb000czgcamw2lht6t" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SICP/">SICP</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Go/">Go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/MySQL/">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Objective-C/">Objective-C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Perl/">Perl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Ruby/">Ruby</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/VB-NET/">VB.NET</a></li></ul>
 
     </footer>
   </div>
@@ -126,14 +139,14 @@
 
 
   
-    <article id="post-My-first-experience-of-a-telephone-interview" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-why-htmlspecialchars-returns-null-in-PHP" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/10/31/notes/My-first-experience-of-a-telephone-interview/" class="article-date">
-  <time datetime="2017-10-31T09:19:05.000Z" itemprop="datePublished">2017-10-31</time>
+    <a href="../../2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/" class="article-date">
+  <time datetime="2018-06-18T15:08:01.000Z" itemprop="datePublished">2018-06-18</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/notes/">notes</a>
+    <a class="article-category-link" href="../../categories/PHP/">PHP</a>
   </div>
 
   </div>
@@ -144,7 +157,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/31/notes/My-first-experience-of-a-telephone-interview/">听了这么多年的播客，终于也做了一回嘉宾</a>
+      <a class="article-title" href="../../2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/">解决PHP中htmlspecialchars返回null的问题</a>
     </h1>
   
 
@@ -152,203 +165,135 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://upload-images.jianshu.io/upload_images/2650331-98fbdee9a1b55aac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="(图片来源:http://teahour.fm)"></p>
-<p>2017年10月31日，星期二，下午2点，如约接到了国内某容器云公司的电话面试。</p>
-<p>电话是从北京打过来的（我是在南京），刚接到电话，我深吸了一口气，安慰自己要放松，之后按下了接通键。</p>
-<p>首先，跟面试官简单介绍了一下自己，然后又问我以前做过什么东西没有，我回答道，之前跟着老师做过项目，也和同学接过私活做过。（刚开始的时候，有点紧张，并且还有点害羞😳，语速也有点快）</p>
-<p>接着，又让我具体说一下自己参加过的某一个项目，我就开始介绍我去年和同学做的银团的项目，之后，后面的一系列技术相关的问题就开始了（说实话，这里我就开始有点慌了，主要是没有电话面试的经历，心里想，大牛别问太深的问题啊，我是小白）。</p>
+        <p>在开发中，经常需要对用户传过来的数据进行过滤，来阻止一些用户的恶意输入，在PHP中常用到<code>htmlspecialchars()</code>、<code>htmlentities()</code>和<code>strip_tags()</code>函数来处理。</p>
+<p>今天在使用<code>htmlspecialchars()</code>做特殊字符的转换时，一直返回<code>null</code>，当我换成<code>htmlentities()</code>也是同样的问题，查官方手册才发现原来是编码的问题。</p>
+<p>函数声明：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fsg8j0lpb8j30oj01r3yx.jpg" alt=""></p>
+<p>问题主要处在第三个参数上，对于第三个参数官方是这么说的：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fsg8jbqp36j30sq05tmyn.jpg" alt=""></p>
+<p>这个参数的作用是设置转换字符时采用的编码，在PHP 5.4 和5.5中使用了<strong>UTF-8</strong>作为默认编码，而在PHP 5.4之前使用<strong>ISO-8859-1</strong>作为默认编码，从PHP 5.6开始就使用PHP配置文件中的<code>default_charset</code>参数作为默认编码。<code>encoding</code>参数支持的字符集：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fsg8jl4onxj30r80ir0xa.jpg" alt=""></p>
+<p>从PHP的更新日志也能看到这个参数的变化：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fsg8js1l1aj30sk05jab6.jpg" alt=""></p>
+<p>一般我们是这么使用的：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">$str=</span>'<span class="tag">&lt;a href="test.html"&gt;</span>\'测试页面\'<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;script&gt;</span>alert(<span class="number">213</span>)<span class="tag">&lt;/script&gt;</span>';</span><br><span class="line">echo htmlspecialchars($str);</span><br><span class="line">// 输出：&amp;<span class="keyword">lt</span>;a <span class="attr">href=</span>&amp;quot;test.html&amp;quot;&amp;<span class="keyword">gt</span>;'测试页面'&amp;<span class="keyword">lt</span>;/a&amp;<span class="keyword">gt</span>;&amp;<span class="keyword">lt</span>;script&amp;<span class="keyword">gt</span>;alert(<span class="number">213</span>)&amp;<span class="keyword">lt</span>;/script&amp;<span class="keyword">gt</span>;</span><br></pre></td></tr></table></figure>
+<p>今天在使用的时候，结果一直返回null，其实就是编码的问题，这个时候就需要用到第三个参数了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> htmlspecialchars(<span class="variable">$string</span>, ENT_COMPAT,<span class="string">'ISO-8859-1'</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+<p>同样，也适用于<code>htmlentities</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> htmlentities(<span class="variable">$string</span>, ENT_COMPAT,<span class="string">'ISO-8859-1'</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/" data-id="cka144ar5001nzgcaj5v8qi1x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Learn-MySQL-indexes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../2018/6/6/MySQL/Learn-MySQL-indexes/" class="article-date">
+  <time datetime="2018-06-06T11:10:04.000Z" itemprop="datePublished">2018-06-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../categories/MySQL/">MySQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2018/6/6/MySQL/Learn-MySQL-indexes/">MySQL中的索引学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs2f97s3m4j31kw16o1kz.jpg" alt=""></p>
+<h1 id="什么是索引？"><a href="#什么是索引？" class="headerlink" title="什么是索引？"></a>什么是索引？</h1><p>在没有学数据库之前，大多数人对索引还是比较陌生（可能学完之后还是比较陌生：），今天我想告诉大家索引很有用，而且面试的时候都会问到。那么索引是什么呢？</p>
+<p>其实索引这个东西我们很早就接触过了，想象一下当初学习《现代汉语词典》的时候，老师是如何教我们使用的，就可以理解什么是索引了。《现代汉语词典》有将近1800页，里面的汉字大概有1.3万多个，我们是如何在这么多的汉字中找到某个字呢？老师大概是这么教我们的：词典提供了“音节表”，“音节表”将所有汉子的汉语拼音编入其中，并且“音节表”按’a’到’z’的顺序排序，故而我们可以轻松的在音节表中找到某个字所对应的页数。其实不光是词典，我们看的书大部分都有目录，而这个目录就相当于索引的作用，如下是三本书的目录：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fs1onskl51j31kw23vx6p.jpg" alt="《禅与摩托车维修艺术》的目录"></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fs1opioucuj31kw23vu0y.jpg" alt="《黑客与画家》的目录"></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs1oq9j6zuj31kw23vx6q.jpg" alt="《计算机程序的构造和解释》的目录"></p>
+<p>通过上面三本书的目录的对比，很明显第一本书的目录写的很简单，第二本书稍详细一点，而第三本书的目录最详细，目录写得越详细，读者在阅读的时候就越方便。</p>
+<p>不管是词典中的音节表还是书的目录，它们实际都是索引的一种存在形式，都是为了能够提高查找的效率。</p>
+<h2 id="数据库中索引的本质"><a href="#数据库中索引的本质" class="headerlink" title="数据库中索引的本质"></a>数据库中索引的本质</h2><p>本质上，索引其实是数据库表中字段值的复制，该字段称为索引的关键字。</p>
+<h2 id="索引在计算机中的存储"><a href="#索引在计算机中的存储" class="headerlink" title="索引在计算机中的存储"></a>索引在计算机中的存储</h2><p>在学习数据结构时，曾讲到文件的概念，而数据库中所有的数据都是以文件的形式保存的计算机中的，所以文件系统是数据库系统的基础。而数据库在操作这些文件时，都是先将文件中的数据加载到内存，然后再以某种数据结构来操作这些数据，通常的数据结构可以是<a href="http://lib.csdn.net/article/datastructure/9204" target="_blank" rel="noopener">AVL树</a>、<a href="https://blog.csdn.net/v_july_v/article/details/6530142" target="_blank" rel="noopener">B树</a>、<a href="https://blog.csdn.net/v_july_v/article/details/6530142" target="_blank" rel="noopener">B+树</a>等。数据库中的往往是要存大量的数据的，而所有的数据不可能一次性全部加载到内存中，这时候就需要索引与分块加载来提高查询的速度，不过一般初学者不会体验到索引带来的高效，因为他们的电脑内存足够大完全可以一次性加载完所有数据，这也导致初学者忽略了对索引的仔细学习。如下是MyISAM存储引擎的索引示意图：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs1qj978vfj30qe0cigms.jpg" alt="MyISAM存储引擎teacher表的主索引及普通索引"></p>
+<p>更多关于数据库索引背后的数据结构和算法原理，请查看：<a href="https://www.cnblogs.com/tgycoder/p/5410057.html" target="_blank" rel="noopener">https://www.cnblogs.com/tgycoder/p/5410057.html</a></p>
+<h1 id="MySQL中的索引"><a href="#MySQL中的索引" class="headerlink" title="MySQL中的索引"></a>MySQL中的索引</h1><p>在MySQL中，共有4类索引：主键索引、唯一索引、常规索引和全文索引。</p>
+<h2 id="主键索引-Primary-key"><a href="#主键索引-Primary-key" class="headerlink" title="主键索引(Primary key)"></a>主键索引(Primary key)</h2><p>主键索引是关系数据库中最常见的索引类型。它根据主键自身的唯一性来唯一标识每条记录。因此该键必须是表中的唯一值。创建主键索引很简单，如下：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fs1r9yjm69j30mi06kgnw.jpg" alt=""></p>
+<p>每个表只能有一个自增字段，该字段必须指定为主键。此外，任何指定为主键的字段不能是NULL，即使没有声明为NOT NULL，MySQL会自己设置。</p>
+<h2 id="唯一索引-Unique"><a href="#唯一索引-Unique" class="headerlink" title="唯一索引(Unique)"></a>唯一索引(Unique)</h2><p>与主键索引一样，唯一索引可以防止创建重复的值。不同之处在于每个表只能有一个主键索引，但可以有多个唯一索引。修改上面的sql语句来增加唯一索引：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fs1sopkc84j30la068ac3.jpg" alt=""></p>
+<p>如前面所讲，表中可以指定多个唯一字段，我们现在将<code>name</code>字段也设置为唯一：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs1sqt9824j30l206iwgr.jpg" alt=""></p>
+<p>还可以指定多列唯一索引，比如上面的表结构中，允许用户插入重复的url，甚至可以插入重复的name值，但不希望出现重复的name和url的组合。可以创建多列唯一索引来强制这种约束，如下：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs1suh963uj30m207oacm.jpg" alt=""></p>
+<h2 id="常规索引-Index"><a href="#常规索引-Index" class="headerlink" title="常规索引(Index)"></a>常规索引(Index)</h2><p>可能经常需要对数据库的搜索效率进行优化，以便能够根据并非主键甚至并非唯一的列获取数据行。为此，最有效的方法是采用某种方式索引列，是的数据库尽可能快的查找想要的值。这就称为常规索引。</p>
+<h3 id="单列常规索引"><a href="#单列常规索引" class="headerlink" title="单列常规索引"></a>单列常规索引</h3><p>如果表中的某个列经常需要被查询到，就应该使用单列常规索引。假如，一张员工表you 4列：主键id，名字，姓氏和电子邮箱，若果大多数的查询操作都会针对员工的姓氏或者电子邮箱，因为员工的姓氏可以有重复的，而电子邮箱必须唯一，我们就可以给姓氏创建一个常规索引，电子邮箱创建一个唯一索引，如下：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fs2e082sw6j30lu07edif.jpg" alt=""></p>
+<p>同时，MySQL还提供了创建局部字段索引的特性，方式是：将某一字段的前N的字符作为索引，相比于单列常规索引，局部索引需要更少的磁盘空间，同时由于索引的数据短，因此效率会高一点。修改前面的示例，因为通常lastname的前5个字符就足以确保获取到唯一的数据，修改如下：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fs2e0s2v9ij30lu07edif.jpg" alt=""></p>
+<h3 id="多列常规索引"><a href="#多列常规索引" class="headerlink" title="多列常规索引"></a>多列常规索引</h3><p>一般查询时，通常需要包含多列，我们可以指定一些经常被查询的列为多列常规索引。MySQL的多列常规索引方法基于一种<a href="https://www.zhihu.com/question/36996520" target="_blank" rel="noopener">最左前缀(leftmost prefixing)</a>的策略。最左前缀指出包含列A、B和C的任何多列索引都可以提高涉及如下列组合的查询的性能：</p>
 <ul>
-<li><p>整个项目采用了哪些技术，用了什么架构？<br>我说前端我们使用了mui，后端我们用了PHP的Laravel框架，架构的话，一开始讨论是Restful Service和MVC，最后用了MVC。</p>
-</li>
-<li><p>介绍一下什么是MVC？<br>M：Model，主要是数据库方面的封装，把数据表映射成可操作的数据对象。<br>V：View，就是用户看到的视图层，负责用户的前端操作。<br>C：Controller，控制器层，负责处理前端发送过来的http请求。<br>整个流程：用户在View层进行操作，发送http请求给后台，后台Controller层收到请求，然后再从Model层进行数据的操作，之后返回给Controller，Controller再对数据处理后，最后返回数据给View层。</p>
-</li>
-<li><p>谈到MySQL数据库，数据库方面的优化有哪些？<br>缓存，SQL语句方面的优化，多表链接查询优化（自己对数据库方面的知识掌握还是比较薄弱的，这里没有答好）</p>
-</li>
-<li><p>又谈到了聊天功能，这里用到了哪些技术？<br>我说用到了WebSocket，接下来好几个问题就都是围绕websocket来的，自己也没有深入了解过，感觉回答的很烂。</p>
-</li>
+<li>A、B、C</li>
+<li>A、B</li>
+<li>A</li>
 </ul>
-<p>// 此处略过n个问题</p>
-<p>面试快到最后，面试官给我出了一道题，第一遍没有听清楚，然后让面试官又重复了一遍，题目大概是这样的（具体的记得不太清楚了）：有一个集合，里面有一百万个自然数，如何快速判断集合内的数在一百万以内。</p>
-<p>由于全场每根神经都是紧绷的，我急于给出答案，没有做太多思考，答得很糟。第一次回答是用取模的方法，每十个数分别取余（不知道当时怎么想的，居然就这么回答了）；第二次，我说先对集合排序，再做二分查找，面试官也不是很满意。</p>
-<p>最后，面试官说他没有什么问题了，问我有没有其他问题。我接连提了两个问题后，整个面试愉快的技术了。</p>
-<p>整个电话面试持续了将近半个小时，面试官是一直在提问，而且每个问题都跟我做的项目相关，本来还以为会问我一些容器云相关的问题，结果只字未提。</p>
-<p>这次面试，短短三十分钟，感觉自己做了一回播客节目的嘉宾（假装大佬😂），主持人就是面试官，但气氛却没有播客中那么轻松。整个面试下来发现了自己的短板，技术不够扎实，浮于表面，还是太过浮躁了。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-203b1286ff0b40ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="万圣节快乐(图片来源：bing)"></p>
-<p>最后，想起来快万圣节了，所以祝大家节日快乐。</p>
+<p>创建多列索引：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fs2e0z82f0j30km07cmzr.jpg" alt=""></p>
+<p>上图中创建了三个索引，第一个是主键索引，第二个是电子邮箱的唯一索引，第三个就是多列索引，包括两列：lastname和firstname。</p>
+<h3 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h3><p>当字段类型为char、varchar或text时，我们可以使用全文索引。在MySQL中，对大量自然语言做全文搜索时，它提供了一种数据获取的机制，并生成最符合用户需要的结果。比如在对这样“Nginx is the world’s most popular web server”的字符串进行搜索时，单词is和the对结果几乎起不了任何作用，MySQL在搜索时，将文本分解为单词，默认忽略少于4个字符的单词。创建全文索引：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fs2e17ph34j30ku07ajtu.jpg" alt=""></p>
+<p>创建全文索引的方式与创建其他索引没什么区别，但基于全文索引的查询却有一点不同。在查询时，select语句需要使用两个特殊的MySQL函数<code>match()</code>和<code>againet()</code>。查询方式如下：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs2e1enqvrj314c010mxp.jpg" alt=""></p>
+<h4 id="Boolean全文搜索"><a href="#Boolean全文搜索" class="headerlink" title="Boolean全文搜索"></a>Boolean全文搜索</h4><p>Boolean全文搜索对查询提供了更加细的控制允许显示地标识候选结果中应当或不应当出现哪些词（MySQL默认会忽略少于4个字符的关键词）。以下是关于Boolean操作符的描述：</p>
+<p>+ 前导加号确保后面的单词出现在每个结果记录中<br>- 前导减号确保后面的单词不出现在任何结果记录中<br>* 结尾处的星号允许接受关键字变体，只要该变体以星号前面的单词所制定的字符串开头<br>“ “ 外围的双引号确保结果记录包含所包围的字符串，要严格按照输入时的形式出现<br>&lt; &gt; 前导的大于号和小于号分别用于增加和减少后面单词的搜索级别相关度<br>( ) 小括号用于将单词分组为子表达式</p>
+<p>如下是几个简单的例子：</p>
+<ol>
+<li>返回包含Nginx，但不包含manual的记录：</li>
+</ol>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fs2e7333k8j30tw01yt98.jpg" alt=""></p>
+<ol start="2">
+<li>返回包含单词Nginx，但不包含Apache或Tomcat的记录：</li>
+</ol>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fs2e9gd0sqj30t201wwf2.jpg" alt=""></p>
+<ol start="3">
+<li>返回包含web和scripting或者php和scripting的记录，但web scripting的搜索级别低于php scripting：</li>
+</ol>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fs2ecup96cj30t00220t8.jpg" alt=""></p>
+<p>注意，由于MySQL默认会忽略少于4个字符的单词，所以执行上面的SQL命令时，应该先修改<code>ft_min_word_len</code>参数。</p>
+<h1 id="索引选取的注意事项"><a href="#索引选取的注意事项" class="headerlink" title="索引选取的注意事项"></a>索引选取的注意事项</h1><ol>
+<li>只对<code>WHERE</code>和<code>ORDER BY</code>子句中需要的列添加索引，过多的索引会占用很多硬盘空间，在修改数据时还会降低性能，因为每次修改数据时都需要更新索引。</li>
+<li>如果创建如<code>INDEX(firstname, lastname)</code>的索引时，不要再创建<code>INDEX(firstname)</code>，因为MySQL的索引采用最左前缀策略。</li>
+<li>需要索引的列要不为空（NOT NULL），保证构建索引时不存储NULL值。</li>
+<li>可以开启慢查询日志，通过对慢查询日志的分析来优化索引。</li>
+</ol>
+<p>参考：<br>《PHP与MySQL程序设计（第四版）》</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2017/10/31/notes/My-first-experience-of-a-telephone-interview/" data-id="cka144aq20004zgca4hn4ht9l" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2018/6/6/MySQL/Learn-MySQL-indexes/" data-id="cka144as2003gzgcavjxgcyjo" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interviews/">interviews</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/MySQL/">MySQL</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-box-sizing-in-css3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/28/frontend/box-sizing-in-css3/" class="article-date">
-  <time datetime="2017-10-28T10:21:19.000Z" itemprop="datePublished">2017-10-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/frontend/">frontend</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/28/frontend/box-sizing-in-css3/">CSS3中的box-sizing属性</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://upload-images.jianshu.io/upload_images/2650331-c4e9975c93ab0893.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>box-sizing属性是css3中新添加的属性，用来替换原来的<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model" target="_blank" rel="noopener">css盒子模型</a>，box-sizing属性值的不同，元素的高度和宽度的计算方法也不同。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* box-sizing的三个属性值，我们只针对前两个说明 */</span></span><br><span class="line"><span class="selector-tag">box-sizing</span>: <span class="selector-tag">content-box</span>;</span><br><span class="line"><span class="selector-tag">box-sizing</span>: <span class="selector-tag">border-box</span>;</span><br><span class="line"><span class="selector-tag">box-sizing</span>: <span class="selector-tag">padding-box</span>;</span><br></pre></td></tr></table></figure>
-<p>在默认情况下，设置的<code>width</code>和<code>height</code>属性都是指元素内容（content box）的高度和宽度，如果这个元素设置了<code>border</code>或<code>padding</code>的话，那么整个元素的高度和宽度就是：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">totalWidth = border-left + padding-left + width + padding-right + border-right</span><br><span class="line">totalHeight = border-top + padding-top + height + padding-bottom + border-bottom</span><br></pre></td></tr></table></figure></p>
-<p>所以，这个在做相应式设计的时候还是比较复杂的，现在，有了box-sizing属性，就可以根据不同的属性值计算元素的高度和宽度。</p>
-<ul>
-<li><code>content-box</code>：这是默认情况，根据这个属性值的名字也能大概猜出会是什么情况，整个元素的高度和宽度其实就是上面的两个公式</li>
-<li><code>border-box</code>：这种情况下，你设置的<code>width</code>和<code>height</code>属性值就是针对整个元素，包括了border，padding，和元素内容。</li>
-</ul>
-<h4 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h4><h5 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">5px</span> solid blue;</span><br><span class="line">    <span class="attribute">background-color</span>: orange;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box1</span> &#123;</span><br><span class="line">    <span class="attribute">box-sizing</span>: content-box;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box2</span> &#123;</span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box box1"</span>&gt;</span></span><br><span class="line">    content-box</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box box2"</span>&gt;</span></span><br><span class="line">    border-box</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>代码中，我们对两个div设置了相同的height、width、border和padding，可是现实效果却完全不同：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-f495dd644346ee59.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="demo"></p>
-<p>我们仔细分析下，两个div不同的地方在于box-sizing属性，第一个是<code>content-box</code>，第二个是<code>border-box</code>，针对第一个div，</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-877a3ce0e581d752.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-612a1672b0d750f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第一个div"></p>
-<p>我们发现，整个元素的高度和宽度是260x260，而元素的内容的高度和宽度是150x150，正好是我们想要的，对于260这个大小是怎么来的，我们不妨计算一下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5+50+150+50+5=260  // 高度</span><br><span class="line">5+50+150+50+5=260  // 宽度</span><br></pre></td></tr></table></figure></p>
-<p>正好是260，符合最上面的两个公式，所以最后元素的尺寸是260x260，并不是我们设置的150x150</p>
-<p>对于第二个div：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-ae3596bd4483e47f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-f80a425bad255ca7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第二个div"></p>
-<p>很明显可以看到，第二个div里面的内容已经被挤了换行了，这个div的真实的高度和宽度和我们设置的一样，可以它的内容部分的尺寸只有40x40，远小于150，可以看到，这就是<code>content-box</code>和<code>border-box</code>的区别了，再来计算一下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">150 = 5+50+40+50+5 // 高度</span><br><span class="line">150 = 5+50+40+50+5 // 宽度</span><br></pre></td></tr></table></figure>
-<p>可知，整个元素的高度其实是包括了border、padding和内容的高度，宽度也是如此。</p>
-<h4 id="浏览器的兼容性"><a href="#浏览器的兼容性" class="headerlink" title="浏览器的兼容性"></a>浏览器的兼容性</h4><ul>
-<li><p>桌面端<br><img src="http://upload-images.jianshu.io/upload_images/2650331-3a56c6fe15ff93e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-</li>
-<li><p>手机端<br><img src="http://upload-images.jianshu.io/upload_images/2650331-6bb890ae10bdf791.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-</li>
-</ul>
-<p>可以看到，不管是手机端还是桌面端大部分都是不支持<code>padding-box</code>的，所以建议实际开发中避免使用<code>padding-box</code>。</p>
-<p>跟多详细内容请参考：<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2017/10/28/frontend/box-sizing-in-css3/" data-id="cka144aqx001azgcaxbty2ne1" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-zh/first-test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/20/notes/zh/first-test/" class="article-date">
-  <time datetime="2017-10-20T08:13:44.000Z" itemprop="datePublished">2017-10-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/notes/">notes</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/20/notes/zh/first-test/">博客迁移到Github啦^ _ ^</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="新的博客，新的起点，新的征程"><a href="#新的博客，新的起点，新的征程" class="headerlink" title="新的博客，新的起点，新的征程"></a>新的博客，新的起点，新的征程</h4><p>博客地址先甩上来：<a href="http://xydida.com" target="_blank" rel="noopener">http://xydida.com</a></p>
-<p><code>echo &quot;Welcome to my Blog&quot;</code></p>
-<p>先说明一下，由于博客之前一直是放在<a href="https://www.openshift.com" target="_blank" rel="noopener">OpenShift</a>上面的，不过由于OpenShift最近更新了V3版本，这个版本的更新还挺大的，已经完全是一个容器云服务的平台，但感觉在上面搭一个wordpress比较麻烦，而且受限于国内的网络，之前早就想换到GitHub了，正好趁此机会，尝试一下<a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>，哈哈😄。下图是最新版本的OpenShift的控制台：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-28569747d2d05234.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="openshift-manager"><br>由于之前博客上并没有写多少有深度的文章，我也就没有备份，以后将会多输出优质文章，记录生活点滴。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2017/10/20/notes/zh/first-test/" data-id="cka144asz004azgca6cxjo9ao" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Something/">Something</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/20/notes/hello-world/" class="article-date">
-  <time datetime="2017-10-20T07:18:54.000Z" itemprop="datePublished">2017-10-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/20/notes/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2017/10/20/notes/hello-world/" data-id="cka144aqq000uzgcagkq7n3bl" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -359,7 +304,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/5/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    <a class="extend prev" rel="prev" href="../5/">&laquo; __('prev')</a><a class="page-number" href="../../">1</a><span class="space">&hellip;</span><a class="page-number" href="../4/">4</a><a class="page-number" href="../5/">5</a><span class="page-number current">6</span><a class="page-number" href="../7/">7</a><a class="page-number" href="../8/">8</a><span class="space">&hellip;</span><a class="page-number" href="../10/">10</a><a class="extend next" rel="next" href="../7/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -369,7 +314,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Devops/">Devops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Networks/">Networks</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Object-Oriented/">Object Oriented</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Regular-Expression/">Regular Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小程序/">小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/微信/">微信</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Devops/">Devops</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Networks/">Networks</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Object-Oriented/">Object Oriented</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Regular-Expression/">Regular Expression</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/frontend/">frontend</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/小程序/">小程序</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/微信/">微信</a></li></ul>
     </div>
   </div>
 
@@ -379,7 +324,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-Oriented/">Object Oriented</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPStorm/">PHPStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PSR/">PSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Perl/">Perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reflection/">Reflection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SICP/">SICP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Something/">Something</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tmux/">Tmux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VB-NET/">VB.NET</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/autoload/">autoload</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/efficiency/">efficiency</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interviews/">interviews</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/networks/">networks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/notes/">notes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/routing/">routing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Go/">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Laravel/">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Object-Oriented/">Object Oriented</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PHPStorm/">PHPStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PSR/">PSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Perl/">Perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Reflection/">Reflection</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Ruby/">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SICP/">SICP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Something/">Something</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Tmux/">Tmux</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/VB-NET/">VB.NET</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/autoload/">autoload</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/canvas/">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/efficiency/">efficiency</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/interviews/">interviews</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/networks/">networks</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/notes/">notes</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/routing/">routing</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/微信/">微信</a></li></ul>
     </div>
   </div>
 
@@ -389,7 +334,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Laravel/" style="font-size: 10px;">Laravel</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="/tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="/tags/PSR/" style="font-size: 10px;">PSR</a> <a href="/tags/Perl/" style="font-size: 10px;">Perl</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SICP/" style="font-size: 10px;">SICP</a> <a href="/tags/Server/" style="font-size: 15px;">Server</a> <a href="/tags/Something/" style="font-size: 10px;">Something</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="/tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/autoload/" style="font-size: 10px;">autoload</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="/tags/interviews/" style="font-size: 10px;">interviews</a> <a href="/tags/networks/" style="font-size: 10px;">networks</a> <a href="/tags/notes/" style="font-size: 10px;">notes</a> <a href="/tags/routing/" style="font-size: 10px;">routing</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/小程序/" style="font-size: 15px;">小程序</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a>
+      <a href="../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../tags/CSS/" style="font-size: 10px;">CSS</a> <a href="../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="../../tags/Laravel/" style="font-size: 10px;">Laravel</a> <a href="../../tags/Linux/" style="font-size: 15px;">Linux</a> <a href="../../tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../tags/Server/" style="font-size: 15px;">Server</a> <a href="../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../tags/Vue/" style="font-size: 10px;">Vue</a> <a href="../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../tags/networks/" style="font-size: 10px;">networks</a> <a href="../../tags/notes/" style="font-size: 10px;">notes</a> <a href="../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../tags/小程序/" style="font-size: 15px;">小程序</a> <a href="../../tags/微信/" style="font-size: 10px;">微信</a>
     </div>
   </div>
 
@@ -398,7 +343,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">October 2017</a></li></ul>
     </div>
   </div>
 
@@ -411,23 +356,23 @@
       <ul>
         
           <li>
-            <a href="/2020/5/10/微信/jssdk-invalid-signature/">微信jssdk踩坑—invalid signature</a>
+            <a href="../../2020/5/10/微信/jssdk-invalid-signature/">微信jssdk踩坑—invalid signature</a>
           </li>
         
           <li>
-            <a href="/2019/10/3/PHP/building-SPA-with-Vue-and-Laravel/">如何使用Laravel 和 Vue 构建一个简单的SPA</a>
+            <a href="../../2019/10/3/PHP/building-SPA-with-Vue-and-Laravel/">如何使用Laravel 和 Vue 构建一个简单的SPA</a>
           </li>
         
           <li>
-            <a href="/2019/8/25/notes/reading-notes-2-about-a-philosophy-of-software-design/">软件设计复杂性的体现</a>
+            <a href="../../2019/8/25/notes/reading-notes-2-about-a-philosophy-of-software-design/">软件设计复杂性的体现</a>
           </li>
         
           <li>
-            <a href="/2019/8/25/notes/reading-notes-1-about-a-philosophy-of-software-design/">关于软件设计的复杂性</a>
+            <a href="../../2019/8/25/notes/reading-notes-1-about-a-philosophy-of-software-design/">关于软件设计的复杂性</a>
           </li>
         
           <li>
-            <a href="/2019/5/31/Tools/Hot-key-to-select-same-occurrence-in-PHPStorm/">PHPStorm中快速选中多个相同的单词</a>
+            <a href="../../2019/5/31/Tools/Hot-key-to-select-same-occurrence-in-PHPStorm/">PHPStorm中快速选中多个相同的单词</a>
           </li>
         
       </ul>
@@ -442,7 +387,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 Bilberry<br>
+      &copy; 2020 bilberry<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -450,9 +395,9 @@
     </div>
     <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">Home</a>
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
   
 </nav>
     
@@ -460,11 +405,11 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  <link rel="stylesheet" href="../../fancybox/jquery.fancybox.css">
+  <script src="../../fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js"></script>
+<script src="../../js/script.js"></script>
 
   </div>
 </body>
