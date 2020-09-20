@@ -110,7 +110,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>之前写过文章讲<code>cover-view</code>的坑，但是坑太多了，网上一片吐槽。今天来说下最近新落入的两个<code>cover-view</code>的坑：</p>
+        <p>之前写过<a href="https://xydida.com/2020/9/20/小程序/cover-view/" target="_blank" rel="noopener">文章讲cover-view的坑</a>，但是坑太多了，网上一片吐槽。今天来说下最近新落入的两个<code>cover-view</code>的坑：</p>
 <h1 id="文本不换行"><a href="#文本不换行" class="headerlink" title="文本不换行"></a>文本不换行</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">style</span>=<span class="string">"width: 100rpx;border: 1px solid red;"</span>&gt;</span></span><br><span class="line">	Helloworld Helloworld Helloworld Helloworld Helloworld Helloworld Helloworld</span><br><span class="line"><span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>如上面代码，指定了<code>cover-view</code>的宽度，然后里面会有一长串文字，当文本超出后，并没有换行，超出部分被隐藏了，效果：</p>
 <p><img src="https://i.loli.net/2020/09/20/roZ9F6IkYgVxU8p.png" alt=""></p>
