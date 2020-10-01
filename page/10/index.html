@@ -84,6 +84,92 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Use-screen-to-manage-your-remote-session" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../2018/5/15/Linux/Use-screen-to-manage-your-remote-session/" class="article-date">
+  <time datetime="2018-05-15T09:33:36.000Z" itemprop="datePublished">2018-05-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2018/5/15/Linux/Use-screen-to-manage-your-remote-session/">使用Screen管理远程回话</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>​    在本地开发时，经常需要使用远程连接到Linux服务器，一开始我自己都是有几个远程就开几个SSH窗口，这种方法很原始很直接，但每次都受够了密码输入，即使用了SSH免密码登录，也会觉得每次输入SSH的命令一点都不快速，况且况且窗口开多了，也会很混乱，不易管理，这种情况，Linux上的工具也有很多，今天就学习一下<code>screen</code>工具。</p>
+<p>​    在介绍<code>screen</code>工具时，先讨论一下，为什么连接服务器后，当执行长时间的任务时，我们关闭远程连接窗口，这个任务就被杀掉了呢？</p>
+<h3 id="元凶：SIGUP信号"><a href="#元凶：SIGUP信号" class="headerlink" title="元凶：SIGUP信号"></a>元凶：SIGUP信号</h3><p>​    在Linux／Unix中，有以下几个概念：</p>
+<ul>
+<li>进程组（process group）：一个或多个进程的集合，每个进程组都有一个唯一的进程组ID；</li>
+<li>会话期（session）：一个或多个进程组的集合，有唯一一个会话首进程（session leader），会话期ID为首进程ID；</li>
+<li>会话期可以有一个单独的会话终端，与控制终端连接的会话期首进程叫控制进程（controlling process），当前与终端交互的进程称为前台进程组，其余进程组称为后台进程组。</li>
+</ul>
+<p>​工具POSIX.1定义：</p>
+<ul>
+<li>挂断信号（SIGHUP）默认的动作是终止程序；</li>
+<li>当终端接口检测到网络连接断开，将发送SIGHUP信号给控制进程（会话期首进程）；</li>
+<li>如果会话期首进程终止，则该信号发送到该会话期前台进程组；</li>
+<li>一个进程退出导致一个孤儿进程组产生时，如果人一个孤儿进程组进程处于STOP状态，则发送SIGHUP和SIGCONT信号到该进程组中所有进程。</li>
+</ul>
+<p>因此当网络断开或窗口关闭时，控制进程收到SIGHUP信号退出，会导致该会话期内其他进程退出。</p>
+<h3 id="一个简单例子"><a href="#一个简单例子" class="headerlink" title="一个简单例子"></a>一个简单例子</h3><p>打开两个SSH终端窗口，在第一个中执行<code>ping</code>命令：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc6u7rhvyj30il0f9te8.jpg" alt=""></p>
+<p>再另一个终端窗口中，找到<code>ping</code>的进程ID为22132，其父进程ID为21803，即登录zsh：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc6yf26ygj30g801d748.jpg" alt=""></p>
+<p>使用<code>ps -xj</code>可以看到，登录zsh（PID 21803）和ping在同一会话期，zsh为会话期首进程，所以进程组PGID为21803，ping所在的进程组PGID为22132，为前台进程组。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc7190pf9j30gn01w0st.jpg" alt=""></p>
+<p>这时，我们关闭第一个SSH远程窗口，在另一个窗口中看到ping进程被杀掉了：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1frc780f1bgj30df00z3yb.jpg" alt=""></p>
+<p>这就发现，当我们执行一个耗时的任务时，如果关闭了这个窗口，这个任务进程也就被杀掉了，并不是我们所期望的那样在后台继续执行。</p>
+<h2 id="使用screen"><a href="#使用screen" class="headerlink" title="使用screen"></a>使用screen</h2><p>​    现在，也不需要多说<code>screen</code>到底是干什么的了，直接说怎么使用吧。</p>
+<ol>
+<li>直接执行<code>screen</code>命令</li>
+</ol>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1frc7gskgthj30p302zmx8.jpg" alt=""></p>
+<p><code>screen</code>将创建一个执行shell的全屏窗口，可以看到窗口的title已经提示处于<code>screen</code>程序中，在这个窗口中你可以随便执行命令，如果要退出输入<code>exit</code>命令。</p>
+<ol start="2">
+<li>如果你想新开一个窗口执行另一个任务，可以执行：</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法1</span></span><br><span class="line">按键盘Ctrl+<span class="selector-tag">a</span> +c, 会心打开一个screen窗口</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法2</span></span><br><span class="line">screen 需要执行的任务的命令，比如：</span><br><span class="line">screen ping www<span class="selector-class">.baidu</span><span class="selector-class">.com</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>多个<code>screen</code>窗口切换</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">方法<span class="number">1</span></span><br><span class="line">键盘Ctrl+<span class="selector-tag">a</span> +[<span class="number">0</span>..<span class="number">9</span>]</span><br><span class="line"></span><br><span class="line">方法<span class="number">2</span></span><br><span class="line">键盘Ctrl+<span class="selector-tag">a</span> +n, 下一个screen窗口</span><br><span class="line">键盘Ctrl+<span class="selector-tag">a</span> +<span class="selector-tag">p</span>, 上一个screen窗口</span><br></pre></td></tr></table></figure>
+<p>更多命令可以看下图：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc7u10k57j30lt0i40um.jpg" alt=""></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1frc7zis4jxj310z0dzgo5.jpg" alt=""></p>
+<p>Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器，Screen中还有会话的概念，用户可以在一个screen会话中创建多个screen窗口，而在每一个screen窗口中就像操作一个真实的SSH连接窗口那样。</p>
+<p>参考：<a href="https://www.ibm.com/developerworks/cn/linux/l-cn-screen/" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/linux/l-cn-screen/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2018/5/15/Linux/Use-screen-to-manage-your-remote-session/" data-id="ckfq7r4bf0010svcac4vimbp1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Server/">Server</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Routing-Selection" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="../../2018/5/14/Networks/Routing-Selection/" class="article-date">
@@ -169,7 +255,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/5/14/Networks/Routing-Selection/" data-id="ckfaj9zmq000733cabqbgytpy" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2018/5/14/Networks/Routing-Selection/" data-id="ckfq7r4az000gsvca8wq7hzwx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/networks/">networks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/routing/">routing</a></li></ul>
@@ -215,13 +301,13 @@
 <h2 id="2-SSH密钥对认证"><a href="#2-SSH密钥对认证" class="headerlink" title="2. SSH密钥对认证"></a>2. SSH密钥对认证</h2><p>上面创建完jack用户后，就可以执行下面的命令登录：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ssh</span> <span class="selector-tag">jack</span>@<span class="keyword">123</span>.<span class="keyword">123</span>.<span class="keyword">78</span>.<span class="keyword">90</span></span><br></pre></td></tr></table></figure>
 <p>此时，会要求你输入jack的密码，但密码认证也有漏洞，而且会受到暴力破解，不怀好意的人会不断尝试猜测你的密码，而且，每次登录时都要求你输入密码，是不是很麻烦呢？这时我们就需要创建SSH密码对认证（所谓密钥对，就是一对“密钥”，其中一个是私钥，保存在自己的电脑中，另一个是公钥，保存在服务器中，公钥加密的消息只能使用对应的私钥解密）。</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen  <span class="comment">// 创建密钥对</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen  <span class="comment">// 创建密钥对</span></span><br></pre></td></tr></table></figure>
 <p>然后按照屏幕提示输入所需要的信息，这个命令会在电脑创建两个文件：<code>~/.ssh/id_rsa.pub(公钥)</code>和<code>~/.ssh/id.rsa(私钥)</code>，私钥应该保存在本地电脑中，公钥上传到服务器。</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 把公钥上传到服务器中jack用户的家目录，后面一定要有":"</span></span><br><span class="line"><span class="selector-tag">sup</span> ~/.ssh/id_rsa<span class="selector-class">.pub</span> jack@<span class="number">123.123</span>.<span class="number">78.90</span>:</span><br></pre></td></tr></table></figure>
 <p>登录服务器，创建.ssh目录：</p>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/.ssh</span><br></pre></td></tr></table></figure>
 <p>创建~/.ssh/authorized_keys文件，这个文件的内容是一系列允许登录这台服务器的公钥：</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch ~<span class="regexp">/.ssh/</span>authorized_keys</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch ~<span class="regexp">/.ssh/</span>authorized_keys</span><br></pre></td></tr></table></figure>
 <p>把上传的公钥添加到~/.ssh/authorized_keys文件中：</p>
 <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~<span class="string">/id_rsa.pub</span> &gt;&gt; ~<span class="string">/.ssh/authorized_keys</span></span><br></pre></td></tr></table></figure>
 <p>最后修改下面几个目录和文件的访问权限，让jack用户访问~/.ssh目录和~/.ssh/ahthorized_keys文件：</p>
@@ -240,62 +326,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/2/4/Devops/Base-configuration-for-a-new-server/" data-id="ckfaj9zmb000033ca4znq3uuy" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2018/2/4/Devops/Base-configuration-for-a-new-server/" data-id="ckfq7r4am0005svcavzeb5efu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Server/">Server</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-sieve-stream" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="../../2017/12/19/Algorithm/sieve-stream/" class="article-date">
-  <time datetime="2017-12-19T04:22:03.000Z" itemprop="datePublished">2017-12-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="../../categories/Algorithm/">Algorithm</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2017/12/19/Algorithm/sieve-stream/">用厄拉多塞法筛选素数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近在看<code>SICP</code>，这本书写的确实不错。3.5节中讲到了无穷流对素数的一个应用：用厄拉多塞筛法来构造出素数的无穷流。这个筛选思路值得记录一下。</p>
-<blockquote>
-<p>厄拉多塞是公元前3世纪希腊亚历山大的哲学家。他由于第一个给出了地球的圆周的精确估计而闻名。他的计算方式是观察夏至日正午影子的角度。虽然厄拉多塞筛法历史如此悠久，但仍成为专用硬件“筛”的基础，直至最近都一直是确定大素数存在的有力工具。直到20世纪70年代，这种算法被概率算法超越。</p>
-</blockquote>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>（前面关于流和无穷流的定义以及说明直接略过了，感兴趣的可以自己看）首先，这个无穷流从整数2开始，因为这是第一个素数。为了得到其余的素数，就需要从2后面的整数中过滤掉所有2的倍数，这样就留下一个从3开始的无穷流，而3也就是下一个素数。现在再从这个流的后面部分过滤掉所有3的倍数，这样就留下一个从5开头的无穷流，而5又是下一个素数，就这样继续下去。换句话说，这种方法就是通过一个筛选过程构造出各个素数。</p>
-<h4 id="筛选过程描述如下"><a href="#筛选过程描述如下" class="headerlink" title="筛选过程描述如下"></a>筛选过程描述如下</h4><p>对流S做筛选就是形成一个流，其中的第一个元素就是S的第一个元素，得到其随后的元素的方式是从S的其余元素中过滤掉所有S的第一个元素的倍数，而后再对得到的结果进行同样的筛选。</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sieve</span> stream)</span><br><span class="line">  (<span class="name">cons-stream</span></span><br><span class="line">    (<span class="name">stream-car</span> stream)</span><br><span class="line">    (<span class="name">sieve</span> (<span class="name">stream-filter</span></span><br><span class="line">                 (<span class="name"><span class="builtin-name">lambda</span></span>  (x)</span><br><span class="line">                      (<span class="name"><span class="builtin-name">not</span></span> (<span class="name">divisible?</span> x (<span class="name">stream-car</span> stream))))</span><br><span class="line">                (<span class="name">stream-car</span> stream)))))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> primes (<span class="name">sieve</span> (<span class="name">integers-starting-from</span> <span class="number">2</span>)))</span><br></pre></td></tr></table></figure>
-<p>上面的Lisp代码写得还是很精练的，没有任何多余的代码。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-8b12448528e629e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="将素数筛看作一个信号处理系统"></p>
-<p>我们可以将上面的厄拉多塞筛法看作是一个信号处理系统。出入流溃入“<code>反cons</code>”，分解出这个流的首元素和其余元素，用这个首元素去构造一个可除性过滤取，让该流的其余部分穿过这个过滤器，这个过滤器的输出再溃入到另一个筛块，而后将原来的首元素<code>cons</code>到这个内部筛的输出上，形成最终的输出流。这样，不仅输入流是无穷的，信息处理器也是无穷的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2017/12/19/Algorithm/sieve-stream/" data-id="ckfaj9zob002e33capdxx2pdv" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/SICP/">SICP</a></li></ul>
 
     </footer>
   </div>
@@ -328,7 +362,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../tags/CSS/" style="font-size: 13.33px;">CSS</a> <a href="../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="../../tags/Laravel/" style="font-size: 10px;">Laravel</a> <a href="../../tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="../../tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../tags/Server/" style="font-size: 13.33px;">Server</a> <a href="../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../tags/Vue/" style="font-size: 10px;">Vue</a> <a href="../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../tags/cover-view/" style="font-size: 13.33px;">cover-view</a> <a href="../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../tags/electron/" style="font-size: 10px;">electron</a> <a href="../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../tags/networks/" style="font-size: 10px;">networks</a> <a href="../../tags/notes/" style="font-size: 10px;">notes</a> <a href="../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../tags/小程序/" style="font-size: 16.67px;">小程序</a> <a href="../../tags/微信/" style="font-size: 10px;">微信</a>
+      <a href="../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../tags/CSS/" style="font-size: 13.33px;">CSS</a> <a href="../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="../../tags/Laravel/" style="font-size: 10px;">Laravel</a> <a href="../../tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="../../tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../tags/Server/" style="font-size: 13.33px;">Server</a> <a href="../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../tags/Vue/" style="font-size: 10px;">Vue</a> <a href="../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../tags/cover-view/" style="font-size: 13.33px;">cover-view</a> <a href="../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../tags/electron/" style="font-size: 10px;">electron</a> <a href="../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../tags/networks/" style="font-size: 10px;">networks</a> <a href="../../tags/notes/" style="font-size: 13.33px;">notes</a> <a href="../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../tags/小程序/" style="font-size: 16.67px;">小程序</a> <a href="../../tags/微信/" style="font-size: 10px;">微信</a>
     </div>
   </div>
 
@@ -337,7 +371,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">October 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">October 2017</a></li></ul>
     </div>
   </div>
 
@@ -348,6 +382,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="../../2020/10/1/notes/APP-URL-Scheme/">一些常用APP的URL Scheme</a>
+          </li>
         
           <li>
             <a href="../../2020/9/20/小程序/cover-view-2/">小程序cover-view踩坑系列2</a>
@@ -363,10 +401,6 @@
         
           <li>
             <a href="../../2020/5/17/frontend/design-a-swiper-by-CSS/">纯CSS实现轮播图</a>
-          </li>
-        
-          <li>
-            <a href="../../2020/5/10/微信/jssdk-invalid-signature/">微信jssdk踩坑—invalid signature</a>
           </li>
         
       </ul>
