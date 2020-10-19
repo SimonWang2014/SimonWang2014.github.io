@@ -10,18 +10,18 @@
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="SSH登录时提示Permission denied (publickey)ssh在登录时，默认会使用当前用户home目录下的id_rsa文件来认证，由于我们在用ssh-keygen生成key时，由于指定了目录，所有就找不到私钥，报错，解决办法如下： 创建config文件：vim ~/.ssh/config 修改文件内容如下： 123456789Host aaa.com  User git  Hos">
+  <meta name="description" content="SSH登录时提示Permission denied (publickey)ssh在登录时，默认会使用当前用户home目录下的id_rsa文件来认证，由于我们在用ssh-keygen生成key时，由于指定了目录，所有就找不到私钥，报错，解决办法如下：">
 <meta name="keywords" content="Server">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSH登录时提示Permission denied (publickey)">
 <meta property="og:url" content="https://www.xydida.com/2020/10/19/Linux/ssh-login-Permission-denied-publickey/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="SSH登录时提示Permission denied (publickey)ssh在登录时，默认会使用当前用户home目录下的id_rsa文件来认证，由于我们在用ssh-keygen生成key时，由于指定了目录，所有就找不到私钥，报错，解决办法如下： 创建config文件：vim ~/.ssh/config 修改文件内容如下： 123456789Host aaa.com  User git  Hos">
+<meta property="og:description" content="SSH登录时提示Permission denied (publickey)ssh在登录时，默认会使用当前用户home目录下的id_rsa文件来认证，由于我们在用ssh-keygen生成key时，由于指定了目录，所有就找不到私钥，报错，解决办法如下：">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2020-10-19T14:29:30.134Z">
+<meta property="og:updated_time" content="2020-10-19T14:29:58.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSH登录时提示Permission denied (publickey)">
-<meta name="twitter:description" content="SSH登录时提示Permission denied (publickey)ssh在登录时，默认会使用当前用户home目录下的id_rsa文件来认证，由于我们在用ssh-keygen生成key时，由于指定了目录，所有就找不到私钥，报错，解决办法如下： 创建config文件：vim ~/.ssh/config 修改文件内容如下： 123456789Host aaa.com  User git  Hos">
+<meta name="twitter:description" content="SSH登录时提示Permission denied (publickey)ssh在登录时，默认会使用当前用户home目录下的id_rsa文件来认证，由于我们在用ssh-keygen生成key时，由于指定了目录，所有就找不到私钥，报错，解决办法如下：">
   
     <link rel="alternate" href="/atom.xml" title="我的博客" type="application/atom+xml">
   
@@ -110,6 +110,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="SSH登录时提示Permission-denied-publickey"><a href="#SSH登录时提示Permission-denied-publickey" class="headerlink" title="SSH登录时提示Permission denied (publickey)"></a>SSH登录时提示Permission denied (publickey)</h1><p><code>ssh</code>在登录时，默认会使用当前用户<code>home</code>目录下的<code>id_rsa</code>文件来认证，由于我们在用<code>ssh-keygen</code>生成key时，由于指定了目录，所有就找不到私钥，报错，解决办法如下：</p>
+<a id="more"></a>
 <p>创建<code>config</code>文件：<br><code>vim ~/.ssh/config</code></p>
 <p>修改文件内容如下：</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Host aaa.com</span><br><span class="line"> <span class="built_in"> User </span>git</span><br><span class="line">  Hostname aaa.com</span><br><span class="line">  IdentityFile 私钥地址</span><br><span class="line"></span><br><span class="line">Host 123.123.123.123</span><br><span class="line"> <span class="built_in"> User </span>bill</span><br><span class="line">  Hostname 123.123.123.123</span><br><span class="line">  IdentityFile 私钥地址</span><br></pre></td></tr></table></figure>
