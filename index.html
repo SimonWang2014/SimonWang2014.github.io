@@ -84,6 +84,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ssh-login-Permission-denied-publickey" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/19/Linux/ssh-login-Permission-denied-publickey/" class="article-date">
+  <time datetime="2020-10-19T14:22:39.000Z" itemprop="datePublished">2020-10-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/19/Linux/ssh-login-Permission-denied-publickey/">SSH登录时提示Permission denied (publickey)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SSH登录时提示Permission-denied-publickey"><a href="#SSH登录时提示Permission-denied-publickey" class="headerlink" title="SSH登录时提示Permission denied (publickey)"></a>SSH登录时提示Permission denied (publickey)</h1><p><code>ssh</code>在登录时，默认会使用当前用户<code>home</code>目录下的<code>id_rsa</code>文件来认证，由于我们在用<code>ssh-keygen</code>生成key时，由于指定了目录，所有就找不到私钥，报错，解决办法如下：</p>
+<p>创建<code>config</code>文件：<br><code>vim ~/.ssh/config</code></p>
+<p>修改文件内容如下：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Host aaa.com</span><br><span class="line"> <span class="built_in"> User </span>git</span><br><span class="line">  Hostname aaa.com</span><br><span class="line">  IdentityFile 私钥地址</span><br><span class="line"></span><br><span class="line">Host 123.123.123.123</span><br><span class="line"> <span class="built_in"> User </span>bill</span><br><span class="line">  Hostname 123.123.123.123</span><br><span class="line">  IdentityFile 私钥地址</span><br></pre></td></tr></table></figure>
+<p>用这个配置文件，就能针对不同<code>ip</code>/<code>域名</code>使用不同的私钥了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2020/10/19/Linux/ssh-login-Permission-denied-publickey/" data-id="ckggmxs2m002lpccasvnihod6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Server/">Server</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-APP-URL-Scheme" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/1/notes/APP-URL-Scheme/" class="article-date">
@@ -126,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/10/1/notes/APP-URL-Scheme/" data-id="ckgbuacqr0005hncaoewksuot" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2020/10/1/notes/APP-URL-Scheme/" data-id="ckggmxs0v0001pccarjfw53n1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/notes/">notes</a></li></ul>
@@ -201,80 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/9/20/小程序/cover-view-2/" data-id="ckgbuacs1002ahncalteayo4n" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/cover-view/">cover-view</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/小程序/">小程序</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-cover-view" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/9/20/小程序/cover-view/" class="article-date">
-  <time datetime="2020-09-20T01:57:02.000Z" itemprop="datePublished">2020-09-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="categories/小程序/">小程序</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/9/20/小程序/cover-view/">小程序cover-view踩坑</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="cover-view内只支持部分标签"><a href="#cover-view内只支持部分标签" class="headerlink" title="cover-view内只支持部分标签"></a>cover-view内只支持部分标签</h1><p>可以使用的有：<code>cover-view</code>、<code>cover-image</code>，<code>button</code>，<code>&lt;ad&gt;</code>，<code>&lt;navigator&gt;</code>，其他的一律不显示</p>
-<h1 id="cover-view不支持设置单边框"><a href="#cover-view不支持设置单边框" class="headerlink" title="cover-view不支持设置单边框"></a>cover-view不支持设置单边框</h1><p>意思就是要么设置四周的边框，要么就不显示，单独使用<code>border-left</code>，<code>border-right</code>，<code>border-top</code>，<code>border-bottom</code>都不会显示，那么问题来了，如果要绘制类似于表格的东西，单元格之间边框肯定会很粗，这就需要单独设置某一条边的边框，这恰恰是<code>cover-view</code>不支持的，例如：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 表格每一个元素</span><br><span class="line"><span class="selector-class">.td</span> &#123;</span><br><span class="line">		<span class="attribute">border-right</span>: <span class="number">1px</span> solid <span class="number">#ECDFCA</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"tr"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"td text-sm text-left cover-view-wrap pos_r"</span>&gt;</span></span><br><span class="line">		买1件，再凑¥142</span><br><span class="line">	<span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"td text-sm text-center pos_r"</span>&gt;</span></span><br><span class="line">		345.22</span><br><span class="line">	<span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"td text-sm text-center pos_r"</span>&gt;</span></span><br><span class="line">		120.22</span><br><span class="line">	<span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"td text-sm text-left cover-view-wrap pos_r"</span>&gt;</span></span><br><span class="line">		促销：每满199减100，领券：满299减30</span><br><span class="line">	<span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>微信开发者工具上看好的很：</p>
-<p><img src="https://i.loli.net/2020/09/20/sT2RfNKuwSi63hd.png" alt="开发者工具"></p>
-<p>然而我们再来看看真机上：</p>
-<p><img src="https://i.loli.net/2020/09/20/6DL3XxOPNkA59Z1.png" alt="IOS不显示边框"></p>
-<p><img src="https://i.loli.net/2020/09/20/b9CoAY7yLe3Slq1.png" alt="Android上同样不显示" style="zoom:67%;"></p>
-<p>有问题就要解决啊，于是又弄了这么个解决办法：所谓边框就是4条线吧，那我们手动创建这四条线：</p>
-<p><img src="https://i.loli.net/2020/09/20/1W5EqYNwR7h34i6.png" alt="构造四条边框"></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.border-h</span> &#123;</span><br><span class="line">		<span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">		<span class="attribute">height</span>: <span class="number">1px</span>;</span><br><span class="line">		<span class="attribute">background-color</span>: <span class="number">#ECDFCA</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="selector-class">.border-v</span> &#123;</span><br><span class="line">		<span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">		<span class="attribute">width</span>: <span class="number">1px</span>;</span><br><span class="line">		<span class="attribute">background-color</span>: <span class="number">#ECDFCA</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="selector-class">.top</span><span class="selector-attr">[class*="border-h"]</span> &#123;</span><br><span class="line">		<span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">		<span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="selector-class">.bottom</span><span class="selector-attr">[class*="border-h"]</span> &#123;</span><br><span class="line">		<span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">		<span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="selector-class">.left</span><span class="selector-attr">[class*="border-v"]</span> &#123;</span><br><span class="line">		<span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">		<span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="selector-class">.right</span><span class="selector-attr">[class*="border-v"]</span> &#123;</span><br><span class="line">		<span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">		<span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"tr"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"td text-sm text-left cover-view-wrap pos_r"</span>&gt;</span></span><br><span class="line">		买1件，再凑¥142</span><br><span class="line">		<span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"border-v right pos_a"</span>&gt;</span><span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"border-h bottom pos_a"</span>&gt;</span><span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"td text-sm text-center pos_r"</span>&gt;</span></span><br><span class="line">		345.22</span><br><span class="line">		<span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"border-v right pos_a"</span>&gt;</span><span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"border-h bottom pos_a"</span>&gt;</span><span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"td text-sm text-center pos_r"</span>&gt;</span></span><br><span class="line">		120.22</span><br><span class="line">		<span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"border-v right pos_a"</span>&gt;</span><span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"border-h bottom pos_a"</span>&gt;</span><span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"td text-sm text-left cover-view-wrap pos_r"</span>&gt;</span></span><br><span class="line">		促销：每满199减100，领券：满299减30</span><br><span class="line">		<span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"border-h bottom pos_a"</span>&gt;</span><span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/09/20/9KBnzZAMWcoymXJ.png" alt=""></p>
-<p>开发工具上完全符合我的需求啊，当时就乐的不行，感觉自己是个天才，而且ios上也好的很，可是，偏偏Android让人头疼，无法显示，可能是<code>cover-view</code>的定位有问题，遇到这样子的也真是无解了。</p>
-<h1 id="cover-view子节点超出父节点后不显示"><a href="#cover-view子节点超出父节点后不显示" class="headerlink" title="cover-view子节点超出父节点后不显示"></a>cover-view子节点超出父节点后不显示</h1><p>正常应该是这样的：</p>
-<p><img src="https://i.loli.net/2020/09/20/f4uv2PGTbdYkaJ6.png" alt=""></p>
-<p>但就是因为用了<code>cover-view</code>，才出现这个样子：</p>
-<p><img src="https://i.loli.net/2020/09/20/ytlrYIDcOmeUxZX.png" alt=""></p>
-<p>在子节点溢出父节点后，溢出部分就被吃掉了，这种情况只在<code>cover-view/cover-image</code>出现，只能把超出的那个<code>cover-view</code>提到上一层去了，但是这又会掉到新的坑里去了，这里很明显有个层级问题😭，非常难调试，这里我的解决方式是创建两个一样的<code>cover-image</code>，一个放在外面，一个放在里面，因为互相有一部分不显示，正好凑成一张完整的图，当然最外层的父容器要先加个<code>padding</code>。</p>
-<h1 id="一坑未平又落入新的坑"><a href="#一坑未平又落入新的坑" class="headerlink" title="一坑未平又落入新的坑"></a>一坑未平又落入新的坑</h1><ul>
-<li><code>cover-view</code>不支持渐变背景，表现是开发工具上看没问题，结果真机上那个元素就没了显示白的，一位元素被吃了，但是那个位置能接收到正常的事件</li>
-</ul>
-<h1 id="关于uniApp"><a href="#关于uniApp" class="headerlink" title="关于uniApp"></a>关于uniApp</h1><p>编译后自动运行到开发者工具，总会报一堆莫名其妙的bug，然后然后再<code>HBuilderX</code>停止运行后再重新编译运行又好了</p>
-<p><img src="https://i.loli.net/2020/09/20/vXJTPAZ76KuxDCG.png" alt=""></p>
-<p><img src="https://i.loli.net/2020/09/20/zhELWUTPAdVb89O.png" alt=""></p>
-<p><img src="https://i.loli.net/2020/09/20/Ho1bYNgc7BrW3G2.png" alt=""></p>
-<p>出现的错误真是千奇百怪，只有用<strong>重启大法</strong>才能解决。</p>
-<hr>
-<p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
-<p><img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/9/20/小程序/cover-view/" data-id="ckgbuacrk001ehncakwr2l79o" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2020/9/20/小程序/cover-view-2/" data-id="ckggmxs1y001dpccasqboozuu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/cover-view/">cover-view</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/小程序/">小程序</a></li></ul>
@@ -310,7 +284,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="tags/C/" style="font-size: 10px;">C#</a> <a href="tags/CSS/" style="font-size: 13.33px;">CSS</a> <a href="tags/Go/" style="font-size: 10px;">Go</a> <a href="tags/Java/" style="font-size: 10px;">Java</a> <a href="tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="tags/Laravel/" style="font-size: 10px;">Laravel</a> <a href="tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="tags/PHP/" style="font-size: 20px;">PHP</a> <a href="tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="tags/PSR/" style="font-size: 10px;">PSR</a> <a href="tags/Perl/" style="font-size: 10px;">Perl</a> <a href="tags/Python/" style="font-size: 10px;">Python</a> <a href="tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="tags/SICP/" style="font-size: 10px;">SICP</a> <a href="tags/Server/" style="font-size: 13.33px;">Server</a> <a href="tags/Something/" style="font-size: 10px;">Something</a> <a href="tags/Swift/" style="font-size: 10px;">Swift</a> <a href="tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="tags/Vue/" style="font-size: 10px;">Vue</a> <a href="tags/autoload/" style="font-size: 10px;">autoload</a> <a href="tags/canvas/" style="font-size: 10px;">canvas</a> <a href="tags/cover-view/" style="font-size: 13.33px;">cover-view</a> <a href="tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="tags/electron/" style="font-size: 10px;">electron</a> <a href="tags/interviews/" style="font-size: 10px;">interviews</a> <a href="tags/networks/" style="font-size: 10px;">networks</a> <a href="tags/notes/" style="font-size: 13.33px;">notes</a> <a href="tags/routing/" style="font-size: 10px;">routing</a> <a href="tags/tools/" style="font-size: 10px;">tools</a> <a href="tags/小程序/" style="font-size: 16.67px;">小程序</a> <a href="tags/微信/" style="font-size: 10px;">微信</a>
+      <a href="tags/C/" style="font-size: 10px;">C#</a> <a href="tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="tags/Go/" style="font-size: 10px;">Go</a> <a href="tags/Java/" style="font-size: 10px;">Java</a> <a href="tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="tags/Laravel/" style="font-size: 10px;">Laravel</a> <a href="tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="tags/PHP/" style="font-size: 20px;">PHP</a> <a href="tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="tags/PSR/" style="font-size: 10px;">PSR</a> <a href="tags/Perl/" style="font-size: 10px;">Perl</a> <a href="tags/Python/" style="font-size: 10px;">Python</a> <a href="tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="tags/SICP/" style="font-size: 10px;">SICP</a> <a href="tags/Server/" style="font-size: 15px;">Server</a> <a href="tags/Something/" style="font-size: 10px;">Something</a> <a href="tags/Swift/" style="font-size: 10px;">Swift</a> <a href="tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="tags/Vue/" style="font-size: 10px;">Vue</a> <a href="tags/autoload/" style="font-size: 10px;">autoload</a> <a href="tags/canvas/" style="font-size: 10px;">canvas</a> <a href="tags/cover-view/" style="font-size: 12.5px;">cover-view</a> <a href="tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="tags/electron/" style="font-size: 10px;">electron</a> <a href="tags/interviews/" style="font-size: 10px;">interviews</a> <a href="tags/networks/" style="font-size: 10px;">networks</a> <a href="tags/notes/" style="font-size: 12.5px;">notes</a> <a href="tags/routing/" style="font-size: 10px;">routing</a> <a href="tags/tools/" style="font-size: 10px;">tools</a> <a href="tags/小程序/" style="font-size: 17.5px;">小程序</a> <a href="tags/微信/" style="font-size: 10px;">微信</a>
     </div>
   </div>
 
@@ -332,6 +306,10 @@
       <ul>
         
           <li>
+            <a href="/2020/10/19/Linux/ssh-login-Permission-denied-publickey/">SSH登录时提示Permission denied (publickey)</a>
+          </li>
+        
+          <li>
             <a href="/2020/10/1/notes/APP-URL-Scheme/">一些常用APP的URL Scheme</a>
           </li>
         
@@ -345,10 +323,6 @@
         
           <li>
             <a href="/2020/8/9/Electron/unable-download-electron/">Electron踩坑</a>
-          </li>
-        
-          <li>
-            <a href="/2020/5/17/frontend/design-a-swiper-by-CSS/">纯CSS实现轮播图</a>
           </li>
         
       </ul>

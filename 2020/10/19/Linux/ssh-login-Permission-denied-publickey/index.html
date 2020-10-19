@@ -3,27 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Valet problem: Unable to determine linked PHP | 我的博客</title>
+  <title>SSH登录时提示Permission denied (publickey) | 我的博客</title>
   <meta name="baidu-site-verification" content="yXEzwss0jm" />
   <meta name="360-site-verification" content="878e013ea1c0235dec34a8b1c676cf65" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="Mac上更新PHP 7.2后，再次使用Valet时提示无法定位到PHP，如下所示：  一条命令解决： 1ln -s /usr/local/opt/php@7.2/bin/php /usr/local/bin/php">
-<meta name="keywords" content="PHP">
+  <meta name="description" content="SSH登录时提示Permission denied (publickey)ssh在登录时，默认会使用当前用户home目录下的id_rsa文件来认证，由于我们在用ssh-keygen生成key时，由于指定了目录，所有就找不到私钥，报错，解决办法如下： 创建config文件：vim ~/.ssh/config 修改文件内容如下： 123456789Host aaa.com  User git  Hos">
+<meta name="keywords" content="Server">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Valet problem: Unable to determine linked PHP">
-<meta property="og:url" content="https://www.xydida.com/2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/index.html">
+<meta property="og:title" content="SSH登录时提示Permission denied (publickey)">
+<meta property="og:url" content="https://www.xydida.com/2020/10/19/Linux/ssh-login-Permission-denied-publickey/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="Mac上更新PHP 7.2后，再次使用Valet时提示无法定位到PHP，如下所示：  一条命令解决： 1ln -s /usr/local/opt/php@7.2/bin/php /usr/local/bin/php">
+<meta property="og:description" content="SSH登录时提示Permission denied (publickey)ssh在登录时，默认会使用当前用户home目录下的id_rsa文件来认证，由于我们在用ssh-keygen生成key时，由于指定了目录，所有就找不到私钥，报错，解决办法如下： 创建config文件：vim ~/.ssh/config 修改文件内容如下： 123456789Host aaa.com  User git  Hos">
 <meta property="og:locale" content="zh">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fy7hi8ormwj308902hglj.jpg">
-<meta property="og:updated_time" content="2018-12-16T14:36:34.663Z">
+<meta property="og:updated_time" content="2020-10-19T14:29:30.134Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Valet problem: Unable to determine linked PHP">
-<meta name="twitter:description" content="Mac上更新PHP 7.2后，再次使用Valet时提示无法定位到PHP，如下所示：  一条命令解决： 1ln -s /usr/local/opt/php@7.2/bin/php /usr/local/bin/php">
-<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fy7hi8ormwj308902hglj.jpg">
+<meta name="twitter:title" content="SSH登录时提示Permission denied (publickey)">
+<meta name="twitter:description" content="SSH登录时提示Permission denied (publickey)ssh在登录时，默认会使用当前用户home目录下的id_rsa文件来认证，由于我们在用ssh-keygen生成key时，由于指定了目录，所有就找不到私钥，报错，解决办法如下： 创建config文件：vim ~/.ssh/config 修改文件内容如下： 123456789Host aaa.com  User git  Hos">
   
     <link rel="alternate" href="/atom.xml" title="我的博客" type="application/atom+xml">
   
@@ -85,14 +83,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Valet-problem-Unable-to-determine-linked-PHP" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-ssh-login-Permission-denied-publickey" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="../../../../../2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/" class="article-date">
-  <time datetime="2018-12-15T07:36:02.000Z" itemprop="datePublished">2018-12-15</time>
+    <a href="../../../../../2020/10/19/Linux/ssh-login-Permission-denied-publickey/" class="article-date">
+  <time datetime="2020-10-19T14:22:39.000Z" itemprop="datePublished">2020-10-19</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="../../../../../categories/PHP/">PHP</a>
+    <a class="article-category-link" href="../../../../../categories/Linux/">Linux</a>
   </div>
 
   </div>
@@ -103,7 +101,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Valet problem: Unable to determine linked PHP
+      SSH登录时提示Permission denied (publickey)
     </h1>
   
 
@@ -111,18 +109,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Mac上更新PHP 7.2后，再次使用<code>Valet</code>时提示无法定位到PHP，如下所示：</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fy7hi8ormwj308902hglj.jpg" alt=""></p>
-<p>一条命令解决：</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s <span class="regexp">/usr/</span>local<span class="regexp">/opt/</span>php@<span class="number">7.2</span><span class="regexp">/bin/</span>php <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>php</span><br></pre></td></tr></table></figure>
+        <h1 id="SSH登录时提示Permission-denied-publickey"><a href="#SSH登录时提示Permission-denied-publickey" class="headerlink" title="SSH登录时提示Permission denied (publickey)"></a>SSH登录时提示Permission denied (publickey)</h1><p><code>ssh</code>在登录时，默认会使用当前用户<code>home</code>目录下的<code>id_rsa</code>文件来认证，由于我们在用<code>ssh-keygen</code>生成key时，由于指定了目录，所有就找不到私钥，报错，解决办法如下：</p>
+<p>创建<code>config</code>文件：<br><code>vim ~/.ssh/config</code></p>
+<p>修改文件内容如下：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Host aaa.com</span><br><span class="line"> <span class="built_in"> User </span>git</span><br><span class="line">  Hostname aaa.com</span><br><span class="line">  IdentityFile 私钥地址</span><br><span class="line"></span><br><span class="line">Host 123.123.123.123</span><br><span class="line"> <span class="built_in"> User </span>bill</span><br><span class="line">  Hostname 123.123.123.123</span><br><span class="line">  IdentityFile 私钥地址</span><br></pre></td></tr></table></figure>
+<p>用这个配置文件，就能针对不同<code>ip</code>/<code>域名</code>使用不同的私钥了。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/" data-id="ckggmxs1n000zpcca1z36tdgy" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2020/10/19/Linux/ssh-login-Permission-denied-publickey/" data-id="ckggmxs2m002lpccasvnihod6" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/PHP/">PHP</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/Server/">Server</a></li></ul>
 
     </footer>
   </div>
@@ -130,19 +129,10 @@
     
 <nav id="article-nav">
   
-    <a href="../../../../../2018/12/16/Linux/my-Tmux-notes/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          我的Tmux笔记
-        
-      </div>
-    </a>
   
-  
-    <a href="../../../../../2018/9/14/小程序/The-measureText-function-in-Wechat-miniprogram-canvas/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../../../../2020/10/1/notes/APP-URL-Scheme/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">在小程序Canvas中使用measureText</div>
+      <div class="article-nav-title">一些常用APP的URL Scheme</div>
     </a>
   
 </nav>

@@ -84,6 +84,128 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-PHP-read-excel-and-csv-files" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../2019/1/2/PHP/PHP-read-excel-and-csv-files/" class="article-date">
+  <time datetime="2019-01-02T05:17:07.000Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2019/1/2/PHP/PHP-read-excel-and-csv-files/">用PHP读取Excel、CSV文件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fyp45fw225j310c06odfz.jpg" alt="PhpSpreadsheet"></p>
+<p>PHP读取excel、csv文件的库有很多，但用的比较多的有： <a href="https://github.com/PHPOffice/PHPExcel" target="_blank" rel="noopener">PHPOffice/PHPExcel</a>、<a href="https://github.com/PHPOffice/PhpSpreadsheet" target="_blank" rel="noopener">PHPOffice/PhpSpreadsheet</a>，现在PHPExcel已经不再维护了，最新的一次提交还是在2017年12月25号，建议直接使用PhpSpreadsheet，而且这两个项目都是同一个组织维护的，本文介绍PhpSpreadsheet的使用。</p>
+<h2 id="介绍PhpSpreadsheet"><a href="#介绍PhpSpreadsheet" class="headerlink" title="介绍PhpSpreadsheet"></a>介绍PhpSpreadsheet</h2><p>PhpSpreadsheet这个库是纯PHP写的，提供了非常丰富的类和方法，而且支持很多文件格式：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fyp2c7y09qj314m0mmmxs.jpg" alt="PhpSpreadsheet支持的文件格式"></p>
+<h2 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h2><ul>
+<li>PHP &gt;= 5.6</li>
+<li>开启<code>php_zip</code>扩展</li>
+<li>开启<code>php_xml</code>扩展</li>
+<li>开启<code>php_gd2</code>扩展</li>
+</ul>
+<h2 id="开始使用😄"><a href="#开始使用😄" class="headerlink" title="开始使用😄"></a>开始使用😄</h2><p>我们写一个简单的demo，来学习PhpSpreadsheet的使用，大概就是一个简单的文件上传页面，上传我们要读取的Excel文件，PHP接收到文件，调用PhpSpreadsheet读取Excel里面的内容。</p>
+<h4 id="0-配置环境"><a href="#0-配置环境" class="headerlink" title="0. 配置环境"></a>0. 配置环境</h4><p>略…，自己配置<br>我当前的PHP版本是<code>7.2.13</code></p>
+<h4 id="1-新建一个项目"><a href="#1-新建一个项目" class="headerlink" title="1. 新建一个项目"></a>1. 新建一个项目</h4><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> <span class="built_in">demo</span></span><br><span class="line">cd <span class="built_in">demo</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h4><p>使用<a href="https://getcomposer.org" target="_blank" rel="noopener">composer</a>安装：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">composer</span> <span class="meta">require</span> phpoffice/phpspreadsheet</span><br></pre></td></tr></table></figure>
+<p>默认安装的是最新的稳定版本(1.5)，如果想要安装dev版本，可以执行下面的命令：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">composer</span> <span class="meta">require</span> phpoffice/phpspreadsheet:develop</span><br></pre></td></tr></table></figure>
+<p>上面步骤执行完毕后，目录结构是这样的：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fyp32gm25wj30sc06i74r.jpg" alt=""></p>
+<h4 id="3-新建一个简单的html文件，用来上传Excel文件"><a href="#3-新建一个简单的html文件，用来上传Excel文件" class="headerlink" title="3. 新建一个简单的html文件，用来上传Excel文件"></a>3. 新建一个简单的html文件，用来上传Excel文件</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vim</span> <span class="built_in">index</span>.html</span><br></pre></td></tr></table></figure>
+<p>index.html里面的内容很简单，如下：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fyp38luvj6j30v80egdgx.jpg" alt=""></p>
+<blockquote>
+<p>这里要注意下：form表单的<code>enctype</code>一定要是<code>multipart/form-data</code></p>
+</blockquote>
+<p>这只是一个简单的demo，一个form表单就可以了，运行后就是下面这样了 :)</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fyp3bp66mpj31fq070weh.jpg" alt=""></p>
+<h4 id="4-PhpSpreadsheet如何使用？"><a href="#4-PhpSpreadsheet如何使用？" class="headerlink" title="4. PhpSpreadsheet如何使用？"></a>4. PhpSpreadsheet如何使用？</h4><p>在处理前端传过来的Excel文件之前，先来介绍下PhpSpredsheet如何使用。</p>
+<h5 id="4-1-读取文件"><a href="#4-1-读取文件" class="headerlink" title="4.1 读取文件"></a>4.1 读取文件</h5><p>PhpSpreadsheet中读取文件有很多种，对于不同格式的文件有不同的读取方法，比如：<code>xlsx</code>格式，使用<code>\PhpOffice\PhpSpreadsheet\Reader\Xlsx()</code>，<code>csv</code>格式，使用<code>\PhpOffice\PhpSpreadsheet\Reader\Csv()</code>，乍一看这么多类就感觉有点复杂，其实这些类都实现了<code>\PhpOffice\PhpSpreadsheet\Reader\IReader</code>和<code>\PhpOffice\PhpSpreadsheet\Writer\IWriter</code>接口，指定了要加载的文件类型。我们可以直接使用<code>\PhpOffice\PhpSpreadsheet\IOFactory</code>这个工厂类：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$spreadsheet</span> = \PhpOffice\PhpSpreadsheet\<span class="symbol">IOFactory:</span><span class="symbol">:load</span>(<span class="string">'demo.xlsx'</span>);</span><br></pre></td></tr></table></figure>
+<p>如果想在读写文件的时候设置一些属性，比如读写属性，可以这样设置：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$reader</span> = \PhpOffice\PhpSpreadsheet\<span class="symbol">IOFactory:</span><span class="symbol">:createReaderForFile</span>(<span class="string">"demo.xlsx"</span>);</span><br><span class="line"><span class="variable">$reader</span>-&gt;setReadDataOnly(<span class="keyword">true</span>);</span><br><span class="line"><span class="variable">$reader</span>-&gt;load(<span class="string">"demo.xlsx"</span>);</span><br></pre></td></tr></table></figure>
+<p>使用这个工厂类的好处就是你不需要关心文件上传的格式，它能自动帮识别，其实这个工厂类就是对你上传的文件做一些识别，如果识别出来是xls格式，就返回xls的reader，如果是csv，就返回csv的reader，通过分析代码我们可以看到这个<code>IOFactory</code>可以生产出如下的reader和writer：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">abstract <span class="class"><span class="keyword">class</span> <span class="title">IOFactory</span></span></span><br><span class="line">&#123;</span><br><span class="line">    private static $readers = [</span><br><span class="line">        <span class="string">'Xlsx'</span> =&gt; Reader\Xlsx::<span class="class"><span class="keyword">class</span>,</span></span><br><span class="line">        <span class="string">'Xls'</span> =&gt; Reader\Xls::<span class="class"><span class="keyword">class</span>,</span></span><br><span class="line">        <span class="string">'Xml'</span> =&gt; Reader\Xml::<span class="class"><span class="keyword">class</span>,</span></span><br><span class="line">        <span class="string">'Ods'</span> =&gt; Reader\Ods::<span class="class"><span class="keyword">class</span>,</span></span><br><span class="line">        <span class="string">'Slk'</span> =&gt; Reader\Slk::<span class="class"><span class="keyword">class</span>,</span></span><br><span class="line">        <span class="string">'Gnumeric'</span> =&gt; Reader\Gnumeric::<span class="class"><span class="keyword">class</span>,</span></span><br><span class="line">        <span class="string">'Html'</span> =&gt; Reader\Html::<span class="class"><span class="keyword">class</span>,</span></span><br><span class="line">        <span class="string">'Csv'</span> =&gt; Reader\Csv::<span class="class"><span class="keyword">class</span>,</span></span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    private static $writers = [</span><br><span class="line">        <span class="string">'Xls'</span> =&gt; Writer\Xls::<span class="class"><span class="keyword">class</span>,</span></span><br><span class="line">        <span class="string">'Xlsx'</span> =&gt; Writer\Xlsx::<span class="class"><span class="keyword">class</span>,</span></span><br><span class="line">        <span class="string">'Ods'</span> =&gt; Writer\Ods::<span class="class"><span class="keyword">class</span>,</span></span><br><span class="line">        <span class="string">'Csv'</span> =&gt; Writer\Csv::<span class="class"><span class="keyword">class</span>,</span></span><br><span class="line">        <span class="string">'Html'</span> =&gt; Writer\Html::<span class="class"><span class="keyword">class</span>,</span></span><br><span class="line">        <span class="string">'Tcpdf'</span> =&gt; Writer\Pdf\Tcpdf::<span class="class"><span class="keyword">class</span>,</span></span><br><span class="line">        <span class="string">'Dompdf'</span> =&gt; Writer\Pdf\Dompdf::<span class="class"><span class="keyword">class</span>,</span></span><br><span class="line">        <span class="string">'Mpdf'</span> =&gt; Writer\Pdf\Mpdf::<span class="class"><span class="keyword">class</span>,</span></span><br><span class="line">    ];</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>可以看到支持的类型还是蛮多的，但是很多都不常用。</p>
+<p>在<code>IOFactory</code>工厂中还可以指定读写的文件类型，返回对应的reader，这样就免去了识别文件类型的步骤，如下：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$reader</span> = \PhpOffice\PhpSpreadsheet\<span class="symbol">IOFactory:</span><span class="symbol">:createReader</span>(<span class="string">"Xlsx"</span>);  <span class="regexp">//</span> 指定为xlsx格式</span><br><span class="line"><span class="variable">$spreadsheet</span> = <span class="variable">$reader</span>-&gt;load(<span class="string">"demo.xlsx"</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="4-2-从源码比较两种读写方式"><a href="#4-2-从源码比较两种读写方式" class="headerlink" title="4.2 从源码比较两种读写方式"></a>4.2 从源码比较两种读写方式</h5><p>首先，来看下<code>IOFactory</code>这个工厂类，我们在不指定reader类型时直接<code>load</code>，代码内部是要做一个识别格式的操作：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 源码解析</span></span><br><span class="line"><span class="comment">// 不指定reader，直接获取上传的文件创建</span></span><br><span class="line">$reader = \PhpOffice\PhpSpreadsheet\IOFactory::load($_FILES[<span class="string">'file'</span>][<span class="string">'tmp_name'</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// IOFactory::load()</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">load</span><span class="params">($pFilename)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 这步棋室就是创建reader，免去了你手动创建</span></span><br><span class="line">    $reader = <span class="keyword">self</span>::createReaderForFile($pFilename);</span><br><span class="line">    <span class="keyword">return</span> $reader-&gt;load($pFilename);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// IOFactory::createReaderForFile()</span></span><br><span class="line"><span class="comment">// 这步就是返回一个reader，具体返回什么reader，是根据文件名来的</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">createReaderForFile</span><span class="params">($filename)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 判断文件是否存在并且可读，会抛出InvalidArgumentException</span></span><br><span class="line">    File::assertFile($filename);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 根据文件后缀猜测类型</span></span><br><span class="line">    $guessedReader = <span class="keyword">self</span>::getReaderTypeFromExtension($filename);</span><br><span class="line">        <span class="keyword">if</span> ($guessedReader !== <span class="keyword">null</span>) &#123;</span><br><span class="line">            $reader = <span class="keyword">self</span>::createReader($guessedReader);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Let's see if we are lucky</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">isset</span>($reader) &amp;&amp; $reader-&gt;canRead($filename)) &#123;</span><br><span class="line">                <span class="keyword">return</span> $reader;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果没有检测到类型，就会遍历默认的reader数组，直到找到可以使用的那个reader</span></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">self</span>::$readers <span class="keyword">as</span> $type =&gt; $class) &#123;</span><br><span class="line">        <span class="keyword">if</span> ($type !== $guessedReader) &#123;</span><br><span class="line">            $reader = <span class="keyword">self</span>::createReader($type);</span><br><span class="line">            <span class="keyword">if</span> ($reader-&gt;canRead($filename)) &#123;</span><br><span class="line">                <span class="keyword">return</span> $reader;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> Reader\<span class="keyword">Exception</span>(<span class="string">'Unable to identify a reader for this file'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从上面的代码，可以看到在load前是做了文件检测和类型判断的操作，然后再返回对应的reader，接下来，再来看看当我们指定了类型后，做了哪些操作的：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 指定reader</span></span><br><span class="line">$reader = <span class="keyword">new</span> \PhpOffice\PhpSpreadsheet\Reader\Xlsx();</span><br><span class="line">$spreadsheet = $reader-&gt;load($_FILES[<span class="string">'file'</span>][<span class="string">'tmp_name'</span>]);</span><br></pre></td></tr></table></figure>
+<p>上面的就比较简单了，直接创建reader，然后就load了，只是做了一些实例化的操作。这两种方法相比，第二种方法性能更好一点，当然前提是要知道文件格式。</p>
+<h4 id="5-读取Excel文件内容"><a href="#5-读取Excel文件内容" class="headerlink" title="5. 读取Excel文件内容"></a>5. 读取Excel文件内容</h4><p>让我们接着继续上面的index.html，我们需要编写一个PHP文件来处理请求：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">'vendor/autoload.php'</span>;</span><br><span class="line"></span><br><span class="line">$reader = <span class="keyword">new</span> \PhpOffice\PhpSpreadsheet\Reader\Xlsx();</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    $spreadsheet = $reader-&gt;load($_FILES[<span class="string">'file'</span>][<span class="string">'tmp_name'</span>]);</span><br><span class="line">&#125; <span class="keyword">catch</span> (\PhpOffice\PhpSpreadsheet\Reader\<span class="keyword">Exception</span> $e) &#123;</span><br><span class="line">    <span class="keyword">die</span>($e-&gt;getMessage());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$sheet = $spreadsheet-&gt;getActiveSheet();</span><br><span class="line"></span><br><span class="line">$res = <span class="keyword">array</span>();</span><br><span class="line"><span class="keyword">foreach</span> ($sheet-&gt;getRowIterator(<span class="number">2</span>) <span class="keyword">as</span> $row) &#123;</span><br><span class="line">    $tmp = <span class="keyword">array</span>();</span><br><span class="line">    <span class="keyword">foreach</span> ($row-&gt;getCellIterator() <span class="keyword">as</span> $cell) &#123;</span><br><span class="line">        $tmp[] = $cell-&gt;getFormattedValue();</span><br><span class="line">    &#125;</span><br><span class="line">    $res[$row-&gt;getRowIndex()] = $tmp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> json_encode($res);</span><br></pre></td></tr></table></figure>
+<p>我们先引入<code>autoload</code>，接着创建了一个<code>Xlsx</code>的reader，然后load我们上传的文件，因为在excel中，内容都是按sheet区分的，每一个sheet中都由行和列组成，我们获取到当前使用的sheet，通过sheet获取到行的迭代对象，再针对每一行得到每一列对象，在PhpSpreadsheet中，cell是一个最小的单元，对应着第几行第几列，数据都是存在cell中，得到cell对象我们就能获取到数据。</p>
+<p>当我们上传如下内容后：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fypzfy35bsj30pg0euwep.jpg" alt=""></p>
+<p>返回结果如下：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fypzgxhc48j30by0i2t8n.jpg" alt=""></p>
+<p>因为我们在读取时，是从第二行开始的，所以第一行的内容就不显示了。</p>
+<blockquote>
+<p>这里说一下，在Excel中第三列是一个时间，PhpSpreadsheet对时间的处理有点特殊。在PhpSpreadsheet中date和time在存储时都是作为数字类型，当要区分数字是时间格式时，需要用到<code>format mask</code>，默认情况下，<code>format mask</code>是开启了的，但如果设置<code>setReadDataOnly</code>等于<code>true</code>的话，就不能使用<code>format mask</code>，从而就区分不了数字和时间格式，PhpSpreatsheet将会全部作为数字处理。</p>
+</blockquote>
+<p>此时，我们开启只读模式看一下，</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$reader = <span class="keyword">new</span> \PhpOffice\PhpSpreadsheet\Reader\Xlsx();</span><br><span class="line">$reader-&gt;setReadDataOnly(<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+<p>输出结果如下：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fypzv1rxptj30ae0fmwee.jpg" alt=""></p>
+<p>第三列就变成了奇怪的数字，当初这个问题还困扰了我半天。</p>
+<h4 id="5-PhpSpreadsheet读取文件时的一些常用方法"><a href="#5-PhpSpreadsheet读取文件时的一些常用方法" class="headerlink" title="5. PhpSpreadsheet读取文件时的一些常用方法"></a>5. PhpSpreadsheet读取文件时的一些常用方法</h4><ol>
+<li>如果一个Excel中有多个sheet，只想操作其中的某几个sheet，可以设置<code>setLoadSheetsOnly</code></li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$reader = <span class="keyword">new</span> \PhpOffice\PhpSpreadsheet\Reader\Xlsx();</span><br><span class="line"><span class="comment">// 参数支持字符串或一个数组</span></span><br><span class="line">$reader-&gt;setLoadSheetsOnly([<span class="string">'sheet1'</span>,<span class="string">'sheet3'</span>]);</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>读取指定行和列的数据</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyReadFilter</span> <span class="keyword">implements</span> \<span class="title">PhpOffice</span>\<span class="title">PhpSpreadsheet</span>\<span class="title">Reader</span>\<span class="title">IReadFilter</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">readCell</span><span class="params">($column, $row, $worksheetName = <span class="string">''</span>)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 只读取A1:E7的数据</span></span><br><span class="line">        <span class="keyword">if</span> ($row &gt;= <span class="number">1</span> &amp;&amp; $row &lt;= <span class="number">7</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (in_array($column,range(<span class="string">'A'</span>,<span class="string">'E'</span>))) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$myFilter = <span class="keyword">new</span> MyReadFilter();</span><br><span class="line">$reader = <span class="keyword">new</span> \PhpOffice\PhpSpreadsheet\Reader\Xlsx();</span><br><span class="line">$reader-&gt;setReadFilter($filterSubset);</span><br><span class="line">$spreadsheet = $reader-&gt;load(<span class="string">'demo.xlsx'</span>);</span><br></pre></td></tr></table></figure>
+<p>上面的例子不够通用，可以修改下使之更为通用：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyReadFilter</span> <span class="keyword">implements</span> \<span class="title">PhpOffice</span>\<span class="title">PhpSpreadsheet</span>\<span class="title">Reader</span>\<span class="title">IReadFilter</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $startRow = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> $endRow   = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> $columns  = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($startRow, $endRow, $columns)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;startRow = $startRow;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;endRow   = $endRow;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;columns  = $columns;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">readCell</span><span class="params">($column, $row, $worksheetName = <span class="string">''</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ($row &gt;= <span class="keyword">$this</span>-&gt;startRow &amp;&amp; $row &lt;= <span class="keyword">$this</span>-&gt;endRow) &#123;</span><br><span class="line">            <span class="keyword">if</span> (in_array($column,<span class="keyword">$this</span>-&gt;columns)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$myFilter = <span class="keyword">new</span> MyReadFilter(<span class="number">9</span>,<span class="number">15</span>,[<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'D'</span>]);</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>列出Excel中所有sheet的名字</li>
+</ol>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$reader</span>-&gt;listWorksheetNames(<span class="string">'demo.xlsx'</span>);</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>列出一个sheet的信息，包括多少列、多少行</li>
+</ol>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$reader</span>-&gt;listWorksheetInfo(<span class="string">'demo.xlsx'</span>);</span><br></pre></td></tr></table></figure>
+<p>PhpSpreadsheet的学习与使用就到这，真的很强大，几乎满足了日常的所有需求，是读取Excel、CSV文件的利器。</p>
+<hr>
+<p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
+<p><img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2019/1/2/PHP/PHP-read-excel-and-csv-files/" data-id="ckggmxs1e000mpcca09kilyxz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Clone-Object-in-PHP" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="../../2018/12/20/PHP/Clone-Object-in-PHP/" class="article-date">
@@ -139,7 +261,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/12/20/PHP/Clone-Object-in-PHP/" data-id="ckgbuacqn0002hncarxrytpqb" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2018/12/20/PHP/Clone-Object-in-PHP/" data-id="ckggmxs110005pcca9jbszx34" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
@@ -195,56 +317,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/12/16/Linux/my-Tmux-notes/" data-id="ckgbuacrv001xhncaonoj7i35" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2018/12/16/Linux/my-Tmux-notes/" data-id="ckggmxs2f0027pccaey5xrdi7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Tmux/">Tmux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Valet-problem-Unable-to-determine-linked-PHP" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="../../2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/" class="article-date">
-  <time datetime="2018-12-15T07:36:02.000Z" itemprop="datePublished">2018-12-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="../../categories/PHP/">PHP</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/">Valet problem: Unable to determine linked PHP</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Mac上更新PHP 7.2后，再次使用<code>Valet</code>时提示无法定位到PHP，如下所示：</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fy7hi8ormwj308902hglj.jpg" alt=""></p>
-<p>一条命令解决：</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s <span class="regexp">/usr/</span>local<span class="regexp">/opt/</span>php@<span class="number">7.2</span><span class="regexp">/bin/</span>php <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>php</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/" data-id="ckgbuacrc000vhnca2e0l80zc" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
 
     </footer>
   </div>
@@ -277,7 +353,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../tags/CSS/" style="font-size: 13.33px;">CSS</a> <a href="../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="../../tags/Laravel/" style="font-size: 10px;">Laravel</a> <a href="../../tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="../../tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../tags/Server/" style="font-size: 13.33px;">Server</a> <a href="../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../tags/Vue/" style="font-size: 10px;">Vue</a> <a href="../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../tags/cover-view/" style="font-size: 13.33px;">cover-view</a> <a href="../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../tags/electron/" style="font-size: 10px;">electron</a> <a href="../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../tags/networks/" style="font-size: 10px;">networks</a> <a href="../../tags/notes/" style="font-size: 13.33px;">notes</a> <a href="../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../tags/小程序/" style="font-size: 16.67px;">小程序</a> <a href="../../tags/微信/" style="font-size: 10px;">微信</a>
+      <a href="../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="../../tags/Laravel/" style="font-size: 10px;">Laravel</a> <a href="../../tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="../../tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../tags/Server/" style="font-size: 15px;">Server</a> <a href="../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../tags/Vue/" style="font-size: 10px;">Vue</a> <a href="../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../tags/cover-view/" style="font-size: 12.5px;">cover-view</a> <a href="../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../tags/electron/" style="font-size: 10px;">electron</a> <a href="../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../tags/networks/" style="font-size: 10px;">networks</a> <a href="../../tags/notes/" style="font-size: 12.5px;">notes</a> <a href="../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../tags/小程序/" style="font-size: 17.5px;">小程序</a> <a href="../../tags/微信/" style="font-size: 10px;">微信</a>
     </div>
   </div>
 
@@ -299,6 +375,10 @@
       <ul>
         
           <li>
+            <a href="../../2020/10/19/Linux/ssh-login-Permission-denied-publickey/">SSH登录时提示Permission denied (publickey)</a>
+          </li>
+        
+          <li>
             <a href="../../2020/10/1/notes/APP-URL-Scheme/">一些常用APP的URL Scheme</a>
           </li>
         
@@ -312,10 +392,6 @@
         
           <li>
             <a href="../../2020/8/9/Electron/unable-download-electron/">Electron踩坑</a>
-          </li>
-        
-          <li>
-            <a href="../../2020/5/17/frontend/design-a-swiper-by-CSS/">纯CSS实现轮播图</a>
           </li>
         
       </ul>
