@@ -84,14 +84,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-how-to-use-ufw" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-emoji-in-string" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/10/24/Linux/how-to-use-ufw/" class="article-date">
-  <time datetime="2020-10-24T13:04:02.000Z" itemprop="datePublished">2020-10-24</time>
+    <a href="/2020/10/29/PHP/emoji-in-string/" class="article-date">
+  <time datetime="2020-10-29T06:29:28.000Z" itemprop="datePublished">2020-10-29</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="categories/Linux/">Linux</a>
+    <a class="article-category-link" href="categories/PHP/">PHP</a>
   </div>
 
   </div>
@@ -102,7 +102,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/24/Linux/how-to-use-ufw/">UFW防火墙简单教程</a>
+      <a class="article-title" href="/2020/10/29/PHP/emoji-in-string/">判断字符串是否包含😈emoji表情</a>
     </h1>
   
 
@@ -110,20 +110,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><code>UFW（Uncomplicated Firewal）</code>是<code>Ubuntu</code>上基于<code>iptables</code>的一个防火墙管理软件，使用<code>UFW</code>我们可以更方便的管理服务器上的防火墙，本文记录一些关于<code>UFW</code>使用教程。</p>
-<h1 id="安装UFW"><a href="#安装UFW" class="headerlink" title="安装UFW"></a>安装UFW</h1>
-        
-          <p class="article-more-link">
-            <a href="/2020/10/24/Linux/how-to-use-ufw/#more">Read More</a>
-          </p>
-        
+        <p>在<code>UTF-8</code>编码下，一个中文占3个字节，而<code>emoji</code>或一些特殊字符占4个字节，我们可以以此来判断字符串是否包含<code>emoji</code>。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">haveEmojiChar</span><span class="params">($str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $mbLen = mb_strlen($str);</span><br><span class="line"></span><br><span class="line">    $strArr = [];</span><br><span class="line">    $flag = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; $mbLen; $i++) &#123;</span><br><span class="line">        $strArr[] = mb_substr($str, $i, <span class="number">1</span>, <span class="string">'utf-8'</span>);</span><br><span class="line">        <span class="keyword">if</span> (strlen($strArr[$i]) &gt;= <span class="number">4</span>) &#123;</span><br><span class="line">            $flag = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $flag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码重点就是<code>strlen</code>和<code>mb_strlen</code>这两个函数。通过这个方法，我们稍微修改下就能<strong>删除字符串中的emoji表情</strong>：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeEmojiChar</span><span class="params">($str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $mbLen = mb_strlen($str);</span><br><span class="line">    </span><br><span class="line">    $strArr = [];</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; $mbLen; $i++) &#123;</span><br><span class="line">        $mbSubstr = mb_substr($str, $i, <span class="number">1</span>, <span class="string">'utf-8'</span>);</span><br><span class="line">        <span class="keyword">if</span> (strlen($mbSubstr) &gt;= <span class="number">4</span>) &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        $strArr[] = $mbSubstr;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> implode(<span class="string">''</span>, $strArr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>参考：<a href="https://www.cnblogs.com/my3306/p/9849923.html" target="_blank" rel="noopener">https://www.cnblogs.com/my3306/p/9849923.html</a></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/10/24/Linux/how-to-use-ufw/" data-id="ckgnpwlbc001sewca4ppg0mqu" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2020/10/29/PHP/emoji-in-string/" data-id="ckgyxjctv001wrlca3jjgcixu" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/firewall/">firewall</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/ufw/">ufw</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/emoji/">emoji</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/notes/">notes</a></li></ul>
 
     </footer>
   </div>
@@ -132,14 +132,14 @@
 
 
   
-    <article id="post-ssh-login-Permission-denied-publickey" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-what-is-TTL" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/10/19/Linux/ssh-login-Permission-denied-publickey/" class="article-date">
-  <time datetime="2020-10-19T14:22:39.000Z" itemprop="datePublished">2020-10-19</time>
+    <a href="/2020/10/28/Devops/what-is-TTL/" class="article-date">
+  <time datetime="2020-10-28T13:26:12.000Z" itemprop="datePublished">2020-10-28</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="categories/Linux/">Linux</a>
+    <a class="article-category-link" href="categories/Devops/">Devops</a>
   </div>
 
   </div>
@@ -150,7 +150,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/19/Linux/ssh-login-Permission-denied-publickey/">SSH登录时提示Permission denied (publickey)</a>
+      <a class="article-title" href="/2020/10/28/Devops/what-is-TTL/">域名解析时TTL是个什么东西？</a>
     </h1>
   
 
@@ -158,74 +158,87 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><code>ssh</code>在登录时，默认会使用当前用户<code>home</code>目录下的<code>id_rsa</code>文件来认证，由于我们在用<code>ssh-keygen</code>生成key时，由于指定了目录，所有就找不到私钥，报错，解决办法如下：</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/10/19/Linux/ssh-login-Permission-denied-publickey/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/10/19/Linux/ssh-login-Permission-denied-publickey/" data-id="ckgnpwlbp002kewcas1nzkq79" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Server/">Server</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-APP-URL-Scheme" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/1/notes/APP-URL-Scheme/" class="article-date">
-  <time datetime="2020-10-01T02:38:12.000Z" itemprop="datePublished">2020-10-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="categories/notes/">notes</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/1/notes/APP-URL-Scheme/">一些常用APP的URL Scheme</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>2020-10-16更新</p>
+        <p>在设置DNS解析的时候，都会出现一个<code>TTL</code>，那这个是干什么的呢？</p>
+<p>要说这个<code>TTL</code>，我们先来简单解释下DNS域名解析的整个过程吧。</p>
+<p>一开始域名这个概念还没出来的时候，都只是通过IP来访问，但IP根本不方便记忆，这是聪明的我们就想到给每一台服务器起一个别名，然后维护一个别名到IP地址的映射，转换过程全部由计算机自动完成，这就是我们经常说的<code>hosts</code>文件。</p>
+<p>到后来，互联网越来越普及，人们发现维护这个域名IP映射文件非常吃力，<code>hosts</code>文件非常大，别名还不能冲突，维护成本巨大。这时候就出现了<strong>域名系统</strong>、<strong>DNS协议</strong>、<strong>域名空间</strong>，这里我们不做赘述。我们以一个非常生动的例子来讲解<code>DNS</code>解析的过程（<a href="https://selfboot.cn/2015/11/05/dns_theory/）：" target="_blank" rel="noopener">https://selfboot.cn/2015/11/05/dns_theory/）：</a></p>
+<blockquote>
+<p>1.用户：喂，本地域名服务器，告诉我math.sysu.edu.cn的地址；<br>2.本地域名服务器：哎呀，我不知道啊，不在我的辖区，容我去问问老大哥吧。root老大，能告诉我math.sysu.edu.cn的地址吗；<br>3.根域名服务器：忙着呢，你去问B（.cn）；<br>4.本地域名服务器：喂，B，告诉我math.sysu.edu.cn的地址；<br>5.B：你去问D（.edu.cn）；<br>6.本地域名服务器：喂，D，告诉我math.sysu.edu.cn的地址；<br>7.D：你去问F（sysu.edu.cn）；<br>8.本地域名服务器：喂，F，告诉我math.sysu.edu.cn的地址；<br>9.F：容老衲看看，哎呀，找到了，是X.X.X.X；<br>10.本地域名服务器：踏破铁鞋终于找到啦，喂用户，出来啊，我找到了，是X.X.X.X</p>
 </blockquote>
-<h1 id="聊天-社交类"><a href="#聊天-社交类" class="headerlink" title="聊天/社交类"></a>聊天/社交类</h1><h2 id="QQ"><a href="#QQ" class="headerlink" title="QQ"></a>QQ</h2><h3 id="主页"><a href="#主页" class="headerlink" title="主页"></a>主页</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">packageName: <span class="string">'com.tencent.mobileqq'</span>,  </span><br><span class="line">scheme: <span class="string">'mqq://'</span></span><br></pre></td></tr></table></figure>
-<h3 id="国际版qq-mqqiapi"><a href="#国际版qq-mqqiapi" class="headerlink" title="国际版qq mqqiapi://"></a>国际版qq <code>mqqiapi://</code></h3><h3 id="加好友"><a href="#加好友" class="headerlink" title="加好友"></a>加好友</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mqqapi:<span class="comment">//card/show_pslcard?src_type=internal&amp;version=1&amp;uin=&#123;QQ号&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="打开QQ群"><a href="#打开QQ群" class="headerlink" title="打开QQ群"></a>打开QQ群</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mqqapi:<span class="comment">//card/show_pslcard?src_type=internal&amp;version=1&amp;card_type=group&amp;uin=&#123;QQ群号&#125;</span></span><br></pre></td></tr></table></figure>
-<h2 id="TIM"><a href="#TIM" class="headerlink" title="TIM"></a>TIM</h2><h3 id="主页-tim"><a href="#主页-tim" class="headerlink" title="主页 tim://"></a>主页 <code>tim://</code></h3><h3 id="扫一扫-tim-qrcode-scan-qrcode-version-1-amp-src-type-app"><a href="#扫一扫-tim-qrcode-scan-qrcode-version-1-amp-src-type-app" class="headerlink" title="扫一扫 tim://qrcode/scan_qrcode?version=1&amp;src_type=app"></a>扫一扫 <code>tim://qrcode/scan_qrcode?version=1&amp;src_type=app</code></h3><h2 id="微信"><a href="#微信" class="headerlink" title="微信"></a>微信</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">packageName: <span class="string">'com.tencent.mm'</span>,</span><br><span class="line">scheme: <span class="string">'weixin://'</span></span><br></pre></td></tr></table></figure>
-<h2 id="天涯社区-tianya"><a href="#天涯社区-tianya" class="headerlink" title="天涯社区 tianya://"></a>天涯社区 <code>tianya://</code></h2><h2 id="微信扫一扫-weixin-scanqrcode"><a href="#微信扫一扫-weixin-scanqrcode" class="headerlink" title="微信扫一扫 weixin://scanqrcode"></a>微信扫一扫 <code>weixin://scanqrcode</code></h2><h2 id="企业微信-wxwork"><a href="#企业微信-wxwork" class="headerlink" title="企业微信 wxwork://"></a>企业微信 <code>wxwork://</code></h2><h2 id="钉钉-dingtalk"><a href="#钉钉-dingtalk" class="headerlink" title="钉钉 dingtalk://"></a>钉钉 <code>dingtalk://</code></h2><h2 id="探探-tantanapp"><a href="#探探-tantanapp" class="headerlink" title="探探 tantanapp://"></a>探探 <code>tantanapp://</code></h2><h2 id="陌陌-momochat"><a href="#陌陌-momochat" class="headerlink" title="陌陌 momochat://"></a>陌陌 <code>momochat://</code></h2><h2 id="墨客-com-moke-moke"><a href="#墨客-com-moke-moke" class="headerlink" title="墨客 com.moke.moke://"></a>墨客 <code>com.moke.moke://</code></h2><h2 id="Line-line"><a href="#Line-line" class="headerlink" title="Line line://"></a>Line <code>line://</code></h2><h2 id="飞信-fetion"><a href="#飞信-fetion" class="headerlink" title="飞信 fetion://"></a>飞信 <code>fetion://</code></h2><h2 id="旺旺卖家版-wangwangseller"><a href="#旺旺卖家版-wangwangseller" class="headerlink" title="旺旺卖家版 wangwangseller://"></a>旺旺卖家版 <code>wangwangseller://</code></h2><h1 id="新闻-知识类"><a href="#新闻-知识类" class="headerlink" title="新闻/知识类"></a>新闻/知识类</h1>
-        
-          <p class="article-more-link">
-            <a href="/2020/10/1/notes/APP-URL-Scheme/#more">Read More</a>
-          </p>
-        
+<p>整个过程就和快递配送一样，比如有一个快递要从美国寄到南京市玄武区，首先快递会送到中国，然后再往下到达江苏省，接着是南京市，最后到达玄武区了。</p>
+<p>虽然域名系统已经提供了域名解析服务，但当我们输入域名访问一个网站时，DNS请求会一步一步往上询问网站的ip地址是多少，直到找到为止（允许时间范围内），试想一下无果我们每次访问这个网站的时候，都要去做一次这样的域名查找操作，既浪费资源又浪费时间。</p>
+<p><img src="https://i.loli.net/2020/11/01/FGgMoaS84EqTCvk.png" alt=""></p>
+<p>聪明的我们就想到把每次的结果缓存起来，这样再次查询的时候就不用那么费事了。所以<code>TTL（Time To Live）</code>就是来干这个事的，每次查询后，DNS服务器把结果记录下来，下次就直接读取缓存，<code>TTL</code>就是决定缓存多长时间，相当于浏览器<code>cookie</code>的缓存时间一样，代表这条DNS记录在DNS服务器上的缓存时间。假设一条DNS记录的<code>TTL</code>为10分钟（就是我们常见的600秒），那么10分钟后这条记录就会被删除。<code>TTL</code>设置的越长，修改后的响应时间就会越长，反之很快就能正确响应，而通常的免费DNS解析商都只支持600秒，想要更快就需要付费了。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/10/1/notes/APP-URL-Scheme/" data-id="ckgnpwlaa0002ewca2ragot2o" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2020/10/28/Devops/what-is-TTL/" data-id="ckgyxjcuv0036rlcale3ppvxu" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/notes/">notes</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/DNS/">DNS</a></li></ul>
 
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-install-and-config-nginx-on-ubuntu" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/24/notes/install-and-config-nginx-on-ubuntu/" class="article-date">
+  <time datetime="2020-10-24T13:34:50.000Z" itemprop="datePublished">2020-10-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/24/notes/install-and-config-nginx-on-ubuntu/">Ubuntu(18.04)安装Nginx并配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">update</span></span><br><span class="line">sudo apt <span class="keyword">install</span> nginx</span><br></pre></td></tr></table></figure>
+<p>如果能看到版本号，说明安装成功：</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx -v</span><br><span class="line"><span class="string">//</span> nginx <span class="keyword">version</span>: nginx/1.14.0 <span class="params">(Ubuntu)</span></span><br></pre></td></tr></table></figure>
+<h1 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h1><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">systemctl status nginx</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line">● nginx.service - A high performance web server and a reverse proxy server</span><br><span class="line"><span class="symbol">   Loaded:</span> loaded (<span class="regexp">/lib/</span>systemd<span class="regexp">/system/</span>nginx.service; enabled; vendor <span class="string">preset:</span> enabled)</span><br><span class="line"><span class="symbol">   Active:</span> active (running) since Fri <span class="number">2018</span><span class="number">-04</span><span class="number">-20</span> <span class="number">16</span>:<span class="number">08</span>:<span class="number">19</span> UTC; <span class="number">3</span> days ago</span><br><span class="line"><span class="symbol">     Docs:</span> <span class="string">man:</span>nginx(<span class="number">8</span>)</span><br><span class="line"> Main <span class="string">PID:</span> <span class="number">2369</span> (nginx)</span><br><span class="line"><span class="symbol">    Tasks:</span> <span class="number">2</span> (<span class="string">limit:</span> <span class="number">1153</span>)</span><br><span class="line"><span class="symbol">   CGroup:</span> <span class="regexp">/system.slice/</span>nginx.service</span><br><span class="line">           ├─<span class="number">2369</span> <span class="string">nginx:</span> master process <span class="regexp">/usr/</span>sbin/nginx -g daemon on; master_process on;</span><br><span class="line">           └─<span class="number">2380</span> <span class="string">nginx:</span> worker process</span><br></pre></td></tr></table></figure>
+<p>看到<code>running</code>说明已经启动成功了，再来通过ip访问下看看：</p>
+<p><img src="https://i.loli.net/2020/10/24/c4vNrKwUDxp3C6u.png" alt=""></p>
+<h1 id="nginx常用的几个命令"><a href="#nginx常用的几个命令" class="headerlink" title="nginx常用的几个命令"></a>nginx常用的几个命令</h1><h2 id="关闭"><a href="#关闭" class="headerlink" title="关闭"></a>关闭</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">stop</span> nginx</span><br></pre></td></tr></table></figure>
+<h2 id="开启"><a href="#开启" class="headerlink" title="开启"></a>开启</h2><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="literal">start</span> nginx</span><br></pre></td></tr></table></figure>
+<h2 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo systemctl restart nginx</span></span><br></pre></td></tr></table></figure>
+<h2 id="重载配置文件，一般用不关闭nginx更新配置"><a href="#重载配置文件，一般用不关闭nginx更新配置" class="headerlink" title="重载配置文件，一般用不关闭nginx更新配置"></a>重载配置文件，一般用不关闭nginx更新配置</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo systemctl reload nginx</span></span><br></pre></td></tr></table></figure>
+<h2 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="builtin-name">enable</span> nginx</span><br></pre></td></tr></table></figure>
+<h2 id="关闭开机自启"><a href="#关闭开机自启" class="headerlink" title="关闭开机自启"></a>关闭开机自启</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="builtin-name">disable</span> nginx</span><br></pre></td></tr></table></figure>
+<h1 id="配置一个站点"><a href="#配置一个站点" class="headerlink" title="配置一个站点"></a>配置一个站点</h1><h2 id="1-首先，把我们的站点创建在-var-www-example-com目录下："><a href="#1-首先，把我们的站点创建在-var-www-example-com目录下：" class="headerlink" title="1. 首先，把我们的站点创建在/var/www/example.com目录下："></a>1. 首先，把我们的站点创建在<code>/var/www/example.com</code>目录下：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /var/www/example.com</span><br></pre></td></tr></table></figure>
+<h2 id="2-设置目录的权限"><a href="#2-设置目录的权限" class="headerlink" title="2. 设置目录的权限"></a>2. 设置目录的权限</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R $USER:$USER /var/www/example.com</span><br><span class="line">sudo chmod -R 755 /var/www/example.com</span><br></pre></td></tr></table></figure>
+<h2 id="3-创建index-html"><a href="#3-创建index-html" class="headerlink" title="3. 创建index.html"></a>3. 创建index.html</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /var/www/example.com/index.html</span><br></pre></td></tr></table></figure>
+<p>内容如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-修改nginx"><a href="#4-修改nginx" class="headerlink" title="4. 修改nginx"></a>4. 修改nginx</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/nginx/sites-available/example.com</span><br></pre></td></tr></table></figure>
+<p>内容如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        listen [::]:80;</span><br><span class="line"></span><br><span class="line">        root /var/www/example.com;</span><br><span class="line">        index index.html index.htm;</span><br><span class="line"></span><br><span class="line">        server_name example.com www.example.com;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                try_files $uri $uri/ =404;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>创建软连接到<code>sites-enable</code>目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/</span><br></pre></td></tr></table></figure>
+<h2 id="5-检查nginx配置"><a href="#5-检查nginx配置" class="headerlink" title="5. 检查nginx配置"></a>5. 检查nginx配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br><span class="line"></span><br><span class="line">nginx: the configuration file /etc/nginx/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /etc/nginx/nginx.conf test is successful</span><br></pre></td></tr></table></figure>
+<p>没有问题的话，就可以重启<code>nginx</code>了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart nginx</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2020/10/24/notes/install-and-config-nginx-on-ubuntu/" data-id="ckgyxjcua0029rlcark13ral0" class="article-share-link">Share</a>
+      
+      
     </footer>
   </div>
   
@@ -236,7 +249,7 @@
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="page-number" href="page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="page/13/">13</a><a class="extend next" rel="next" href="page/2/">Next&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="page-number" href="page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="page/14/">14</a><a class="extend next" rel="next" href="page/2/">Next&raquo;</a>
   </nav>
 
 </section>
@@ -257,7 +270,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="tags/C/" style="font-size: 10px;">C#</a> <a href="tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="tags/Go/" style="font-size: 10px;">Go</a> <a href="tags/Java/" style="font-size: 10px;">Java</a> <a href="tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="tags/Laravel/" style="font-size: 10px;">Laravel</a> <a href="tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="tags/PHP/" style="font-size: 20px;">PHP</a> <a href="tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="tags/PSR/" style="font-size: 10px;">PSR</a> <a href="tags/Perl/" style="font-size: 10px;">Perl</a> <a href="tags/Python/" style="font-size: 10px;">Python</a> <a href="tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="tags/SICP/" style="font-size: 10px;">SICP</a> <a href="tags/Server/" style="font-size: 15px;">Server</a> <a href="tags/Something/" style="font-size: 10px;">Something</a> <a href="tags/Swift/" style="font-size: 10px;">Swift</a> <a href="tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="tags/Vue/" style="font-size: 10px;">Vue</a> <a href="tags/autoload/" style="font-size: 10px;">autoload</a> <a href="tags/canvas/" style="font-size: 10px;">canvas</a> <a href="tags/cover-view/" style="font-size: 12.5px;">cover-view</a> <a href="tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="tags/electron/" style="font-size: 10px;">electron</a> <a href="tags/firewall/" style="font-size: 10px;">firewall</a> <a href="tags/interviews/" style="font-size: 10px;">interviews</a> <a href="tags/networks/" style="font-size: 10px;">networks</a> <a href="tags/notes/" style="font-size: 12.5px;">notes</a> <a href="tags/routing/" style="font-size: 10px;">routing</a> <a href="tags/tools/" style="font-size: 10px;">tools</a> <a href="tags/ufw/" style="font-size: 10px;">ufw</a> <a href="tags/小程序/" style="font-size: 17.5px;">小程序</a> <a href="tags/微信/" style="font-size: 10px;">微信</a>
+      <a href="tags/C/" style="font-size: 10px;">C#</a> <a href="tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="tags/DNS/" style="font-size: 10px;">DNS</a> <a href="tags/Go/" style="font-size: 10px;">Go</a> <a href="tags/Java/" style="font-size: 10px;">Java</a> <a href="tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="tags/Laravel/" style="font-size: 10px;">Laravel</a> <a href="tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="tags/PHP/" style="font-size: 20px;">PHP</a> <a href="tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="tags/PSR/" style="font-size: 10px;">PSR</a> <a href="tags/Perl/" style="font-size: 10px;">Perl</a> <a href="tags/Python/" style="font-size: 10px;">Python</a> <a href="tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="tags/SICP/" style="font-size: 10px;">SICP</a> <a href="tags/Server/" style="font-size: 15px;">Server</a> <a href="tags/Something/" style="font-size: 10px;">Something</a> <a href="tags/Swift/" style="font-size: 10px;">Swift</a> <a href="tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="tags/Vue/" style="font-size: 10px;">Vue</a> <a href="tags/autoload/" style="font-size: 10px;">autoload</a> <a href="tags/canvas/" style="font-size: 10px;">canvas</a> <a href="tags/cover-view/" style="font-size: 12.5px;">cover-view</a> <a href="tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="tags/electron/" style="font-size: 10px;">electron</a> <a href="tags/emoji/" style="font-size: 10px;">emoji</a> <a href="tags/firewall/" style="font-size: 10px;">firewall</a> <a href="tags/interviews/" style="font-size: 10px;">interviews</a> <a href="tags/networks/" style="font-size: 10px;">networks</a> <a href="tags/notes/" style="font-size: 15px;">notes</a> <a href="tags/routing/" style="font-size: 10px;">routing</a> <a href="tags/tools/" style="font-size: 10px;">tools</a> <a href="tags/ufw/" style="font-size: 10px;">ufw</a> <a href="tags/小程序/" style="font-size: 17.5px;">小程序</a> <a href="tags/微信/" style="font-size: 10px;">微信</a>
     </div>
   </div>
 
@@ -279,23 +292,23 @@
       <ul>
         
           <li>
+            <a href="/2020/10/29/PHP/emoji-in-string/">判断字符串是否包含😈emoji表情</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/28/Devops/what-is-TTL/">域名解析时TTL是个什么东西？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/24/notes/install-and-config-nginx-on-ubuntu/">Ubuntu(18.04)安装Nginx并配置</a>
+          </li>
+        
+          <li>
             <a href="/2020/10/24/Linux/how-to-use-ufw/">UFW防火墙简单教程</a>
           </li>
         
           <li>
             <a href="/2020/10/19/Linux/ssh-login-Permission-denied-publickey/">SSH登录时提示Permission denied (publickey)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/1/notes/APP-URL-Scheme/">一些常用APP的URL Scheme</a>
-          </li>
-        
-          <li>
-            <a href="/2020/9/20/小程序/cover-view-2/">小程序cover-view踩坑系列2</a>
-          </li>
-        
-          <li>
-            <a href="/2020/9/20/小程序/cover-view/">小程序cover-view踩坑</a>
           </li>
         
       </ul>
