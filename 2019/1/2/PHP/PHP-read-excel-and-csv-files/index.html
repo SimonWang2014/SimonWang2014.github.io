@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fypzgxhc48j30by0i2t8n.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fypzv1rxptj30ae0fmwee.jpg">
 <meta property="og:image" content="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg">
-<meta property="og:updated_time" content="2020-09-20T02:36:36.736Z">
+<meta property="og:updated_time" content="2020-11-02T02:28:43.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用PHP读取Excel、CSV文件">
 <meta name="twitter:description" content="PHP读取excel、csv文件的库有很多，但用的比较多的有： PHPOffice/PHPExcel、PHPOffice/PhpSpreadsheet，现在PHPExcel已经不再维护了，最新的一次提交还是在2017年12月25号，建议直接使用PhpSpreadsheet，而且这两个项目都是同一个组织维护的，本文介绍PhpSpreadsheet的使用。 介绍PhpSpreadsheetPhpSp">
@@ -129,7 +129,8 @@
 <li>开启<code>php_xml</code>扩展</li>
 <li>开启<code>php_gd2</code>扩展</li>
 </ul>
-<h2 id="开始使用😄"><a href="#开始使用😄" class="headerlink" title="开始使用😄"></a>开始使用😄</h2><p>我们写一个简单的demo，来学习PhpSpreadsheet的使用，大概就是一个简单的文件上传页面，上传我们要读取的Excel文件，PHP接收到文件，调用PhpSpreadsheet读取Excel里面的内容。</p>
+<h2 id="开始使用😄"><a href="#开始使用😄" class="headerlink" title="开始使用😄"></a>开始使用😄</h2><a id="more"></a>
+<p>我们写一个简单的demo，来学习PhpSpreadsheet的使用，大概就是一个简单的文件上传页面，上传我们要读取的Excel文件，PHP接收到文件，调用PhpSpreadsheet读取Excel里面的内容。</p>
 <h4 id="0-配置环境"><a href="#0-配置环境" class="headerlink" title="0. 配置环境"></a>0. 配置环境</h4><p>略…，自己配置<br>我当前的PHP版本是<code>7.2.13</code></p>
 <h4 id="1-新建一个项目"><a href="#1-新建一个项目" class="headerlink" title="1. 新建一个项目"></a>1. 新建一个项目</h4><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> <span class="built_in">demo</span></span><br><span class="line">cd <span class="built_in">demo</span></span><br></pre></td></tr></table></figure>
 <h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h4><p>使用<a href="https://getcomposer.org" target="_blank" rel="noopener">composer</a>安装：</p>

@@ -302,48 +302,11 @@
         <p>​    在本地开发时，经常需要使用远程连接到Linux服务器，一开始我自己都是有几个远程就开几个SSH窗口，这种方法很原始很直接，但每次都受够了密码输入，即使用了SSH免密码登录，也会觉得每次输入SSH的命令一点都不快速，况且况且窗口开多了，也会很混乱，不易管理，这种情况，Linux上的工具也有很多，今天就学习一下<code>screen</code>工具。</p>
 <p>​    在介绍<code>screen</code>工具时，先讨论一下，为什么连接服务器后，当执行长时间的任务时，我们关闭远程连接窗口，这个任务就被杀掉了呢？</p>
 <h3 id="元凶：SIGUP信号"><a href="#元凶：SIGUP信号" class="headerlink" title="元凶：SIGUP信号"></a>元凶：SIGUP信号</h3><p>​    在Linux／Unix中，有以下几个概念：</p>
-<ul>
-<li>进程组（process group）：一个或多个进程的集合，每个进程组都有一个唯一的进程组ID；</li>
-<li>会话期（session）：一个或多个进程组的集合，有唯一一个会话首进程（session leader），会话期ID为首进程ID；</li>
-<li>会话期可以有一个单独的会话终端，与控制终端连接的会话期首进程叫控制进程（controlling process），当前与终端交互的进程称为前台进程组，其余进程组称为后台进程组。</li>
-</ul>
-<p>​工具POSIX.1定义：</p>
-<ul>
-<li>挂断信号（SIGHUP）默认的动作是终止程序；</li>
-<li>当终端接口检测到网络连接断开，将发送SIGHUP信号给控制进程（会话期首进程）；</li>
-<li>如果会话期首进程终止，则该信号发送到该会话期前台进程组；</li>
-<li>一个进程退出导致一个孤儿进程组产生时，如果人一个孤儿进程组进程处于STOP状态，则发送SIGHUP和SIGCONT信号到该进程组中所有进程。</li>
-</ul>
-<p>因此当网络断开或窗口关闭时，控制进程收到SIGHUP信号退出，会导致该会话期内其他进程退出。</p>
-<h3 id="一个简单例子"><a href="#一个简单例子" class="headerlink" title="一个简单例子"></a>一个简单例子</h3><p>打开两个SSH终端窗口，在第一个中执行<code>ping</code>命令：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc6u7rhvyj30il0f9te8.jpg" alt=""></p>
-<p>再另一个终端窗口中，找到<code>ping</code>的进程ID为22132，其父进程ID为21803，即登录zsh：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc6yf26ygj30g801d748.jpg" alt=""></p>
-<p>使用<code>ps -xj</code>可以看到，登录zsh（PID 21803）和ping在同一会话期，zsh为会话期首进程，所以进程组PGID为21803，ping所在的进程组PGID为22132，为前台进程组。</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc7190pf9j30gn01w0st.jpg" alt=""></p>
-<p>这时，我们关闭第一个SSH远程窗口，在另一个窗口中看到ping进程被杀掉了：</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1frc780f1bgj30df00z3yb.jpg" alt=""></p>
-<p>这就发现，当我们执行一个耗时的任务时，如果关闭了这个窗口，这个任务进程也就被杀掉了，并不是我们所期望的那样在后台继续执行。</p>
-<h2 id="使用screen"><a href="#使用screen" class="headerlink" title="使用screen"></a>使用screen</h2><p>​    现在，也不需要多说<code>screen</code>到底是干什么的了，直接说怎么使用吧。</p>
-<ol>
-<li>直接执行<code>screen</code>命令</li>
-</ol>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1frc7gskgthj30p302zmx8.jpg" alt=""></p>
-<p><code>screen</code>将创建一个执行shell的全屏窗口，可以看到窗口的title已经提示处于<code>screen</code>程序中，在这个窗口中你可以随便执行命令，如果要退出输入<code>exit</code>命令。</p>
-<ol start="2">
-<li>如果你想新开一个窗口执行另一个任务，可以执行：</li>
-</ol>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法1</span></span><br><span class="line">按键盘Ctrl+<span class="selector-tag">a</span> +c, 会心打开一个screen窗口</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法2</span></span><br><span class="line">screen 需要执行的任务的命令，比如：</span><br><span class="line">screen ping www<span class="selector-class">.baidu</span><span class="selector-class">.com</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>多个<code>screen</code>窗口切换</li>
-</ol>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">方法<span class="number">1</span></span><br><span class="line">键盘Ctrl+<span class="selector-tag">a</span> +[<span class="number">0</span>..<span class="number">9</span>]</span><br><span class="line"></span><br><span class="line">方法<span class="number">2</span></span><br><span class="line">键盘Ctrl+<span class="selector-tag">a</span> +n, 下一个screen窗口</span><br><span class="line">键盘Ctrl+<span class="selector-tag">a</span> +<span class="selector-tag">p</span>, 上一个screen窗口</span><br></pre></td></tr></table></figure>
-<p>更多命令可以看下图：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1frc7u10k57j30lt0i40um.jpg" alt=""></p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1frc7zis4jxj310z0dzgo5.jpg" alt=""></p>
-<p>Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器，Screen中还有会话的概念，用户可以在一个screen会话中创建多个screen窗口，而在每一个screen窗口中就像操作一个真实的SSH连接窗口那样。</p>
-<p>参考：<a href="https://www.ibm.com/developerworks/cn/linux/l-cn-screen/" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/linux/l-cn-screen/</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="../../2018/5/15/Linux/Use-screen-to-manage-your-remote-session/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">

@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1frc7gskgthj30p302zmx8.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1frc7u10k57j30lt0i40um.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1frc7zis4jxj310z0dzgo5.jpg">
-<meta property="og:updated_time" content="2018-05-15T11:00:44.000Z">
+<meta property="og:updated_time" content="2020-11-02T02:29:15.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Screen管理远程回话">
 <meta name="twitter:description" content="​    在本地开发时，经常需要使用远程连接到Linux服务器，一开始我自己都是有几个远程就开几个SSH窗口，这种方法很原始很直接，但每次都受够了密码输入，即使用了SSH免密码登录，也会觉得每次输入SSH的命令一点都不快速，况且况且窗口开多了，也会很混乱，不易管理，这种情况，Linux上的工具也有很多，今天就学习一下screen工具。 ​    在介绍screen工具时，先讨论一下，为什么连接服务">
@@ -120,12 +120,13 @@
         <p>​    在本地开发时，经常需要使用远程连接到Linux服务器，一开始我自己都是有几个远程就开几个SSH窗口，这种方法很原始很直接，但每次都受够了密码输入，即使用了SSH免密码登录，也会觉得每次输入SSH的命令一点都不快速，况且况且窗口开多了，也会很混乱，不易管理，这种情况，Linux上的工具也有很多，今天就学习一下<code>screen</code>工具。</p>
 <p>​    在介绍<code>screen</code>工具时，先讨论一下，为什么连接服务器后，当执行长时间的任务时，我们关闭远程连接窗口，这个任务就被杀掉了呢？</p>
 <h3 id="元凶：SIGUP信号"><a href="#元凶：SIGUP信号" class="headerlink" title="元凶：SIGUP信号"></a>元凶：SIGUP信号</h3><p>​    在Linux／Unix中，有以下几个概念：</p>
+<a id="more"></a>
 <ul>
 <li>进程组（process group）：一个或多个进程的集合，每个进程组都有一个唯一的进程组ID；</li>
 <li>会话期（session）：一个或多个进程组的集合，有唯一一个会话首进程（session leader），会话期ID为首进程ID；</li>
 <li>会话期可以有一个单独的会话终端，与控制终端连接的会话期首进程叫控制进程（controlling process），当前与终端交互的进程称为前台进程组，其余进程组称为后台进程组。</li>
 </ul>
-<p>​工具POSIX.1定义：</p>
+<p>工具POSIX.1定义：</p>
 <ul>
 <li>挂断信号（SIGHUP）默认的动作是终止程序；</li>
 <li>当终端接口检测到网络连接断开，将发送SIGHUP信号给控制进程（会话期首进程）；</li>

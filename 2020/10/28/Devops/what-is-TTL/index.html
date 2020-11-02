@@ -10,19 +10,19 @@
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="在设置DNS解析的时候，都会出现一个TTL，那这个是干什么的呢？ 要说这个TTL，我们先来简单解释下DNS域名解析的整个过程吧。 一开始域名这个概念还没出来的时候，都只是通过IP来访问，但IP根本不方便记忆，这是聪明的我们就想到给每一台服务器起一个别名，然后维护一个别名到IP地址的映射，转换过程全部由计算机自动完成，这就是我们经常说的hosts文件。 到后来，互联网越来越普及，人们发现维护这个域名">
+  <meta name="description" content="在设置DNS解析的时候，都会出现一个TTL，那这个是干什么的呢？ 要说这个TTL，我们先来简单解释下DNS域名解析的整个过程吧。 一开始域名这个概念还没出来的时候，都只是通过IP来访问，但IP根本不方便记忆，这是聪明的我们就想到给每一台服务器起一个别名，然后维护一个别名到IP地址的映射，转换过程全部由计算机自动完成，这就是我们经常说的hosts文件。">
 <meta name="keywords" content="DNS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="域名解析时TTL是个什么东西？">
 <meta property="og:url" content="https://www.xydida.com/2020/10/28/Devops/what-is-TTL/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="在设置DNS解析的时候，都会出现一个TTL，那这个是干什么的呢？ 要说这个TTL，我们先来简单解释下DNS域名解析的整个过程吧。 一开始域名这个概念还没出来的时候，都只是通过IP来访问，但IP根本不方便记忆，这是聪明的我们就想到给每一台服务器起一个别名，然后维护一个别名到IP地址的映射，转换过程全部由计算机自动完成，这就是我们经常说的hosts文件。 到后来，互联网越来越普及，人们发现维护这个域名">
+<meta property="og:description" content="在设置DNS解析的时候，都会出现一个TTL，那这个是干什么的呢？ 要说这个TTL，我们先来简单解释下DNS域名解析的整个过程吧。 一开始域名这个概念还没出来的时候，都只是通过IP来访问，但IP根本不方便记忆，这是聪明的我们就想到给每一台服务器起一个别名，然后维护一个别名到IP地址的映射，转换过程全部由计算机自动完成，这就是我们经常说的hosts文件。">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="https://i.loli.net/2020/11/01/FGgMoaS84EqTCvk.png">
-<meta property="og:updated_time" content="2020-11-01T09:45:58.280Z">
+<meta property="og:updated_time" content="2020-11-02T02:29:38.960Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="域名解析时TTL是个什么东西？">
-<meta name="twitter:description" content="在设置DNS解析的时候，都会出现一个TTL，那这个是干什么的呢？ 要说这个TTL，我们先来简单解释下DNS域名解析的整个过程吧。 一开始域名这个概念还没出来的时候，都只是通过IP来访问，但IP根本不方便记忆，这是聪明的我们就想到给每一台服务器起一个别名，然后维护一个别名到IP地址的映射，转换过程全部由计算机自动完成，这就是我们经常说的hosts文件。 到后来，互联网越来越普及，人们发现维护这个域名">
+<meta name="twitter:description" content="在设置DNS解析的时候，都会出现一个TTL，那这个是干什么的呢？ 要说这个TTL，我们先来简单解释下DNS域名解析的整个过程吧。 一开始域名这个概念还没出来的时候，都只是通过IP来访问，但IP根本不方便记忆，这是聪明的我们就想到给每一台服务器起一个别名，然后维护一个别名到IP地址的映射，转换过程全部由计算机自动完成，这就是我们经常说的hosts文件。">
 <meta name="twitter:image" content="https://i.loli.net/2020/11/01/FGgMoaS84EqTCvk.png">
   
     <link rel="alternate" href="/atom.xml" title="我的博客" type="application/atom+xml">
@@ -114,6 +114,7 @@
         <p>在设置DNS解析的时候，都会出现一个<code>TTL</code>，那这个是干什么的呢？</p>
 <p>要说这个<code>TTL</code>，我们先来简单解释下DNS域名解析的整个过程吧。</p>
 <p>一开始域名这个概念还没出来的时候，都只是通过IP来访问，但IP根本不方便记忆，这是聪明的我们就想到给每一台服务器起一个别名，然后维护一个别名到IP地址的映射，转换过程全部由计算机自动完成，这就是我们经常说的<code>hosts</code>文件。</p>
+<a id="more"></a>
 <p>到后来，互联网越来越普及，人们发现维护这个域名IP映射文件非常吃力，<code>hosts</code>文件非常大，别名还不能冲突，维护成本巨大。这时候就出现了<strong>域名系统</strong>、<strong>DNS协议</strong>、<strong>域名空间</strong>，这里我们不做赘述。我们以一个非常生动的例子来讲解<code>DNS</code>解析的过程（<a href="https://selfboot.cn/2015/11/05/dns_theory/）：" target="_blank" rel="noopener">https://selfboot.cn/2015/11/05/dns_theory/）：</a></p>
 <blockquote>
 <p>1.用户：喂，本地域名服务器，告诉我math.sysu.edu.cn的地址；<br>2.本地域名服务器：哎呀，我不知道啊，不在我的辖区，容我去问问老大哥吧。root老大，能告诉我math.sysu.edu.cn的地址吗；<br>3.根域名服务器：忙着呢，你去问B（.cn）；<br>4.本地域名服务器：喂，B，告诉我math.sysu.edu.cn的地址；<br>5.B：你去问D（.edu.cn）；<br>6.本地域名服务器：喂，D，告诉我math.sysu.edu.cn的地址；<br>7.D：你去问F（sysu.edu.cn）；<br>8.本地域名服务器：喂，F，告诉我math.sysu.edu.cn的地址；<br>9.F：容老衲看看，哎呀，找到了，是X.X.X.X；<br>10.本地域名服务器：踏破铁鞋终于找到啦，喂用户，出来啊，我找到了，是X.X.X.X</p>

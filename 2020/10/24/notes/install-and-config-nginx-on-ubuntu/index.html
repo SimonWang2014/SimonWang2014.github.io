@@ -10,19 +10,19 @@
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="安装Nginx12sudo apt updatesudo apt install nginx 如果能看到版本号，说明安装成功： 12nginx -v// nginx version: nginx/1.14.0 (Ubuntu) 查看状态123456789101112systemctl status nginx// 输出● nginx.service - A high performance web">
+  <meta name="description" content="安装Nginx12sudo apt updatesudo apt install nginx 如果能看到版本号，说明安装成功： 12nginx -v// nginx version: nginx/1.14.0 (Ubuntu)">
 <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu(18.04)安装Nginx并配置">
 <meta property="og:url" content="https://www.xydida.com/2020/10/24/notes/install-and-config-nginx-on-ubuntu/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="安装Nginx12sudo apt updatesudo apt install nginx 如果能看到版本号，说明安装成功： 12nginx -v// nginx version: nginx/1.14.0 (Ubuntu) 查看状态123456789101112systemctl status nginx// 输出● nginx.service - A high performance web">
+<meta property="og:description" content="安装Nginx12sudo apt updatesudo apt install nginx 如果能看到版本号，说明安装成功： 12nginx -v// nginx version: nginx/1.14.0 (Ubuntu)">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="https://i.loli.net/2020/10/24/c4vNrKwUDxp3C6u.png">
-<meta property="og:updated_time" content="2020-11-01T08:53:38.580Z">
+<meta property="og:updated_time" content="2020-11-02T02:27:55.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu(18.04)安装Nginx并配置">
-<meta name="twitter:description" content="安装Nginx12sudo apt updatesudo apt install nginx 如果能看到版本号，说明安装成功： 12nginx -v// nginx version: nginx/1.14.0 (Ubuntu) 查看状态123456789101112systemctl status nginx// 输出● nginx.service - A high performance web">
+<meta name="twitter:description" content="安装Nginx12sudo apt updatesudo apt install nginx 如果能看到版本号，说明安装成功： 12nginx -v// nginx version: nginx/1.14.0 (Ubuntu)">
 <meta name="twitter:image" content="https://i.loli.net/2020/10/24/c4vNrKwUDxp3C6u.png">
   
     <link rel="alternate" href="/atom.xml" title="我的博客" type="application/atom+xml">
@@ -110,6 +110,7 @@
         <h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">update</span></span><br><span class="line">sudo apt <span class="keyword">install</span> nginx</span><br></pre></td></tr></table></figure>
 <p>如果能看到版本号，说明安装成功：</p>
 <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx -v</span><br><span class="line"><span class="string">//</span> nginx <span class="keyword">version</span>: nginx/1.14.0 <span class="params">(Ubuntu)</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h1 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h1><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">systemctl status nginx</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line">● nginx.service - A high performance web server and a reverse proxy server</span><br><span class="line"><span class="symbol">   Loaded:</span> loaded (<span class="regexp">/lib/</span>systemd<span class="regexp">/system/</span>nginx.service; enabled; vendor <span class="string">preset:</span> enabled)</span><br><span class="line"><span class="symbol">   Active:</span> active (running) since Fri <span class="number">2018</span><span class="number">-04</span><span class="number">-20</span> <span class="number">16</span>:<span class="number">08</span>:<span class="number">19</span> UTC; <span class="number">3</span> days ago</span><br><span class="line"><span class="symbol">     Docs:</span> <span class="string">man:</span>nginx(<span class="number">8</span>)</span><br><span class="line"> Main <span class="string">PID:</span> <span class="number">2369</span> (nginx)</span><br><span class="line"><span class="symbol">    Tasks:</span> <span class="number">2</span> (<span class="string">limit:</span> <span class="number">1153</span>)</span><br><span class="line"><span class="symbol">   CGroup:</span> <span class="regexp">/system.slice/</span>nginx.service</span><br><span class="line">           ├─<span class="number">2369</span> <span class="string">nginx:</span> master process <span class="regexp">/usr/</span>sbin/nginx -g daemon on; master_process on;</span><br><span class="line">           └─<span class="number">2380</span> <span class="string">nginx:</span> worker process</span><br></pre></td></tr></table></figure>
 <p>看到<code>running</code>说明已经启动成功了，再来通过ip访问下看看：</p>
 <p><img src="https://i.loli.net/2020/10/24/c4vNrKwUDxp3C6u.png" alt=""></p>
