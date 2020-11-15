@@ -19,7 +19,7 @@
 <meta property="og:description" content="How to use Eloquent in Slim framework">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="https://i.loli.net/2020/11/14/Uvb4f51Srx7XGzL.png">
-<meta property="og:updated_time" content="2020-11-15T05:55:09.162Z">
+<meta property="og:updated_time" content="2020-11-15T05:57:24.539Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Use Eloquent ORM in Slim framework">
 <meta name="twitter:description" content="How to use Eloquent in Slim framework">
@@ -114,6 +114,7 @@
         <p><img src="https://i.loli.net/2020/11/14/Uvb4f51Srx7XGzL.png" alt=""></p>
 <p>Slim is a micro web framework like <code>Flask</code> or <code>Sinatra</code> but for PHP. <code>Eloquent ORM</code>is a powerful database toolkit and it serves as a database layer of the <code>Lravel</code> PHP framework. Now, this time i will install <code>Elequent ORM</code> in <code>Slime</code> framework and build some Restful API with it. Let’s get started!</p>
 <p>Here is the part of <code>composer.json</code> in my project:</p>
+<a id="more"></a>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"require"</span>: &#123;</span><br><span class="line">        <span class="string">"php"</span>: <span class="string">"&gt;=5.5.0"</span>,</span><br><span class="line">        <span class="string">"slim/slim"</span>: <span class="string">"^3.1"</span>,</span><br><span class="line">        <span class="string">"slim/php-view"</span>: <span class="string">"^2.0"</span>,</span><br><span class="line">        <span class="string">"monolog/monolog"</span>: <span class="string">"^1.17"</span>,</span><br><span class="line">        <span class="string">"overtrue/pinyin"</span>: <span class="string">"~3.0"</span>,</span><br><span class="line">        <span class="string">"illuminate/database"</span>: <span class="string">"~4.2"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"require-dev"</span>: &#123;</span><br><span class="line">        <span class="string">"phpunit/phpunit"</span>: <span class="string">"&gt;=4.8 &lt; 6.0"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"autoload-dev"</span>: &#123;</span><br><span class="line">        <span class="string">"psr-4"</span>: &#123;</span><br><span class="line">            <span class="string">"Tests\\"</span>: <span class="string">"tests/"</span>,</span><br><span class="line">	          <span class="string">"app\\"</span>: <span class="string">"src/app/"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
 <p>In my project, i use the <code>illuminate/database 4.2</code> because my PHP version is 7.0 which is not support some feature like this:</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[$foo, $bar] = [<span class="number">1</span>,<span class="number">2</span>];</span><br></pre></td></tr></table></figure>
@@ -134,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/11/14/PHP/use-eloquent-in-slim-framework/" data-id="ckhipg74f002yygcad1sikw55" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2020/11/14/PHP/use-eloquent-in-slim-framework/" data-id="ckhipibxx003c0rcaqoodsiyq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/API/">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/Eloquent/">Eloquent</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/Slim/">Slim</a></li></ul>
