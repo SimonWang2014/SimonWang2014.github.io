@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Use Eloquent ORM in Slim framework | 我的博客</title>
+  <meta name="baidu-site-verification" content="yXEzwss0jm" />
+  <meta name="360-site-verification" content="878e013ea1c0235dec34a8b1c676cf65" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
+  
+  <meta name="description" content="How to use Eloquent in Slim framework">
+<meta name="keywords" content="PHP,API,Slim,Eloquent">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Use Eloquent ORM in Slim framework">
+<meta property="og:url" content="https://www.xydida.com/2020/11/14/PHP/use-eloquent-in-slim-framework/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="How to use Eloquent in Slim framework">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="https://i.loli.net/2020/11/14/Uvb4f51Srx7XGzL.png">
+<meta property="og:updated_time" content="2020-11-15T05:55:09.162Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Use Eloquent ORM in Slim framework">
+<meta name="twitter:description" content="How to use Eloquent in Slim framework">
+<meta name="twitter:image" content="https://i.loli.net/2020/11/14/Uvb4f51Srx7XGzL.png">
+  
+    <link rel="alternate" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="../../../../../css/style.css">
+  
+
+  
+    <!-- CNZZ Analytics -->
+    <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1257809326'%3E%3C/span%3E%3Cscript src='https://s95.cnzz.com/z_stat.php%3Fid%3D1257809326' type='text/javascript'%3E%3C/script%3E"));</script>
+    <style>
+        span#cnzz_stat_icon_1257809326 {display:none;}
+    </style>
+    <!-- End CNZZ Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../../../../index.html" id="logo">我的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../../../../index.html" id="subtitle">能找到我的也不是等闲之辈</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="../../../../../index.html">Home</a>
+        
+          <a class="main-nav-link" href="../../../../../archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.xydida.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-use-eloquent-in-slim-framework" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../../../../2020/11/14/PHP/use-eloquent-in-slim-framework/" class="article-date">
+  <time datetime="2020-11-14T13:27:04.000Z" itemprop="datePublished">2020-11-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../../../../categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Use Eloquent ORM in Slim framework
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.loli.net/2020/11/14/Uvb4f51Srx7XGzL.png" alt=""></p>
+<p>Slim is a micro web framework like <code>Flask</code> or <code>Sinatra</code> but for PHP. <code>Eloquent ORM</code>is a powerful database toolkit and it serves as a database layer of the <code>Lravel</code> PHP framework. Now, this time i will install <code>Elequent ORM</code> in <code>Slime</code> framework and build some Restful API with it. Let’s get started!</p>
+<p>Here is the part of <code>composer.json</code> in my project:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"require"</span>: &#123;</span><br><span class="line">        <span class="string">"php"</span>: <span class="string">"&gt;=5.5.0"</span>,</span><br><span class="line">        <span class="string">"slim/slim"</span>: <span class="string">"^3.1"</span>,</span><br><span class="line">        <span class="string">"slim/php-view"</span>: <span class="string">"^2.0"</span>,</span><br><span class="line">        <span class="string">"monolog/monolog"</span>: <span class="string">"^1.17"</span>,</span><br><span class="line">        <span class="string">"overtrue/pinyin"</span>: <span class="string">"~3.0"</span>,</span><br><span class="line">        <span class="string">"illuminate/database"</span>: <span class="string">"~4.2"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"require-dev"</span>: &#123;</span><br><span class="line">        <span class="string">"phpunit/phpunit"</span>: <span class="string">"&gt;=4.8 &lt; 6.0"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"autoload-dev"</span>: &#123;</span><br><span class="line">        <span class="string">"psr-4"</span>: &#123;</span><br><span class="line">            <span class="string">"Tests\\"</span>: <span class="string">"tests/"</span>,</span><br><span class="line">	          <span class="string">"app\\"</span>: <span class="string">"src/app/"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+<p>In my project, i use the <code>illuminate/database 4.2</code> because my PHP version is 7.0 which is not support some feature like this:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[$foo, $bar] = [<span class="number">1</span>,<span class="number">2</span>];</span><br></pre></td></tr></table></figure>
+<p>But if you have higher PHP version you can try the latest <code>Eloquent</code>.</p>
+<p>Run the <code>composer install</code> to install the repo into the project.</p>
+<h1 id="Config-Eloquent"><a href="#Config-Eloquent" class="headerlink" title="Config Eloquent"></a>Config Eloquent</h1><p>After downloading the Eloquent we should configure it so that our application will know about it. Open the <code>src/config.php</code> and add databse setting array:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'db'</span> =&gt; [</span><br><span class="line">    <span class="string">'driver'</span> =&gt; <span class="string">'mysql'</span>,</span><br><span class="line">    <span class="string">'host'</span> =&gt; <span class="string">'192.168.1.174:3307'</span>,</span><br><span class="line">    <span class="string">'database'</span> =&gt; <span class="string">'pingluntuan_online'</span>,</span><br><span class="line">    <span class="string">'username'</span> =&gt; <span class="string">'pingluntuan'</span>,</span><br><span class="line">    <span class="string">'password'</span> =&gt; <span class="string">'LbF8w5pUJ4mr9ZMb'</span>,</span><br><span class="line">    <span class="string">'charset'</span>   =&gt; <span class="string">'utf8'</span>,</span><br><span class="line">    <span class="string">'collation'</span> =&gt; <span class="string">'utf8_unicode_ci'</span>,</span><br><span class="line">    <span class="string">'prefix'</span>    =&gt; <span class="string">''</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h1 id="boost-Eloquent"><a href="#boost-Eloquent" class="headerlink" title="boost Eloquent"></a>boost Eloquent</h1><p>now instantiate the capsule manager and boost Eloquent in <code>public/index.php</code>:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$dbSettings = $container-&gt;get(<span class="string">'settings'</span>)[<span class="string">'db'</span>];</span><br><span class="line">$capsule = <span class="keyword">new</span> Illuminate\Database\Capsule\Manager;</span><br><span class="line">$capsule-&gt;addConnection($dbSettings);</span><br><span class="line">$capsule-&gt;bootEloquent();</span><br><span class="line">$capsule-&gt;setAsGlobal();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Run app</span></span><br><span class="line">$app-&gt;run();</span><br></pre></td></tr></table></figure>
+<h1 id="create-Model"><a href="#create-Model" class="headerlink" title="create Model"></a>create Model</h1><p>OK. Every thing has done, Let’s create my database model. Create <code>src/app/model/Goods.php</code> file and edit:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">model</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Eloquent</span>\<span class="title">Model</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Goods</span> <span class="keyword">extends</span> <span class="title">Model</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> $table = <span class="string">'goods'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Class <code>Goods</code> extends <code>Illuminate\Database\Eloquent\Model</code> so it can retrieve and store data from our databse. The <code>$table</code> property assigns which data table this model will use.</p>
+<h1 id="write-restful-API"><a href="#write-restful-API" class="headerlink" title="write restful API"></a>write restful API</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">controller</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Slim</span>\<span class="title">Http</span>\<span class="title">Request</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Slim</span>\<span class="title">Http</span>\<span class="title">Response</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">app</span>\<span class="title">model</span>\<span class="title">Goods</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoodsController</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">(Request $request, Response $response)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Goods::orderBy(<span class="string">'id'</span>, <span class="string">'asc'</span>)-&gt;first()-&gt;toJson();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">info</span><span class="params">(Request $request, Response $response, $args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $id = $args[<span class="string">'id'</span>];</span><br><span class="line">        <span class="keyword">return</span> $response-&gt;getBody()-&gt;write(Goods::find($id));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Edit the  <code>src/routes.php</code>:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$app-&gt;get(<span class="string">'/goods'</span>, <span class="string">'app\controller\GoodsController:index'</span>);</span><br><span class="line">$app-&gt;get(<span class="string">'/goods/&#123;id&#125;'</span>, <span class="string">'app\controller\GoodsController:info'</span>);</span><br></pre></td></tr></table></figure>
+<p>That’s works! Happy Hacking!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2020/11/14/PHP/use-eloquent-in-slim-framework/" data-id="ckhipg74f002yygcad1sikw55" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/API/">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/Eloquent/">Eloquent</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/Slim/">Slim</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../../../../2020/10/29/PHP/emoji-in-string/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">判断字符串是否包含😈emoji表情</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Devops/">Devops</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Electron/">Electron</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Networks/">Networks</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Object-Oriented/">Object Oriented</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Regular-Expression/">Regular Expression</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/frontend/">frontend</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/小程序/">小程序</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/微信/">微信</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="../../../../../tags/API/" style="font-size: 10px;">API</a> <a href="../../../../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../../../../tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="../../../../../tags/DNS/" style="font-size: 10px;">DNS</a> <a href="../../../../../tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="../../../../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../../../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../../../../tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="../../../../../tags/Laravel/" style="font-size: 10px;">Laravel</a> <a href="../../../../../tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="../../../../../tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="../../../../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../../../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../../../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../../../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../../../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../../../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../../../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../../../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../../../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../../../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../../../../tags/Server/" style="font-size: 15px;">Server</a> <a href="../../../../../tags/Slim/" style="font-size: 10px;">Slim</a> <a href="../../../../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../../../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../../../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../../../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../../../../tags/Vue/" style="font-size: 10px;">Vue</a> <a href="../../../../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../../../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../../../../tags/cover-view/" style="font-size: 12.5px;">cover-view</a> <a href="../../../../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../../../../tags/electron/" style="font-size: 10px;">electron</a> <a href="../../../../../tags/emoji/" style="font-size: 10px;">emoji</a> <a href="../../../../../tags/firewall/" style="font-size: 10px;">firewall</a> <a href="../../../../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../../../../tags/networks/" style="font-size: 10px;">networks</a> <a href="../../../../../tags/notes/" style="font-size: 15px;">notes</a> <a href="../../../../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../../../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../../../../tags/ufw/" style="font-size: 10px;">ufw</a> <a href="../../../../../tags/小程序/" style="font-size: 17.5px;">小程序</a> <a href="../../../../../tags/微信/" style="font-size: 10px;">微信</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2017/10/">October 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="../../../../../2020/11/14/PHP/use-eloquent-in-slim-framework/">Use Eloquent ORM in Slim framework</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2020/10/29/PHP/emoji-in-string/">判断字符串是否包含😈emoji表情</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2020/10/28/Devops/what-is-TTL/">域名解析时TTL是个什么东西？</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2020/10/24/notes/install-and-config-nginx-on-ubuntu/">Ubuntu(18.04)安装Nginx并配置</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2020/10/24/Linux/how-to-use-ufw/">UFW防火墙简单教程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 bilberry<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="../../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../../../../js/script.js"></script>
+
+  </div>
+</body>
+</html>
