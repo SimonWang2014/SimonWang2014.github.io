@@ -149,13 +149,13 @@ ga('send', 'pageview');
 <h2 id="2-SSH密钥对认证"><a href="#2-SSH密钥对认证" class="headerlink" title="2. SSH密钥对认证"></a>2. SSH密钥对认证</h2><p>上面创建完jack用户后，就可以执行下面的命令登录：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ssh</span> <span class="selector-tag">jack</span>@<span class="keyword">123</span>.<span class="keyword">123</span>.<span class="keyword">78</span>.<span class="keyword">90</span></span><br></pre></td></tr></table></figure>
 <p>此时，会要求你输入jack的密码，但密码认证也有漏洞，而且会受到暴力破解，不怀好意的人会不断尝试猜测你的密码，而且，每次登录时都要求你输入密码，是不是很麻烦呢？这时我们就需要创建SSH密码对认证（所谓密钥对，就是一对“密钥”，其中一个是私钥，保存在自己的电脑中，另一个是公钥，保存在服务器中，公钥加密的消息只能使用对应的私钥解密）。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen  <span class="comment">// 创建密钥对</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen  <span class="comment">// 创建密钥对</span></span><br></pre></td></tr></table></figure>
 <p>然后按照屏幕提示输入所需要的信息，这个命令会在电脑创建两个文件：<code>~/.ssh/id_rsa.pub(公钥)</code>和<code>~/.ssh/id.rsa(私钥)</code>，私钥应该保存在本地电脑中，公钥上传到服务器。</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 把公钥上传到服务器中jack用户的家目录，后面一定要有":"</span></span><br><span class="line"><span class="selector-tag">sup</span> ~/.ssh/id_rsa<span class="selector-class">.pub</span> jack@<span class="number">123.123</span>.<span class="number">78.90</span>:</span><br></pre></td></tr></table></figure>
 <p>登录服务器，创建.ssh目录：</p>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/.ssh</span><br></pre></td></tr></table></figure>
 <p>创建~/.ssh/authorized_keys文件，这个文件的内容是一系列允许登录这台服务器的公钥：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch ~<span class="regexp">/.ssh/</span>authorized_keys</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch ~<span class="regexp">/.ssh/</span>authorized_keys</span><br></pre></td></tr></table></figure>
 <p>把上传的公钥添加到~/.ssh/authorized_keys文件中：</p>
 <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~<span class="string">/id_rsa.pub</span> &gt;&gt; ~<span class="string">/.ssh/authorized_keys</span></span><br></pre></td></tr></table></figure>
 <p>最后修改下面几个目录和文件的访问权限，让jack用户访问~/.ssh目录和~/.ssh/ahthorized_keys文件：</p>
@@ -174,7 +174,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/2/4/Devops/Base-configuration-for-a-new-server/" data-id="ckitp5lhy0001hoca7v02kugt" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2018/2/4/Devops/Base-configuration-for-a-new-server/" data-id="ckj43ed850006s2ca1f0y9oln" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/Server/">Server</a></li></ul>
@@ -245,6 +245,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="../../../../../2020/12/25/notes/differences-between-a-Service-Provider-and-Factory-in-AngularJS/">AngularJS中Service,Provider和Factory的区别</a>
+          </li>
+        
+          <li>
             <a href="../../../../../2020/12/18/Yangmao/aliyun-yu-ming-xu-fei-you-hui-quan/">阿里云域名续费优惠券</a>
           </li>
         
@@ -258,10 +262,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="../../../../../2020/10/28/Devops/what-is-TTL/">域名解析时TTL是个什么东西？</a>
-          </li>
-        
-          <li>
-            <a href="../../../../../2020/10/24/notes/install-and-config-nginx-on-ubuntu/">Ubuntu(18.04)安装Nginx并配置</a>
           </li>
         
       </ul>
