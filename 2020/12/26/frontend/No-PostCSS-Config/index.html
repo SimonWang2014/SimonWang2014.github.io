@@ -3,28 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>对一台新服务器的简单的配置 | 我的博客</title>
+  <title>No PostCSS Config 错误 | 我的博客</title>
   <meta name="baidu-site-verification" content="yXEzwss0jm" />
   <meta name="360-site-verification" content="878e013ea1c0235dec34a8b1c676cf65" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="Some base configuration for a new server.">
-<meta name="keywords" content="PHP,Server">
+  <meta name="description" content="一个使用了Webpack的老项目，最近在build时，报出如下错误： 1Module build failed: ModuleBuildError: Module build failed: Error: No PostCSS Config found in: ....">
+<meta name="keywords" content="javascript,npm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="对一台新服务器的简单的配置">
-<meta property="og:url" content="https://www.xydida.com/2018/2/4/Devops/Base-configuration-for-a-new-server/index.html">
+<meta property="og:title" content="No PostCSS Config 错误">
+<meta property="og:url" content="https://www.xydida.com/2020/12/26/frontend/No-PostCSS-Config/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="Some base configuration for a new server.">
+<meta property="og:description" content="一个使用了Webpack的老项目，最近在build时，报出如下错误： 1Module build failed: ModuleBuildError: Module build failed: Error: No PostCSS Config found in: ....">
 <meta property="og:locale" content="zh">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2650331-494786b4facec3e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg">
-<meta property="og:updated_time" content="2020-09-20T02:33:15.716Z">
+<meta property="og:updated_time" content="2020-12-26T07:39:26.011Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="对一台新服务器的简单的配置">
-<meta name="twitter:description" content="Some base configuration for a new server.">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2650331-494786b4facec3e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="No PostCSS Config 错误">
+<meta name="twitter:description" content="一个使用了Webpack的老项目，最近在build时，报出如下错误： 1Module build failed: ModuleBuildError: Module build failed: Error: No PostCSS Config found in: ....">
   
     <link rel="alternate" href="/atom.xml" title="我的博客" type="application/atom+xml">
   
@@ -115,14 +112,14 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Base-configuration-for-a-new-server" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-No-PostCSS-Config" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="../../../../../2018/2/4/Devops/Base-configuration-for-a-new-server/" class="article-date">
-  <time datetime="2018-02-04T12:03:02.000Z" itemprop="datePublished">2018-02-04</time>
+    <a href="../../../../../2020/12/26/frontend/No-PostCSS-Config/" class="article-date">
+  <time datetime="2020-12-26T07:31:45.000Z" itemprop="datePublished">2020-12-26</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="../../../../../categories/Devops/">Devops</a>
+    <a class="article-category-link" href="../../../../../categories/frontend/">frontend</a>
   </div>
 
   </div>
@@ -133,7 +130,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      对一台新服务器的简单的配置
+      No PostCSS Config 错误
     </h1>
   
 
@@ -141,43 +138,23 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://upload-images.jianshu.io/upload_images/2650331-494786b4facec3e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Linode"></p>
-<p>虽然不是专业的系统管理员，作为程序员还是会经常折腾一些VPS，势必要学会怎么配置一台服务器，而且，对于公司面试，掌握基本的系统管理知识还是有利的。况且，如今的网络安全环境下，掌握一些服务器安全方面的配置是非常有必要的。</p>
-<h2 id="1-远程登录用户"><a href="#1-远程登录用户" class="headerlink" title="1. 远程登录用户"></a>1. 远程登录用户</h2><p>在使用SSH远程登录时，由于root用户有着无限的权利，它能执行任何命令，所以尽量不要使用root用户登录。</p>
-<h6 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h6><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adduser jack  <span class="comment">//创建非根用户</span></span><br><span class="line">usermod -<span class="selector-tag">a</span> -G sudo jack  <span class="comment">// 让jack用户拥有sudo权限(即通过密码认证后可以执行特殊的权限的命令)</span></span><br></pre></td></tr></table></figure>
-<h6 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h6><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adduser jack</span><br><span class="line">passwd jack  <span class="comment">// 为jack用户设置密码</span></span><br><span class="line">usermod -<span class="selector-tag">a</span> -G wheel jack  <span class="comment">// 把jack加入wheel用户组</span></span><br></pre></td></tr></table></figure>
-<h2 id="2-SSH密钥对认证"><a href="#2-SSH密钥对认证" class="headerlink" title="2. SSH密钥对认证"></a>2. SSH密钥对认证</h2><p>上面创建完jack用户后，就可以执行下面的命令登录：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ssh</span> <span class="selector-tag">jack</span>@<span class="keyword">123</span>.<span class="keyword">123</span>.<span class="keyword">78</span>.<span class="keyword">90</span></span><br></pre></td></tr></table></figure>
-<p>此时，会要求你输入jack的密码，但密码认证也有漏洞，而且会受到暴力破解，不怀好意的人会不断尝试猜测你的密码，而且，每次登录时都要求你输入密码，是不是很麻烦呢？这时我们就需要创建SSH密码对认证（所谓密钥对，就是一对“密钥”，其中一个是私钥，保存在自己的电脑中，另一个是公钥，保存在服务器中，公钥加密的消息只能使用对应的私钥解密）。</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen  <span class="comment">// 创建密钥对</span></span><br></pre></td></tr></table></figure>
-<p>然后按照屏幕提示输入所需要的信息，这个命令会在电脑创建两个文件：<code>~/.ssh/id_rsa.pub(公钥)</code>和<code>~/.ssh/id.rsa(私钥)</code>，私钥应该保存在本地电脑中，公钥上传到服务器。</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 把公钥上传到服务器中jack用户的家目录，后面一定要有":"</span></span><br><span class="line"><span class="selector-tag">sup</span> ~/.ssh/id_rsa<span class="selector-class">.pub</span> jack@<span class="number">123.123</span>.<span class="number">78.90</span>:</span><br></pre></td></tr></table></figure>
-<p>登录服务器，创建.ssh目录：</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/.ssh</span><br></pre></td></tr></table></figure>
-<p>创建~/.ssh/authorized_keys文件，这个文件的内容是一系列允许登录这台服务器的公钥：</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch ~<span class="regexp">/.ssh/</span>authorized_keys</span><br></pre></td></tr></table></figure>
-<p>把上传的公钥添加到~/.ssh/authorized_keys文件中：</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~<span class="string">/id_rsa.pub</span> &gt;&gt; ~<span class="string">/.ssh/authorized_keys</span></span><br></pre></td></tr></table></figure>
-<p>最后修改下面几个目录和文件的访问权限，让jack用户访问~/.ssh目录和~/.ssh/ahthorized_keys文件：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chown -R jack:jack ~/.ssh</span><br><span class="line">chmod <span class="number">700</span> ~/.ssh</span><br><span class="line">chmod <span class="number">600</span> ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-<h2 id="禁用密码和根用户登录"><a href="#禁用密码和根用户登录" class="headerlink" title="禁用密码和根用户登录"></a>禁用密码和根用户登录</h2><p>为了让服务器再安全一些，我们要禁止用户通过密码登录，还要禁止根用户登录。</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim <span class="regexp">/etc/</span>ssh<span class="regexp">/sshd_config</span></span><br></pre></td></tr></table></figure>
-<p>上打开的配置文件中，这样修改：</p>
-<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /etc/ssh/sshd_config</span></span><br><span class="line">PasswordAuthentication <span class="keyword">no</span> <span class="comment">// 或者注释掉</span></span><br><span class="line">PermitRootLogin     <span class="keyword">no</span>      <span class="comment">// 或者注释掉</span></span><br></pre></td></tr></table></figure>
-<p>改动之后，重启ssh服务：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ubuntu</span></span><br><span class="line">sudo<span class="built_in"> service </span>ssh restart</span><br><span class="line"></span><br><span class="line"><span class="comment"># CentOS</span></span><br><span class="line">sudo systemctl restart sshd.service</span><br></pre></td></tr></table></figure>
-<p>运行完上面的命令，我们的服务器就安全很多了。</p>
-<hr>
-<p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
-<p><img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;"></p>
+        <p>一个使用了<code>Webpack</code>的老项目，最近在<code>build</code>时，报出如下错误：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Module build failed: ModuleBuildError: Module build failed: Error: No PostCSS Config found in: ....</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>大致意思就是没有<code>postcss</code>的配置文件，一看目录确实没有（可能是<code>webpack</code>版本造成的，修复方法很简单，如下：</p>
+<p>项目根目录新建如下配置文件：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">postcss<span class="selector-class">.config</span><span class="selector-class">.js</span></span><br></pre></td></tr></table></figure>
+<p>文件内容：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// postcss.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>重新<code>build</code>错误消失。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/2/4/Devops/Base-configuration-for-a-new-server/" data-id="ckj5e895k0019u5cac7nzykb7" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2020/12/26/frontend/No-PostCSS-Config/" data-id="ckj5e894m0006u5caazfc5pdk" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/Server/">Server</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/npm/">npm</a></li></ul>
 
     </footer>
   </div>
@@ -185,19 +162,10 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="../../../../../2018/5/14/Networks/Routing-Selection/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          IP中的路由选择
-        
-      </div>
-    </a>
   
-  
-    <a href="../../../../../2017/12/19/Algorithm/sieve-stream/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../../../../2020/12/25/frontend/differences-between-a-Service-Provider-and-Factory-in-AngularJS/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">用厄拉多塞法筛选素数</div>
+      <div class="article-nav-title">AngularJS中Service,Provider和Factory的区别</div>
     </a>
   
 </nav>
