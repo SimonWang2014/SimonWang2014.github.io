@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.xydida.com/2020/12/29/Electron/Node/Javascript/Bootstrap-s-JavaScript-requires-jQuery-Error/</loc>
+    
+    <lastmod>2020-12-30T07:22:20.766Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/2020/10/24/Linux/install-and-config-nginx-on-ubuntu/</loc>
+    
+    <lastmod>2020-12-29T03:22:31.232Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.xydida.com/2020/12/26/frontend/No-PostCSS-Config/</loc>
     
-    <lastmod>2020-12-26T07:39:26.011Z</lastmod>
+    <lastmod>2020-12-26T07:43:46.340Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.xydida.com/2020/12/25/frontend/differences-between-a-Service-Provider-and-Factory-in-AngularJS/</loc>
     
-    <lastmod>2020-12-25T09:53:49.287Z</lastmod>
+    <lastmod>2020-12-26T07:40:46.992Z</lastmod>
     
   </url>
   
@@ -68,13 +82,6 @@
     <loc>https://www.xydida.com/2018/6/6/MySQL/Learn-MySQL-indexes/</loc>
     
     <lastmod>2020-11-02T02:28:14.981Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/2020/10/24/notes/install-and-config-nginx-on-ubuntu/</loc>
-    
-    <lastmod>2020-11-02T02:27:55.895Z</lastmod>
     
   </url>
   
