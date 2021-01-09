@@ -113,6 +113,134 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-WeChat-miniprogram-data-analysis-custom-analysis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../2018/8/15/小程序/WeChat-miniprogram-data-analysis-custom-analysis/" class="article-date">
+  <time datetime="2018-08-15T14:16:31.000Z" itemprop="datePublished">2018-08-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../categories/小程序/">小程序</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2018/8/15/小程序/WeChat-miniprogram-data-analysis-custom-analysis/">微信小程序数据分析之自定义分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在小程序后台，微信已经提供了强大的数据分析功能，包括实时统计、访问分析、来源分析和用户画像功能，可以说对一般的数据分析已经完全足够了，但有时应用需要做一些更加精准的数据分析，比如具体到某一个页面的分享，页面中某一个button的点击等，这时候就需要用到自定义分析功能。</p>
+<h3 id="什么是自定义分析？"><a href="#什么是自定义分析？" class="headerlink" title="什么是自定义分析？"></a>什么是自定义分析？</h3><p>引用下官方文档：</p>
+<blockquote>
+<p>自定义分析支持灵活多维和近实时的用户行为分析，可以通过自定义上报，对用户在小程序内的行为做精细化跟踪，满足页面访问等标准统计以外的个性化分析需求。</p>
+</blockquote>
+<h3 id="创建自定义事件"><a href="#创建自定义事件" class="headerlink" title="创建自定义事件"></a>创建自定义事件</h3><p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fuarhk0wg3j310t0r741g.jpg" alt="进入自定义事件页面"></p>
+<ul>
+<li>事件英文名称和事件中文名称按照说明要求填写，这两个名称都是唯一的，不能设置成已经设置过的，而且设置的时候尽量简洁、还要见名知意</li>
+<li>配置方式有：填写配置、API上报。</li>
+<li>配置模版：官方已经提供了一些自定义事件模版，直接使用就可以，包括有：进入页面、离开页面、小程序内分享，不过这些事件的分析粒度都比较粗，针对整个应用，可以自己修改只针对某一页</li>
+<li>填写配置的方式支持以下几种统计触发器，有：</li>
+</ul>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">click 点击时触发</span><br><span class="line">enterPage 进入页面时触发，包括新开、后退、切换到前台都属于进入页面</span><br><span class="line">leavePage 离开页面时触发，包括离开、切换到后台都属于离开页面</span><br><span class="line">pageLoad 新开页面时触发，即第一次进入页面</span><br><span class="line">pageUnload 回收页面时触发</span><br><span class="line">pullDownRefresh 下拉刷新时触发</span><br><span class="line">launch 加载小程序时触发</span><br><span class="line"><span class="keyword">background </span>切换到后台触发</span><br><span class="line">foreground 切换到前台触发</span><br><span class="line"><span class="keyword">share </span>右上角菜单分享</span><br><span class="line"><span class="keyword">switchTab </span>调用<span class="keyword">switchTab接口切换页面时触发</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuas1d6p2aj31050rjdib.jpg" alt="配置信息"></p>
+<ul>
+<li>action指出发时的动作，一次性上报，表示在每一次 click 中，收集数据并上报一条数据；分步骤上报我也还没搞懂 😅</li>
+<li>page指要触发该事件的页面，这里填写的内容必须要和<code>app.json</code>中配置的页面路径一样</li>
+<li>data是选填的，是用来给事件触发时传递一些数据的，其中，字段值就是当前page的<code>data</code>中的数据名称</li>
+</ul>
+<h4 id="举个例子🌰"><a href="#举个例子🌰" class="headerlink" title="举个例子🌰"></a>举个例子🌰</h4><p>电商类小程序中，用户会有一个点击商品添加到购物车的动作，我们可以对这个动作进行数据分析，以下是<code>填写配置</code>的方式：</p>
+<ol>
+<li>填写事件英文和中文名称：</li>
+</ol>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuashtxxsxj30o008igml.jpg" alt="填写事件英文和中文名称"></p>
+<ol start="2">
+<li>填写事件配置，定义如何收集数据：</li>
+</ol>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fuasijuqzdj30wh0o9myn.jpg" alt="填写事件配置"></p>
+<p>这个例子中，用一个动作上报“加入购物车”事件。</p>
+<ul>
+<li>trigger：触发条件，click，表示点击操作触发；</li>
+<li>action：触发时动作，一次性上报，表示在每一次 click 中，收集数据并上报一条数据；</li>
+<li>page：触发页面，填 viewProduct（viewProduct 是商品详情页）；</li>
+<li>element：触发元素，填 .addToCart（.addToCart 是一个“加入购物车”的按钮）；</li>
+<li>data：事件的数据及其来源，用“字段名 字段值”来表示，其中字段值是页面上的一个变量。</li>
+</ul>
+<p>详细说一下字段值，他有如下规则：</p>
+<ul>
+<li>填写的变量名，默认从page实例的data字段中获取</li>
+<li>若想收集由list变量渲染的列表中的某一项数据，则可用list[].*表示，这里会根据当前填写的element（只能是class）得到的NodeList的第几个来决定数组下标。</li>
+<li>若列表是二维的，则可用list[][].*表示，这里element需填写两个class（空格隔开）分别表示父列表与子列表。</li>
+<li>若想取得数组的下标，则可用list[].$INDEX表示</li>
+<li>若想取得wxml中data-<em>系列属性的值，则可用$DATASET.</em>表示</li>
+<li>若想取得app实例的数据，则可用$APP.*表示，只支持获取基本类型的数据，如number、string、boolean。</li>
+</ul>
+<p>除此之外，还可以填写一些提供的系统属性，以“$”开头，目前支持以下属性：</p>
+<ul>
+<li><code>$PAGE_TIME</code> 用户从进入本页面到当前的时间(触发action的时间点)</li>
+<li><code>$APP_TIME</code> 用户进入小程序到当前的时间(触发action的时间点)</li>
+<li><code>$CURRENT_PAGE</code> 当前用户所在的页面</li>
+<li><code>$LAST_PAGE</code> 上一页</li>
+</ul>
+<blockquote>
+<p>注：data可以为空，为空时该事件上报仅收集系统默认字段的数据</p>
+</blockquote>
+<p>这个例子中，data有四项：</p>
+<p>product_id: itemID</p>
+<p>product_name: itemName</p>
+<p>product_price: price</p>
+<p>product_category: category</p>
+<p>即：</p>
+<p>事件的product_id字段，收集viewProduct页面上page实例的data中的itemID字段；</p>
+<p>事件的product_name字段，收集viewProduct页面上page实例的data中的itemName字段；</p>
+<p>事件的product_price字段，收集viewProduct页面上page实例的data中的price字段；</p>
+<p>事件的product_category字段，收集viewProduct页面上page实例的data中的category字段；</p>
+<p>以上内容表示：当用户点击 viewProduct 页面上的 .addToCart 按钮时，上报一条记录到 add_to_cart 事件，事件的 product_id, product_name, product_price, product_category 字段， 取值分别是页面上的 itemID, itemName, price, category。</p>
+<p>填写完配置后，还要点击<code>检查字段</code>。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuaslz88fdj30o00dr0tm.jpg" alt=""></p>
+<p>此时会提示 add_to_cart 事件包含的具体字段，继续补充字段的名称、数据类型和备注信息。</p>
+<h4 id="关于API上报"><a href="#关于API上报" class="headerlink" title="关于API上报"></a>关于API上报</h4><p>API上报比填写配置的方式更加灵活，但这也涉及到一些代码的更改，需要发布新版本，而填写配置的方式几乎不需要更改代码，所以无需发布新版本。当我们选择<code>API上报</code>后，我们可以设置需要上报的一下参数：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fuat0h1b9zj30x50dh3zb.jpg" alt="API上报"></p>
+<p>点击生成代码：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fuat1kc176j30wl0hrwfs.jpg" alt=""></p>
+<p>时间创建完成后，点击保存，后台就生成了一条事件记录，并有唯一的ID与它对应：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fuat5j1zfzj30zv086dgi.jpg" alt=""></p>
+<p>接着，我们在小程序代码中可以插入生成的代码，如下是我在转发成功后的<code>success()</code>回掉函数中提交API上报。</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">// 转发成功</span><br><span class="line"><span class="keyword">success: </span>function (res) &#123;</span><br><span class="line">       wx.reportAnalytics('click_share', &#123;</span><br><span class="line">          page_path: current_page_path,</span><br><span class="line">          from: from,</span><br><span class="line">       &#125;);</span><br><span class="line">&#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>不管是填写配置还是API上报，都需要在填写完配置后保存并测试。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fuat6s7eezj30o108ygme.jpg" alt=""></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fuat73bhhpj30o10el760.jpg" alt=""></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fuat7qug37j30o20dqdgf.jpg" alt=""></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fuat81vmj9j30o00dqgm9.jpg" alt=""></p>
+<p>我们在测试事件的时候，往往要过一段时间才能接收到数据，大概1-2分钟，为了能够及时判断正确性，我们可以在手机上的小程序应用中，打开调试，这样，每次触发事件时，都会在控制台的Log中看到<code>[自定义分析]上报成功的字样</code>，点击查看还能看到更多数据，比如上报的参数等，里面的<code>eventID</code>就对应事件的英文名称，可以通过这种方式快速判断事件触发是否符合预期，如下截图：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fuatn0zeyrj30f50qywoz.jpg" alt=""></p>
+<p>通过使用，我们发现小程序的自定义分析功能很强大，你可以在页面上分析任何元素、任何事件，使我们可以全方位的了解到小程序的使用情况，对数据加以分析总结，并以数据来驱动产品的迭代，提高用户留存。</p>
+<p>参考：小程序官方文档 <a href="https://developers.weixin.qq.com/miniprogram/analysis/custom" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/analysis/custom</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2018/8/15/小程序/WeChat-miniprogram-data-analysis-custom-analysis/" data-id="ckjp6eovn000vzrca4h11pnli" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/小程序/">小程序</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-The-Perfect-URL-Regular-Expression" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="../../2018/8/11/Regular-Expression/The-Perfect-URL-Regular-Expression/" class="article-date">
@@ -166,7 +294,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/8/11/Regular-Expression/The-Perfect-URL-Regular-Expression/" data-id="ckjb3dlhc000nnrcaognq0u7v" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2018/8/11/Regular-Expression/The-Perfect-URL-Regular-Expression/" data-id="ckjp6eov7000hzrcacq5aoxqq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Go/">Go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/MySQL/">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Objective-C/">Objective-C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Perl/">Perl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Ruby/">Ruby</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/VB-NET/">VB.NET</a></li></ul>
@@ -223,7 +351,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/" data-id="ckjb3dlkj0067nrcaa743jyd6" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/" data-id="ckjp6eoxg0037zrcaeq86j54h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
@@ -235,58 +363,10 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Learn-MySQL-indexes" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="../../2018/6/6/MySQL/Learn-MySQL-indexes/" class="article-date">
-  <time datetime="2018-06-06T11:10:04.000Z" itemprop="datePublished">2018-06-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="../../categories/MySQL/">MySQL</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2018/6/6/MySQL/Learn-MySQL-indexes/">MySQL中的索引学习</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs2f97s3m4j31kw16o1kz.jpg" alt=""></p>
-<h1 id="什么是索引？"><a href="#什么是索引？" class="headerlink" title="什么是索引？"></a>什么是索引？</h1><p>在没有学数据库之前，大多数人对索引还是比较陌生（可能学完之后还是比较陌生：），今天我想告诉大家索引很有用，而且面试的时候都会问到。那么索引是什么呢？</p>
-        
-          <p class="article-more-link">
-            <a href="../../2018/6/6/MySQL/Learn-MySQL-indexes/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/6/6/MySQL/Learn-MySQL-indexes/" data-id="ckjb3dlh5000bnrca93srwhep" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/MySQL/">MySQL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="../10/">&laquo;Prev</a><a class="page-number" href="../../">1</a><span class="space">&hellip;</span><a class="page-number" href="../9/">9</a><a class="page-number" href="../10/">10</a><span class="page-number current">11</span><a class="page-number" href="../12/">12</a><a class="page-number" href="../13/">13</a><span class="space">&hellip;</span><a class="page-number" href="../15/">15</a><a class="extend next" rel="next" href="../12/">Next&raquo;</a>
+    <a class="extend prev" rel="prev" href="../10/">&laquo;Prev</a><a class="page-number" href="../../">1</a><span class="space">&hellip;</span><a class="page-number" href="../9/">9</a><a class="page-number" href="../10/">10</a><span class="page-number current">11</span><a class="page-number" href="../12/">12</a><a class="page-number" href="../13/">13</a><span class="space">&hellip;</span><a class="page-number" href="../16/">16</a><a class="extend next" rel="next" href="../12/">Next&raquo;</a>
   </nav>
 
 </section>
@@ -316,7 +396,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">October 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">October 2017</a></li></ul>
     </div>
   </div>
 
@@ -327,6 +407,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="../../2021/1/9/小程序/open-miniprogram-in-html/">H5页面跳转小程序</a>
+          </li>
         
           <li>
             <a href="../../2020/12/29/Electron/Node/Javascript/Bootstrap-s-JavaScript-requires-jQuery-Error/">Electron Bootstrap&#39;s JavaScript requires jQuery Error</a>
@@ -344,10 +428,6 @@ ga('send', 'pageview');
             <a href="../../2020/12/18/Yangmao/aliyun-yu-ming-xu-fei-you-hui-quan/">阿里云域名续费优惠券</a>
           </li>
         
-          <li>
-            <a href="../../2020/11/14/PHP/use-eloquent-in-slim-framework/">Use Eloquent ORM in Slim framework</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -360,7 +440,7 @@ ga('send', 'pageview');
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 bilberry<br>
+      &copy; 2021 bilberry<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

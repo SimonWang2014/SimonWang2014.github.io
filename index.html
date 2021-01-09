@@ -113,6 +113,88 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-open-miniprogram-in-html" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/1/9/小程序/open-miniprogram-in-html/" class="article-date">
+  <time datetime="2021-01-09T03:49:58.000Z" itemprop="datePublished">2021-01-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="categories/小程序/">小程序</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/1/9/小程序/open-miniprogram-in-html/">H5页面跳转小程序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近，非个人主体的认证的小程序，可以直接在<code>html</code>页面中打开，这个权限还挺有用的，不仅适用于微信内部的浏览器，而且还可以在外部浏览器或者app中打开，比如UC浏览器、华为浏览器等。这里注意一下，官方特别说明：<strong>是使用<code>云开发</code>托管的网页</strong>。</p>
+<p>开通条件：</p>
+<ul>
+<li>准备好非个人主体的认证的小程序</li>
+<li>开通云开发</li>
+<li>使用云开托管静态网站</li>
+</ul>
+<p>方法也很简单，在正常的公众号网页开发中，引入公众号<code>JSSDK</code>，</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 公众号 JSSDK --&gt;</span><br><span class="line">&lt;script src=<span class="string">"https://res.wx.qq.com/open/js/jweixin-1.6.0.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>然后在<code>wx.config</code>可以传入小程序 AppID 并且<strong>不需计算签名</strong>，也就是免鉴权即可使用跳转小程序的能力。</p>
+<p>这里有个官方的例子：<a href="https://postpay-2g5hm2oxbbb721a4-1258211818.tcloudbaseapp.com/jump-mp.html" target="_blank" rel="noopener">https://postpay-2g5hm2oxbbb721a4-1258211818.tcloudbaseapp.com/jump-mp.html</a> ，可以直接复制到任意浏览器中打开。网页会判断所在的环境来觉得采用哪种跳转方式，如检测到微信客户端内，则免鉴权使用开放标签跳转，如检测到在外部浏览器或 App，则使用 <code>URL Scheme(Deep Link)</code> 跳转小程序。</p>
+<p>以下几个参数必须要配置正确：</p>
+<ul>
+<li>小程序 AppID：填入你的小程序 AppID</li>
+<li>云开发环境 ID：填入你的开通了静态网站托管的云开发环境 ID</li>
+<li>小程序原始账号 ID：填入你的小程序原始账号 ID（gh_ 开头）</li>
+<li>小程序页面路径：填入要跳转到的小程序的页面路径</li>
+<li>小程序名称：填入要跳转到的小程序名称</li>
+</ul>
+<p>上面链接的例子，官方提（关注）正义的程序猿公众号供了代码，把<code>replace</code>的地方替换成你自己的：</p>
+<h1 id="jump-mp-html"><a href="#jump-mp-html" class="headerlink" title="jump-mp.html"></a>jump-mp.html</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;打开小程序&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">    &lt;meta http-equiv="Content-Type" content="text/</span>html; charset=utf<span class="number">-8</span><span class="string">"&gt;</span></span><br><span class="line"><span class="string">    &lt;meta name="</span>viewport<span class="string">" content="</span>width=device-width, user-scalable=no, initial-scale=<span class="number">1</span>, maximum-scale=<span class="number">1</span><span class="string">"&gt;</span></span><br><span class="line"><span class="string">    &lt;script&gt;</span></span><br><span class="line"><span class="string">      window.onerror = e =&gt; &#123;</span></span><br><span class="line"><span class="string">        console.error(e)</span></span><br><span class="line"><span class="string">        alert('发生错误' + e)</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    &lt;/script&gt;</span></span><br><span class="line"><span class="string">    &lt;!-- weui 样式 --&gt;</span></span><br><span class="line"><span class="string">    &lt;link rel="</span>stylesheet<span class="string">" href="</span>https:<span class="comment">//res.wx.qq.com/open/libs/weui/2.4.1/weui.min.css"&gt;&lt;/link&gt;</span></span><br><span class="line">    &lt;!-- 调试用的移动端 <span class="built_in">console</span> --&gt;</span><br><span class="line">    &lt;!-- <span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/eruda"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span> --&gt;</span><br><span class="line">    &lt;!-- <span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">eruda.init();</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span> --&gt;</span><br><span class="line">    &lt;!-- 公众号 JSSDK --&gt;</span><br><span class="line">    &lt;script src=<span class="string">"https://res.wx.qq.com/open/js/jweixin-1.6.0.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">    &lt;!-- 云开发 Web SDK --&gt;</span><br><span class="line">    &lt;script src=<span class="string">"https://res.wx.qq.com/open/js/cloudbase/1.1.0/cloud.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">docReady</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">document</span>.readyState === <span class="string">'complete'</span> || <span class="built_in">document</span>.readyState === <span class="string">'interactive'</span>) &#123;</span><br><span class="line">          fn()</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, fn);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      docReady(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> ua = navigator.userAgent.toLowerCase()</span><br><span class="line">        <span class="keyword">var</span> isWXWork = ua.match(<span class="regexp">/wxwork/i</span>) == <span class="string">'wxwork'</span></span><br><span class="line">        <span class="keyword">var</span> isWeixin = !isWXWork &amp;&amp; ua.match(<span class="regexp">/micromessenger/i</span>) == <span class="string">'micromessenger'</span></span><br><span class="line">        <span class="keyword">var</span> isMobile = <span class="literal">false</span></span><br><span class="line">        <span class="keyword">var</span> isDesktop = <span class="literal">false</span></span><br><span class="line">        <span class="keyword">if</span> (navigator.userAgent.match(<span class="regexp">/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|IEMobile)/i</span>)) &#123;</span><br><span class="line">          isMobile = <span class="literal">true</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          isDesktop = <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (isWeixin) &#123;</span><br><span class="line">          <span class="keyword">var</span> containerEl = <span class="built_in">document</span>.getElementById(<span class="string">'wechat-web-container'</span>)</span><br><span class="line">          containerEl.classList.remove(<span class="string">'hidden'</span>)</span><br><span class="line">          containerEl.classList.add(<span class="string">'full'</span>, <span class="string">'wechat-web-container'</span>)</span><br><span class="line"></span><br><span class="line">          <span class="keyword">var</span> launchBtn = <span class="built_in">document</span>.getElementById(<span class="string">'launch-btn'</span>)</span><br><span class="line">          launchBtn.addEventListener(<span class="string">'ready'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'开放标签 ready'</span>)</span><br><span class="line">          &#125;)</span><br><span class="line">          launchBtn.addEventListener(<span class="string">'launch'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'开放标签 success'</span>)</span><br><span class="line">          &#125;)</span><br><span class="line">          launchBtn.addEventListener(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'开放标签 fail'</span>, e.detail)</span><br><span class="line">          &#125;)</span><br><span class="line"></span><br><span class="line">          wx.config(&#123;</span><br><span class="line">            <span class="comment">// debug: true, // 调试时可开启</span></span><br><span class="line">            appId: <span class="string">'小程序 AppID'</span>, <span class="comment">// &lt;!-- replace --&gt;</span></span><br><span class="line">            timestamp: <span class="number">0</span>, <span class="comment">// 必填，填任意数字即可</span></span><br><span class="line">            nonceStr: <span class="string">'nonceStr'</span>, <span class="comment">// 必填，填任意非空字符串即可</span></span><br><span class="line">            signature: <span class="string">'signature'</span>, <span class="comment">// 必填，填任意非空字符串即可</span></span><br><span class="line">            jsApiList: [<span class="string">'chooseImage'</span>], <span class="comment">// 必填，随意一个接口即可 </span></span><br><span class="line">            openTagList:[<span class="string">'wx-open-launch-weapp'</span>], <span class="comment">// 填入打开小程序的开放标签名</span></span><br><span class="line">          &#125;)</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isDesktop) &#123;</span><br><span class="line">          <span class="comment">// 在 pc 上则给提示引导到手机端打开</span></span><br><span class="line">          <span class="keyword">var</span> containerEl = <span class="built_in">document</span>.getElementById(<span class="string">'desktop-web-container'</span>)</span><br><span class="line">          containerEl.classList.remove(<span class="string">'hidden'</span>)</span><br><span class="line">          containerEl.classList.add(<span class="string">'full'</span>, <span class="string">'desktop-web-container'</span>)</span><br><span class="line">        &#125;  <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">var</span> containerEl = <span class="built_in">document</span>.getElementById(<span class="string">'public-web-container'</span>)</span><br><span class="line">          containerEl.classList.remove(<span class="string">'hidden'</span>)</span><br><span class="line">          containerEl.classList.add(<span class="string">'full'</span>, <span class="string">'public-web-container'</span>)</span><br><span class="line">          <span class="keyword">var</span> c = <span class="keyword">new</span> cloud.Cloud(&#123;</span><br><span class="line">            <span class="comment">// 必填，表示是未登录模式</span></span><br><span class="line">            identityless: <span class="literal">true</span>,</span><br><span class="line">            <span class="comment">// 小程序 AppID</span></span><br><span class="line">            resourceAppid: <span class="string">'小程序 AppID'</span>, <span class="comment">// &lt;!-- replace --&gt;</span></span><br><span class="line">            <span class="comment">// 云开发环境 ID</span></span><br><span class="line">            resourceEnv: <span class="string">'云开发环境 ID'</span>, <span class="comment">// &lt;!-- replace --&gt;</span></span><br><span class="line">          &#125;)</span><br><span class="line">          <span class="keyword">await</span> c.init()</span><br><span class="line">          <span class="built_in">window</span>.c = c</span><br><span class="line"></span><br><span class="line">          <span class="keyword">var</span> buttonEl = <span class="built_in">document</span>.getElementById(<span class="string">'public-web-jump-button'</span>)</span><br><span class="line">          <span class="keyword">var</span> buttonLoadingEl = <span class="built_in">document</span>.getElementById(<span class="string">'public-web-jump-button-loading'</span>)</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">await</span> openWeapp(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">              buttonEl.classList.remove(<span class="string">'weui-btn_loading'</span>)</span><br><span class="line">              buttonLoadingEl.classList.add(<span class="string">'hidden'</span>)</span><br><span class="line">            &#125;)</span><br><span class="line">          &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">            buttonEl.classList.remove(<span class="string">'weui-btn_loading'</span>)</span><br><span class="line">            buttonLoadingEl.classList.add(<span class="string">'hidden'</span>)</span><br><span class="line">            <span class="keyword">throw</span> e</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line">      <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">openWeapp</span>(<span class="params">onBeforeJump</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> c = <span class="built_in">window</span>.c</span><br><span class="line">        <span class="keyword">const</span> res = <span class="keyword">await</span> c.callFunction(&#123;</span><br><span class="line">          name: <span class="string">'public'</span>,</span><br><span class="line">          data: &#123;</span><br><span class="line">            action: <span class="string">'getUrlScheme'</span>,</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="built_in">console</span>.warn(res)</span><br><span class="line">        <span class="keyword">if</span> (onBeforeJump) &#123;</span><br><span class="line">          onBeforeJump()</span><br><span class="line">        &#125;</span><br><span class="line">        location.href = res.result.openlink</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">    &lt;style&gt;</span></span><br><span class="line"><span class="regexp">  /</span>**</span><br><span class="line">   * 样式不重要，可以直接忽略</span><br><span class="line">  **<span class="regexp">/</span></span><br><span class="line"><span class="regexp">    &lt;/</span>style&gt;</span><br><span class="line">  &lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">  &lt;body&gt;</span></span><br><span class="line"><span class="regexp">    &lt;div class="page full"&gt;</span></span><br><span class="line"><span class="regexp">      &lt;div id="public-web-container" class="hidden"&gt;</span></span><br><span class="line"><span class="regexp">        &lt;p class=""&gt;正在打开 “填入你的小程序名称”...&lt;/</span>p&gt; <span class="xml"><span class="comment">&lt;!-- replace --&gt;</span></span></span><br><span class="line">        &lt;a id="public-web-jump-button" href="javascript:" class="weui-btn weui-btn_primary weui-btn_loading" onclick="openWeapp()"&gt;</span><br><span class="line">          &lt;span id="public-web-jump-button-loading" class="weui-primary-loading weui-primary-loading_transparent"&gt;&lt;i class="weui-primary-loading__dot"&gt;&lt;/i&gt;&lt;/span&gt;</span><br><span class="line">          打开小程序</span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">      &lt;div id=<span class="string">"wechat-web-container"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"hidden"</span>&gt;</span><br><span class="line">        &lt;p <span class="class"><span class="keyword">class</span></span>=<span class="string">""</span>&gt;点击以下按钮打开 “填入你的小程序名称”&lt;<span class="regexp">/p&gt; &lt;!-- replace --&gt;</span></span><br><span class="line"><span class="regexp">        &lt;!-- 跳转小程序的开放标签。文档 https:/</span><span class="regexp">/developers.weixin.qq.com/</span>doc/offiaccount/OA_Web_Apps/Wechat_Open_Tag.html --&gt;</span><br><span class="line">        &lt;wx-open-launch-weapp id=<span class="string">"launch-btn"</span> username=<span class="string">"小程序原始账号 ID（gh_ 开头的）"</span> path=<span class="string">"要跳转到的页面路径"</span>&gt; <span class="xml"><span class="comment">&lt;!-- replace --&gt;</span></span></span><br><span class="line">          &lt;template&gt;</span><br><span class="line">            &lt;button style="width: 200px; height: 45px; text-align: center; font-size: 17px; display: block; margin: 0 auto; padding: 8px 24px; border: none; border-radius: 4px; background-color: #07c160; color:#fff;"&gt;打开小程序&lt;/button&gt;</span><br><span class="line"><span class="xml">          <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">wx-open-launch-weapp</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">      &lt;div id=<span class="string">"desktop-web-container"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"hidden"</span>&gt;</span><br><span class="line">        &lt;p <span class="class"><span class="keyword">class</span></span>=<span class="string">""</span>&gt;请在手机打开网页链接&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>body&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面代码，判断在微信公众号里面（关注）正义的程序猿，会使用<code>wx-open-launch-weapp</code>开放标签，<a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_Open_Tag.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_Open_Tag.html</a> ，详情可以看这个文档。</p>
+<p><strong>开放标签微信版本要求为：7.0.12及以上。 系统版本要求为：iOS 10.3及以上、Android 5.0及以上。</strong></p>
+<p>如果是在手机浏览器中，就使用<code>Cloud</code>函数调用获取指定的<code>Url Scheme（deeplink）</code>，唤起微信，步骤打开就是这样。</p>
+<h1 id="云函数"><a href="#云函数" class="headerlink" title="云函数"></a>云函数</h1><ol>
+<li><p>新建一个云函数</p>
+</li>
+<li><p>在云开发控制台中的<code>设置 -&gt; 权限设置</code>中，将对应开通了静态网站的云环境开启未登录模式访问</p>
+</li>
+<li><p>在云开发控制台中的<code>云函数 -&gt; 权限设置</code>中，配置安全规则，选择 <code>“允许所有用户访问”</code> 的模板并确认</p>
+</li>
+</ol>
+<p>云函数<code>index.js</code>代码如下，就很简单，注意配置小程序的路径：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 云函数入口文件</span></span><br><span class="line"><span class="keyword">const</span> cloud = <span class="built_in">require</span>(<span class="string">'wx-server-sdk'</span>)</span><br><span class="line"></span><br><span class="line">cloud.init()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 云函数入口函数</span></span><br><span class="line">exports.main = <span class="keyword">async</span> (event, context) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> wxContext = cloud.getWXContext()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span> (event.action) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'getUrlScheme'</span>: &#123;</span><br><span class="line">      <span class="keyword">return</span> getUrlScheme(event.options)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="string">'action not found'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">getUrlScheme</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> cloud.openapi.urlscheme.generate(&#123;</span><br><span class="line">    jumpWxa: &#123;</span><br><span class="line">      path: <span class="string">'/page/component/index'</span>, <span class="comment">// &lt;!-- replace --&gt;</span></span><br><span class="line">      query: <span class="string">''</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 如果想不过期则置为 false，并可以存到数据库</span></span><br><span class="line">    isExpire: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// 一分钟有效期</span></span><br><span class="line">    expireTime: <span class="built_in">parseInt</span>(<span class="built_in">Date</span>.now() / <span class="number">1000</span> + <span class="number">60</span>),</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>体验效果如下，微信浏览器中：<br><img src="https://i.loli.net/2021/01/09/nwcdqTaG35DzyMV.jpg" style="zoom:50%;"></p>
+<p>其他外部浏览器中：</p>
+<p><img src="https://i.loli.net/2021/01/09/zOybfpJEKPRTe8L.jpg" style="zoom:50%;"></p>
+<p>至此，整个流程就差不多是这样。这个功能个人小程序暂时无法使用，但是也有方法解决，比如通过企业认证小程序跳个人小程序，还有文章中也提到通过URL Scheme跳转，而URL Scheme本身就已经很强大了，这里是不是会有一些可乘之机呢？我相信，这一功能的发放，对于灵敏的人早已发现新的玩法</p>
+<p><img src="https://i.loli.net/2021/01/09/2oTaWF6iyfHeYqx.png" alt=""></p>
+<p>这就是赚钱的机会啊。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2021/1/9/小程序/open-miniprogram-in-html/" data-id="ckjp6eox8002uzrcazwhscw9r" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/小程序/">小程序</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Bootstrap-s-JavaScript-requires-jQuery-Error" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/12/29/Electron/Node/Javascript/Bootstrap-s-JavaScript-requires-jQuery-Error/" class="article-date">
@@ -152,7 +234,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/12/29/Electron/Node/Javascript/Bootstrap-s-JavaScript-requires-jQuery-Error/" data-id="ckjb3dlgn0001nrcayg9225mt" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2020/12/29/Electron/Node/Javascript/Bootstrap-s-JavaScript-requires-jQuery-Error/" data-id="ckjp6eouw0006zrcajn2s3ggq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/electron/">electron</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/node/">node</a></li></ul>
@@ -200,7 +282,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/12/26/frontend/No-PostCSS-Config/" data-id="ckjb3dlh7000fnrcah0nsthsw" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2020/12/26/frontend/No-PostCSS-Config/" data-id="ckjp6eov4000fzrca8ah73raq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/npm/">npm</a></li></ul>
@@ -212,59 +294,10 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-differences-between-a-Service-Provider-and-Factory-in-AngularJS" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/12/25/frontend/differences-between-a-Service-Provider-and-Factory-in-AngularJS/" class="article-date">
-  <time datetime="2020-12-25T03:07:46.000Z" itemprop="datePublished">2020-12-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="categories/frontend/">frontend</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/25/frontend/differences-between-a-Service-Provider-and-Factory-in-AngularJS/">AngularJS中Service,Provider和Factory的区别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>📒Stackoverflow上看到的，做下笔记。</p>
-<h1 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h1><p>语法：<code>module.service( &#39;serviceName&#39;, function );</code></p>
-<p>结果：指明<code>serviceName</code>是一个可以注入的参数，返回对应的函数实例，就等于：<code>new FunctionYouPassedToService()</code></p>
-        
-          <p class="article-more-link">
-            <a href="/2020/12/25/frontend/differences-between-a-Service-Provider-and-Factory-in-AngularJS/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/12/25/frontend/differences-between-a-Service-Provider-and-Factory-in-AngularJS/" data-id="ckjb3dli8001rnrcas7bgv1fx" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/angular/">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/javascript/">javascript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="page-number" href="page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="page/15/">15</a><a class="extend next" rel="next" href="page/2/">Next&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="page-number" href="page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="page/16/">16</a><a class="extend next" rel="next" href="page/2/">Next&raquo;</a>
   </nav>
 
 </section>
@@ -294,7 +327,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/10/">October 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/10/">October 2017</a></li></ul>
     </div>
   </div>
 
@@ -305,6 +338,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/1/9/小程序/open-miniprogram-in-html/">H5页面跳转小程序</a>
+          </li>
         
           <li>
             <a href="/2020/12/29/Electron/Node/Javascript/Bootstrap-s-JavaScript-requires-jQuery-Error/">Electron Bootstrap&#39;s JavaScript requires jQuery Error</a>
@@ -322,10 +359,6 @@ ga('send', 'pageview');
             <a href="/2020/12/18/Yangmao/aliyun-yu-ming-xu-fei-you-hui-quan/">阿里云域名续费优惠券</a>
           </li>
         
-          <li>
-            <a href="/2020/11/14/PHP/use-eloquent-in-slim-framework/">Use Eloquent ORM in Slim framework</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -338,7 +371,7 @@ ga('send', 'pageview');
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 bilberry<br>
+      &copy; 2021 bilberry<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
