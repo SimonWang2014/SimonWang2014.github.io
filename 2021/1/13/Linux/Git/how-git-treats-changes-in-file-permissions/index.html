@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="在开发中，我们会使用git来做版本管理，我们主要是用来管理文件的内容，今天首次发现git还可以记录文件的权限修改，特地记录下。">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2021-01-13T08:50:04.044Z">
+<meta property="og:updated_time" content="2021-01-13T08:54:51.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git中如何对文件权限做版本控制的？">
 <meta name="twitter:description" content="在开发中，我们会使用git来做版本管理，我们主要是用来管理文件的内容，今天首次发现git还可以记录文件的权限修改，特地记录下。">
@@ -153,7 +153,7 @@ ga('send', 'pageview');
 <p>我们再来试着修改成其他不涉及<code>可执行</code>的权限，先把修改的文件撤销：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git restore webpack.mix.js</span><br></pre></td></tr></table></figure>
 <p>我再设置成<code>666</code>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> chmod 666 webpack.mix.js</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ll webpack.mix.js</span></span><br><span class="line"></span><br><span class="line">-rw-rw-rw-  1 wanghui  staff   932B Jan 13 16:06 webpack.mix.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> chmod 666 webpack.mix.js</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ll webpack.mix.js</span></span><br><span class="line"></span><br><span class="line">-rw-rw-rw-  1 staff  staff   932B Jan 13 16:06 webpack.mix.js</span><br></pre></td></tr></table></figure>
 <p>查看<code>git</code>有没有记录：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git status</span></span><br><span class="line"></span><br><span class="line">On branch main</span><br><span class="line">Your branch is up to date with 'origin/main'.</span><br><span class="line"></span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use "git add &lt;file&gt;..." to update what will be committed)</span><br><span class="line">  (use "git restore &lt;file&gt;..." to discard changes in working directory)</span><br><span class="line">	modified:   .idea/workspace.xml</span><br><span class="line"></span><br><span class="line">no changes added to commit (use "git add" and/or "git commit -a")</span><br></pre></td></tr></table></figure>
 <p>发现是没有记录的，接着我又试了其他权限，比如<code>655</code>，<code>654</code>，仍然是不会记录。</p>
