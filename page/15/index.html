@@ -113,6 +113,58 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-sieve-stream" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../2017/12/19/Algorithm/sieve-stream/" class="article-date">
+  <time datetime="2017-12-19T04:22:03.000Z" itemprop="datePublished">2017-12-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../categories/Algorithm/">Algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2017/12/19/Algorithm/sieve-stream/">用厄拉多塞法筛选素数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在看<code>SICP</code>，这本书写的确实不错。3.5节中讲到了无穷流对素数的一个应用：用厄拉多塞筛法来构造出素数的无穷流。这个筛选思路值得记录一下。</p>
+<blockquote>
+<p>厄拉多塞是公元前3世纪希腊亚历山大的哲学家。他由于第一个给出了地球的圆周的精确估计而闻名。他的计算方式是观察夏至日正午影子的角度。虽然厄拉多塞筛法历史如此悠久，但仍成为专用硬件“筛”的基础，直至最近都一直是确定大素数存在的有力工具。直到20世纪70年代，这种算法被概率算法超越。</p>
+</blockquote>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>（前面关于流和无穷流的定义以及说明直接略过了，感兴趣的可以自己看）首先，这个无穷流从整数2开始，因为这是第一个素数。为了得到其余的素数，就需要从2后面的整数中过滤掉所有2的倍数，这样就留下一个从3开始的无穷流，而3也就是下一个素数。现在再从这个流的后面部分过滤掉所有3的倍数，这样就留下一个从5开头的无穷流，而5又是下一个素数，就这样继续下去。换句话说，这种方法就是通过一个筛选过程构造出各个素数。</p>
+<h4 id="筛选过程描述如下"><a href="#筛选过程描述如下" class="headerlink" title="筛选过程描述如下"></a>筛选过程描述如下</h4><p>对流S做筛选就是形成一个流，其中的第一个元素就是S的第一个元素，得到其随后的元素的方式是从S的其余元素中过滤掉所有S的第一个元素的倍数，而后再对得到的结果进行同样的筛选。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sieve</span> stream)</span><br><span class="line">  (<span class="name">cons-stream</span></span><br><span class="line">    (<span class="name">stream-car</span> stream)</span><br><span class="line">    (<span class="name">sieve</span> (<span class="name">stream-filter</span></span><br><span class="line">                 (<span class="name"><span class="builtin-name">lambda</span></span>  (x)</span><br><span class="line">                      (<span class="name"><span class="builtin-name">not</span></span> (<span class="name">divisible?</span> x (<span class="name">stream-car</span> stream))))</span><br><span class="line">                (<span class="name">stream-car</span> stream)))))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> primes (<span class="name">sieve</span> (<span class="name">integers-starting-from</span> <span class="number">2</span>)))</span><br></pre></td></tr></table></figure>
+<p>上面的Lisp代码写得还是很精练的，没有任何多余的代码。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2650331-8b12448528e629e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="将素数筛看作一个信号处理系统"></p>
+<p>我们可以将上面的厄拉多塞筛法看作是一个信号处理系统。出入流溃入“<code>反cons</code>”，分解出这个流的首元素和其余元素，用这个首元素去构造一个可除性过滤取，让该流的其余部分穿过这个过滤器，这个过滤器的输出再溃入到另一个筛块，而后将原来的首元素<code>cons</code>到这个内部筛的输出上，形成最终的输出流。这样，不仅输入流是无穷的，信息处理器也是无穷的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2017/12/19/Algorithm/sieve-stream/" data-id="ckjv6oe92005jxlcalr1a0852" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/SICP/">SICP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-My-first-experience-of-a-telephone-interview" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="../../2017/10/31/notes/My-first-experience-of-a-telephone-interview/" class="article-date">
@@ -169,7 +221,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2017/10/31/notes/My-first-experience-of-a-telephone-interview/" data-id="ckjp6eoux0007zrcaw6h625xt" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2017/10/31/notes/My-first-experience-of-a-telephone-interview/" data-id="ckjv6oe4g000axlca45e1b2pm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/interviews/">interviews</a></li></ul>
@@ -246,56 +298,10 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2017/10/28/frontend/box-sizing-in-css3/" data-id="ckjp6eovv0018zrcaocxhiggj" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2017/10/28/frontend/box-sizing-in-css3/" data-id="ckjv6oe58001axlcablc2wr3u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/CSS/">CSS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-zh/first-test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="../../2017/10/20/notes/zh/first-test/" class="article-date">
-  <time datetime="2017-10-20T08:13:44.000Z" itemprop="datePublished">2017-10-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="../../categories/notes/">notes</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2017/10/20/notes/zh/first-test/">博客迁移到Github啦^ _ ^</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="新的博客，新的起点，新的征程"><a href="#新的博客，新的起点，新的征程" class="headerlink" title="新的博客，新的起点，新的征程"></a>新的博客，新的起点，新的征程</h4><p>博客地址先甩上来：<a href="http://xydida.com" target="_blank" rel="noopener">http://xydida.com</a></p>
-<p><code>echo &quot;Welcome to my Blog&quot;</code></p>
-<p>先说明一下，由于博客之前一直是放在<a href="https://www.openshift.com" target="_blank" rel="noopener">OpenShift</a>上面的，不过由于OpenShift最近更新了V3版本，这个版本的更新还挺大的，已经完全是一个容器云服务的平台，但感觉在上面搭一个wordpress比较麻烦，而且受限于国内的网络，之前早就想换到GitHub了，正好趁此机会，尝试一下<a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>，哈哈😄。下图是最新版本的OpenShift的控制台：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-28569747d2d05234.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="openshift-manager"><br>由于之前博客上并没有写多少有深度的文章，我也就没有备份，以后将会多输出优质文章，记录生活点滴。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2017/10/20/notes/zh/first-test/" data-id="ckjp6eozi0075zrca3t0f7hbr" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Something/">Something</a></li></ul>
 
     </footer>
   </div>
@@ -318,7 +324,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Devops/">Devops</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/">Electron</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/Node/">Node</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/Node/Javascript/">Javascript</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Networks/">Networks</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Object-Oriented/">Object Oriented</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Regular-Expression/">Regular Expression</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Yangmao/">Yangmao</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/frontend/">frontend</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/小程序/">小程序</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/微信/">微信</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Devops/">Devops</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/">Electron</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/Node/">Node</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/Node/Javascript/">Javascript</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/Git/">Git</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Networks/">Networks</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Object-Oriented/">Object Oriented</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Regular-Expression/">Regular Expression</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Yangmao/">Yangmao</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/frontend/">frontend</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/小程序/">小程序</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/微信/">微信</a></li></ul>
     </div>
   </div>
 
@@ -328,7 +334,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="../../tags/API/" style="font-size: 10px;">API</a> <a href="../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="../../tags/DNS/" style="font-size: 10px;">DNS</a> <a href="../../tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="../../tags/Laravel/" style="font-size: 10px;">Laravel</a> <a href="../../tags/Linux/" style="font-size: 15px;">Linux</a> <a href="../../tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="../../tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../tags/Server/" style="font-size: 15px;">Server</a> <a href="../../tags/Slim/" style="font-size: 10px;">Slim</a> <a href="../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../tags/Vue/" style="font-size: 10px;">Vue</a> <a href="../../tags/angular/" style="font-size: 10px;">angular</a> <a href="../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../tags/cover-view/" style="font-size: 12.5px;">cover-view</a> <a href="../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../tags/electron/" style="font-size: 12.5px;">electron</a> <a href="../../tags/emoji/" style="font-size: 10px;">emoji</a> <a href="../../tags/firewall/" style="font-size: 10px;">firewall</a> <a href="../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../tags/javascript/" style="font-size: 15px;">javascript</a> <a href="../../tags/networks/" style="font-size: 10px;">networks</a> <a href="../../tags/node/" style="font-size: 10px;">node</a> <a href="../../tags/notes/" style="font-size: 15px;">notes</a> <a href="../../tags/npm/" style="font-size: 10px;">npm</a> <a href="../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../tags/ufw/" style="font-size: 10px;">ufw</a> <a href="../../tags/小程序/" style="font-size: 17.5px;">小程序</a> <a href="../../tags/微信/" style="font-size: 10px;">微信</a> <a href="../../tags/羊毛/" style="font-size: 10px;">羊毛</a>
+      <a href="../../tags/API/" style="font-size: 10px;">API</a> <a href="../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="../../tags/DNS/" style="font-size: 10px;">DNS</a> <a href="../../tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="../../tags/Laravel/" style="font-size: 10px;">Laravel</a> <a href="../../tags/Linux/" style="font-size: 15px;">Linux</a> <a href="../../tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="../../tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../tags/Server/" style="font-size: 15px;">Server</a> <a href="../../tags/Slim/" style="font-size: 10px;">Slim</a> <a href="../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../tags/Vue/" style="font-size: 10px;">Vue</a> <a href="../../tags/angular/" style="font-size: 10px;">angular</a> <a href="../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../tags/cover-view/" style="font-size: 12.5px;">cover-view</a> <a href="../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../tags/electron/" style="font-size: 12.5px;">electron</a> <a href="../../tags/emoji/" style="font-size: 10px;">emoji</a> <a href="../../tags/firewall/" style="font-size: 10px;">firewall</a> <a href="../../tags/git/" style="font-size: 10px;">git</a> <a href="../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../tags/javascript/" style="font-size: 15px;">javascript</a> <a href="../../tags/linux/" style="font-size: 10px;">linux</a> <a href="../../tags/networks/" style="font-size: 10px;">networks</a> <a href="../../tags/node/" style="font-size: 10px;">node</a> <a href="../../tags/notes/" style="font-size: 15px;">notes</a> <a href="../../tags/npm/" style="font-size: 10px;">npm</a> <a href="../../tags/permission/" style="font-size: 10px;">permission</a> <a href="../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../tags/ufw/" style="font-size: 10px;">ufw</a> <a href="../../tags/小程序/" style="font-size: 17.5px;">小程序</a> <a href="../../tags/微信/" style="font-size: 10px;">微信</a> <a href="../../tags/羊毛/" style="font-size: 10px;">羊毛</a>
     </div>
   </div>
 
@@ -350,6 +356,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="../../2021/1/13/Linux/Git/how-git-treats-changes-in-file-permissions/">Git中如何对文件权限做版本控制的？</a>
+          </li>
+        
+          <li>
             <a href="../../2021/1/9/小程序/open-miniprogram-in-html/">H5页面跳转小程序</a>
           </li>
         
@@ -363,10 +373,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="../../2020/12/25/frontend/differences-between-a-Service-Provider-and-Factory-in-AngularJS/">AngularJS中Service,Provider和Factory的区别</a>
-          </li>
-        
-          <li>
-            <a href="../../2020/12/18/Yangmao/aliyun-yu-ming-xu-fei-you-hui-quan/">阿里云域名续费优惠券</a>
           </li>
         
       </ul>
