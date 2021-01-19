@@ -3,25 +3,34 @@
 <head>
   <meta charset="utf-8">
   
-  <title>判断字符串是否包含😈emoji表情 | 我的博客</title>
+  <title>CSS设置边框的几个技巧 | 我的博客</title>
   <meta name="baidu-site-verification" content="yXEzwss0jm" />
   <meta name="360-site-verification" content="878e013ea1c0235dec34a8b1c676cf65" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="在UTF-8编码下，一个中文占3个字节，而emoji或一些特殊字符占4个字节，我们可以以此来判断字符串是否包含emoji。">
-<meta name="keywords" content="notes,emoji">
+  <meta name="description" content="设置边框最常使用border，比如这样： 1border: 1px dashed #333;  这是最常规的方法了，今天再来说说其他两种方法，  outline方式 background方式  outline方法这也算是一种比较常规的方法了， 1outline: 1px solid;  但需要注意的是，outline是在容器的最外部，与border的渲染还是有点区别的，同时对比下： 12borde">
+<meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="判断字符串是否包含😈emoji表情">
-<meta property="og:url" content="https://www.xydida.com/2020/10/29/PHP/emoji-in-string/index.html">
+<meta property="og:title" content="CSS设置边框的几个技巧">
+<meta property="og:url" content="https://www.xydida.com/2021/1/19/notes/css-border-trickies/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="在UTF-8编码下，一个中文占3个字节，而emoji或一些特殊字符占4个字节，我们可以以此来判断字符串是否包含emoji。">
+<meta property="og:description" content="设置边框最常使用border，比如这样： 1border: 1px dashed #333;  这是最常规的方法了，今天再来说说其他两种方法，  outline方式 background方式  outline方法这也算是一种比较常规的方法了， 1outline: 1px solid;  但需要注意的是，outline是在容器的最外部，与border的渲染还是有点区别的，同时对比下： 12borde">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2020-11-02T02:27:33.798Z">
+<meta property="og:image" content="https://i.loli.net/2021/01/19/UwQu9Foa25zE4Dt.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/19/LKTwolqnucyiW18.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/19/d2RWPfyXpw3LVFC.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/19/SuMbThU8f2zEeiK.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/19/QicWR9k786djDFa.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/19/137wuxbkfcehSGO.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/19/iUckIKsoLQO1YGf.gif">
+<meta property="og:image" content="https://i.loli.net/2021/01/19/wi9dcjNSpo3JY7V.gif">
+<meta property="og:updated_time" content="2021-01-19T05:59:58.358Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="判断字符串是否包含😈emoji表情">
-<meta name="twitter:description" content="在UTF-8编码下，一个中文占3个字节，而emoji或一些特殊字符占4个字节，我们可以以此来判断字符串是否包含emoji。">
+<meta name="twitter:title" content="CSS设置边框的几个技巧">
+<meta name="twitter:description" content="设置边框最常使用border，比如这样： 1border: 1px dashed #333;  这是最常规的方法了，今天再来说说其他两种方法，  outline方式 background方式  outline方法这也算是一种比较常规的方法了， 1outline: 1px solid;  但需要注意的是，outline是在容器的最外部，与border的渲染还是有点区别的，同时对比下： 12borde">
+<meta name="twitter:image" content="https://i.loli.net/2021/01/19/UwQu9Foa25zE4Dt.png">
   
     <link rel="alternate" href="/atom.xml" title="我的博客" type="application/atom+xml">
   
@@ -112,16 +121,12 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-emoji-in-string" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-css-border-trickies" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="../../../../../2020/10/29/PHP/emoji-in-string/" class="article-date">
-  <time datetime="2020-10-29T06:29:28.000Z" itemprop="datePublished">2020-10-29</time>
+    <a href="../../../../../2021/1/19/notes/css-border-trickies/" class="article-date">
+  <time datetime="2021-01-19T03:06:44.000Z" itemprop="datePublished">2021-01-19</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="../../../../../categories/PHP/">PHP</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -130,7 +135,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      判断字符串是否包含😈emoji表情
+      CSS设置边框的几个技巧
     </h1>
   
 
@@ -138,21 +143,45 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在<code>UTF-8</code>编码下，一个中文占3个字节，而<code>emoji</code>或一些特殊字符占4个字节，我们可以以此来判断字符串是否包含<code>emoji</code>。</p>
-<a id="more"></a>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">haveEmojiChar</span><span class="params">($str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $mbLen = mb_strlen($str);</span><br><span class="line"></span><br><span class="line">    $strArr = [];</span><br><span class="line">    $flag = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; $mbLen; $i++) &#123;</span><br><span class="line">        $strArr[] = mb_substr($str, $i, <span class="number">1</span>, <span class="string">'utf-8'</span>);</span><br><span class="line">        <span class="keyword">if</span> (strlen($strArr[$i]) &gt;= <span class="number">4</span>) &#123;</span><br><span class="line">            $flag = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $flag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面代码重点就是<code>strlen</code>和<code>mb_strlen</code>这两个函数。通过这个方法，我们稍微修改下就能<strong>删除字符串中的emoji表情</strong>：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeEmojiChar</span><span class="params">($str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $mbLen = mb_strlen($str);</span><br><span class="line">    </span><br><span class="line">    $strArr = [];</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; $mbLen; $i++) &#123;</span><br><span class="line">        $mbSubstr = mb_substr($str, $i, <span class="number">1</span>, <span class="string">'utf-8'</span>);</span><br><span class="line">        <span class="keyword">if</span> (strlen($mbSubstr) &gt;= <span class="number">4</span>) &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        $strArr[] = $mbSubstr;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> implode(<span class="string">''</span>, $strArr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<p>参考：<a href="https://www.cnblogs.com/my3306/p/9849923.html" target="_blank" rel="noopener">https://www.cnblogs.com/my3306/p/9849923.html</a></p>
+        <p>设置边框最常使用<code>border</code>，比如这样：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">dashed</span> <span class="selector-id">#333</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/01/19/UwQu9Foa25zE4Dt.png" alt=""></p>
+<p>这是最常规的方法了，今天再来说说其他两种方法，</p>
+<ol>
+<li>outline方式</li>
+<li>background方式</li>
+</ol>
+<h1 id="outline方法"><a href="#outline方法" class="headerlink" title="outline方法"></a>outline方法</h1><p>这也算是一种比较常规的方法了，</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">outline</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/01/19/LKTwolqnucyiW18.png" alt=""></p>
+<p>但需要注意的是，<code>outline</code>是在容器的最外部，与<code>border</code>的渲染还是有点区别的，同时对比下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">dashed</span> <span class="selector-id">#333</span>;</span><br><span class="line"><span class="selector-tag">outline</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/01/19/d2RWPfyXpw3LVFC.png" alt=""></p>
+<p>外部实线是<code>outline</code>，内部虚线是<code>border</code>，为了一致，可以设置<code>outline-offset</code>往内缩一点：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">outline-offset</span>: <span class="selector-tag">-1px</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="background方法"><a href="#background方法" class="headerlink" title="background方法"></a>background方法</h1><p>这是本文的重点，我也是刚get到此项技能，之前一直不知道<code>background</code>居然如此强大，直接上代码：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(90deg, #333 50%, transparent 0) repeat-x 0 0px/9px 1px, #ffffff;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/01/19/SuMbThU8f2zEeiK.png" alt=""></p>
+<p>这里我们只设置了上面看，而且还是虚线的，做一说明这种方式的强大，再把其他边框补上去：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">background</span>: </span><br><span class="line">		linear-gradient(90deg, #333 50%, transparent 0) repeat-x 0 0px/9px 1px,</span><br><span class="line">    linear-gradient(90deg, #333 50%, transparent 0) repeat-x 0 100%/9px 1px,</span><br><span class="line">    linear-gradient(0deg, #333 50%, transparent 0) repeat-y 0 0/1px 9px,</span><br><span class="line">    linear-gradient(0deg, #333 50%, transparent 0) repeat-y 100% 0px/1px 9px,</span><br><span class="line">    <span class="selector-id">#ffffff</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/01/19/QicWR9k786djDFa.png" alt=""></p>
+<p>可见，使用<code>background</code>非常的灵活，边框的位置可以任意调整👍。</p>
+<p>现在我们已经掌握这几方式，但本文的重点是上面这种，我们现在来动手操练下：</p>
+<h2 id="渐变边框"><a href="#渐变边框" class="headerlink" title="渐变边框"></a>渐变边框</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(90deg, #29bdd9 0%, #276ace 100%) repeat-x 0 0/100% 5px</span><br><span class="line">    ,</span><br><span class="line">    linear-gradient(-90deg, #29bdd9 0%, #276ace 100%) repeat-x 0 100%/100% 4px,</span><br><span class="line">    linear-gradient(180deg, #29bdd9 0%, #276ace 100%) repeat-y 0 0/4px 100%,</span><br><span class="line">    linear-gradient(0deg, #29bdd9 0%, #276ace 100%) repeat-y 100% 0/4px 100%,</span><br><span class="line">    <span class="selector-id">#eee</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/01/19/137wuxbkfcehSGO.png" alt=""></p>
+<h2 id="滚动虚线边框"><a href="#滚动虚线边框" class="headerlink" title="滚动虚线边框"></a>滚动虚线边框</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>:</span><br><span class="line">     <span class="built_in">linear-gradient</span>(90deg, #333 50%, transparent 0) repeat-x,</span><br><span class="line">     <span class="built_in">linear-gradient</span>(90deg, #333 50%, transparent 0) repeat-x,</span><br><span class="line">     <span class="built_in">linear-gradient</span>(0deg, #333 50%, transparent 0) repeat-y,</span><br><span class="line">     <span class="built_in">linear-gradient</span>(0deg, #333 50%, transparent 0) repeat-y;</span><br><span class="line">     <span class="attribute">background-size</span>: <span class="number">4px</span> <span class="number">1px</span>, <span class="number">4px</span> <span class="number">1px</span>, <span class="number">1px</span> <span class="number">4px</span>, <span class="number">1px</span> <span class="number">4px</span>;</span><br><span class="line">     <span class="attribute">background-position</span>: <span class="number">0</span> <span class="number">0</span>, <span class="number">0</span> <span class="number">100%</span>, <span class="number">0</span> <span class="number">0</span>, <span class="number">100%</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: linearGradientMove .<span class="number">3s</span> infinite linear;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">keyframes</span> linearGradientMove &#123;</span><br><span class="line">    100% &#123;</span><br><span class="line">        <span class="attribute">background-position</span>: <span class="number">4px</span> <span class="number">0</span>, -<span class="number">4px</span> <span class="number">100%</span>, <span class="number">0</span> -<span class="number">4px</span>, <span class="number">100%</span> <span class="number">4px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/01/19/iUckIKsoLQO1YGf.gif" alt=""></p>
+<h2 id="滚动渐变"><a href="#滚动渐变" class="headerlink" title="滚动渐变"></a>滚动渐变</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>:</span><br><span class="line">     <span class="built_in">linear-gradient</span>(90deg, #FF8235,#30E8BF, #FF8235) repeat-x,</span><br><span class="line">     <span class="built_in">linear-gradient</span>(90deg, #FF8235,#30E8BF, #FF8235) repeat-x,</span><br><span class="line">     <span class="built_in">linear-gradient</span>(0deg, #FF8235,#30E8BF, #FF8235)  repeat-y,</span><br><span class="line">     <span class="built_in">linear-gradient</span>(0deg, #FF8235,#30E8BF, #FF8235)  repeat-y;</span><br><span class="line">     <span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">8px</span>, <span class="number">100%</span> <span class="number">8px</span>, <span class="number">8px</span> <span class="number">100%</span>, <span class="number">8px</span> <span class="number">100%</span>;</span><br><span class="line">     <span class="attribute">background-position</span>: <span class="number">0</span> <span class="number">0</span>, <span class="number">0</span> <span class="number">100%</span>, <span class="number">0</span> <span class="number">0</span>, <span class="number">100%</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: linearGradientMove <span class="number">1s</span> infinite linear;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">keyframes</span> linearGradientMove &#123;</span><br><span class="line">    100% &#123;</span><br><span class="line">        <span class="attribute">background-position</span>: <span class="number">200px</span> <span class="number">0</span>, -<span class="number">200px</span> <span class="number">100%</span>, <span class="number">0</span> -<span class="number">200px</span>, <span class="number">100%</span> <span class="number">100px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/01/19/wi9dcjNSpo3JY7V.gif" alt=""></p>
+<p>以上就是设置边框的几个小技巧。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/10/29/PHP/emoji-in-string/" data-id="ckk3l8xey0026rmcary6kfmk6" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2021/1/19/notes/css-border-trickies/" data-id="ckk3l8xel001frmcaw5exrzua" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/emoji/">emoji</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/notes/">notes</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/CSS/">CSS</a></li></ul>
 
     </footer>
   </div>
@@ -160,19 +189,10 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="../../../../../2020/11/14/PHP/use-eloquent-in-slim-framework/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Use Eloquent ORM in Slim framework
-        
-      </div>
-    </a>
   
-  
-    <a href="../../../../../2020/10/28/Devops/what-is-TTL/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../../../../2021/1/17/小程序/PHP/xiao-cheng-xu-yun-tuo-guan-CloudBase-PHP/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">域名解析时TTL是个什么东西？</div>
+      <div class="article-nav-title">小程序云托管无需服务器部署PHP</div>
     </a>
   
 </nav>
