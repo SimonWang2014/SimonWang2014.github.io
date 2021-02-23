@@ -2,9 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.xydida.com/2021/2/23/PHP/Saner-string-to-number-comparisons/</loc>
+    
+    <lastmod>2021-02-23T05:46:59.525Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/2018/8/15/%E5%B0%8F%E7%A8%8B%E5%BA%8F/WeChat-miniprogram-data-analysis-custom-analysis/</loc>
+    
+    <lastmod>2021-02-23T05:46:45.639Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/2018/9/14/%E5%B0%8F%E7%A8%8B%E5%BA%8F/The-measureText-function-in-Wechat-miniprogram-canvas/</loc>
+    
+    <lastmod>2021-02-23T05:46:31.590Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/2018/12/16/Linux/my-Tmux-notes/</loc>
+    
+    <lastmod>2021-02-23T05:46:26.673Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/2017/10/31/notes/My-first-experience-of-a-telephone-interview/</loc>
+    
+    <lastmod>2021-02-23T05:46:11.380Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/2020/5/10/%E5%BE%AE%E4%BF%A1/jssdk-invalid-signature/</loc>
+    
+    <lastmod>2021-02-23T05:46:03.688Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.xydida.com/2021/1/29/Networks/HTTP-status-code/</loc>
     
-    <lastmod>2021-01-29T06:58:47.986Z</lastmod>
+    <lastmod>2021-02-23T05:45:51.686Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/2019/4/1/PHP/getter-and-setter-in-PHP/</loc>
+    
+    <lastmod>2021-02-23T05:45:39.209Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/2020/5/17/frontend/design-a-swiper-by-CSS/</loc>
+    
+    <lastmod>2021-02-23T05:45:26.619Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/2020/9/20/%E5%B0%8F%E7%A8%8B%E5%BA%8F/cover-view/</loc>
+    
+    <lastmod>2021-02-23T05:44:32.978Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/2020/9/20/%E5%B0%8F%E7%A8%8B%E5%BA%8F/cover-view-2/</loc>
+    
+    <lastmod>2021-02-23T05:44:23.155Z</lastmod>
     
   </url>
   
@@ -149,13 +219,6 @@
   </url>
   
   <url>
-    <loc>https://www.xydida.com/2020/9/20/%E5%B0%8F%E7%A8%8B%E5%BA%8F/cover-view-2/</loc>
-    
-    <lastmod>2020-09-20T03:48:37.993Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.xydida.com/2019/8/25/notes/reading-notes-1-about-a-philosophy-of-software-design/</loc>
     
     <lastmod>2020-09-20T02:36:57.355Z</lastmod>
@@ -170,51 +233,9 @@
   </url>
   
   <url>
-    <loc>https://www.xydida.com/2018/12/16/Linux/my-Tmux-notes/</loc>
-    
-    <lastmod>2020-09-20T02:36:31.628Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/2017/10/31/notes/My-first-experience-of-a-telephone-interview/</loc>
-    
-    <lastmod>2020-09-20T02:36:28.035Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/2020/5/10/%E5%BE%AE%E4%BF%A1/jssdk-invalid-signature/</loc>
-    
-    <lastmod>2020-09-20T02:35:33.038Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.xydida.com/2019/5/31/Tools/Hot-key-to-select-same-occurrence-in-PHPStorm/</loc>
     
     <lastmod>2020-09-20T02:35:27.696Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/2019/4/1/PHP/getter-and-setter-in-PHP/</loc>
-    
-    <lastmod>2020-09-20T02:35:15.894Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/2020/5/17/frontend/design-a-swiper-by-CSS/</loc>
-    
-    <lastmod>2020-09-20T02:35:10.076Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/2020/9/20/%E5%B0%8F%E7%A8%8B%E5%BA%8F/cover-view/</loc>
-    
-    <lastmod>2020-09-20T02:35:03.545Z</lastmod>
     
   </url>
   
@@ -285,20 +306,6 @@
     <loc>https://www.xydida.com/2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/</loc>
     
     <lastmod>2018-12-16T14:36:34.663Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/2018/9/14/%E5%B0%8F%E7%A8%8B%E5%BA%8F/The-measureText-function-in-Wechat-miniprogram-canvas/</loc>
-    
-    <lastmod>2018-09-14T15:14:40.060Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/2018/8/15/%E5%B0%8F%E7%A8%8B%E5%BA%8F/WeChat-miniprogram-data-analysis-custom-analysis/</loc>
-    
-    <lastmod>2018-08-16T15:04:00.056Z</lastmod>
     
   </url>
   
