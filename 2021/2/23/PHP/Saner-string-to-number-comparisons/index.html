@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="PHP8.0发布[1]也有一段时间了，此次发布带来了很多实用且强大的功能，比如：  Named arguments  12345// php 7.xhtmlspecialchars($string, ENT_COMPAT | ENT_HTML401, &apos;UTF-8&apos;, false);// php 8.0htmlspecialchars($string, double_encode: false);">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2021-02-23T05:50:05.819Z">
+<meta property="og:updated_time" content="2021-02-23T05:50:30.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP8中字符串与数字的比较更智能">
 <meta name="twitter:description" content="PHP8.0发布[1]也有一段时间了，此次发布带来了很多实用且强大的功能，比如：  Named arguments  12345// php 7.xhtmlspecialchars($string, ENT_COMPAT | ENT_HTML401, &apos;UTF-8&apos;, false);// php 8.0htmlspecialchars($string, double_encode: false);">
@@ -172,7 +172,7 @@ ga('send', 'pageview');
 <li>在比较对象时，严格类型使用对象标识符比较，非严格类型只会比较对象的值</li>
 </ul>
 <p>在使用<code>==</code>比较<strong>数字</strong>和<strong>字符串</strong>时，PHP 8.0之前的版本会先将<strong>字符串</strong>转换为<strong>数字</strong>，之后再做两个数字间的比较，这也就是为什么上门<code>0 == &quot;foobar&quot; = true</code>了。</p>
-<h1 id="Saner-string-to-number-comparisons"><a href="#Saner-string-to-number-comparisons" class="headerlink" title="Saner string to number comparisons"></a>Saner string to number comparisons</h1><p>文章标题说PHP8中字符串与数字的比较更智能，具体智能在哪里？针对上面的问题，8.0当中引入<code>Saner string to number comparisons</code>这个特性[1]，底层具体的操作为：当比较<strong>数字字符</strong>时，使用数字与数字对比，而<strong>其他字符与数字</strong>比较时，统一使用字符串比较。我们来通过一个表格来对比下前后的变化：</p>
+<h1 id="Saner-string-to-number-comparisons"><a href="#Saner-string-to-number-comparisons" class="headerlink" title="Saner string to number comparisons"></a>Saner string to number comparisons</h1><p>文章标题说PHP8中字符串与数字的比较更智能，具体智能在哪里？针对上面的问题，8.0当中引入<code>Saner string to number comparisons</code>这个特性[2]，底层具体的操作为：当比较<strong>数字字符</strong>时，使用数字与数字对比，而<strong>其他字符与数字</strong>比较时，统一使用字符串比较。我们来通过一个表格来对比下前后的变化：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Comparison    | Before | After</span><br><span class="line">------------------------------</span><br><span class="line"> 0 == "0"     | true   | true</span><br><span class="line"> 0 == "0.0"   | true   | true</span><br><span class="line"> 0 == "foo"   | true   | false</span><br><span class="line"> 0 == ""      | true   | false</span><br><span class="line">42 == "   42" | true   | true</span><br><span class="line">42 == "42foo" | true   | false</span><br></pre></td></tr></table></figure>
 <p>参考：</p>
 <ol>
