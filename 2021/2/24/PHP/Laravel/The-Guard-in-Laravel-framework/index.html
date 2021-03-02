@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://i.loli.net/2021/03/02/4tcIaE7oFsjRwiG.png">
 <meta property="og:image" content="https://i.loli.net/2021/03/02/6hFqK7zv5GSoRZT.png">
 <meta property="og:image" content="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg">
-<meta property="og:updated_time" content="2021-03-02T14:13:52.619Z">
+<meta property="og:updated_time" content="2021-03-02T14:18:52.494Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Laravel框架中Guard的底层实现">
 <meta name="twitter:description" content="1. 什么是Guard在Laravel/Lumen框架中，用户的登录/注册的认证基本都已经封装好了，开箱即用。而登录/注册认证的核心就是：  用户的注册信息存入数据库（登记） 从数据库中读取数据和用户输入的对比（认证）  上述两步是登录/注册的基本，可以看到都会涉及到数据库的操作，这两步框架底层已经帮我们做好了，而且考虑到了很多情况，比如用户认证的数据表不是user表而是admin_user，认证">
@@ -154,6 +154,7 @@ ga('send', 'pageview');
 <li>从数据库中读取数据和用户输入的对比（认证）</li>
 </ol>
 <p>上述两步是登录/注册的基本，可以看到都会涉及到数据库的操作，这两步框架底层已经帮我们做好了，而且考虑到了很多情况，比如用户认证的数据表不是<code>user表</code>而是<code>admin_user</code>，认证字段是<code>phone</code>而不是<code>email</code>，等等一些问题都是<code>Guard</code>所要解决的，通过<code>Guard</code>可以指定使用哪个数据表什么字段等，<code>Guard</code>能非常灵活的构建一套自己的认证体系。</p>
+<a id="more"></a>
 <p>通俗地讲，就是这样：<code>Guard</code>就像是小区的门卫大叔，<strong>冷酷无情，不认人只认登记信息</strong>。进小区之前大叔需要先检查你的身份，验证不通过大叔就不让你进去。如果是走路/骑车进去，<em>大叔1</em>需要检查你的<strong>门禁卡</strong>，他拿出<strong>记录了小区所有业主门禁卡信息的本子</strong>查看你这个门禁卡信息有没有在这个本子上；如果你开车进去，<em>大叔2</em>就从<strong>记录了所有业主车牌号的本子</strong>中检查你的<strong>车牌号</strong>，所以新业主要小区了需要告知门卫大叔们你的门禁卡信息或者车牌号，要不然<em>大叔2</em>不让你进。如果是物业管理员要进小区，<em>门卫大叔3</em>也只认登记信息，管理员出示他的<strong>管理员门禁卡</strong>，门卫大叔就会检查<strong>记录了管理员门禁卡信息的本子</strong>。</p>
 <p>上面讲的对应了框架中的多用户认证：</p>
 <ol>
