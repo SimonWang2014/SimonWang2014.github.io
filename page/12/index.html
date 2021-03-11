@@ -113,6 +113,135 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-array-push-in-PHP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../2019/3/13/PHP/array-push-in-PHP/" class="article-date">
+  <time datetime="2019-03-13T12:42:17.000Z" itemprop="datePublished">2019-03-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2019/3/13/PHP/array-push-in-PHP/">PHP代码优化—array_push</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>PHP中数组插入数据通常有这么几种：</p>
+<ol>
+<li>定义的时候直接赋值</li>
+</ol>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"><span class="meta-keyword">$arr</span> = array(‘apple’, ’banana’);</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>使用数组变量操作</li>
+</ol>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"><span class="meta-keyword">$arr</span> = array();</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">$arr</span>[] = ‘apple’;</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">$arr</span>[] = ‘banana’;</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>使用array_push()插入</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">arr = array(‘apple’);</span></span><br><span class="line"><span class="meta">array_push($</span><span class="bash">arr, ‘banana’, ‘orange’);</span></span><br></pre></td></tr></table></figure>
+<p>在项目中，我们大部分情况都是先从数据库中获取数据，然后转成数组形式，而对于第一种情况，在定义数组的时候直接赋值往往只适合数据量很小，而且是已知的情况，所以就不存在什么代码优化了，我们主要讲第二种和第三种。</p>
+<p>关于array_push的使用，就不多介绍，自己看官方文档(<a href="https://secure.php.net/manual/en/function.array-push.php" target="_blank" rel="noopener">https://secure.php.net/manual/en/function.array-push.php</a>)。</p>
+<h3 id="性能比较"><a href="#性能比较" class="headerlink" title="性能比较"></a>性能比较</h3><p>我们使用<code>php 7.2</code>来测试，并且没有做任何配置上的优化。测试方法：定义一个数组，分别用第二种和第三种方式插入10万条记录，代码大致如下：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g11gel796zj312s0goabw.jpg" alt=""></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g11gffjmymj312s0gcjtc.jpg" alt=""></p>
+<p><code>convert</code>函数用来查看内存占用情况，运行结果如下：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g11gfxr7rcj30lk0swac1.jpg" alt=""></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g11gg9oqaoj30q60vs41f.jpg" alt=""></p>
+<p>通过多次运行上述代码，可以发现直接使用数组变量赋值耗时在<code>0.0045</code>左右，而使用<code>array_push</code>的方式耗时在<code>0.006</code>左右，消耗的内存都是一样的，因为都是10万条记录。</p>
+<p>对比两种方法，发现方法二确实比调用<code>array_push</code>快，因为在每次循环时函数调用需要消耗一些时间，但仅仅看上面的测试，并不觉得第二种方法比第三种方法快多少，完全可以忽略不计的。</p>
+<p>的确，这种优化在绝大多数应用中和没优化没啥区别，但是当应用达到瓶颈的时候，每一处不起眼的优化可能都会使性能提高不少，况且我们的测试中数组的结构很简单，真实项目中数据类型不是这么单一，可能还是嵌套的数组，数组的大小可能也不止10万。</p>
+<p>我们再来看看两者的差异，<code>array_push()</code>是函数调用，另一个不是，这就是说了，从代码量上看两者也是一样的，从数组结构上看，测试中我们都没有使用索引，默认都是从0开始，如果要使用<code>key =&gt; value</code>形式插入数据时，<code>array_push()</code>就不是很好处理了，这时使用法二就很方便：<code>$array1[$key] =&gt; $x</code>。</p>
+<p>前面都是说<code>array_push()</code>怎么不好，但有时候<code>array_push</code>还是很好用的。比如我们要一次插入多个元素时，就可以这样使用：</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"><span class="meta-keyword">$arr</span> = array(‘a’, ’b’);</span></span><br><span class="line">array_push(<span class="symbol">$</span>arr, ‘c’, ‘d’);</span><br><span class="line"><span class="comment">// $arr = array(‘a’, ’b’, ‘c’, ‘d’);</span></span><br></pre></td></tr></table></figure>
+<p>通过上面对比可见，PHP中数组插值的方法有很多，虽然每种方法差不多，但了解每一种方法何时使用还是很有必要的。</p>
+<p>欢迎关注我的公众号：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g11ghafpgzj309k09k744.jpg" alt="正义的程序猿"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2019/3/13/PHP/array-push-in-PHP/" data-id="ckm4n5vhz003farca91a6srpz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-PHP-read-excel-and-csv-files" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../2019/1/2/PHP/PHP-read-excel-and-csv-files/" class="article-date">
+  <time datetime="2019-01-02T05:17:07.000Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2019/1/2/PHP/PHP-read-excel-and-csv-files/">用PHP读取Excel、CSV文件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fyp45fw225j310c06odfz.jpg" alt="PhpSpreadsheet"></p>
+<p>PHP读取excel、csv文件的库有很多，但用的比较多的有： <a href="https://github.com/PHPOffice/PHPExcel" target="_blank" rel="noopener">PHPOffice/PHPExcel</a>、<a href="https://github.com/PHPOffice/PhpSpreadsheet" target="_blank" rel="noopener">PHPOffice/PhpSpreadsheet</a>，现在PHPExcel已经不再维护了，最新的一次提交还是在2017年12月25号，建议直接使用PhpSpreadsheet，而且这两个项目都是同一个组织维护的，本文介绍PhpSpreadsheet的使用。</p>
+<h2 id="介绍PhpSpreadsheet"><a href="#介绍PhpSpreadsheet" class="headerlink" title="介绍PhpSpreadsheet"></a>介绍PhpSpreadsheet</h2><p>PhpSpreadsheet这个库是纯PHP写的，提供了非常丰富的类和方法，而且支持很多文件格式：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fyp2c7y09qj314m0mmmxs.jpg" alt="PhpSpreadsheet支持的文件格式"></p>
+<h2 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h2><ul>
+<li>PHP &gt;= 5.6</li>
+<li>开启<code>php_zip</code>扩展</li>
+<li>开启<code>php_xml</code>扩展</li>
+<li>开启<code>php_gd2</code>扩展</li>
+</ul>
+<h2 id="开始使用😄"><a href="#开始使用😄" class="headerlink" title="开始使用😄"></a>开始使用😄</h2>
+        
+          <p class="article-more-link">
+            <a href="../../2019/1/2/PHP/PHP-read-excel-and-csv-files/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2019/1/2/PHP/PHP-read-excel-and-csv-files/" data-id="ckm4n5vg9000farca7xutn9hb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Clone-Object-in-PHP" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="../../2018/12/20/PHP/Clone-Object-in-PHP/" class="article-date">
@@ -168,102 +297,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/12/20/PHP/Clone-Object-in-PHP/" data-id="ckls3dvg50006tzca97xd7mns" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-my-Tmux-notes" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="../../2018/12/16/Linux/my-Tmux-notes/" class="article-date">
-  <time datetime="2018-12-16T14:36:28.000Z" itemprop="datePublished">2018-12-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="../../categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2018/12/16/Linux/my-Tmux-notes/">我的Tmux笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0-修改指令前缀"><a href="#0-修改指令前缀" class="headerlink" title="0. 修改指令前缀"></a>0. 修改指令前缀</h3><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ~/.tmux.conf</span></span><br><span class="line">ubind C-b</span><br><span class="line"><span class="keyword">set</span> -g <span class="comment">prefix C-a</span></span><br></pre></td></tr></table></figure>
-<h3 id="1-新建会话"><a href="#1-新建会话" class="headerlink" title="1. 新建会话"></a>1. 新建会话</h3><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tmux</span><br><span class="line">tmux <span class="keyword">new</span> <span class="type"></span>-s session-name	<span class="comment">// 可以设置会话名称</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-断开会话，后台运行"><a href="#2-断开会话，后台运行" class="headerlink" title="2. 断开会话，后台运行"></a>2. 断开会话，后台运行</h3>
-        
-          <p class="article-more-link">
-            <a href="../../2018/12/16/Linux/my-Tmux-notes/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/12/16/Linux/my-Tmux-notes/" data-id="ckls3dvj6003etzcaibgk1yvl" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Tmux/">Tmux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Valet-problem-Unable-to-determine-linked-PHP" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="../../2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/" class="article-date">
-  <time datetime="2018-12-15T07:36:02.000Z" itemprop="datePublished">2018-12-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="../../categories/PHP/">PHP</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/">Valet problem: Unable to determine linked PHP</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Mac上更新PHP 7.2后，再次使用<code>Valet</code>时提示无法定位到PHP，如下所示：</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fy7hi8ormwj308902hglj.jpg" alt=""></p>
-<p>一条命令解决：</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s <span class="regexp">/usr/</span>local<span class="regexp">/opt/</span>php@<span class="number">7.2</span><span class="regexp">/bin/</span>php <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>php</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/" data-id="ckls3dvhd001ctzcaehyv366w" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2018/12/20/PHP/Clone-Object-in-PHP/" data-id="ckm4n5vg00004arcadiepwih5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
@@ -278,7 +312,7 @@ ga('send', 'pageview');
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="../11/">&laquo;Prev</a><a class="page-number" href="../../">1</a><span class="space">&hellip;</span><a class="page-number" href="../10/">10</a><a class="page-number" href="../11/">11</a><span class="page-number current">12</span><a class="page-number" href="../13/">13</a><a class="page-number" href="../14/">14</a><span class="space">&hellip;</span><a class="page-number" href="../18/">18</a><a class="extend next" rel="next" href="../13/">Next&raquo;</a>
+    <a class="extend prev" rel="prev" href="../11/">&laquo;Prev</a><a class="page-number" href="../../">1</a><span class="space">&hellip;</span><a class="page-number" href="../10/">10</a><a class="page-number" href="../11/">11</a><span class="page-number current">12</span><a class="page-number" href="../13/">13</a><a class="page-number" href="../14/">14</a><span class="space">&hellip;</span><a class="page-number" href="../19/">19</a><a class="extend next" rel="next" href="../13/">Next&raquo;</a>
   </nav>
 
 </section>
@@ -289,7 +323,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Devops/">Devops</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/">Electron</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/Node/">Node</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/Node/Javascript/">Javascript</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/Git/">Git</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Networks/">Networks</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Object-Oriented/">Object Oriented</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/PHP/">PHP</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/PHP/Laravel/">Laravel</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Regular-Expression/">Regular Expression</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Yangmao/">Yangmao</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/frontend/">frontend</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/小程序/">小程序</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/小程序/PHP/">PHP</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/微信/">微信</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Devops/">Devops</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/">Electron</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/Node/">Node</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/Node/Javascript/">Javascript</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/Git/">Git</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Networks/">Networks</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Object-Oriented/">Object Oriented</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/PHP/">PHP</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/PHP/Laravel/">Laravel</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Regular-Expression/">Regular Expression</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/VPS/">VPS</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Yangmao/">Yangmao</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/frontend/">frontend</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/小程序/">小程序</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/小程序/PHP/">PHP</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/微信/">微信</a></li></ul>
     </div>
   </div>
 
@@ -299,7 +333,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="../../tags/Server-API/" style="font-size: 10px;">-Server - API</a> <a href="../../tags/API/" style="font-size: 10px;">API</a> <a href="../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../tags/CSS/" style="font-size: 14px;">CSS</a> <a href="../../tags/DNS/" style="font-size: 10px;">DNS</a> <a href="../../tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="../../tags/Laravel/" style="font-size: 12px;">Laravel</a> <a href="../../tags/Linux/" style="font-size: 16px;">Linux</a> <a href="../../tags/Lumen/" style="font-size: 10px;">Lumen</a> <a href="../../tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="../../tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../tags/Server/" style="font-size: 14px;">Server</a> <a href="../../tags/Slim/" style="font-size: 10px;">Slim</a> <a href="../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../tags/Vue/" style="font-size: 10px;">Vue</a> <a href="../../tags/angular/" style="font-size: 10px;">angular</a> <a href="../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../tags/cover-view/" style="font-size: 12px;">cover-view</a> <a href="../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../tags/electron/" style="font-size: 12px;">electron</a> <a href="../../tags/emoji/" style="font-size: 10px;">emoji</a> <a href="../../tags/firewall/" style="font-size: 10px;">firewall</a> <a href="../../tags/git/" style="font-size: 10px;">git</a> <a href="../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../tags/javascript/" style="font-size: 14px;">javascript</a> <a href="../../tags/linux/" style="font-size: 10px;">linux</a> <a href="../../tags/networks/" style="font-size: 10px;">networks</a> <a href="../../tags/node/" style="font-size: 10px;">node</a> <a href="../../tags/notes/" style="font-size: 14px;">notes</a> <a href="../../tags/npm/" style="font-size: 10px;">npm</a> <a href="../../tags/permission/" style="font-size: 10px;">permission</a> <a href="../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../tags/ufw/" style="font-size: 10px;">ufw</a> <a href="../../tags/小程序/" style="font-size: 18px;">小程序</a> <a href="../../tags/微信/" style="font-size: 12px;">微信</a> <a href="../../tags/羊毛/" style="font-size: 10px;">羊毛</a>
+      <a href="../../tags/Server-API/" style="font-size: 10px;">-Server - API</a> <a href="../../tags/API/" style="font-size: 10px;">API</a> <a href="../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../tags/CSS/" style="font-size: 14px;">CSS</a> <a href="../../tags/DNS/" style="font-size: 10px;">DNS</a> <a href="../../tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Javascript/" style="font-size: 12px;">Javascript</a> <a href="../../tags/Laravel/" style="font-size: 12px;">Laravel</a> <a href="../../tags/Linux/" style="font-size: 16px;">Linux</a> <a href="../../tags/Lumen/" style="font-size: 10px;">Lumen</a> <a href="../../tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="../../tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../tags/Server/" style="font-size: 14px;">Server</a> <a href="../../tags/Slim/" style="font-size: 10px;">Slim</a> <a href="../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../tags/UniApp/" style="font-size: 10px;">UniApp</a> <a href="../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../tags/VPS/" style="font-size: 10px;">VPS</a> <a href="../../tags/Vue/" style="font-size: 10px;">Vue</a> <a href="../../tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="../../tags/angular/" style="font-size: 10px;">angular</a> <a href="../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../tags/cover-view/" style="font-size: 12px;">cover-view</a> <a href="../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../tags/electron/" style="font-size: 12px;">electron</a> <a href="../../tags/emoji/" style="font-size: 10px;">emoji</a> <a href="../../tags/firewall/" style="font-size: 10px;">firewall</a> <a href="../../tags/git/" style="font-size: 10px;">git</a> <a href="../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../tags/javascript/" style="font-size: 14px;">javascript</a> <a href="../../tags/linux/" style="font-size: 10px;">linux</a> <a href="../../tags/networks/" style="font-size: 10px;">networks</a> <a href="../../tags/node/" style="font-size: 10px;">node</a> <a href="../../tags/notes/" style="font-size: 14px;">notes</a> <a href="../../tags/npm/" style="font-size: 10px;">npm</a> <a href="../../tags/permission/" style="font-size: 10px;">permission</a> <a href="../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../tags/ufw/" style="font-size: 10px;">ufw</a> <a href="../../tags/小程序/" style="font-size: 18px;">小程序</a> <a href="../../tags/微信/" style="font-size: 14px;">微信</a> <a href="../../tags/羊毛/" style="font-size: 10px;">羊毛</a>
     </div>
   </div>
 
@@ -308,7 +342,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">October 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">October 2017</a></li></ul>
     </div>
   </div>
 
@@ -321,6 +355,14 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="../../2021/3/8/小程序/get-phone-number-in-miniprogram/">小程序中获取用户手机号</a>
+          </li>
+        
+          <li>
+            <a href="../../2021/3/5/VPS/A-speed-testing-of-datacenter-of-vultr/">Vultr各数据中心的速度测试</a>
+          </li>
+        
+          <li>
             <a href="../../2021/2/24/PHP/Laravel/The-Guard-in-Laravel-framework/">关于Laravel框架中Guard的底层实现</a>
           </li>
         
@@ -330,14 +372,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="../../2021/1/29/Networks/HTTP-status-code/">常用/不常用的HTTP状态码</a>
-          </li>
-        
-          <li>
-            <a href="../../2021/1/19/notes/css-border-trickies/">CSS设置边框的几个技巧</a>
-          </li>
-        
-          <li>
-            <a href="../../2021/1/17/小程序/PHP/xiao-cheng-xu-yun-tuo-guan-CloudBase-PHP/">小程序云托管无需服务器部署PHP</a>
           </li>
         
       </ul>
