@@ -3,26 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>我的博客</title>
+  <title>正义的程序猿</title>
   <meta name="baidu-site-verification" content="yXEzwss0jm" />
   <meta name="360-site-verification" content="878e013ea1c0235dec34a8b1c676cf65" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="php开发，laravel学习，vue.js教程，全栈工程师博客">
+  <meta name="description" content="记录我的IT学习经历，分享技术">
 <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
 <meta property="og:type" content="website">
-<meta property="og:title" content="我的博客">
+<meta property="og:title" content="正义的程序猿">
 <meta property="og:url" content="https://www.xydida.com/page/8/index.html">
-<meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="php开发，laravel学习，vue.js教程，全栈工程师博客">
+<meta property="og:site_name" content="正义的程序猿">
+<meta property="og:description" content="记录我的IT学习经历，分享技术">
 <meta property="og:locale" content="zh">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的博客">
-<meta name="twitter:description" content="php开发，laravel学习，vue.js教程，全栈工程师博客">
+<meta name="twitter:title" content="正义的程序猿">
+<meta name="twitter:description" content="记录我的IT学习经历，分享技术">
   
-    <link rel="alternate" href="/atom.xml" title="我的博客" type="application/atom+xml">
+    <link rel="alternate" href="/sitemap.xml" title="正义的程序猿" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -81,7 +81,7 @@ ga('send', 'pageview');
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="../../index.html" id="logo">我的博客</a>
+        <a href="../../index.html" id="logo">正义的程序猿</a>
       </h1>
       
         <h2 id="subtitle-wrap">
@@ -100,7 +100,7 @@ ga('send', 'pageview');
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/sitemap.xml" title="RSS Feed"></a>
         
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
@@ -113,14 +113,14 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
-    <article id="post-install-and-config-nginx-on-ubuntu" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-getter-and-setter-in-PHP" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="../../2020/10/24/Linux/install-and-config-nginx-on-ubuntu/" class="article-date">
-  <time datetime="2020-10-24T13:34:50.000Z" itemprop="datePublished">2020-10-24</time>
+    <a href="../../2019/4/1/PHP/getter-and-setter-in-PHP/" class="article-date">
+  <time datetime="2019-04-01T13:34:14.000Z" itemprop="datePublished">2019-04-01</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="../../categories/Linux/">Linux</a>
+    <a class="article-category-link" href="../../categories/PHP/">PHP</a>
   </div>
 
   </div>
@@ -131,7 +131,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="../../2020/10/24/Linux/install-and-config-nginx-on-ubuntu/">Ubuntu(18.04)安装Nginx并配置</a>
+      <a class="article-title" href="../../2019/4/1/PHP/getter-and-setter-in-PHP/">PHP代码优化—getter 和 setter</a>
     </h1>
   
 
@@ -139,21 +139,24 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">update</span></span><br><span class="line">sudo apt <span class="keyword">install</span> nginx</span><br></pre></td></tr></table></figure>
-<p>如果能看到版本号，说明安装成功：</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx -v</span><br><span class="line"><span class="string">//</span> nginx <span class="keyword">version</span>: nginx/1.14.0 <span class="params">(Ubuntu)</span></span><br></pre></td></tr></table></figure>
+        <p>PHP中要实现类似于Java中的<code>getter</code>和<code>setter</code>有多种方法，比较常用的有：</p>
+<ol>
+<li>直接箭头<code>-&gt;</code>调用属性(最常用)，不管有没有声明这个属性，都可以使用，但会报<code>Notice</code>级别的错误</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$dog = <span class="keyword">new</span> Dog();</span><br><span class="line">$dog-&gt;name = <span class="string">'hey'</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g1nglil8abj30du09ejrz.jpg" alt=""></p>
         
           <p class="article-more-link">
-            <a href="../../2020/10/24/Linux/install-and-config-nginx-on-ubuntu/#more">Read More</a>
+            <a href="../../2019/4/1/PHP/getter-and-setter-in-PHP/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/10/24/Linux/install-and-config-nginx-on-ubuntu/" data-id="ckng44zth003l64cat5vwaniy" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2019/4/1/PHP/getter-and-setter-in-PHP/" data-id="ckng44zta003b64caorguic84" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Nginx/">Nginx</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
 
     </footer>
   </div>
@@ -162,14 +165,14 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-how-to-use-ufw" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-PHP处理高分辨率图片引起的思考" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="../../2020/10/24/Linux/how-to-use-ufw/" class="article-date">
-  <time datetime="2020-10-24T13:04:02.000Z" itemprop="datePublished">2020-10-24</time>
+    <a href="../../2019/4/1/PHP/PHP处理高分辨率图片引起的思考/" class="article-date">
+  <time datetime="2019-04-01T13:24:40.000Z" itemprop="datePublished">2019-04-01</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="../../categories/Linux/">Linux</a>
+    <a class="article-category-link" href="../../categories/PHP/">PHP</a>
   </div>
 
   </div>
@@ -180,7 +183,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="../../2020/10/24/Linux/how-to-use-ufw/">UFW防火墙简单教程</a>
+      <a class="article-title" href="../../2019/4/1/PHP/PHP处理高分辨率图片引起的思考/">PHP处理高分辨率图片引起的思考</a>
     </h1>
   
 
@@ -188,20 +191,42 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><code>UFW（Uncomplicated Firewal）</code>是<code>Ubuntu</code>上基于<code>iptables</code>的一个防火墙管理软件，使用<code>UFW</code>我们可以更方便的管理服务器上的防火墙，本文记录一些关于<code>UFW</code>使用教程。</p>
-<h1 id="安装UFW"><a href="#安装UFW" class="headerlink" title="安装UFW"></a>安装UFW</h1>
-        
-          <p class="article-more-link">
-            <a href="../../2020/10/24/Linux/how-to-use-ufw/#more">Read More</a>
-          </p>
-        
+        <p>今天小伙伴在群里问了这么一个问题：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g1ngcvyuuqj30qg0fiaae.jpg" alt=""></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g1ngdl4nq6j30rs0fndg6.jpg" alt=""></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g1ngdy0w48j30na0ccgln.jpg" alt=""></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g1nge7kz95j30rs0mt3ys.jpg" alt=""></p>
+<p>出现这种情况就是因为内存不足，<code>PHP</code>程序直接退出了，报错大概如下：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g1ngegjxugj30rs04s746.jpg" alt="报错"></p>
+<p>上图的意思就是说，我们能使用的内存最大是8M，但是处理这个图片还需要额外的41bytes，就会导致内存不足，这是一个很严重的错误。在对图片进行操作前需要将图片的所有信息读入内存中，同时还会使用另一部分内存同于处理计算并缓存输出，所以内存大小的使用还是和图片的大小有关。 </p>
+<p><code>PHP</code>中图片的处理都是使用了<code>GD</code>库，这个库提供了很多方法让<code>PHP</code>可以更方便地对图片进行操作，支持的图片格式如下：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g1ngeqqm0bj30rs0b9q3k.jpg" alt=""></p>
+<p>回到一开始的问题，那个小伙伴需要处理高分辨的图片，图片大小必然很大，所以就会出现内存不够的情况，解决方法还是有很多的。</p>
+<h3 id="1-设置图片最大可上传的大小"><a href="#1-设置图片最大可上传的大小" class="headerlink" title="1. 设置图片最大可上传的大小"></a>1. 设置图片最大可上传的大小</h3><p>前端上传前可以先检测下大小，如果超过最大值直接就不请求接口，同时为安全起见，后端接收到请求后也要检测大小，防止程序异常退出。</p>
+<h3 id="2-压缩图片"><a href="#2-压缩图片" class="headerlink" title="2. 压缩图片"></a>2. 压缩图片</h3><h3 id="3-关闭memory-limit"><a href="#3-关闭memory-limit" class="headerlink" title="3. 关闭memory_limit"></a>3. 关闭<code>memory_limit</code></h3><p>群里的小伙伴最后使用了一种<strong>简单粗暴的方式</strong>解决了该问题，直接在PHP中关闭<code>memory_limit</code>：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="selector-tag">set_time_limit</span>(0);</span><br><span class="line">@<span class="keyword">ini_set</span>('<span class="keyword">memory_limit</span>','-<span class="keyword">1</span>');</span><br></pre></td></tr></table></figure>
+<p>这样虽然解决了问题，但不优雅也不安全，同样在<code>php.ini</code>配置文件中将<code>memory_limit</code>的值设置很大也能解决：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">memory_limit</span> = <span class="number">256</span>M</span><br></pre></td></tr></table></figure>
+<p>PHP代码中也可以这样设置：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ini_set</span>(<span class="string">'memory_limit'</span>, <span class="string">'256M'</span>);</span><br></pre></td></tr></table></figure>
+<p>上面我们将<code>memory_limit</code>参数固定了，这就带来一个弊端，因为大多数情况下不需要这么大的内存，有点浪费资源，最好的做法就是根据需要来设置<code>memory_limit</code>，我写了一个如下方法可供参考：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setMemoryLimit</span><span class="params">($filename)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 控制执行时间</span></span><br><span class="line">    set_time_limit(<span class="number">50</span>);</span><br><span class="line"></span><br><span class="line">    $maxMemoryUsage = <span class="number">256</span>M;</span><br><span class="line">    $width = <span class="number">0</span>;</span><br><span class="line">    $height = <span class="number">0</span>;</span><br><span class="line">    $size = ini_get(<span class="string">'memory_limit'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取图片大小</span></span><br><span class="line">    <span class="keyword">list</span>($width, $height) = getimagesize($filename);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算需要的内存，并转换成'M'单位</span></span><br><span class="line">    <span class="comment">// 4 因为png图片一个像素有4字节</span></span><br><span class="line">    <span class="comment">// 1.5 是一个调整因子，因为memory_limit不是那么精确</span></span><br><span class="line">    <span class="comment">// 详细可以查看: http://php.net/imagecreatefromjpeg#76968</span></span><br><span class="line">    $size = $size + floor(($width * $height * <span class="number">4</span> * <span class="number">1.5</span> + <span class="number">1048576</span>) / <span class="number">1048576</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ($size &gt; $maxMemoryUsage)&#123;</span><br><span class="line">        $size = $maxMemoryUsage;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 更新</span></span><br><span class="line">   ini_set(<span class="string">'memory_limit'</span>,$size.<span class="string">'M'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后说一下，<code>GD</code>库其实是比较耗内存的，但我这里没有做过测试。Github上有个<code>C</code>的项目叫<code>libvips/libvips</code>：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g1ngf6k0dnj30rs0hdwfw.jpg" alt="libvips/libvips"></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g1ngfvzc84j30rs0dt76a.jpg" alt="libvips/libvips readme"></p>
+<p>可以在不占用很多内存的情况下提高图片处理的速度，这是地址:<a href="https://github.com/libvips/libvips，有时间可以学习下。" target="_blank" rel="noopener">https://github.com/libvips/libvips，有时间可以学习下。</a></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g11ghafpgzj309k09k744.jpg" alt="正义的程序猿"></p>
+<hr>
+<p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
+<p><img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;"></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/10/24/Linux/how-to-use-ufw/" data-id="ckng44ztd003i64caua0uinni" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2019/4/1/PHP/PHP处理高分辨率图片引起的思考/" data-id="ckng44zq9000z64casvxtou93" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/firewall/">firewall</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/ufw/">ufw</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
 
     </footer>
   </div>
@@ -210,14 +235,14 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-ssh-login-Permission-denied-publickey" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-array-push-in-PHP" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="../../2020/10/19/Linux/ssh-login-Permission-denied-publickey/" class="article-date">
-  <time datetime="2020-10-19T14:22:39.000Z" itemprop="datePublished">2020-10-19</time>
+    <a href="../../2019/3/13/PHP/array-push-in-PHP/" class="article-date">
+  <time datetime="2019-03-13T12:42:17.000Z" itemprop="datePublished">2019-03-13</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="../../categories/Linux/">Linux</a>
+    <a class="article-category-link" href="../../categories/PHP/">PHP</a>
   </div>
 
   </div>
@@ -228,7 +253,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="../../2020/10/19/Linux/ssh-login-Permission-denied-publickey/">SSH登录时提示Permission denied (publickey)</a>
+      <a class="article-title" href="../../2019/3/13/PHP/array-push-in-PHP/">PHP代码优化—array_push</a>
     </h1>
   
 
@@ -236,19 +261,156 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><code>ssh</code>在登录时，默认会使用当前用户<code>home</code>目录下的<code>id_rsa</code>文件来认证，由于我们在用<code>ssh-keygen</code>生成key时，由于指定了目录，所有就找不到私钥，报错，解决办法如下：</p>
+        <p>PHP中数组插入数据通常有这么几种：</p>
+<ol>
+<li>定义的时候直接赋值</li>
+</ol>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"><span class="meta-keyword">$arr</span> = array(‘apple’, ’banana’);</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>使用数组变量操作</li>
+</ol>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"><span class="meta-keyword">$arr</span> = array();</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">$arr</span>[] = ‘apple’;</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">$arr</span>[] = ‘banana’;</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>使用array_push()插入</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">arr = array(‘apple’);</span></span><br><span class="line"><span class="meta">array_push($</span><span class="bash">arr, ‘banana’, ‘orange’);</span></span><br></pre></td></tr></table></figure>
+<p>在项目中，我们大部分情况都是先从数据库中获取数据，然后转成数组形式，而对于第一种情况，在定义数组的时候直接赋值往往只适合数据量很小，而且是已知的情况，所以就不存在什么代码优化了，我们主要讲第二种和第三种。</p>
         
           <p class="article-more-link">
-            <a href="../../2020/10/19/Linux/ssh-login-Permission-denied-publickey/#more">Read More</a>
+            <a href="../../2019/3/13/PHP/array-push-in-PHP/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/10/19/Linux/ssh-login-Permission-denied-publickey/" data-id="ckng44ztx004d64car9skt3t5" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2019/3/13/PHP/array-push-in-PHP/" data-id="ckng44zs5002964ca5tcynmle" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Server/">Server</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-PHP-read-excel-and-csv-files" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../2019/1/2/PHP/PHP-read-excel-and-csv-files/" class="article-date">
+  <time datetime="2019-01-02T05:17:07.000Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2019/1/2/PHP/PHP-read-excel-and-csv-files/">用PHP读取Excel、CSV文件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fyp45fw225j310c06odfz.jpg" alt="PhpSpreadsheet"></p>
+<p>PHP读取excel、csv文件的库有很多，但用的比较多的有： <a href="https://github.com/PHPOffice/PHPExcel" target="_blank" rel="noopener">PHPOffice/PHPExcel</a>、<a href="https://github.com/PHPOffice/PhpSpreadsheet" target="_blank" rel="noopener">PHPOffice/PhpSpreadsheet</a>，现在PHPExcel已经不再维护了，最新的一次提交还是在2017年12月25号，建议直接使用PhpSpreadsheet，而且这两个项目都是同一个组织维护的，本文介绍PhpSpreadsheet的使用。</p>
+<h2 id="介绍PhpSpreadsheet"><a href="#介绍PhpSpreadsheet" class="headerlink" title="介绍PhpSpreadsheet"></a>介绍PhpSpreadsheet</h2><p>PhpSpreadsheet这个库是纯PHP写的，提供了非常丰富的类和方法，而且支持很多文件格式：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fyp2c7y09qj314m0mmmxs.jpg" alt="PhpSpreadsheet支持的文件格式"></p>
+<h2 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h2><ul>
+<li>PHP &gt;= 5.6</li>
+<li>开启<code>php_zip</code>扩展</li>
+<li>开启<code>php_xml</code>扩展</li>
+<li>开启<code>php_gd2</code>扩展</li>
+</ul>
+<h2 id="开始使用😄"><a href="#开始使用😄" class="headerlink" title="开始使用😄"></a>开始使用😄</h2>
+        
+          <p class="article-more-link">
+            <a href="../../2019/1/2/PHP/PHP-read-excel-and-csv-files/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2019/1/2/PHP/PHP-read-excel-and-csv-files/" data-id="ckng44zpu000w64cac52djxer" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Clone-Object-in-PHP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../2018/12/20/PHP/Clone-Object-in-PHP/" class="article-date">
+  <time datetime="2018-12-20T14:36:55.000Z" itemprop="datePublished">2018-12-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2018/12/20/PHP/Clone-Object-in-PHP/">PHP中的对象复制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>PHP中，<code>=</code>的作用都是将一个值复制给另一个（大多数编程语言都是一样），将<code>=</code>作用在基本数据类型上时，就直接进行了赋值，并且变量的修改互不影响，如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">a = 1;</span></span><br><span class="line"><span class="meta">$</span><span class="bash">b = <span class="variable">$a</span>;</span></span><br><span class="line"><span class="meta">$</span><span class="bash">b = 2;</span></span><br><span class="line"><span class="meta">print_r($</span><span class="bash">a);  // 1</span></span><br><span class="line"><span class="meta">print_r($</span><span class="bash">b);  // 2</span></span><br></pre></td></tr></table></figure>
+<p>而在复制对象时，<code>=</code>只是简单地将两个变量指向同一个类实例，测试一下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $name;</span><br><span class="line">    <span class="keyword">public</span> $age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name, $age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;name = $name;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;age = $age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$student1 = <span class="keyword">new</span> Student(<span class="string">'mike'</span>, <span class="number">19</span>);</span><br><span class="line">$student2 = $student1;</span><br><span class="line"></span><br><span class="line">print_r($student1);</span><br><span class="line">print_r($student2);</span><br><span class="line">var_dump($student1 == $student2);</span><br><span class="line">var_dump($student1 === $student2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line">Student Object</span><br><span class="line">(</span><br><span class="line">    [name] =&gt; mike</span><br><span class="line">    [age] =&gt; <span class="number">19</span></span><br><span class="line">)</span><br><span class="line">Student Object</span><br><span class="line">(</span><br><span class="line">    [name] =&gt; mike</span><br><span class="line">    [age] =&gt; <span class="number">19</span></span><br><span class="line">)</span><br><span class="line">bool(<span class="keyword">true</span>)</span><br><span class="line">bool(<span class="keyword">true</span>)</span><br></pre></td></tr></table></figure>
+<p>从上面的代码中，就能明显看出<code>$student1</code>和<code>$student2</code>两个变量指向的是同一个对象，新手看到这可能并没有发现其中蹊跷，而且等值检测也没有问题啊（其实这里的等值检测是看不出什么的），这时，如果我继续修改<code>$student2</code>中的属性时，就能发现问题：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$student2-&gt;name = <span class="string">'Jack'</span>;</span><br><span class="line">$student2-&gt;age = <span class="number">22</span>;</span><br><span class="line"></span><br><span class="line">print_r($student1);</span><br><span class="line">print_r($student2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line">Student Object</span><br><span class="line">(</span><br><span class="line">    [name] =&gt; Jack</span><br><span class="line">    [age] =&gt; <span class="number">22</span></span><br><span class="line">)</span><br><span class="line">Student Object</span><br><span class="line">(</span><br><span class="line">    [name] =&gt; Jack</span><br><span class="line">    [age] =&gt; <span class="number">22</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>为什么会这样呢，我只是想修改<code>$student2</code>的属性，为什么<code>$student1</code>也改了，这就好比Dota里面的地卜师，只要逮到你一个分身，你就挂了。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fydl82dnpej30gr0a0gxc.jpg" alt="地卜师"></p>
+<p>其实，看到这种情况，大概就能猜到PHP中对象的赋值都是通过引用操作，<code>$student1</code>和<code>$student2</code>没有各自保留一份单独的副本，在内存中的分配大概就是这样的：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fydl911erwj309z05xmx4.jpg" alt=""></p>
+<p>两个变量指向的是同一个内存地址，所以我们改变其中一个变量的属性是另一个也会变，但如果我们想要对两个变量做不同的操作并且互不影响该怎么办？</p>
+<p>好在PHP提供了一个<code>clone</code>关键字来达到这个目的。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$student1 = <span class="keyword">new</span> Student(<span class="string">'mike'</span>, <span class="number">19</span>);</span><br><span class="line">$student2 = <span class="keyword">clone</span> $student1;</span><br><span class="line"></span><br><span class="line">$student2-&gt;name = <span class="string">'Jack'</span>;</span><br><span class="line">$student2-&gt;age = <span class="number">22</span>;</span><br><span class="line"></span><br><span class="line">print_r($student1);</span><br><span class="line">print_r($student2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line">Student Object</span><br><span class="line">(</span><br><span class="line">    [name] =&gt; mike</span><br><span class="line">    [age] =&gt; <span class="number">19</span></span><br><span class="line">)</span><br><span class="line">Student Object</span><br><span class="line">(</span><br><span class="line">    [name] =&gt; Jack</span><br><span class="line">    [age] =&gt; <span class="number">22</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>通过<code>clone</code>复制后，现在<code>$student1</code>和<code>$student2</code>就是两个不同的变量，修改互不影响。</p>
+<h3 id="关于-clone-方法"><a href="#关于-clone-方法" class="headerlink" title="关于__clone()方法"></a>关于__clone()方法</h3><p>现在有这么一种情况，在复制对象时，想做一些修改操作，实际开发中，<code>$id</code>属性可能会与数据库表中某条记录一一对应，在复制之后，两个对象就指向数据库中的同一条记录了，那么使用<code>__clone()</code>就能控制复制时，哪些属性可以复制，哪些应该不复制或者置空。<code>__clone()</code>是个魔术方法，在对象上调用<code>clone</code>关键字时会自动调用。如下代码所示：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $id;</span><br><span class="line">    <span class="keyword">public</span> $name;</span><br><span class="line">    <span class="keyword">public</span> $age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($id, $name, $age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;id = $id;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;name = $name;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;age = $age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__clone</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;id = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$student1 = <span class="keyword">new</span> Student(<span class="number">1</span>,<span class="string">'mike'</span>, <span class="number">19</span>);</span><br><span class="line">$student2 = <span class="keyword">clone</span> $student1;</span><br><span class="line"></span><br><span class="line">print_r($student1);</span><br><span class="line">print_r($student2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line">Student Object</span><br><span class="line">(</span><br><span class="line">    [id] =&gt; <span class="number">1</span></span><br><span class="line">    [name] =&gt; mike</span><br><span class="line">    [age] =&gt; <span class="number">19</span></span><br><span class="line">)</span><br><span class="line">Student Object</span><br><span class="line">(</span><br><span class="line">    [id] =&gt; <span class="number">0</span></span><br><span class="line">    [name] =&gt; mike</span><br><span class="line">    [age] =&gt; <span class="number">19</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>当在<code>$student1</code>上调用<code>clone</code>时，产生一个新的副本给<code>$student2</code> ，这时<code>$student2</code>上就会自动调用<code>__clone</code>方法，使<code>$id</code>为0。</p>
+<p>上面通过<code>clone</code>和<code>__clone()</code>可以保证所有的基础数据类型可以被完全复制，但如果复制的对象中的属性也是一个对象时，复制后的两个对象都会引用同一个属性，修改时会互相影响，如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">Class</span> <span class="title">Score</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $english;</span><br><span class="line">    <span class="keyword">public</span> $math;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($english, $math)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;english = $english;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;math = $math;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $id;</span><br><span class="line">    <span class="keyword">public</span> $name;</span><br><span class="line">    <span class="keyword">public</span> $age;</span><br><span class="line">    <span class="keyword">public</span> $score;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($id, $name, $age, Score $score)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;id = $id;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;name = $name;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;age = $age;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;score = $score;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__clone</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;id = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$student1 = <span class="keyword">new</span> Student(<span class="number">1</span>,<span class="string">'mike'</span>, <span class="number">19</span>, <span class="keyword">new</span> Score(<span class="number">80</span>, <span class="number">90</span>));</span><br><span class="line">$student2 = <span class="keyword">clone</span> $student1;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 我们需要修改$student1的英语成绩</span></span><br><span class="line">$student1-&gt;score-&gt;english = <span class="number">99</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//结果$student2的英语成绩也被修改了</span></span><br><span class="line"><span class="keyword">echo</span> $student2-&gt;score-&gt;english;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="number">99</span></span><br></pre></td></tr></table></figure>
+<p>上面这种情况并不是我们希望看到的，我们不想对象属性复制后被共享。解决方法就是在<code>__clone()</code>做做一些修改：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">__clone</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">$this</span>-&gt;id = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">$this</span>-&gt;score = <span class="keyword">clone</span> <span class="keyword">$this</span>-&gt;score;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="number">80</span></span><br></pre></td></tr></table></figure>
+<p>我所了解的PHP中对象复制大概就是这样，类似<code>__clone()</code>这样的魔术方法还有好几个，常见的还有：<code>__set()</code>、<code>__unset()</code>、<code>__call()</code>等，利用这些魔术方法可以实现更多复杂的操作，以后慢慢学习。</p>
+<hr>
+<p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
+<p><img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2018/12/20/PHP/Clone-Object-in-PHP/" data-id="ckng44zog000b64cazu9k1ep9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
 
     </footer>
   </div>
@@ -260,7 +422,7 @@ ga('send', 'pageview');
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="../7/">&laquo;Prev</a><a class="page-number" href="../../">1</a><span class="space">&hellip;</span><a class="page-number" href="../6/">6</a><a class="page-number" href="../7/">7</a><span class="page-number current">8</span><a class="page-number" href="../9/">9</a><a class="page-number" href="../10/">10</a><span class="space">&hellip;</span><a class="page-number" href="../20/">20</a><a class="extend next" rel="next" href="../9/">Next&raquo;</a>
+    <a class="extend prev" rel="prev" href="../7/">&laquo;Prev</a><a class="page-number" href="../../">1</a><span class="space">&hellip;</span><a class="page-number" href="../6/">6</a><a class="page-number" href="../7/">7</a><span class="page-number current">8</span><a class="page-number" href="../9/">9</a><a class="page-number" href="../10/">10</a><span class="space">&hellip;</span><a class="page-number" href="../12/">12</a><a class="extend next" rel="next" href="../9/">Next&raquo;</a>
   </nav>
 
 </section>
@@ -271,7 +433,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Devops/">Devops</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/">Electron</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/Node/">Node</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/Node/Javascript/">Javascript</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/Git/">Git</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Networks/">Networks</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Object-Oriented/">Object Oriented</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/PHP/">PHP</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/PHP/Laravel/">Laravel</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Regular-Expression/">Regular Expression</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/VPS/">VPS</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Yangmao/">Yangmao</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/frontend/">frontend</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/macOS/">macOS</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="../../categories/小程序/">小程序</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/小程序/PHP/">PHP</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/微信/">微信</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Devops/">Devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/">Electron</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/Node/">Node</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/Node/Javascript/">Javascript</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/Git/">Git</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Networks/">Networks</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Object-Oriented/">Object Oriented</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/PHP/">PHP</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/PHP/Laravel/">Laravel</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Regular-Expression/">Regular Expression</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Tools/">Tools</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/VPS/">VPS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Yangmao/">Yangmao</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/frontend/">frontend</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/notes/">notes</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/小程序/">小程序</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/小程序/PHP/">PHP</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/微信/">微信</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -290,7 +452,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">October 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/03/">March 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/02/">February 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/01/">January 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/12/">December 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/10/">October 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">June 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">May 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
