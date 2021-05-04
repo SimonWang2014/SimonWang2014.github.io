@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://i.loli.net/2021/05/04/KNtkeZQiM7xYqJa.png">
 <meta property="og:image" content="https://i.loli.net/2021/05/04/tdHTCG5oNJmvxsY.png">
 <meta property="og:image" content="https://i.loli.net/2021/05/04/SIYcx4PqtuVhD3b.png">
-<meta property="og:updated_time" content="2021-05-04T10:21:42.571Z">
+<meta property="og:updated_time" content="2021-05-04T10:50:47.060Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Typora中自定义命令上传图片">
 <meta name="twitter:description" content="markdown编辑器typora支持ipci、upic等图床，现在也支持了自定义图床，本文将介绍如何使用typora的自定义功能将图片上传到sm.ms，稍微修改还能上传到七牛或者又拍云等。">
@@ -147,7 +147,7 @@ ga('send', 'pageview');
 <p><img src="https://i.loli.net/2021/05/04/mOEHiTxMUZLYhRl.png" alt="typora custom uploader"></p>
 <p>于是就打算自己写一个上传脚本，先看下<code>Typora</code>的<a href="https://support.typora.io/Upload-Image/#custom" target="_blank" rel="noopener">文档说明</a>：</p>
 <p><img src="https://i.loli.net/2021/05/04/KNtkeZQiM7xYqJa.png" alt="typora uploader instruction"></p>
-<p>重点红色框中已经标出来了，上传后的返回结果需要这种格式，<code>Typora</code>才能识别是否上传成功。这与图床，我使用了<code>SM.MS</code>，用了很久了，不担心跑路。看<a href="https://doc.sm.ms/#api-Image-Upload" target="_blank" rel="noopener">接口</a>：</p>
+<p>重点红色框中已经标出来了，上传后的返回结果需要这种格式，<code>Typora</code>才能识别是否上传成功。这里图床，我使用了<code>SM.MS</code>，用了很久了，不担心跑路。看<a href="https://doc.sm.ms/#api-Image-Upload" target="_blank" rel="noopener">接口</a>：</p>
 <p><img src="https://i.loli.net/2021/05/04/tdHTCG5oNJmvxsY.png" alt="sm image upload api"></p>
 <p>如果<code>Authorization</code>不传，就是匿名的。</p>
 <p>好了，现在上代码：</p>
