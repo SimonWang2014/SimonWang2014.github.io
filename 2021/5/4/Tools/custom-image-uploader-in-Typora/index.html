@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Typora中自定义上传图床 | 正义的程序猿</title>
+  <title>Typora中自定义命令上传图片 | 正义的程序猿</title>
   <meta name="baidu-site-verification" content="yXEzwss0jm" />
   <meta name="360-site-verification" content="878e013ea1c0235dec34a8b1c676cf65" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -13,7 +13,7 @@
   <meta name="description" content="markdown编辑器typora支持ipci、upic等图床，现在也支持了自定义图床，本文将介绍如何使用typora的自定义功能将图片上传到sm.ms，稍微修改还能上传到七牛或者又拍云等。">
 <meta name="keywords" content="Typora">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Typora中自定义上传图床">
+<meta property="og:title" content="Typora中自定义命令上传图片">
 <meta property="og:url" content="https://www.xydida.com/2021/5/4/Tools/custom-image-uploader-in-Typora/index.html">
 <meta property="og:site_name" content="正义的程序猿">
 <meta property="og:description" content="markdown编辑器typora支持ipci、upic等图床，现在也支持了自定义图床，本文将介绍如何使用typora的自定义功能将图片上传到sm.ms，稍微修改还能上传到七牛或者又拍云等。">
@@ -22,9 +22,9 @@
 <meta property="og:image" content="https://i.loli.net/2021/05/04/KNtkeZQiM7xYqJa.png">
 <meta property="og:image" content="https://i.loli.net/2021/05/04/tdHTCG5oNJmvxsY.png">
 <meta property="og:image" content="https://i.loli.net/2021/05/04/SIYcx4PqtuVhD3b.png">
-<meta property="og:updated_time" content="2021-05-04T10:10:22.647Z">
+<meta property="og:updated_time" content="2021-05-04T10:16:59.001Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Typora中自定义上传图床">
+<meta name="twitter:title" content="Typora中自定义命令上传图片">
 <meta name="twitter:description" content="markdown编辑器typora支持ipci、upic等图床，现在也支持了自定义图床，本文将介绍如何使用typora的自定义功能将图片上传到sm.ms，稍微修改还能上传到七牛或者又拍云等。">
 <meta name="twitter:image" content="https://i.loli.net/2021/05/04/mOEHiTxMUZLYhRl.png">
   
@@ -135,7 +135,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      Typora中自定义上传图床
+      Typora中自定义命令上传图片
     </h1>
   
 
@@ -154,10 +154,26 @@ ga('send', 'pageview');
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"><span class="meta">#</span> Author: bilberry</span><br><span class="line"><span class="meta">#</span> Date: 2021-05-04</span><br><span class="line"><span class="meta">#</span> 公众号：正义的程序猿</span><br><span class="line"></span><br><span class="line">arr=()</span><br><span class="line">for img_path in "$@"</span><br><span class="line">do</span><br><span class="line">    res=$(curl -s --location --request POST 'https://sm.ms/api/v2/upload' \</span><br><span class="line">        --header 'Content-Type: multipart/form-data' \</span><br><span class="line">        --form 'smfile=@'"$&#123;img_path&#125;")</span><br><span class="line"></span><br><span class="line">    success=`echo $res | python3 -c "import sys, json; r=json.load(sys.stdin)['success']; print(r);"`</span><br><span class="line"></span><br><span class="line">    if [ "$success" == 'True' -o "$usccess" == 'true' ]</span><br><span class="line">    then</span><br><span class="line">        r=`echo $res | python3 -c "import sys, json; r=json.load(sys.stdin)['data']['url']; print(r);"`</span><br><span class="line">        arr[$&#123;#arr[@]&#125;]=$r</span><br><span class="line">    fi</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">if [ $&#123;#arr[@]&#125; -eq $# -a $# -gt 0 ]</span><br><span class="line">then</span><br><span class="line">    echo 'Upload Success:'</span><br><span class="line">    for a in "$&#123;arr[@]&#125;"</span><br><span class="line">    do</span><br><span class="line">        echo $a</span><br><span class="line">    done</span><br><span class="line">else</span><br><span class="line">    echo 'Upload Failed'</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 <p>代码就是这样，<code>shell</code>脚本是我现学的，不是很复杂，当然也有一些特殊情况没有考虑，比如<code>SM.MS</code>上传了重复的图片，会返回如下内容：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"success"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"code"</span>: <span class="string">"image_repeated"</span>,</span><br><span class="line">    <span class="attr">"message"</span>: <span class="string">"Image upload repeated limit, this image exists at: https://i.loli.net/2021/05/04/qbrdwglp5k7cKDZMjv.png"</span>,</span><br><span class="line">    <span class="attr">"images"</span>: <span class="string">"https://i.loli.net/2021/05/04/qbrdwglp5k7cKDZMjv.png"</span>,</span><br><span class="line">    <span class="attr">"RequestId"</span>: <span class="string">"2FDCAB12-972E-4871-AFC8-921552C02AF5"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接口返回的是<code>JSON</code>格式，<code>shell</code>处理<code>JSON</code>还比较麻烦，这里我直接调用了<code>python</code>处理，当然还有其他方法：比如：</p>
+<ul>
+<li>使用<code>awk</code>和<code>sed</code></li>
+<li>第三方库<code>jq</code></li>
+<li>调用其他脚本解析器，如<code>python</code>、<code>node</code>、<code>php</code>等</li>
+</ul>
 <p>最后剩下<code>Typora</code>上的配置，看上面的第一张图，<code>Command</code>里面是<code>shell</code>脚本的文件位置，然后可以测试了：</p>
 <p><img src="https://i.loli.net/2021/05/04/SIYcx4PqtuVhD3b.png" alt="typora uploader test"></p>
 <p>如果看到<code>Validation Succeed</code>就说明上传成功了，现在当我们<code>Command+V</code>复制一张图片进来时，会自动将图片上传到<code>SM.MS</code>，真的方便了很多，写作本来就应该这么简单嘛！</p>
 <p>至此，上面就是我今天要讲的如何使用<code>Typora</code>的自定义功能上传图片到<code>sm.ms</code>，稍微修改<code>shell</code>代码还能将图片上传到七牛云、阿里云、又拍云等。</p>
+<hr>
+<p>参考：</p>
+<ul>
+<li><p><a href="https://www.runoob.com/linux/linux-shell.html" target="_blank" rel="noopener">shell教程</a></p>
+</li>
+<li><p><a href="https://www.tomczhen.com/2017/10/15/parsing-json-with-shell-script/" target="_blank" rel="noopener">使用 Shell 脚本来处理 JSON</a></p>
+</li>
+<li><a href="https://doc.sm.ms/#api-Image-Upload" target="_blank" rel="noopener">SM.MS上传图片文档</a></li>
+<li><a href="https://support.typora.io/Upload-Image/#custom" target="_blank" rel="noopener">Typora文档</a></li>
+</ul>
 
       
     </div>
@@ -224,7 +240,7 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="../../../../../2021/5/4/Tools/custom-image-uploader-in-Typora/">Typora中自定义上传图床</a>
+            <a href="../../../../../2021/5/4/Tools/custom-image-uploader-in-Typora/">Typora中自定义命令上传图片</a>
           </li>
         
           <li>
