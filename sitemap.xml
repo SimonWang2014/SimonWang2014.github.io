@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.xydida.com/2018/2/4/Devops/Base-configuration-for-a-new-server/</loc>
+    
+    <lastmod>2021-05-06T02:30:31.797Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.xydida.com/2021/5/4/Tools/custom-image-uploader-in-Typora/</loc>
     
     <lastmod>2021-05-04T10:50:47.060Z</lastmod>
@@ -306,13 +313,6 @@
     <loc>https://www.xydida.com/2018/12/20/PHP/Clone-Object-in-PHP/</loc>
     
     <lastmod>2020-09-20T02:34:14.772Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/2018/2/4/Devops/Base-configuration-for-a-new-server/</loc>
-    
-    <lastmod>2020-09-20T02:33:15.716Z</lastmod>
     
   </url>
   
