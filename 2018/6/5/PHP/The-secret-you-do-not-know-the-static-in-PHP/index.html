@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="正义的程序猿">
 <meta property="og:description" content="PHP和Java中都会有static这个关键字，用法也类似，当问及PHP中的static用法是，很容易想出static可以声明类属性或方法为静态，静态属性和方法都是属于类的，静态属性不能通过对象访问，但静态方法可以通过对象访问。没错，是这样的，但是在PHP中static还有另外的用处哦。 先从static变量的作用域开始PHP中static变量只存在于本地函数中，但是当程序执行完本函数后，sta">
 <meta property="og:locale" content="zh">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2650331-3496c25ffeaf7073.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://i.loli.net/2021/05/06/6KPFQLpBO9NnTYw.jpg">
 <meta property="og:image" content="http://p8m3309kb.bkt.clouddn.com/assign%20expression%20to%20static.png">
 <meta property="og:image" content="http://p8m3309kb.bkt.clouddn.com/run%20assign%20expression%20to%20static.png">
 <meta property="og:image" content="http://p8m3309kb.bkt.clouddn.com/examples%20of%20static%20attrs.png">
@@ -26,11 +26,11 @@
 <meta property="og:image" content="http://p8m3309kb.bkt.clouddn.com/delay%20static%20binding1.png">
 <meta property="og:image" content="http://p8m3309kb.bkt.clouddn.com/static%20group.png">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2650331-0a591295c0869965.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-06-05T14:50:23.044Z">
+<meta property="og:updated_time" content="2021-05-06T02:36:34.936Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP中的static关键字">
 <meta name="twitter:description" content="PHP和Java中都会有static这个关键字，用法也类似，当问及PHP中的static用法是，很容易想出static可以声明类属性或方法为静态，静态属性和方法都是属于类的，静态属性不能通过对象访问，但静态方法可以通过对象访问。没错，是这样的，但是在PHP中static还有另外的用处哦。 先从static变量的作用域开始PHP中static变量只存在于本地函数中，但是当程序执行完本函数后，sta">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2650331-3496c25ffeaf7073.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://i.loli.net/2021/05/06/6KPFQLpBO9NnTYw.jpg">
   
     <link rel="alternate" href="/sitemap.xml" title="正义的程序猿" type="application/atom+xml">
   
@@ -147,7 +147,7 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://upload-images.jianshu.io/upload_images/2650331-3496c25ffeaf7073.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+        <p><img src="https://i.loli.net/2021/05/06/6KPFQLpBO9NnTYw.jpg" style="zoom:67%;"></p>
 <p>PHP和Java中都会有<code>static</code>这个关键字，用法也类似，当问及PHP中的<code>static</code>用法是，很容易想出<code>static</code>可以声明类属性或方法为静态，静态属性和方法都是属于类的，静态属性不能通过对象访问，但静态方法可以通过对象访问。没错，是这样的，但是在PHP中<code>static</code>还有另外的用处哦。</p>
 <h2 id="先从static变量的作用域开始"><a href="#先从static变量的作用域开始" class="headerlink" title="先从static变量的作用域开始"></a>先从static变量的作用域开始</h2><p>PHP中<code>static</code>变量只存在于本地函数中，但是当程序执行完本函数后，<code>static</code>变量还会一直存在，考虑如下代码：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span></span></span></span><br><span class="line"><span class="php">&#123;</span></span><br><span class="line"><span class="php">    $a = <span class="number">0</span>;</span></span><br><span class="line"><span class="php">    <span class="keyword">echo</span> $a . <span class="string">"\n"</span>;</span></span><br><span class="line"><span class="php">    $a++;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="comment">// 都会输出0</span></span></span><br><span class="line"><span class="php"><span class="keyword">for</span> ($i=<span class="number">0</span>; $i&lt;<span class="number">5</span>; $i++) &#123;</span></span><br><span class="line"><span class="php">    test();</span></span><br><span class="line"><span class="php">&#125;</span></span><br></pre></td></tr></table></figure>
