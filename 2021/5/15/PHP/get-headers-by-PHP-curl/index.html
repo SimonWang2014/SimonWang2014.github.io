@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://i.loli.net/2021/05/15/1i2YX3m7VDrsEIc.png">
 <meta property="og:image" content="https://i.loli.net/2021/05/15/bUpuIGocLgdyZWj.png">
 <meta property="og:image" content="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg">
-<meta property="og:updated_time" content="2021-05-15T08:51:11.692Z">
+<meta property="og:updated_time" content="2021-05-15T08:55:42.664Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP中使用curl获取头信息headers的一些笔记">
 <meta name="twitter:description" content="在一个完整的HTTP请求中，会包含两个headers信息，一个是请求头，另一个是返回头，如下截图：  那我们在PHP中如何使用curl获取这两个头信息呢？ 获取Request Headers12345// curl句柄需要设置这个参数CURLINFO_HEADER_OUT =&amp;gt; 1,// curl_getinfo获取请求request headerscurl_getinfo($ch, CUR">
@@ -157,7 +157,7 @@ ga('send', 'pageview');
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CURLOPT_HEADER =&gt; <span class="number">1</span>,</span><br><span class="line"><span class="comment">// 不要body了</span></span><br><span class="line">CURLOPT_NOBODY =&gt; <span class="number">1</span>,</span><br></pre></td></tr></table></figure>
 <p><img src="https://i.loli.net/2021/05/15/bUpuIGocLgdyZWj.png" alt=""></p>
 <p>现在，返回的结果就只有<code>header</code>了，同时我们也发现，请求方法也变成了<code>head</code>请求。</p>
-<p>以上就是本文所要讲的如何在PHP中使用curl获取头信息，如果是请求头，就设置<code>CURLINFO_HEADER_OUT</code>，如何事响应头，就设置<code>CURLOPT_HEADER</code>。</p>
+<p>以上就是本文所要讲的如何在PHP中使用curl获取头信息，如果是请求头，就设置<code>CURLINFO_HEADER_OUT</code>，如果是响应头，就设置<code>CURLOPT_HEADER</code>。</p>
 <hr>
 <p>如果觉得不错，可以关注我的公众号(^-^)：</p>
 <p><img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;"></p>
