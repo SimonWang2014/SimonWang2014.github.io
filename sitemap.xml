@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.xydida.com/2021/5/15/PHP/get-headers-by-PHP-curl/</loc>
+    
+    <lastmod>2021-05-15T08:51:11.692Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/2019/3/13/PHP/array-push-in-PHP/</loc>
+    
+    <lastmod>2021-05-15T08:49:43.467Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.xydida.com/2018/6/5/PHP/The-secret-you-do-not-know-the-static-in-PHP/</loc>
     
     <lastmod>2021-05-06T02:36:34.936Z</lastmod>
@@ -75,13 +89,6 @@
     <loc>https://www.xydida.com/2021/3/30/frontend/Learn-Vue-slot/</loc>
     
     <lastmod>2021-04-03T15:06:16.769Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/2019/3/13/PHP/array-push-in-PHP/</loc>
-    
-    <lastmod>2021-03-27T10:19:21.240Z</lastmod>
     
   </url>
   
