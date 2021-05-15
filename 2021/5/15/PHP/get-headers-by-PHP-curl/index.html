@@ -10,23 +10,23 @@
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="在一个完整的HTTP请求中，会包含两个headers信息，一个是请求头，另一个是返回头，如下截图：  那我们在PHP中如何使用curl获取这两个头信息呢？ 获取Request Headers12345// curl句柄需要设置这个参数CURLINFO_HEADER_OUT =&amp;gt; 1,// curl_getinfo获取请求request headerscurl_getinfo($ch, CUR">
+  <meta name="description" content="在一个完整的HTTP请求中，会包含两个headers信息，一个是请求头，另一个是返回头，如下截图：  那我们在PHP中如何使用curl获取这两个头信息呢？">
 <meta name="keywords" content="PHP,curl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP中使用curl获取头信息headers的一些笔记">
 <meta property="og:url" content="https://www.xydida.com/2021/5/15/PHP/get-headers-by-PHP-curl/index.html">
 <meta property="og:site_name" content="正义的程序猿">
-<meta property="og:description" content="在一个完整的HTTP请求中，会包含两个headers信息，一个是请求头，另一个是返回头，如下截图：  那我们在PHP中如何使用curl获取这两个头信息呢？ 获取Request Headers12345// curl句柄需要设置这个参数CURLINFO_HEADER_OUT =&amp;gt; 1,// curl_getinfo获取请求request headerscurl_getinfo($ch, CUR">
+<meta property="og:description" content="在一个完整的HTTP请求中，会包含两个headers信息，一个是请求头，另一个是返回头，如下截图：  那我们在PHP中如何使用curl获取这两个头信息呢？">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="https://i.loli.net/2021/05/15/iZecUHS5px3VRLw.png">
 <meta property="og:image" content="https://i.loli.net/2021/05/15/ioAnErfRvUXyVI6.png">
 <meta property="og:image" content="https://i.loli.net/2021/05/15/1i2YX3m7VDrsEIc.png">
 <meta property="og:image" content="https://i.loli.net/2021/05/15/bUpuIGocLgdyZWj.png">
 <meta property="og:image" content="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg">
-<meta property="og:updated_time" content="2021-05-15T08:55:42.664Z">
+<meta property="og:updated_time" content="2021-05-15T09:00:25.173Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP中使用curl获取头信息headers的一些笔记">
-<meta name="twitter:description" content="在一个完整的HTTP请求中，会包含两个headers信息，一个是请求头，另一个是返回头，如下截图：  那我们在PHP中如何使用curl获取这两个头信息呢？ 获取Request Headers12345// curl句柄需要设置这个参数CURLINFO_HEADER_OUT =&amp;gt; 1,// curl_getinfo获取请求request headerscurl_getinfo($ch, CUR">
+<meta name="twitter:description" content="在一个完整的HTTP请求中，会包含两个headers信息，一个是请求头，另一个是返回头，如下截图：  那我们在PHP中如何使用curl获取这两个头信息呢？">
 <meta name="twitter:image" content="https://i.loli.net/2021/05/15/iZecUHS5px3VRLw.png">
   
     <link rel="alternate" href="/sitemap.xml" title="正义的程序猿" type="application/atom+xml">
@@ -147,6 +147,7 @@ ga('send', 'pageview');
         <p>在一个完整的<code>HTTP</code>请求中，会包含两个<code>headers</code>信息，一个是请求头，另一个是返回头，如下截图：</p>
 <p><img src="https://i.loli.net/2021/05/15/iZecUHS5px3VRLw.png" alt="http-header"></p>
 <p>那我们在PHP中如何使用<code>curl</code>获取这两个头信息呢？</p>
+<a id="more"></a>
 <h1 id="获取Request-Headers"><a href="#获取Request-Headers" class="headerlink" title="获取Request Headers"></a>获取Request Headers</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// curl句柄需要设置这个参数</span></span><br><span class="line">CURLINFO_HEADER_OUT =&gt; <span class="number">1</span>,</span><br><span class="line"></span><br><span class="line"><span class="comment">// curl_getinfo获取请求request headers</span></span><br><span class="line">curl_getinfo($ch, CURLINFO_HEADER_OUT);</span><br></pre></td></tr></table></figure>
 <p>打印结果如下：</p>
 <p><img src="https://i.loli.net/2021/05/15/ioAnErfRvUXyVI6.png" alt=""></p>
