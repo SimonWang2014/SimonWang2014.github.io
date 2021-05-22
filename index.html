@@ -136,27 +136,11 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>浏览网页时，我们需要知道“网址”才能访问，这里说的“网址”通常就是指<code>URL</code>，比如：<code>https://www.xydida.com/index.html</code>，而平时也会说<code>URI</code>、<code>URN</code>，那又是什么呢？今天就来捋一捋。</p>
-<h1 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h1><p><strong>U</strong>niform <strong>R</strong>esource <strong>L</strong>ocator，统一资源定位符，就是我们说的网址，标准格式如下：</p>
-<blockquote>
-</blockquote>
-<p>协议类型有很多，常见的有<code>http</code>、<code>ftp</code>、<code>file</code>等，既然代表一个资源，那么数据库连接字符串也算作<code>URL</code>，如：<code>jdbc:datadirect:oracle://myserver:1521;sid=testdb</code>。</p>
-<h1 id="URN"><a href="#URN" class="headerlink" title="URN"></a>URN</h1><p><strong>U</strong>niform <strong>R</strong>esource <strong>N</strong>ame，统一资源名称，指互联网上某一独一无二的资源的名称，标准格式如下：</p>
-<blockquote>
-<p>urn:<nid>:<nss></nss></nid></p>
-</blockquote>
-<p>开头的<code>urn:</code>序列大小写不敏感的。<code>&lt;NID&gt;</code>是命名空间标识，它是一个“命名空间特定”的字符串，决定了如何解释<code>&lt;NSS&gt;</code>的句法，比如这个：<code>urn:isbn:0-486-27557-4</code>，指向的就是莎士比亚的戏剧《<a href="https://zh.wikipedia.org/wiki/罗密欧与朱丽叶" target="_blank" rel="noopener">罗密欧与朱丽叶</a>》的某一特定版本。</p>
-<h1 id="URI"><a href="#URI" class="headerlink" title="URI"></a>URI</h1><p><strong>U</strong>niform <strong>R</strong>esource <strong>I</strong>dentifier，统一资源标志符，是标志互联网上某一资源的字符串，它包含<code>URL</code>和<code>URN</code>，如图：</p>
-<p><img src="https://i.loli.net/2021/05/22/bmqLhI1UrByxzWg.png" style="zoom:50%;"></p>
-<p>所以，<code>URN</code>如同一个人的名称，<code>URL</code>代表一个人的地址。还是拿上面的<code>ISBN 0-486-27557-4</code>举例，它表示的是一本书，为了获得这本书的资源来阅读，就需要知道它的位置，也就是<code>URL</code>。更进一步，<code>URN</code>定义某事物的身份，而<code>URL</code>提供查找该事物的方法。</p>
-<h1 id="URL-Scheme"><a href="#URL-Scheme" class="headerlink" title="URL Scheme"></a>URL Scheme</h1><p>这是<code>ios</code>在很久之前推出的为了在app间通信的一种特殊链接，就是我们常说的<code>Deep Link</code>，比如：<code>taobao://market.m.taobao.com/app/tmall-def/daily-welfare/pages/index?wh_weex=true</code>，在浏览器里输入这个链接就能直接打开淘宝APP的领红包页面，可以看到<code>URL Scheme</code>的协议字段是自定义的，一些其他的APP URL Scheme可以看我<a href="一些常用APP的URL Scheme">这篇文章</a>，局限性，比如APP开发人员要维护两套逻辑，而且自定义的协议字段有可能被其他APP占用。</p>
-<h1 id="Universal-Link"><a href="#Universal-Link" class="headerlink" title="Universal Link"></a>Universal Link</h1><p>后来，由于URL Scheme的各种局限性，<code>ios 9</code>之后又推出了<code>Universal Link</code>，官网的解释如下：</p>
-<blockquote>
-<p>Seamlessly link to content inside your app, or on your website in iOS 9 or later. With universal links, you can always give users the most integrated mobile experience, even when your app isn’t installed on their device.</p>
-</blockquote>
-<p>通俗地讲，<code>Universal Link</code>可以让用户点击跳转的时候直接打开APP，并跳转到指定页面，这个和上面的<code>Deep Link</code>一样，只不过不用自定义协议字段，直接用通用的网址链接就可以打开APP，比如浏览器中输入<code>https://www.xydida.com/post/2</code>，浏览器会跳转到某个页面，同时如果安装了APP的话，就会直接打开APP对应的页面，是不是很厉害。</p>
-<hr>
-<p>本文系原创，转载请注明出处。</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2021/5/21/notes/defference-between-URL-and-URI/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">

@@ -10,19 +10,19 @@
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="引言浏览网页时，我们需要知道“网址”才能访问，这里说的“网址”通常就是指URL，比如：https://www.xydida.com/index.html，而平时也会说URI、URN，那又是什么呢？今天就来捋一捋。 URLUniform Resource Locator，统一资源定位符，就是我们说的网址，标准格式如下：   协议类型有很多，常见的有http、ftp、file等，既然代表一个资源，那么">
+  <meta name="description" content="引言浏览网页时，我们需要知道“网址”才能访问，这里说的“网址”通常就是指URL，比如：https://www.xydida.com/index.html，而平时也会说URI、URN，那又是什么呢？今天就来捋一捋。">
 <meta name="keywords" content="networks">
 <meta property="og:type" content="article">
 <meta property="og:title" content="URL和URI之间的区别">
 <meta property="og:url" content="https://www.xydida.com/2021/5/21/notes/defference-between-URL-and-URI/index.html">
 <meta property="og:site_name" content="正义的程序猿">
-<meta property="og:description" content="引言浏览网页时，我们需要知道“网址”才能访问，这里说的“网址”通常就是指URL，比如：https://www.xydida.com/index.html，而平时也会说URI、URN，那又是什么呢？今天就来捋一捋。 URLUniform Resource Locator，统一资源定位符，就是我们说的网址，标准格式如下：   协议类型有很多，常见的有http、ftp、file等，既然代表一个资源，那么">
+<meta property="og:description" content="引言浏览网页时，我们需要知道“网址”才能访问，这里说的“网址”通常就是指URL，比如：https://www.xydida.com/index.html，而平时也会说URI、URN，那又是什么呢？今天就来捋一捋。">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="https://i.loli.net/2021/05/22/bmqLhI1UrByxzWg.png">
-<meta property="og:updated_time" content="2021-05-22T09:28:36.978Z">
+<meta property="og:updated_time" content="2021-05-22T09:35:08.207Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="URL和URI之间的区别">
-<meta name="twitter:description" content="引言浏览网页时，我们需要知道“网址”才能访问，这里说的“网址”通常就是指URL，比如：https://www.xydida.com/index.html，而平时也会说URI、URN，那又是什么呢？今天就来捋一捋。 URLUniform Resource Locator，统一资源定位符，就是我们说的网址，标准格式如下：   协议类型有很多，常见的有http、ftp、file等，既然代表一个资源，那么">
+<meta name="twitter:description" content="引言浏览网页时，我们需要知道“网址”才能访问，这里说的“网址”通常就是指URL，比如：https://www.xydida.com/index.html，而平时也会说URI、URN，那又是什么呢？今天就来捋一捋。">
 <meta name="twitter:image" content="https://i.loli.net/2021/05/22/bmqLhI1UrByxzWg.png">
   
     <link rel="alternate" href="/sitemap.xml" title="正义的程序猿" type="application/atom+xml">
@@ -137,13 +137,14 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>浏览网页时，我们需要知道“网址”才能访问，这里说的“网址”通常就是指<code>URL</code>，比如：<code>https://www.xydida.com/index.html</code>，而平时也会说<code>URI</code>、<code>URN</code>，那又是什么呢？今天就来捋一捋。</p>
+<a id="more"></a>
 <h1 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h1><p><strong>U</strong>niform <strong>R</strong>esource <strong>L</strong>ocator，统一资源定位符，就是我们说的网址，标准格式如下：</p>
 <blockquote>
 </blockquote>
 <p>协议类型有很多，常见的有<code>http</code>、<code>ftp</code>、<code>file</code>等，既然代表一个资源，那么数据库连接字符串也算作<code>URL</code>，如：<code>jdbc:datadirect:oracle://myserver:1521;sid=testdb</code>。</p>
 <h1 id="URN"><a href="#URN" class="headerlink" title="URN"></a>URN</h1><p><strong>U</strong>niform <strong>R</strong>esource <strong>N</strong>ame，统一资源名称，指互联网上某一独一无二的资源的名称，标准格式如下：</p>
 <blockquote>
-<p>urn:<nid>:<nss></nss></nid></p>
+<p>urn:\&lt;NID>:\&lt;NSS></p>
 </blockquote>
 <p>开头的<code>urn:</code>序列大小写不敏感的。<code>&lt;NID&gt;</code>是命名空间标识，它是一个“命名空间特定”的字符串，决定了如何解释<code>&lt;NSS&gt;</code>的句法，比如这个：<code>urn:isbn:0-486-27557-4</code>，指向的就是莎士比亚的戏剧《<a href="https://zh.wikipedia.org/wiki/罗密欧与朱丽叶" target="_blank" rel="noopener">罗密欧与朱丽叶</a>》的某一特定版本。</p>
 <h1 id="URI"><a href="#URI" class="headerlink" title="URI"></a>URI</h1><p><strong>U</strong>niform <strong>R</strong>esource <strong>I</strong>dentifier，统一资源标志符，是标志互联网上某一资源的字符串，它包含<code>URL</code>和<code>URN</code>，如图：</p>
