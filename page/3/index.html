@@ -113,6 +113,58 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-The-Guard-in-Laravel-framework" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../2021/2/24/PHP/Laravel/The-Guard-in-Laravel-framework/" class="article-date">
+  <time datetime="2021-02-24T10:39:43.000Z" itemprop="datePublished">2021-02-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../categories/PHP/">PHP</a>►<a class="article-category-link" href="../../categories/PHP/Laravel/">Laravel</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2021/2/24/PHP/Laravel/The-Guard-in-Laravel-framework/">关于Laravel框架中Guard的底层实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-什么是Guard"><a href="#1-什么是Guard" class="headerlink" title="1. 什么是Guard"></a>1. 什么是Guard</h1><p>在<code>Laravel/Lumen</code>框架中，用户的登录/注册的认证基本都已经封装好了，开箱即用。而登录/注册认证的核心就是：</p>
+<ol>
+<li>用户的注册信息存入数据库（登记）</li>
+<li>从数据库中读取数据和用户输入的对比（认证）</li>
+</ol>
+<p>上述两步是登录/注册的基本，可以看到都会涉及到数据库的操作，这两步框架底层已经帮我们做好了，而且考虑到了很多情况，比如用户认证的数据表不是<code>user表</code>而是<code>admin_user</code>，认证字段是<code>phone</code>而不是<code>email</code>，等等一些问题都是<code>Guard</code>所要解决的，通过<code>Guard</code>可以指定使用哪个数据表什么字段等，<code>Guard</code>能非常灵活的构建一套自己的认证体系。</p>
+        
+          <p class="article-more-link">
+            <a href="../../2021/2/24/PHP/Laravel/The-Guard-in-Laravel-framework/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2021/2/24/PHP/Laravel/The-Guard-in-Laravel-framework/" data-id="ckozjuz9q0018sucaa7dczutx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Laravel/">Laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Lumen/">Lumen</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Saner-string-to-number-comparisons" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="../../2021/2/23/PHP/Saner-string-to-number-comparisons/" class="article-date">
@@ -153,7 +205,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/2/23/PHP/Saner-string-to-number-comparisons/" data-id="ckos6qn6d001bbqca9mf70alf" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2021/2/23/PHP/Saner-string-to-number-comparisons/" data-id="ckozjuz9c000zsucapu2jizov" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
@@ -215,7 +267,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/1/29/Networks/HTTP-status-code/" data-id="ckos6qn5r000rbqcavyoul663" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2021/1/29/Networks/HTTP-status-code/" data-id="ckozjuz8t000bsucac3ffzadp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/API/">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Server/">Server</a></li></ul>
@@ -265,7 +317,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/1/19/notes/css-border-trickies/" data-id="ckos6qn7e002dbqcaa4m4xvd0" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2021/1/19/notes/css-border-trickies/" data-id="ckozjuzb0002hsuca3j3tghqv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/CSS/">CSS</a></li></ul>
@@ -312,60 +364,10 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/1/17/小程序/PHP/xiao-cheng-xu-yun-tuo-guan-CloudBase-PHP/" data-id="ckos6qnb8008tbqcazbwht8k6" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2021/1/17/小程序/PHP/xiao-cheng-xu-yun-tuo-guan-CloudBase-PHP/" data-id="ckozjuzcn0051suca2q1prazv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/小程序/">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/微信/">微信</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-YUMREPO-ERROR-ALL-MIRROR-URLS-ARE-NOT-USING-FTP-HTTP-S-OR-FILE" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="../../2021/1/14/Linux/YUMREPO-ERROR-ALL-MIRROR-URLS-ARE-NOT-USING-FTP-HTTP-S-OR-FILE/" class="article-date">
-  <time datetime="2021-01-14T06:10:25.000Z" itemprop="datePublished">2021-01-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="../../categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2021/1/14/Linux/YUMREPO-ERROR-ALL-MIRROR-URLS-ARE-NOT-USING-FTP-HTTP-S-OR-FILE/">YUMREPO ERROR: ALL MIRROR URLS ARE NOT USING FTP, HTTP[S] OR FILE</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>When trying update CentOS with <strong>yum update</strong> command getting error:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Loaded plugins: fastestmirror, refresh-packagekit, security</span><br><span class="line">Setting up Update Process</span><br><span class="line">Determining fastest mirrors</span><br><span class="line">YumRepo Error: All mirror URLs are not using ftp, http[s] or file.</span><br><span class="line">Eg. Invalid release/repo/arch combination/</span><br><span class="line">removing mirrorlist with no valid mirrors: /var/cache/yum/x86_64/6/base/mirrorlist.txt</span><br><span class="line">Error: Cannot find a valid baseurl for repo: base</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2021/01/14/jtopVsrWZk2zNS4.png" alt=""></p>
-<h1 id="Cause"><a href="#Cause" class="headerlink" title="Cause"></a>Cause</h1><p>My server is CentOS 6. But now CentOS 6 reached end of life on the 30th November 2020. YUM attempting connect to deprecated repositories. So, we need update deprecated repositories URL’s and point to the <strong>vault</strong>.</p>
-        
-          <p class="article-more-link">
-            <a href="../../2021/1/14/Linux/YUMREPO-ERROR-ALL-MIRROR-URLS-ARE-NOT-USING-FTP-HTTP-S-OR-FILE/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/1/14/Linux/YUMREPO-ERROR-ALL-MIRROR-URLS-ARE-NOT-USING-FTP-HTTP-S-OR-FILE/" data-id="ckos6qn7g002fbqcatm6xt80h" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Linux/">Linux</a></li></ul>
 
     </footer>
   </div>
@@ -398,7 +400,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="../../tags/API/" style="font-size: 11.67px;">API</a> <a href="../../tags/Big-Sur/" style="font-size: 10px;">Big Sur</a> <a href="../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../tags/CSS/" style="font-size: 15px;">CSS</a> <a href="../../tags/DNS/" style="font-size: 10px;">DNS</a> <a href="../../tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Javascript/" style="font-size: 11.67px;">Javascript</a> <a href="../../tags/Laravel/" style="font-size: 11.67px;">Laravel</a> <a href="../../tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="../../tags/Lumen/" style="font-size: 10px;">Lumen</a> <a href="../../tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="../../tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../tags/Server/" style="font-size: 15px;">Server</a> <a href="../../tags/Slim/" style="font-size: 10px;">Slim</a> <a href="../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../tags/Typora/" style="font-size: 10px;">Typora</a> <a href="../../tags/UniApp/" style="font-size: 10px;">UniApp</a> <a href="../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../tags/VPS/" style="font-size: 10px;">VPS</a> <a href="../../tags/Vue/" style="font-size: 11.67px;">Vue</a> <a href="../../tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="../../tags/angular/" style="font-size: 10px;">angular</a> <a href="../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../tags/cover-view/" style="font-size: 11.67px;">cover-view</a> <a href="../../tags/curl/" style="font-size: 10px;">curl</a> <a href="../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../tags/electron/" style="font-size: 11.67px;">electron</a> <a href="../../tags/emoji/" style="font-size: 10px;">emoji</a> <a href="../../tags/firewall/" style="font-size: 10px;">firewall</a> <a href="../../tags/git/" style="font-size: 10px;">git</a> <a href="../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="../../tags/life/" style="font-size: 10px;">life</a> <a href="../../tags/linux/" style="font-size: 10px;">linux</a> <a href="../../tags/macOS/" style="font-size: 10px;">macOS</a> <a href="../../tags/networks/" style="font-size: 10px;">networks</a> <a href="../../tags/node/" style="font-size: 10px;">node</a> <a href="../../tags/notes/" style="font-size: 13.33px;">notes</a> <a href="../../tags/npm/" style="font-size: 10px;">npm</a> <a href="../../tags/permission/" style="font-size: 10px;">permission</a> <a href="../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../tags/ufw/" style="font-size: 10px;">ufw</a> <a href="../../tags/公众号阅读笔记/" style="font-size: 10px;">公众号阅读笔记</a> <a href="../../tags/小程序/" style="font-size: 18.33px;">小程序</a> <a href="../../tags/微信/" style="font-size: 13.33px;">微信</a> <a href="../../tags/羊毛/" style="font-size: 10px;">羊毛</a> <a href="../../tags/软件设计/" style="font-size: 10px;">软件设计</a>
+      <a href="../../tags/API/" style="font-size: 11.67px;">API</a> <a href="../../tags/Big-Sur/" style="font-size: 10px;">Big Sur</a> <a href="../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../tags/CSS/" style="font-size: 15px;">CSS</a> <a href="../../tags/DNS/" style="font-size: 10px;">DNS</a> <a href="../../tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Javascript/" style="font-size: 11.67px;">Javascript</a> <a href="../../tags/Laravel/" style="font-size: 11.67px;">Laravel</a> <a href="../../tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="../../tags/Lumen/" style="font-size: 10px;">Lumen</a> <a href="../../tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="../../tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../tags/Server/" style="font-size: 15px;">Server</a> <a href="../../tags/Slim/" style="font-size: 10px;">Slim</a> <a href="../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../tags/Typora/" style="font-size: 10px;">Typora</a> <a href="../../tags/UniApp/" style="font-size: 10px;">UniApp</a> <a href="../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../tags/VPS/" style="font-size: 10px;">VPS</a> <a href="../../tags/Vue/" style="font-size: 11.67px;">Vue</a> <a href="../../tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="../../tags/angular/" style="font-size: 10px;">angular</a> <a href="../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../tags/cover-view/" style="font-size: 11.67px;">cover-view</a> <a href="../../tags/curl/" style="font-size: 10px;">curl</a> <a href="../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../tags/electron/" style="font-size: 11.67px;">electron</a> <a href="../../tags/emoji/" style="font-size: 10px;">emoji</a> <a href="../../tags/firewall/" style="font-size: 10px;">firewall</a> <a href="../../tags/git/" style="font-size: 10px;">git</a> <a href="../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="../../tags/life/" style="font-size: 10px;">life</a> <a href="../../tags/linux/" style="font-size: 10px;">linux</a> <a href="../../tags/macOS/" style="font-size: 10px;">macOS</a> <a href="../../tags/networks/" style="font-size: 11.67px;">networks</a> <a href="../../tags/node/" style="font-size: 10px;">node</a> <a href="../../tags/notes/" style="font-size: 13.33px;">notes</a> <a href="../../tags/npm/" style="font-size: 10px;">npm</a> <a href="../../tags/permission/" style="font-size: 10px;">permission</a> <a href="../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../tags/ufw/" style="font-size: 10px;">ufw</a> <a href="../../tags/公众号阅读笔记/" style="font-size: 10px;">公众号阅读笔记</a> <a href="../../tags/小程序/" style="font-size: 18.33px;">小程序</a> <a href="../../tags/微信/" style="font-size: 13.33px;">微信</a> <a href="../../tags/羊毛/" style="font-size: 10px;">羊毛</a> <a href="../../tags/软件设计/" style="font-size: 10px;">软件设计</a>
     </div>
   </div>
 
@@ -407,7 +409,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/03/">March 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/02/">February 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/01/">January 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/12/">December 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/10/">October 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">June 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">May 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/05/">May 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/03/">March 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/02/">February 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/01/">January 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/12/">December 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/10/">October 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">June 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">May 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -418,6 +420,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="../../2021/5/21/notes/defference-between-URL-and-URI/">URL和URI之间的区别</a>
+          </li>
         
           <li>
             <a href="../../2021/5/16/Reading/reading-notes-2021-05-16/">阅读笔记2021-05-16</a>
@@ -433,10 +439,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="../../2021/4/13/notes/zui-jin-de-gan-kai/">最近的感慨</a>
-          </li>
-        
-          <li>
-            <a href="../../2021/4/3/frontend/CSS-illumination/">CSS实现光照效果</a>
           </li>
         
       </ul>

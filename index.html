@@ -113,6 +113,65 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-defference-between-URL-and-URI" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/5/21/notes/defference-between-URL-and-URI/" class="article-date">
+  <time datetime="2021-05-21T06:27:34.000Z" itemprop="datePublished">2021-05-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/5/21/notes/defference-between-URL-and-URI/">URL和URI之间的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>浏览网页时，我们需要知道“网址”才能访问，这里说的“网址”通常就是指<code>URL</code>，比如：<code>https://www.xydida.com/index.html</code>，而平时也会说<code>URI</code>、<code>URN</code>，那又是什么呢？今天就来捋一捋。</p>
+<h1 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h1><p><strong>U</strong>niform <strong>R</strong>esource <strong>L</strong>ocator，统一资源定位符，就是我们说的网址，标准格式如下：</p>
+<blockquote>
+</blockquote>
+<p>协议类型有很多，常见的有<code>http</code>、<code>ftp</code>、<code>file</code>等，既然代表一个资源，那么数据库连接字符串也算作<code>URL</code>，如：<code>jdbc:datadirect:oracle://myserver:1521;sid=testdb</code>。</p>
+<h1 id="URN"><a href="#URN" class="headerlink" title="URN"></a>URN</h1><p><strong>U</strong>niform <strong>R</strong>esource <strong>N</strong>ame，统一资源名称，指互联网上某一独一无二的资源的名称，标准格式如下：</p>
+<blockquote>
+<p>urn:<nid>:<nss></nss></nid></p>
+</blockquote>
+<p>开头的<code>urn:</code>序列大小写不敏感的。<code>&lt;NID&gt;</code>是命名空间标识，它是一个“命名空间特定”的字符串，决定了如何解释<code>&lt;NSS&gt;</code>的句法，比如这个：<code>urn:isbn:0-486-27557-4</code>，指向的就是莎士比亚的戏剧《<a href="https://zh.wikipedia.org/wiki/罗密欧与朱丽叶" target="_blank" rel="noopener">罗密欧与朱丽叶</a>》的某一特定版本。</p>
+<h1 id="URI"><a href="#URI" class="headerlink" title="URI"></a>URI</h1><p><strong>U</strong>niform <strong>R</strong>esource <strong>I</strong>dentifier，统一资源标志符，是标志互联网上某一资源的字符串，它包含<code>URL</code>和<code>URN</code>，如图：</p>
+<p><img src="https://i.loli.net/2021/05/22/bmqLhI1UrByxzWg.png" style="zoom:50%;"></p>
+<p>所以，<code>URN</code>如同一个人的名称，<code>URL</code>代表一个人的地址。还是拿上面的<code>ISBN 0-486-27557-4</code>举例，它表示的是一本书，为了获得这本书的资源来阅读，就需要知道它的位置，也就是<code>URL</code>。更进一步，<code>URN</code>定义某事物的身份，而<code>URL</code>提供查找该事物的方法。</p>
+<h1 id="URL-Scheme"><a href="#URL-Scheme" class="headerlink" title="URL Scheme"></a>URL Scheme</h1><p>这是<code>ios</code>在很久之前推出的为了在app间通信的一种特殊链接，就是我们常说的<code>Deep Link</code>，比如：<code>taobao://market.m.taobao.com/app/tmall-def/daily-welfare/pages/index?wh_weex=true</code>，在浏览器里输入这个链接就能直接打开淘宝APP的领红包页面，可以看到<code>URL Scheme</code>的协议字段是自定义的，一些其他的APP URL Scheme可以看我<a href="一些常用APP的URL Scheme">这篇文章</a>，局限性，比如APP开发人员要维护两套逻辑，而且自定义的协议字段有可能被其他APP占用。</p>
+<h1 id="Universal-Link"><a href="#Universal-Link" class="headerlink" title="Universal Link"></a>Universal Link</h1><p>后来，由于URL Scheme的各种局限性，<code>ios 9</code>之后又推出了<code>Universal Link</code>，官网的解释如下：</p>
+<blockquote>
+<p>Seamlessly link to content inside your app, or on your website in iOS 9 or later. With universal links, you can always give users the most integrated mobile experience, even when your app isn’t installed on their device.</p>
+</blockquote>
+<p>通俗地讲，<code>Universal Link</code>可以让用户点击跳转的时候直接打开APP，并跳转到指定页面，这个和上面的<code>Deep Link</code>一样，只不过不用自定义协议字段，直接用通用的网址链接就可以打开APP，比如浏览器中输入<code>https://www.xydida.com/post/2</code>，浏览器会跳转到某个页面，同时如果安装了APP的话，就会直接打开APP对应的页面，是不是很厉害。</p>
+<hr>
+<p>本文系原创，转载请注明出处。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2021/5/21/notes/defference-between-URL-and-URI/" data-id="ckozjuzay002dsuca9869z8p5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/networks/">networks</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-reading-notes-2021-05-16" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/5/16/Reading/reading-notes-2021-05-16/" class="article-date">
@@ -148,7 +207,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/5/16/Reading/reading-notes-2021-05-16/" data-id="ckos6qn8f003xbqcabmjyqogq" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2021/5/16/Reading/reading-notes-2021-05-16/" data-id="ckozjuzbz0042sucahw7x9nrv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/公众号阅读笔记/">公众号阅读笔记</a></li></ul>
@@ -197,7 +256,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/5/15/PHP/get-headers-by-PHP-curl/" data-id="ckos6qn7i002jbqcarckqmus3" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2021/5/15/PHP/get-headers-by-PHP-curl/" data-id="ckozjuzbe0039suca1bmqi3wa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/curl/">curl</a></li></ul>
@@ -244,7 +303,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/5/4/Tools/custom-image-uploader-in-Typora/" data-id="ckos6qn770027bqca0v40xmle" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2021/5/4/Tools/custom-image-uploader-in-Typora/" data-id="ckozjuzaw002asuca6qibwy0i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Typora/">Typora</a></li></ul>
@@ -313,72 +372,10 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/4/13/notes/zui-jin-de-gan-kai/" data-id="ckos6qnbe0091bqcange2nsv6" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2021/4/13/notes/zui-jin-de-gan-kai/" data-id="ckozjuzd90055sucaw7w4qbsp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/life/">life</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-CSS-illumination" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/4/3/frontend/CSS-illumination/" class="article-date">
-  <time datetime="2021-04-03T15:07:08.000Z" itemprop="datePublished">2021-04-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="categories/frontend/">frontend</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/4/3/frontend/CSS-illumination/">CSS实现光照效果</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>欢迎大家关注我的公众号【正义的程序猿】<br>大部分都是聊技术，偶尔会发点感概，生活总结。</p>
-</blockquote>
-<p>先来看下效果：</p>
-<p><img src="https://i.loli.net/2021/04/03/5gpL91ZBS7swxAo.gif" alt=""></p>
-<p>可以看到，光标的位置像一个手电筒一样照着，这就是今天我们要实现的光照效果，主要代码如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"effect"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-row item-list-row"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-side flex-row item"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-side icon"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-main"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"name"</span>&gt;</span>系统<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"desc"</span>&gt;</span>显示、声音、通知、电源<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>CSS样式：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.flex-row</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: -webkit-flex;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">-webkit-flex-direction</span>: row;</span><br><span class="line">  <span class="attribute">flex-direction</span>: row;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#000</span>;</span><br><span class="line">  <span class="attribute">--pt-x</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">--pt-y</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-class">.effect</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(</span><br><span class="line">    circle at calc(var(--pt-x) * <span class="number">1px</span>) <span class="built_in">calc</span>(var(--pt-y) * <span class="number">1px</span>),</span><br><span class="line">    <span class="number">#fff</span>,</span><br><span class="line">    <span class="built_in">rgba</span>(255, 255, 255, 0) <span class="number">4em</span></span><br><span class="line">  );</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-class">.item-list</span> &#123;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-class">.item-list</span> <span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">1.5em</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">2px</span> solid <span class="built_in">rgba</span>(255, 255, 255, 0.5);</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(0, 0, 0, 0.7);</span><br><span class="line">  <span class="attribute">background-clip</span>: padding-box;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1em</span> <span class="number">#000</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-class">.item-list</span> <span class="selector-class">.item</span> <span class="selector-class">.icon</span> &#123;</span><br><span class="line">  <span class="attribute">margin-right</span>: <span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">1.5em</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">1.5em</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(255, 255, 255, 0.5);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-class">.item-list</span> <span class="selector-class">.item</span> <span class="selector-class">.desc</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后是几行javascript代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"DOMContentLoaded"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> domBox = <span class="built_in">document</span>.querySelector(<span class="string">".box"</span>);</span><br><span class="line">  domBox.addEventListener(<span class="string">"mousemove"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$evt</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> rect = domBox.getBoundingClientRect();</span><br><span class="line">    domBox.style.setProperty(<span class="string">"--pt-x"</span>, $evt.pageX - rect.left);</span><br><span class="line">    domBox.style.setProperty(<span class="string">"--pt-y"</span>, $evt.pageY - rect.top);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>稍微讲解下原理，首先样式的效果主要是在<code>&lt;div class=&quot;effect&quot;&gt;&lt;/div&gt;</code>这个标签上设置的，然后设置样式为<code>absolute</code><strong>绝对定位</strong>，就相当于父级元素的蒙层，背景颜色是一个径向渐变，大概是这样：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box-effect</span> &#123;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">310px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">120px</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(    #fff,</span><br><span class="line">    rgba(0, 0, 0, 1) <span class="number">4em</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2021/04/03/vUxw9OPXDZirnyt.png" alt=""></p>
-<p>javascript代码就是获取鼠标的位置，然后把上面径向渐变的中心点实时修改成鼠标的位置，大概就是这样：</p>
-<p><img src="https://i.loli.net/2021/04/03/QdrMujDCUI9i5qR.gif" alt=""></p>
-<p>最后，调整CSS将光照涂层和另一个图层合并，效果就实现了，CSS调整大致就是<code>z-index</code>，<code>position</code>和背景色<code>rgba</code>的设置，具体就不讲解了，原理大概就是这样了。</p>
-<hr>
-<p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
-<p><img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/4/3/frontend/CSS-illumination/" data-id="ckos6qn5u000tbqcaj0u5kpbj" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/CSS/">CSS</a></li></ul>
 
     </footer>
   </div>
@@ -411,7 +408,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="tags/API/" style="font-size: 11.67px;">API</a> <a href="tags/Big-Sur/" style="font-size: 10px;">Big Sur</a> <a href="tags/C/" style="font-size: 10px;">C#</a> <a href="tags/CSS/" style="font-size: 15px;">CSS</a> <a href="tags/DNS/" style="font-size: 10px;">DNS</a> <a href="tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="tags/Go/" style="font-size: 10px;">Go</a> <a href="tags/Java/" style="font-size: 10px;">Java</a> <a href="tags/Javascript/" style="font-size: 11.67px;">Javascript</a> <a href="tags/Laravel/" style="font-size: 11.67px;">Laravel</a> <a href="tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="tags/Lumen/" style="font-size: 10px;">Lumen</a> <a href="tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="tags/PHP/" style="font-size: 20px;">PHP</a> <a href="tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="tags/PSR/" style="font-size: 10px;">PSR</a> <a href="tags/Perl/" style="font-size: 10px;">Perl</a> <a href="tags/Python/" style="font-size: 10px;">Python</a> <a href="tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="tags/SICP/" style="font-size: 10px;">SICP</a> <a href="tags/Server/" style="font-size: 15px;">Server</a> <a href="tags/Slim/" style="font-size: 10px;">Slim</a> <a href="tags/Something/" style="font-size: 10px;">Something</a> <a href="tags/Swift/" style="font-size: 10px;">Swift</a> <a href="tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="tags/Typora/" style="font-size: 10px;">Typora</a> <a href="tags/UniApp/" style="font-size: 10px;">UniApp</a> <a href="tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="tags/VPS/" style="font-size: 10px;">VPS</a> <a href="tags/Vue/" style="font-size: 11.67px;">Vue</a> <a href="tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="tags/angular/" style="font-size: 10px;">angular</a> <a href="tags/autoload/" style="font-size: 10px;">autoload</a> <a href="tags/canvas/" style="font-size: 10px;">canvas</a> <a href="tags/cover-view/" style="font-size: 11.67px;">cover-view</a> <a href="tags/curl/" style="font-size: 10px;">curl</a> <a href="tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="tags/electron/" style="font-size: 11.67px;">electron</a> <a href="tags/emoji/" style="font-size: 10px;">emoji</a> <a href="tags/firewall/" style="font-size: 10px;">firewall</a> <a href="tags/git/" style="font-size: 10px;">git</a> <a href="tags/interviews/" style="font-size: 10px;">interviews</a> <a href="tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="tags/life/" style="font-size: 10px;">life</a> <a href="tags/linux/" style="font-size: 10px;">linux</a> <a href="tags/macOS/" style="font-size: 10px;">macOS</a> <a href="tags/networks/" style="font-size: 10px;">networks</a> <a href="tags/node/" style="font-size: 10px;">node</a> <a href="tags/notes/" style="font-size: 13.33px;">notes</a> <a href="tags/npm/" style="font-size: 10px;">npm</a> <a href="tags/permission/" style="font-size: 10px;">permission</a> <a href="tags/routing/" style="font-size: 10px;">routing</a> <a href="tags/tools/" style="font-size: 10px;">tools</a> <a href="tags/ufw/" style="font-size: 10px;">ufw</a> <a href="tags/公众号阅读笔记/" style="font-size: 10px;">公众号阅读笔记</a> <a href="tags/小程序/" style="font-size: 18.33px;">小程序</a> <a href="tags/微信/" style="font-size: 13.33px;">微信</a> <a href="tags/羊毛/" style="font-size: 10px;">羊毛</a> <a href="tags/软件设计/" style="font-size: 10px;">软件设计</a>
+      <a href="tags/API/" style="font-size: 11.67px;">API</a> <a href="tags/Big-Sur/" style="font-size: 10px;">Big Sur</a> <a href="tags/C/" style="font-size: 10px;">C#</a> <a href="tags/CSS/" style="font-size: 15px;">CSS</a> <a href="tags/DNS/" style="font-size: 10px;">DNS</a> <a href="tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="tags/Go/" style="font-size: 10px;">Go</a> <a href="tags/Java/" style="font-size: 10px;">Java</a> <a href="tags/Javascript/" style="font-size: 11.67px;">Javascript</a> <a href="tags/Laravel/" style="font-size: 11.67px;">Laravel</a> <a href="tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="tags/Lumen/" style="font-size: 10px;">Lumen</a> <a href="tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="tags/PHP/" style="font-size: 20px;">PHP</a> <a href="tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="tags/PSR/" style="font-size: 10px;">PSR</a> <a href="tags/Perl/" style="font-size: 10px;">Perl</a> <a href="tags/Python/" style="font-size: 10px;">Python</a> <a href="tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="tags/SICP/" style="font-size: 10px;">SICP</a> <a href="tags/Server/" style="font-size: 15px;">Server</a> <a href="tags/Slim/" style="font-size: 10px;">Slim</a> <a href="tags/Something/" style="font-size: 10px;">Something</a> <a href="tags/Swift/" style="font-size: 10px;">Swift</a> <a href="tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="tags/Typora/" style="font-size: 10px;">Typora</a> <a href="tags/UniApp/" style="font-size: 10px;">UniApp</a> <a href="tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="tags/VPS/" style="font-size: 10px;">VPS</a> <a href="tags/Vue/" style="font-size: 11.67px;">Vue</a> <a href="tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="tags/angular/" style="font-size: 10px;">angular</a> <a href="tags/autoload/" style="font-size: 10px;">autoload</a> <a href="tags/canvas/" style="font-size: 10px;">canvas</a> <a href="tags/cover-view/" style="font-size: 11.67px;">cover-view</a> <a href="tags/curl/" style="font-size: 10px;">curl</a> <a href="tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="tags/electron/" style="font-size: 11.67px;">electron</a> <a href="tags/emoji/" style="font-size: 10px;">emoji</a> <a href="tags/firewall/" style="font-size: 10px;">firewall</a> <a href="tags/git/" style="font-size: 10px;">git</a> <a href="tags/interviews/" style="font-size: 10px;">interviews</a> <a href="tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="tags/life/" style="font-size: 10px;">life</a> <a href="tags/linux/" style="font-size: 10px;">linux</a> <a href="tags/macOS/" style="font-size: 10px;">macOS</a> <a href="tags/networks/" style="font-size: 11.67px;">networks</a> <a href="tags/node/" style="font-size: 10px;">node</a> <a href="tags/notes/" style="font-size: 13.33px;">notes</a> <a href="tags/npm/" style="font-size: 10px;">npm</a> <a href="tags/permission/" style="font-size: 10px;">permission</a> <a href="tags/routing/" style="font-size: 10px;">routing</a> <a href="tags/tools/" style="font-size: 10px;">tools</a> <a href="tags/ufw/" style="font-size: 10px;">ufw</a> <a href="tags/公众号阅读笔记/" style="font-size: 10px;">公众号阅读笔记</a> <a href="tags/小程序/" style="font-size: 18.33px;">小程序</a> <a href="tags/微信/" style="font-size: 13.33px;">微信</a> <a href="tags/羊毛/" style="font-size: 10px;">羊毛</a> <a href="tags/软件设计/" style="font-size: 10px;">软件设计</a>
     </div>
   </div>
 
@@ -420,7 +417,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/03/">March 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/02/">February 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/01/">January 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/12/">December 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/10/">October 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/06/">June 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/05/">May 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/05/">May 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/03/">March 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/02/">February 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/01/">January 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/12/">December 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/10/">October 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/06/">June 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/05/">May 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -431,6 +428,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/5/21/notes/defference-between-URL-and-URI/">URL和URI之间的区别</a>
+          </li>
         
           <li>
             <a href="/2021/5/16/Reading/reading-notes-2021-05-16/">阅读笔记2021-05-16</a>
@@ -446,10 +447,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2021/4/13/notes/zui-jin-de-gan-kai/">最近的感慨</a>
-          </li>
-        
-          <li>
-            <a href="/2021/4/3/frontend/CSS-illumination/">CSS实现光照效果</a>
           </li>
         
       </ul>
