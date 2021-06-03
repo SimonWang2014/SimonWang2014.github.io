@@ -10,17 +10,18 @@
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="记录我的IT学习经历，分享技术">
+  <meta name="description" content="yXEzwss0jm">
 <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="正义的程序猿">
-<meta property="og:url" content="https://www.xydida.com/index.html">
+<meta property="og:url" content="https://www.xydida.com/baidu_verify_yXEzwss0jm.html">
 <meta property="og:site_name" content="正义的程序猿">
-<meta property="og:description" content="记录我的IT学习经历，分享技术">
+<meta property="og:description" content="yXEzwss0jm">
 <meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2021-06-03T08:19:58.520Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正义的程序猿">
-<meta name="twitter:description" content="记录我的IT学习经历，分享技术">
+<meta name="twitter:description" content="yXEzwss0jm">
   
     <link rel="alternate" href="/sitemap.xml" title="正义的程序猿" type="application/atom+xml">
   
@@ -111,269 +112,32 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-primordials-is-not-defined" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/5/31/frontend/primordials-is-not-defined/" class="article-date">
-  <time datetime="2021-05-31T03:19:23.000Z" itemprop="datePublished">2021-05-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="categories/frontend/">frontend</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/5/31/frontend/primordials-is-not-defined/">How to fix ReferenceError primordials is not defined error</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>When use <code>gulp</code> in an old project, It outputs an error: </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fs.js:45</span><br><span class="line">&#125; = primordials;</span><br><span class="line">    ^</span><br><span class="line"></span><br><span class="line">ReferenceError: primordials is not defined</span><br><span class="line">// ...</span><br></pre></td></tr></table></figure>
-<p>And how to fix this error?</p>
-<p>It occurs when use <code>gulp 3.x</code> with <code>node</code> upper than <strong>12.x</strong>，because <code>gulp 3.x</code> depends on <code>graceful-fs@^3.0.0</code> which patches Node’s <code>fs</code> module and that patch worked well before <code>node v12</code>.</p>
-<h1 id="Solutions"><a href="#Solutions" class="headerlink" title="Solutions"></a>Solutions</h1><p>There are some solutions:</p>
-<ol>
-<li>upgarde gulp</li>
-<li>downgrade node</li>
-<li>to lock <code>graceful-fs</code> to version <code>4.2.2</code> </li>
-</ol>
-<p>For me, i do not want to re-write and re-config my project toolchain, and i also cannot change node version. So lock the <code>gracefull-fs</code> is good for me. The concrete solution here:</p>
-<ol>
-<li>create publishable lockfile  <code>npm-shrinkwrap.json</code></li>
-<li>edit the  <code>npm-shrinkwrap.json</code>:</li>
-</ol>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"graceful-fs"</span>: &#123;</span><br><span class="line">        <span class="attr">"version"</span>: <span class="string">"4.2.2"</span></span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>re-run <code>npm install</code></li>
-</ol>
-<p>Now, it should be working just fine. Enjoy it!</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/5/31/frontend/primordials-is-not-defined/" data-id="ckpgmq35p004b2zcay74jn031" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/gulp/">gulp</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-A-simple-PHP-framework" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/5/28/PHP/A-simple-PHP-framework/" class="article-date">
-  <time datetime="2021-05-28T03:44:47.000Z" itemprop="datePublished">2021-05-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="categories/PHP/">PHP</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/5/28/PHP/A-simple-PHP-framework/">一个简易的PHP框架</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>此篇文章是想总结下工作中一直在用的一个简单的<code>PHP框架</code>，真的是超级简单，解析步骤如下：</p>
-<ol>
-<li>访问：<a href="https://abc.com/user/info" target="_blank" rel="noopener">https://abc.com/user/info</a></li>
-<li>nginx将请求指向index.php</li>
-<li>解析出对应的控制器<code>User</code>和执行方法<code>info</code></li>
-<li>通过<code>autoload</code>机制实例化控制器，执行对应的方法</li>
-<li>输出结果</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2021/5/28/PHP/A-simple-PHP-framework/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/5/28/PHP/A-simple-PHP-framework/" data-id="ckpgmq32o00022zcag058qlsm" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/framework/">framework</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Babel-cannot-find-module-babel-runtime-regenerator" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/5/24/frontend/Babel-cannot-find-module-babel-runtime-regenerator/" class="article-date">
-  <time datetime="2021-05-24T07:12:22.000Z" itemprop="datePublished">2021-05-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="categories/frontend/">frontend</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/5/24/frontend/Babel-cannot-find-module-babel-runtime-regenerator/">Babel cannot find module babel-runtime/regenerator</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>npm</code>在打包老项目时会有如下报错：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Uncaught Error: Cannot find module &apos;babel-runtime/regenerator&apos;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2021/05/24/s3iTSK8n5JOMC6L.png" alt=""></p>
-<p>解决方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i babel-runtime --save</span><br></pre></td></tr></table></figure>
-<p>或者修改<code>package.json</code>文件添加如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line">  ...</span><br><span class="line">    &quot;babel-runtime&quot;: &quot;^6.26.0&quot;,</span><br><span class="line">  ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>问题解决。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/5/24/frontend/Babel-cannot-find-module-babel-runtime-regenerator/" data-id="ckpgmq32r00032zcafdefc5ja" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/babel/">babel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/npm/">npm</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-defference-between-URL-and-URI" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/5/21/notes/defference-between-URL-and-URI/" class="article-date">
-  <time datetime="2021-05-21T06:27:34.000Z" itemprop="datePublished">2021-05-21</time>
+    <a href="" class="article-date">
+  <time datetime="2021-06-03T08:19:58.520Z" itemprop="datePublished">2021-06-03</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/5/21/notes/defference-between-URL-and-URI/">URL和URI之间的区别</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>浏览网页时，我们需要知道“网址”才能访问，这里说的“网址”通常就是指<code>URL</code>，比如：<code>https://www.xydida.com/index.html</code>，而平时也会说<code>URI</code>、<code>URN</code>，那又是什么呢？今天就来捋一捋。</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/5/21/notes/defference-between-URL-and-URI/#more">Read More</a>
-          </p>
-        
+        yXEzwss0jm
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/5/21/notes/defference-between-URL-and-URI/" data-id="ckpgmq34p00322zcaemr5utgy" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/baidu_verify_yXEzwss0jm.html" data-id="ckpgmq31e00002zcabihls0xv" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/networks/">networks</a></li></ul>
-
     </footer>
   </div>
   
-</article>
-
-
-  
-    <article id="post-reading-notes-2021-05-16" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/5/16/Reading/reading-notes-2021-05-16/" class="article-date">
-  <time datetime="2021-05-16T14:30:30.000Z" itemprop="datePublished">2021-05-16</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="categories/Reading/">Reading</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/5/16/Reading/reading-notes-2021-05-16/">阅读笔记2021-05-16</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近发现，我们每天都在阅读大量的文章，不管是主动查看的还是被动接受的，这其中有一些优秀的文章或文字经常被我们读过之后就扔在了一边，回头再想的时候已找不到哪去了，所以我觉得做阅读笔记是非常重要的，不光是摘录文章中好的句子，还可以记录自己当时的想法，积少成多，我想一定是比很大的财富。所有，现在就行动起来。</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/5/16/Reading/reading-notes-2021-05-16/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/5/16/Reading/reading-notes-2021-05-16/" data-id="ckpgmq35w004m2zcaq7ndz3e1" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/公众号阅读笔记/">公众号阅读笔记</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
-
-  <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="page-number" href="page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="page/14/">14</a><a class="extend next" rel="next" href="page/2/">Next&raquo;</a>
-  </nav>
 
 </section>
         
