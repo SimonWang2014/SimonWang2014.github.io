@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>正义的程序猿</title>
+  <meta name="baidu-site-verification" content="yXEzwss0jm" />
+  <meta name="360-site-verification" content="878e013ea1c0235dec34a8b1c676cf65" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
+  
+  <meta name="description" content="记录我的IT学习经历，分享技术">
+<meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="正义的程序猿">
+<meta property="og:url" content="https://www.xydida.com/page/7/index.html">
+<meta property="og:site_name" content="正义的程序猿">
+<meta property="og:description" content="记录我的IT学习经历，分享技术">
+<meta property="og:locale" content="zh">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="正义的程序猿">
+<meta name="twitter:description" content="记录我的IT学习经历，分享技术">
+  
+    <link rel="alternate" href="/sitemap.xml" title="正义的程序猿" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="../../css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-98739349-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-98739349-1');
+</script>
+
+
+  
+<!-- Google Adscene -->
+<script data-ad-client="ca-pub-8701685410355750" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- End Google Analytics -->
+
+
+  
+    <!-- CNZZ Analytics -->
+    <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1257809326'%3E%3C/span%3E%3Cscript src='https://s95.cnzz.com/z_stat.php%3Fid%3D1257809326' type='text/javascript'%3E%3C/script%3E"));</script>
+    <style>
+        span#cnzz_stat_icon_1257809326 {display:none;}
+    </style>
+    <!-- End CNZZ Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">正义的程序猿</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">能找到我的也不是等闲之辈</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="../../index.html">Home</a>
+        
+          <a class="main-nav-link" href="../../archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/sitemap.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.xydida.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-ssh-login-Permission-denied-publickey" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../2020/10/19/Linux/ssh-login-Permission-denied-publickey/" class="article-date">
+  <time datetime="2020-10-19T14:22:39.000Z" itemprop="datePublished">2020-10-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2020/10/19/Linux/ssh-login-Permission-denied-publickey/">SSH登录时提示Permission denied (publickey)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>ssh</code>在登录时，默认会使用当前用户<code>home</code>目录下的<code>id_rsa</code>文件来认证，由于我们在用<code>ssh-keygen</code>生成key时，由于指定了目录，所有就找不到私钥，报错，解决办法如下：</p>
+        
+          <p class="article-more-link">
+            <a href="../../2020/10/19/Linux/ssh-login-Permission-denied-publickey/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2020/10/19/Linux/ssh-login-Permission-denied-publickey/" data-id="ckpgmh75l0053uvcanakng78h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Server/">Server</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-APP-URL-Scheme" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../2020/10/1/notes/APP-URL-Scheme/" class="article-date">
+  <time datetime="2020-10-01T02:38:12.000Z" itemprop="datePublished">2020-10-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../categories/notes/">notes</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2020/10/1/notes/APP-URL-Scheme/">一些常用APP的URL Scheme</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="全网最全Url-Scheme-Deeplink"><a href="#全网最全Url-Scheme-Deeplink" class="headerlink" title="全网最全Url Scheme(Deeplink)"></a>全网最全Url Scheme(Deeplink)</h1><blockquote>
+<p>以下2021-04-17更新</p>
+</blockquote>
+<p>#招商银行</p>
+<h2 id="信用卡还款"><a href="#信用卡还款" class="headerlink" title="信用卡还款"></a>信用卡还款</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmblife:<span class="comment">//cfp/BillRepayment?needLogin=1&amp;bindCard=1000</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>以下2021-03-25更新</p>
+</blockquote>
+<h1 id="腾讯微视"><a href="#腾讯微视" class="headerlink" title="腾讯微视"></a>腾讯微视</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">weishi:<span class="comment">//feed?feed_id=7fbcQq9p81LnOCs4P&amp;logsour=2030150746&amp;ext=&#123;"position":"video.cover","testid":"149316","xwopenid":"o04IBAHOobD9rWzbloBCoZ7YFxlc","qq":"","scenes_from":"wxxinwen","cur_pos":"0","pushid":"2021032303","lrg":"1","type":"personal","uflag":"1906002","page_status":1,"query_version":"2","page_id":"30004135","template":"pic","feedid":"7fbcQq9p81LnOCs4P","source":""&#125;</span></span><br></pre></td></tr></table></figure>
+<p><code>ext</code>后面的参数传的时候需要<code>url encode</code>下。</p>
+<blockquote>
+<p>以下2021-03-09更新</p>
+</blockquote>
+<h1 id="云闪付"><a href="#云闪付" class="headerlink" title="云闪付"></a>云闪付</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">upwallet:<span class="comment">//rn/rnshcarcode</span></span><br></pre></td></tr></table></figure>
+<h1 id="中国银行"><a href="#中国银行" class="headerlink" title="中国银行"></a>中国银行</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BOCMBCIphone:<span class="comment">//</span></span><br></pre></td></tr></table></figure>
+<h1 id="支付宝"><a href="#支付宝" class="headerlink" title="支付宝"></a>支付宝</h1><h2 id="健康码"><a href="#健康码" class="headerlink" title="健康码"></a>健康码</h2><h3 id="北京健康宝"><a href="#北京健康宝" class="headerlink" title="北京健康宝"></a>北京健康宝</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alipayqr:<span class="comment">//platformapi/startapp?saId=2021001135679870</span></span><br></pre></td></tr></table></figure>
+<h3 id="四川天府健康通"><a href="#四川天府健康通" class="headerlink" title="四川天府健康通"></a>四川天府健康通</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alipayqr:<span class="comment">//platformapi/startapp?saId=2021002116662889</span></span><br></pre></td></tr></table></figure>
+<h2 id="江苏政务服务"><a href="#江苏政务服务" class="headerlink" title="江苏政务服务"></a>江苏政务服务</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alipays:<span class="comment">//platformapi/startapp?appId=2018062060350751</span></span><br></pre></td></tr></table></figure>
+<p>江苏政务服务里面就包含了<strong>苏康码</strong>，可以很便捷的打开苏康码。</p>
+<h1 id="上海大都会地铁"><a href="#上海大都会地铁" class="headerlink" title="上海大都会地铁"></a>上海大都会地铁</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">metro:<span class="comment">//qrcode</span></span><br></pre></td></tr></table></figure>
+<h1 id="四川天府通app"><a href="#四川天府通app" class="headerlink" title="四川天府通app"></a>四川天府通app</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tftApp.com:<span class="comment">//</span></span><br></pre></td></tr></table></figure>
+<h1 id="双卡蜂窝网络切换"><a href="#双卡蜂窝网络切换" class="headerlink" title="双卡蜂窝网络切换"></a>双卡蜂窝网络切换</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prefs:root=MOBILE_DATA_SETTINGS_ID&amp;path=CELLULAR_DATA_OPTIONS</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>以下2020-12-12更新</p>
+</blockquote>
+<h1 id="淘宝"><a href="#淘宝" class="headerlink" title="淘宝"></a>淘宝</h1><h2 id="领金币"><a href="#领金币" class="headerlink" title="领金币"></a>领金币</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//market.m.taobao.com/app/tmall-wireless/tjb-2018/index/index.html?utparam=&#123;"ranger_buckets_native":"tsp2189_21618"&#125;&amp;spm=a2141.1.iconsv5.8&amp;scm=1007.home_icon.lingjb.d&amp;disableNav=YES#/tjb</span></span><br></pre></td></tr></table></figure>
+<h2 id="领红包"><a href="#领红包" class="headerlink" title="领红包"></a>领红包</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taobao:<span class="comment">//market.m.taobao.com/app/tmall-def/daily-welfare/pages/index?wh_weex=true</span></span><br></pre></td></tr></table></figure>
+<h1 id="饿了么小程序"><a href="#饿了么小程序" class="headerlink" title="饿了么小程序"></a>饿了么小程序</h1><h2 id="饿了么红包-https-m-tb-cn-h-4UBXrn6"><a href="#饿了么红包-https-m-tb-cn-h-4UBXrn6" class="headerlink" title="饿了么红包 https://m.tb.cn/h.4UBXrn6"></a><a href="https://m.tb.cn/h.4UBXrn6" target="_blank" rel="noopener">饿了么红包</a> <code>https://m.tb.cn/h.4UBXrn6</code></h2><h2 id="小程序APPID"><a href="#小程序APPID" class="headerlink" title="小程序APPID"></a>小程序APPID</h2><p>wxece3a9a4c82f58c9</p>
+<h2 id="小程序路径"><a href="#小程序路径" class="headerlink" title="小程序路径"></a>小程序路径</h2><p>taoke/pages/shopping-guide/index?scene=XLSZNtu</p>
+<h1 id="美团"><a href="#美团" class="headerlink" title="美团"></a>美团</h1><h2 id="美团都能领的红包"><a href="#美团都能领的红包" class="headerlink" title="美团都能领的红包"></a>美团都能领的红包</h2><p><a href="http://dpurl.cn/U3urUlT" target="_blank" rel="noopener">http://dpurl.cn/U3urUlT</a></p>
+<h2 id="美团外卖"><a href="#美团外卖" class="headerlink" title="美团外卖"></a>美团外卖</h2><p><code>imeituan://www.meituan.com/web</code><br><a href="http://dpurl.cn/8ob8jKo" target="_blank" rel="noopener">http://dpurl.cn/8ob8jKo</a></p>
+<h1 id="京东"><a href="#京东" class="headerlink" title="京东"></a>京东</h1><h2 id="领京豆"><a href="#领京豆" class="headerlink" title="领京豆"></a>领京豆</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openApp.jdMobile:<span class="comment">//virtual?params=&#123;"category":"jump","modulename":"JDReactCollectJDBeans","des":"jdreactcommon","param":&#123;"page":"collectJDBeansHomePage"&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+<h1 id="拼多多"><a href="#拼多多" class="headerlink" title="拼多多"></a>拼多多</h1><h2 id="签到"><a href="#签到" class="headerlink" title="签到"></a>签到</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pinduoduo:<span class="comment">//com.xunmeng.pinduoduo/https://mobile.yangkeduo.com/pythagoras_ctc_ca.html</span></span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>2020-10-16更新</p>
+</blockquote>
+<h1 id="聊天-社交类"><a href="#聊天-社交类" class="headerlink" title="聊天/社交类"></a>聊天/社交类</h1><h2 id="QQ"><a href="#QQ" class="headerlink" title="QQ"></a>QQ</h2><h3 id="主页"><a href="#主页" class="headerlink" title="主页"></a>主页</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">packageName: <span class="string">'com.tencent.mobileqq'</span>,  </span><br><span class="line">scheme: <span class="string">'mqq://'</span></span><br></pre></td></tr></table></figure>
+<h3 id="国际版qq-mqqiapi"><a href="#国际版qq-mqqiapi" class="headerlink" title="国际版qq mqqiapi://"></a>国际版qq <code>mqqiapi://</code></h3><h3 id="加好友"><a href="#加好友" class="headerlink" title="加好友"></a>加好友</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mqqapi:<span class="comment">//card/show_pslcard?src_type=internal&amp;version=1&amp;uin=&#123;QQ号&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="打开QQ群"><a href="#打开QQ群" class="headerlink" title="打开QQ群"></a>打开QQ群</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mqqapi:<span class="comment">//card/show_pslcard?src_type=internal&amp;version=1&amp;card_type=group&amp;uin=&#123;QQ群号&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="TIM"><a href="#TIM" class="headerlink" title="TIM"></a>TIM</h2><h3 id="主页-tim"><a href="#主页-tim" class="headerlink" title="主页 tim://"></a>主页 <code>tim://</code></h3><h3 id="扫一扫-tim-qrcode-scan-qrcode-version-1-amp-src-type-app"><a href="#扫一扫-tim-qrcode-scan-qrcode-version-1-amp-src-type-app" class="headerlink" title="扫一扫 tim://qrcode/scan_qrcode?version=1&amp;src_type=app"></a>扫一扫 <code>tim://qrcode/scan_qrcode?version=1&amp;src_type=app</code></h3><h2 id="微信"><a href="#微信" class="headerlink" title="微信"></a>微信</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">packageName: <span class="string">'com.tencent.mm'</span>,</span><br><span class="line">scheme: <span class="string">'weixin://'</span></span><br></pre></td></tr></table></figure>
+<h2 id="天涯社区-tianya"><a href="#天涯社区-tianya" class="headerlink" title="天涯社区 tianya://"></a>天涯社区 <code>tianya://</code></h2><h2 id="微信扫一扫-weixin-scanqrcode"><a href="#微信扫一扫-weixin-scanqrcode" class="headerlink" title="微信扫一扫 weixin://scanqrcode"></a>微信扫一扫 <code>weixin://scanqrcode</code></h2><h2 id="企业微信-wxwork"><a href="#企业微信-wxwork" class="headerlink" title="企业微信 wxwork://"></a>企业微信 <code>wxwork://</code></h2><h2 id="钉钉-dingtalk"><a href="#钉钉-dingtalk" class="headerlink" title="钉钉 dingtalk://"></a>钉钉 <code>dingtalk://</code></h2><h2 id="探探-tantanapp"><a href="#探探-tantanapp" class="headerlink" title="探探 tantanapp://"></a>探探 <code>tantanapp://</code></h2><h2 id="陌陌-momochat"><a href="#陌陌-momochat" class="headerlink" title="陌陌 momochat://"></a>陌陌 <code>momochat://</code></h2><h2 id="墨客-com-moke-moke"><a href="#墨客-com-moke-moke" class="headerlink" title="墨客 com.moke.moke://"></a>墨客 <code>com.moke.moke://</code></h2><h2 id="Line-line"><a href="#Line-line" class="headerlink" title="Line line://"></a>Line <code>line://</code></h2><h2 id="飞信-fetion"><a href="#飞信-fetion" class="headerlink" title="飞信 fetion://"></a>飞信 <code>fetion://</code></h2><h2 id="旺旺卖家版-wangwangseller"><a href="#旺旺卖家版-wangwangseller" class="headerlink" title="旺旺卖家版 wangwangseller://"></a>旺旺卖家版 <code>wangwangseller://</code></h2><h1 id="新闻-知识类"><a href="#新闻-知识类" class="headerlink" title="新闻/知识类"></a>新闻/知识类</h1>
+        
+          <p class="article-more-link">
+            <a href="../../2020/10/1/notes/APP-URL-Scheme/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2020/10/1/notes/APP-URL-Scheme/" data-id="ckpgmh7230005uvca9khk9zlh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/notes/">notes</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cover-view-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../2020/9/20/小程序/cover-view-2/" class="article-date">
+  <time datetime="2020-09-20T02:56:06.000Z" itemprop="datePublished">2020-09-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../categories/小程序/">小程序</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2020/9/20/小程序/cover-view-2/">小程序cover-view踩坑系列2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前写过<a href="https://xydida.com/2020/9/20/小程序/cover-view/" target="_blank" rel="noopener">文章讲cover-view的坑</a>，但是坑太多了，网上一片吐槽。今天来说下最近新落入的两个<code>cover-view</code>的坑：</p>
+<h1 id="文本不换行"><a href="#文本不换行" class="headerlink" title="文本不换行"></a>文本不换行</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">style</span>=<span class="string">"width: 100rpx;border: 1px solid red;"</span>&gt;</span></span><br><span class="line">	Helloworld Helloworld Helloworld Helloworld Helloworld Helloworld Helloworld</span><br><span class="line"><span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如上面代码，
+        
+          <p class="article-more-link">
+            <a href="../../2020/9/20/小程序/cover-view-2/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2020/9/20/小程序/cover-view-2/" data-id="ckpgmh747002xuvca6g0l934k" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/cover-view/">cover-view</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/小程序/">小程序</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cover-view" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../2020/9/20/小程序/cover-view/" class="article-date">
+  <time datetime="2020-09-20T01:57:02.000Z" itemprop="datePublished">2020-09-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../categories/小程序/">小程序</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2020/9/20/小程序/cover-view/">小程序cover-view踩坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="cover-view内只支持部分标签"><a href="#cover-view内只支持部分标签" class="headerlink" title="cover-view内只支持部分标签"></a>cover-view内只支持部分标签</h1><p>可以使用的有：<code>cover-view</code>、<code>cover-image</code>，<code>button</code>，<code>&lt;ad&gt;</code>，<code>&lt;navigator&gt;</code>，其他的一律不显示</p>
+<h1 id="cover-view不支持设置单边框"><a href="#cover-view不支持设置单边框" class="headerlink" title="cover-view不支持设置单边框"></a>cover-view不支持设置单边框</h1><p>意思就是要么设置四周的边框，要么就不显示，单独使用<code>border-left</code>，<code>border-right</code>，<code>border-top</code>，<code>border-bottom</code>都不会显示，那么问题来了，如果要绘制类似于表格的东西，单元格之间边框肯定会很粗，这就需要单独设置某一条边的边框，这恰恰是<code>cover-view</code>不支持的，
+        
+          <p class="article-more-link">
+            <a href="../../2020/9/20/小程序/cover-view/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2020/9/20/小程序/cover-view/" data-id="ckpgmh7480030uvca042dw65i" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/cover-view/">cover-view</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/小程序/">小程序</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-unable-download-electron" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../2020/8/9/Electron/unable-download-electron/" class="article-date">
+  <time datetime="2020-08-09T15:31:28.000Z" itemprop="datePublished">2020-08-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../categories/Electron/">Electron</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2020/8/9/Electron/unable-download-electron/">Electron踩坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参照<a href="https://www.electronjs.org/docs/tutorial/first-app" target="_blank" rel="noopener">官方文档</a>，用<code>npm init</code>初始化完一个electron项目后，开始安装electron，结果由于<strong>某种原因</strong>electron的一个zip包一直下载不了，画面卡在如下截图中，：</p>
+<p><img src="https://i.loli.net/2020/08/09/qXvDd7JkTrSEOBQ.png" alt=""></p>
+<p>网上很多解决办法基本都是千篇一律，要么手动下载zip文件，然后移动到指定位置，要么是npm配置<code>ELECTRON_MIRROR=&quot;https://cdn.npm.taobao.org/dist/electron/&quot;</code>，都不起作用，知道是网络原因，但替换了淘宝的npm源依然解决不了，最后尝试使用<code>cnpm</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install cnpm -g  --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>死马当活马医，最后居然安装成功了：</p>
+<p><img src="https://i.loli.net/2020/08/09/Ec5WDqM4eJkufFA.png" alt=""></p>
+<p>最后，跑个demo试试：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; app, BrowserWindow &#125; = <span class="built_in">require</span>(<span class="string">'electron'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createWindow</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Create the browser window.</span></span><br><span class="line">  <span class="keyword">const</span> win = <span class="keyword">new</span> BrowserWindow(&#123;</span><br><span class="line">    width: <span class="number">800</span>,</span><br><span class="line">    height: <span class="number">600</span>,</span><br><span class="line">    webPreferences: &#123;</span><br><span class="line">      nodeIntegration: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// and load the index.html of the app.</span></span><br><span class="line">  win.loadFile(<span class="string">'index.html'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Open the DevTools.</span></span><br><span class="line">  win.webContents.openDevTools()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This method will be called when Electron has finished</span></span><br><span class="line"><span class="comment">// initialization and is ready to create browser windows.</span></span><br><span class="line"><span class="comment">// Some APIs can only be used after this event occurs.</span></span><br><span class="line">app.whenReady().then(createWindow)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Quit when all windows are closed, except on macOS. There, it's common</span></span><br><span class="line"><span class="comment">// for applications and their menu bar to stay active until the user quits</span></span><br><span class="line"><span class="comment">// explicitly with Cmd + Q.</span></span><br><span class="line">app.on(<span class="string">'window-all-closed'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (process.platform !== <span class="string">'darwin'</span>) &#123;</span><br><span class="line">    app.quit()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.on(<span class="string">'activate'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="comment">// On macOS it's common to re-create a window in the app when the</span></span><br><span class="line">  <span class="comment">// dock icon is clicked and there are no other windows open.</span></span><br><span class="line">  <span class="keyword">if</span> (BrowserWindow.getAllWindows().length === <span class="number">0</span>) &#123;</span><br><span class="line">    createWindow()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// In this file you can include the rest of your app's specific main process</span></span><br><span class="line"><span class="comment">// code. You can also put them in separate files and require them here.</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Security-Policy"</span> <span class="attr">content</span>=<span class="string">"script-src 'self' 'unsafe-inline';"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    We are using node <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="built_in">document</span>.write(process.versions.node)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>,</span><br><span class="line">    Chrome <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="built_in">document</span>.write(process.versions.chrome)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>,</span><br><span class="line">    and Electron <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="built_in">document</span>.write(process.versions.electron)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>.</span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/08/09/8lWT7ot6sjwGBxk.png" alt=""></p>
+<p>完美👍</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2020/8/9/Electron/unable-download-electron/" data-id="ckpgmh75r005euvcab8koptb0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/electron/">electron</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="../6/">&laquo;Prev</a><a class="page-number" href="../../">1</a><span class="space">&hellip;</span><a class="page-number" href="../5/">5</a><a class="page-number" href="../6/">6</a><span class="page-number current">7</span><a class="page-number" href="../8/">8</a><a class="page-number" href="../9/">9</a><span class="space">&hellip;</span><a class="page-number" href="../14/">14</a><a class="extend next" rel="next" href="../8/">Next&raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Devops/">Devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/">Electron</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/Node/">Node</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/Node/Javascript/">Javascript</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/Git/">Git</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Networks/">Networks</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Object-Oriented/">Object Oriented</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/PHP/">PHP</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/PHP/Laravel/">Laravel</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Reading/">Reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Regular-Expression/">Regular Expression</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Tools/">Tools</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/VPS/">VPS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Yangmao/">Yangmao</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/frontend/">frontend</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/notes/">notes</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/小程序/">小程序</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/小程序/PHP/">PHP</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/微信/">微信</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/设计/">设计</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/API/" style="font-size: 11.67px;">API</a> <a href="../../tags/Big-Sur/" style="font-size: 10px;">Big Sur</a> <a href="../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../tags/CSS/" style="font-size: 15px;">CSS</a> <a href="../../tags/DNS/" style="font-size: 10px;">DNS</a> <a href="../../tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Javascript/" style="font-size: 11.67px;">Javascript</a> <a href="../../tags/Laravel/" style="font-size: 11.67px;">Laravel</a> <a href="../../tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="../../tags/Lumen/" style="font-size: 10px;">Lumen</a> <a href="../../tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="../../tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../tags/Server/" style="font-size: 15px;">Server</a> <a href="../../tags/Slim/" style="font-size: 10px;">Slim</a> <a href="../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../tags/Typora/" style="font-size: 10px;">Typora</a> <a href="../../tags/UniApp/" style="font-size: 10px;">UniApp</a> <a href="../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../tags/VPS/" style="font-size: 10px;">VPS</a> <a href="../../tags/Vue/" style="font-size: 11.67px;">Vue</a> <a href="../../tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="../../tags/angular/" style="font-size: 10px;">angular</a> <a href="../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../tags/babel/" style="font-size: 10px;">babel</a> <a href="../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../tags/cover-view/" style="font-size: 11.67px;">cover-view</a> <a href="../../tags/curl/" style="font-size: 10px;">curl</a> <a href="../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../tags/electron/" style="font-size: 11.67px;">electron</a> <a href="../../tags/emoji/" style="font-size: 10px;">emoji</a> <a href="../../tags/firewall/" style="font-size: 10px;">firewall</a> <a href="../../tags/framework/" style="font-size: 10px;">framework</a> <a href="../../tags/git/" style="font-size: 10px;">git</a> <a href="../../tags/gulp/" style="font-size: 10px;">gulp</a> <a href="../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="../../tags/life/" style="font-size: 10px;">life</a> <a href="../../tags/linux/" style="font-size: 10px;">linux</a> <a href="../../tags/macOS/" style="font-size: 10px;">macOS</a> <a href="../../tags/networks/" style="font-size: 11.67px;">networks</a> <a href="../../tags/node/" style="font-size: 10px;">node</a> <a href="../../tags/notes/" style="font-size: 13.33px;">notes</a> <a href="../../tags/npm/" style="font-size: 11.67px;">npm</a> <a href="../../tags/permission/" style="font-size: 10px;">permission</a> <a href="../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../tags/ufw/" style="font-size: 10px;">ufw</a> <a href="../../tags/公众号阅读笔记/" style="font-size: 10px;">公众号阅读笔记</a> <a href="../../tags/小程序/" style="font-size: 18.33px;">小程序</a> <a href="../../tags/微信/" style="font-size: 13.33px;">微信</a> <a href="../../tags/羊毛/" style="font-size: 10px;">羊毛</a> <a href="../../tags/软件设计/" style="font-size: 10px;">软件设计</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/05/">May 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/03/">March 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/02/">February 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/01/">January 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/12/">December 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/10/">October 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">June 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">May 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="../../2021/5/31/frontend/primordials-is-not-defined/">How to fix ReferenceError primordials is not defined error</a>
+          </li>
+        
+          <li>
+            <a href="../../2021/5/28/PHP/A-simple-PHP-framework/">一个简易的PHP框架</a>
+          </li>
+        
+          <li>
+            <a href="../../2021/5/24/frontend/Babel-cannot-find-module-babel-runtime-regenerator/">Babel cannot find module babel-runtime/regenerator</a>
+          </li>
+        
+          <li>
+            <a href="../../2021/5/21/notes/defference-between-URL-and-URI/">URL和URI之间的区别</a>
+          </li>
+        
+          <li>
+            <a href="../../2021/5/16/Reading/reading-notes-2021-05-16/">阅读笔记2021-05-16</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 bilberry<br>
+      Powered by <a href="http://hexo.io/" target="_blank" rel="nofollow">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="../../fancybox/jquery.fancybox.css">
+  <script src="../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+  </div>
+</body>
+</html>

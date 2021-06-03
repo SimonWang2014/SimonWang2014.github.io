@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Electron踩坑 | 正义的程序猿</title>
+  <meta name="baidu-site-verification" content="yXEzwss0jm" />
+  <meta name="360-site-verification" content="878e013ea1c0235dec34a8b1c676cf65" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
+  
+  <meta name="description" content="参照官方文档，用npm init初始化完一个electron项目后，开始安装electron，结果由于某种原因electron的一个zip包一直下载不了，画面卡在如下截图中，：  网上很多解决办法基本都是千篇一律，要么手动下载zip文件，然后移动到指定位置，要么是npm配置ELECTRON_MIRROR=&amp;quot;https://cdn.npm.taobao.org/dist/electron/">
+<meta name="keywords" content="electron">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Electron踩坑">
+<meta property="og:url" content="https://www.xydida.com/2020/8/9/Electron/unable-download-electron/index.html">
+<meta property="og:site_name" content="正义的程序猿">
+<meta property="og:description" content="参照官方文档，用npm init初始化完一个electron项目后，开始安装electron，结果由于某种原因electron的一个zip包一直下载不了，画面卡在如下截图中，：  网上很多解决办法基本都是千篇一律，要么手动下载zip文件，然后移动到指定位置，要么是npm配置ELECTRON_MIRROR=&amp;quot;https://cdn.npm.taobao.org/dist/electron/">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="https://i.loli.net/2020/08/09/qXvDd7JkTrSEOBQ.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/09/Ec5WDqM4eJkufFA.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/09/8lWT7ot6sjwGBxk.png">
+<meta property="og:updated_time" content="2020-08-09T15:53:01.168Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Electron踩坑">
+<meta name="twitter:description" content="参照官方文档，用npm init初始化完一个electron项目后，开始安装electron，结果由于某种原因electron的一个zip包一直下载不了，画面卡在如下截图中，：  网上很多解决办法基本都是千篇一律，要么手动下载zip文件，然后移动到指定位置，要么是npm配置ELECTRON_MIRROR=&amp;quot;https://cdn.npm.taobao.org/dist/electron/">
+<meta name="twitter:image" content="https://i.loli.net/2020/08/09/qXvDd7JkTrSEOBQ.png">
+  
+    <link rel="alternate" href="/sitemap.xml" title="正义的程序猿" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="../../../../../css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-98739349-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-98739349-1');
+</script>
+
+
+  
+<!-- Google Adscene -->
+<script data-ad-client="ca-pub-8701685410355750" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- End Google Analytics -->
+
+
+  
+    <!-- CNZZ Analytics -->
+    <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1257809326'%3E%3C/span%3E%3Cscript src='https://s95.cnzz.com/z_stat.php%3Fid%3D1257809326' type='text/javascript'%3E%3C/script%3E"));</script>
+    <style>
+        span#cnzz_stat_icon_1257809326 {display:none;}
+    </style>
+    <!-- End CNZZ Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../../../../index.html" id="logo">正义的程序猿</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../../../../index.html" id="subtitle">能找到我的也不是等闲之辈</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="../../../../../index.html">Home</a>
+        
+          <a class="main-nav-link" href="../../../../../archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/sitemap.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.xydida.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-unable-download-electron" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../../../../2020/8/9/Electron/unable-download-electron/" class="article-date">
+  <time datetime="2020-08-09T15:31:28.000Z" itemprop="datePublished">2020-08-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../../../../categories/Electron/">Electron</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Electron踩坑
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参照<a href="https://www.electronjs.org/docs/tutorial/first-app" target="_blank" rel="noopener">官方文档</a>，用<code>npm init</code>初始化完一个electron项目后，开始安装electron，结果由于<strong>某种原因</strong>electron的一个zip包一直下载不了，画面卡在如下截图中，：</p>
+<p><img src="https://i.loli.net/2020/08/09/qXvDd7JkTrSEOBQ.png" alt=""></p>
+<p>网上很多解决办法基本都是千篇一律，要么手动下载zip文件，然后移动到指定位置，要么是npm配置<code>ELECTRON_MIRROR=&quot;https://cdn.npm.taobao.org/dist/electron/&quot;</code>，都不起作用，知道是网络原因，但替换了淘宝的npm源依然解决不了，最后尝试使用<code>cnpm</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install cnpm -g  --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>死马当活马医，最后居然安装成功了：</p>
+<p><img src="https://i.loli.net/2020/08/09/Ec5WDqM4eJkufFA.png" alt=""></p>
+<p>最后，跑个demo试试：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; app, BrowserWindow &#125; = <span class="built_in">require</span>(<span class="string">'electron'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createWindow</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Create the browser window.</span></span><br><span class="line">  <span class="keyword">const</span> win = <span class="keyword">new</span> BrowserWindow(&#123;</span><br><span class="line">    width: <span class="number">800</span>,</span><br><span class="line">    height: <span class="number">600</span>,</span><br><span class="line">    webPreferences: &#123;</span><br><span class="line">      nodeIntegration: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// and load the index.html of the app.</span></span><br><span class="line">  win.loadFile(<span class="string">'index.html'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Open the DevTools.</span></span><br><span class="line">  win.webContents.openDevTools()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This method will be called when Electron has finished</span></span><br><span class="line"><span class="comment">// initialization and is ready to create browser windows.</span></span><br><span class="line"><span class="comment">// Some APIs can only be used after this event occurs.</span></span><br><span class="line">app.whenReady().then(createWindow)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Quit when all windows are closed, except on macOS. There, it's common</span></span><br><span class="line"><span class="comment">// for applications and their menu bar to stay active until the user quits</span></span><br><span class="line"><span class="comment">// explicitly with Cmd + Q.</span></span><br><span class="line">app.on(<span class="string">'window-all-closed'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (process.platform !== <span class="string">'darwin'</span>) &#123;</span><br><span class="line">    app.quit()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.on(<span class="string">'activate'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="comment">// On macOS it's common to re-create a window in the app when the</span></span><br><span class="line">  <span class="comment">// dock icon is clicked and there are no other windows open.</span></span><br><span class="line">  <span class="keyword">if</span> (BrowserWindow.getAllWindows().length === <span class="number">0</span>) &#123;</span><br><span class="line">    createWindow()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// In this file you can include the rest of your app's specific main process</span></span><br><span class="line"><span class="comment">// code. You can also put them in separate files and require them here.</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Security-Policy"</span> <span class="attr">content</span>=<span class="string">"script-src 'self' 'unsafe-inline';"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    We are using node <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="built_in">document</span>.write(process.versions.node)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>,</span><br><span class="line">    Chrome <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="built_in">document</span>.write(process.versions.chrome)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>,</span><br><span class="line">    and Electron <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="built_in">document</span>.write(process.versions.electron)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>.</span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/08/09/8lWT7ot6sjwGBxk.png" alt=""></p>
+<p>完美👍</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2020/8/9/Electron/unable-download-electron/" data-id="ckpgmh75r005euvcab8koptb0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/electron/">electron</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../../../../../2020/9/20/小程序/cover-view/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          小程序cover-view踩坑
+        
+      </div>
+    </a>
+  
+  
+    <a href="../../../../../2020/5/17/frontend/design-a-swiper-by-CSS/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">纯CSS实现轮播图</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Algorithm/">Algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Devops/">Devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Electron/">Electron</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Electron/Node/">Node</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Electron/Node/Javascript/">Javascript</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Linux/">Linux</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Linux/Git/">Git</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Networks/">Networks</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Object-Oriented/">Object Oriented</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/PHP/">PHP</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/PHP/Laravel/">Laravel</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Reading/">Reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Regular-Expression/">Regular Expression</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Tools/">Tools</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/VPS/">VPS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Yangmao/">Yangmao</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/frontend/">frontend</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/notes/">notes</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/小程序/">小程序</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/小程序/PHP/">PHP</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/微信/">微信</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/设计/">设计</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="../../../../../tags/API/" style="font-size: 11.67px;">API</a> <a href="../../../../../tags/Big-Sur/" style="font-size: 10px;">Big Sur</a> <a href="../../../../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../../../../tags/CSS/" style="font-size: 15px;">CSS</a> <a href="../../../../../tags/DNS/" style="font-size: 10px;">DNS</a> <a href="../../../../../tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="../../../../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../../../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../../../../tags/Javascript/" style="font-size: 11.67px;">Javascript</a> <a href="../../../../../tags/Laravel/" style="font-size: 11.67px;">Laravel</a> <a href="../../../../../tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="../../../../../tags/Lumen/" style="font-size: 10px;">Lumen</a> <a href="../../../../../tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="../../../../../tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="../../../../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../../../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../../../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../../../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../../../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../../../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../../../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../../../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../../../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../../../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../../../../tags/Server/" style="font-size: 15px;">Server</a> <a href="../../../../../tags/Slim/" style="font-size: 10px;">Slim</a> <a href="../../../../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../../../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../../../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../../../../tags/Typora/" style="font-size: 10px;">Typora</a> <a href="../../../../../tags/UniApp/" style="font-size: 10px;">UniApp</a> <a href="../../../../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../../../../tags/VPS/" style="font-size: 10px;">VPS</a> <a href="../../../../../tags/Vue/" style="font-size: 11.67px;">Vue</a> <a href="../../../../../tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="../../../../../tags/angular/" style="font-size: 10px;">angular</a> <a href="../../../../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../../../../tags/babel/" style="font-size: 10px;">babel</a> <a href="../../../../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../../../../tags/cover-view/" style="font-size: 11.67px;">cover-view</a> <a href="../../../../../tags/curl/" style="font-size: 10px;">curl</a> <a href="../../../../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../../../../tags/electron/" style="font-size: 11.67px;">electron</a> <a href="../../../../../tags/emoji/" style="font-size: 10px;">emoji</a> <a href="../../../../../tags/firewall/" style="font-size: 10px;">firewall</a> <a href="../../../../../tags/framework/" style="font-size: 10px;">framework</a> <a href="../../../../../tags/git/" style="font-size: 10px;">git</a> <a href="../../../../../tags/gulp/" style="font-size: 10px;">gulp</a> <a href="../../../../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../../../../tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="../../../../../tags/life/" style="font-size: 10px;">life</a> <a href="../../../../../tags/linux/" style="font-size: 10px;">linux</a> <a href="../../../../../tags/macOS/" style="font-size: 10px;">macOS</a> <a href="../../../../../tags/networks/" style="font-size: 11.67px;">networks</a> <a href="../../../../../tags/node/" style="font-size: 10px;">node</a> <a href="../../../../../tags/notes/" style="font-size: 13.33px;">notes</a> <a href="../../../../../tags/npm/" style="font-size: 11.67px;">npm</a> <a href="../../../../../tags/permission/" style="font-size: 10px;">permission</a> <a href="../../../../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../../../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../../../../tags/ufw/" style="font-size: 10px;">ufw</a> <a href="../../../../../tags/公众号阅读笔记/" style="font-size: 10px;">公众号阅读笔记</a> <a href="../../../../../tags/小程序/" style="font-size: 18.33px;">小程序</a> <a href="../../../../../tags/微信/" style="font-size: 13.33px;">微信</a> <a href="../../../../../tags/羊毛/" style="font-size: 10px;">羊毛</a> <a href="../../../../../tags/软件设计/" style="font-size: 10px;">软件设计</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2021/05/">May 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2021/03/">March 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2021/02/">February 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2021/01/">January 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/12/">December 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/10/">October 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/06/">June 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/05/">May 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="../../../../../2021/5/31/frontend/primordials-is-not-defined/">How to fix ReferenceError primordials is not defined error</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2021/5/28/PHP/A-simple-PHP-framework/">一个简易的PHP框架</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2021/5/24/frontend/Babel-cannot-find-module-babel-runtime-regenerator/">Babel cannot find module babel-runtime/regenerator</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2021/5/21/notes/defference-between-URL-and-URI/">URL和URI之间的区别</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2021/5/16/Reading/reading-notes-2021-05-16/">阅读笔记2021-05-16</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 bilberry<br>
+      Powered by <a href="http://hexo.io/" target="_blank" rel="nofollow">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="../../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../../../../js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Vultr各数据中心的速度测试 | 正义的程序猿</title>
+  <meta name="baidu-site-verification" content="yXEzwss0jm" />
+  <meta name="360-site-verification" content="878e013ea1c0235dec34a8b1c676cf65" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
+  
+  <meta name="description" content="Vultr VPS各个数据中心的速度测试">
+<meta name="keywords" content="Linux,Vultr,VPS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vultr各数据中心的速度测试">
+<meta property="og:url" content="https://www.xydida.com/2021/3/5/VPS/A-speed-testing-of-datacenter-of-vultr/index.html">
+<meta property="og:site_name" content="正义的程序猿">
+<meta property="og:description" content="Vultr VPS各个数据中心的速度测试">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/pzncWXjGOsxoFiv.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/4c8tZvodkPFW56j.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/K5t74eNgojCsnzI.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/ELn1v9WbCHejdDh.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/u9OgjcCM3q5SZwv.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/z1aHb5pr7EkySfO.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/oPg7lHev9hsMTtf.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/rvisJX7KmjDuZz5.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/JtxhHoSCjQAO8Mp.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/WvkwZNHoxIl6fLq.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/akSOwWPLiEB1Guo.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/ZgUyOzYpSrv4Ak2.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/XpogZe2mvkizwDJ.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/LKa1D8rkCwqXhmI.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/iP7SHDuBOeKXpwJ.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/4FzBRMrvZw7DXCq.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/a6kT1X2mveKpfHy.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/V29dNZ3vDlqbKea.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/ftBIGQZmo7NiMKg.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/SLw7JcfXKiz6OWI.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/mUGzg5iyjCIdxrs.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/6ABsdHlhQtLiNCg.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/3LTunJvH172kePx.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/zSbwuhF8HcQlqiI.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/ytocYN25ZmfnwXb.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/PsV2rGS5eNW6m3b.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/JItV3MxDWdcYuAG.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/RcdjDq4yWGAVB6s.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/anjpWfm1iRhdZ6z.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/zDHZdhCsX7pWQNa.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/zPebNCcXM1ls6ut.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/3FbvUQA8wL6ITK2.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/oBTNGYgpwJx8UcW.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/SJDhITU6omBOQRs.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/h7lXi1FzyqUJKcs.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/lXGbAREFe2q7U1D.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/HRKmQfoUTBPFSrC.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/Le9GvAydNwj3gtD.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/mrXRUdhMoEFxVWp.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/I7tCjVM6nWFvHaK.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/H85TzwGsi2hJtmK.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/JOE7bwH1LTcoCW8.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/cisuIgNmPFSp1Cj.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/sozhq6UgSOt5aDm.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/4nHXfZjsveWGa6P.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/UbfL9WpyiugAJXr.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/QPnMBfiHLD54Vgt.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/rYnPJAgM7CSoDBV.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/lEjzDRiu1AP2WNS.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/92saPwvqWEHQg47.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/xlYONBb62QctfeV.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/LdOwjYIqilt1fpH.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/qsQVvx8eMoKRYmI.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/xqZuYho6rbzJNGT.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/jdhyIYrAZqsFv9U.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/hLHlTjKaGRXtJ3k.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/4N57JhYAFfGjawR.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/hNKjmYGeraB7zX8.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/tpEZa87eAbNxoTu.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/nqFclQ4jmx8RUID.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/iZfv7jtPUDaCwr1.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/9xOy8u4i5NjYzBl.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/7cesruUzw3JOXkf.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/AlQiS5WNchC4yFZ.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/D8WPRQKNnsc9i1j.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/Mf4CYBWqU6bEszo.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/fVAhzNwDm8oJLkW.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/KzEgpOaDAHeSx1P.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/10/DQlFUVeE6CcmLxT.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/08/cuGA972YBqOpRZx.png">
+<meta property="og:image" content="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg">
+<meta property="og:updated_time" content="2021-04-15T05:41:30.404Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vultr各数据中心的速度测试">
+<meta name="twitter:description" content="Vultr VPS各个数据中心的速度测试">
+<meta name="twitter:image" content="https://i.loli.net/2021/03/10/pzncWXjGOsxoFiv.png">
+  
+    <link rel="alternate" href="/sitemap.xml" title="正义的程序猿" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="../../../../../css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-98739349-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-98739349-1');
+</script>
+
+
+  
+<!-- Google Adscene -->
+<script data-ad-client="ca-pub-8701685410355750" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- End Google Analytics -->
+
+
+  
+    <!-- CNZZ Analytics -->
+    <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1257809326'%3E%3C/span%3E%3Cscript src='https://s95.cnzz.com/z_stat.php%3Fid%3D1257809326' type='text/javascript'%3E%3C/script%3E"));</script>
+    <style>
+        span#cnzz_stat_icon_1257809326 {display:none;}
+    </style>
+    <!-- End CNZZ Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../../../../index.html" id="logo">正义的程序猿</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../../../../index.html" id="subtitle">能找到我的也不是等闲之辈</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="../../../../../index.html">Home</a>
+        
+          <a class="main-nav-link" href="../../../../../archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/sitemap.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.xydida.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-A-speed-testing-of-datacenter-of-vultr" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../../../../2021/3/5/VPS/A-speed-testing-of-datacenter-of-vultr/" class="article-date">
+  <time datetime="2021-03-05T13:09:57.000Z" itemprop="datePublished">2021-03-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../../../../categories/VPS/">VPS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vultr各数据中心的速度测试
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>更新：之前测试了半天的Vultr，两天前（2021-03-14）又被墙了。。。</p>
+</blockquote>
+<p>迫于我的小鸡IP被墙，需要重新部署新的server，又不确定哪个地区的机房好用，于是就有了下文。<strong>多图预警</strong>。</p>
+<blockquote>
+<p>测试时间：2021-03-05</p>
+<p>测试工具：<a href="https://ping.chinaz.com" target="_blank" rel="noopener">https://ping.chinaz.com</a></p>
+</blockquote>
+<h1 id="北美洲-North-America"><a href="#北美洲-North-America" class="headerlink" title="北美洲 North America"></a>北美洲 North America</h1><h2 id="亚特兰大-Atlanta"><a href="#亚特兰大-Atlanta" class="headerlink" title="亚特兰大 Atlanta"></a>亚特兰大 Atlanta</h2><ol>
+<li><p>测试IP：108.61.193.166</p>
+</li>
+<li><p>最快韩国CN联通 196ms</p>
+</li>
+<li>最慢江苏徐州[移动] 334ms</li>
+<li>平均251.8ms</li>
+<li>测试</li>
+</ol>
+<ul>
+<li>国内夜间</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/10/pzncWXjGOsxoFiv.png" style="zoom:33%;"></p>
+<p><img src="https://i.loli.net/2021/03/10/4c8tZvodkPFW56j.png" style="zoom:50%;"></p>
+<ul>
+<li>国内白天</li>
+</ul>
+<a id="more"></a>
+<p><img src="https://i.loli.net/2021/03/10/K5t74eNgojCsnzI.png" style="zoom:50%;"></p>
+<p><img src="https://i.loli.net/2021/03/10/ELn1v9WbCHejdDh.png" alt=""></p>
+<p>白天晚上区别不大。</p>
+<h2 id="芝加哥-Chicago"><a href="#芝加哥-Chicago" class="headerlink" title="芝加哥 Chicago"></a>芝加哥 Chicago</h2><ol>
+<li>测试IP：107.191.51.12</li>
+<li>最快韩国CN联通 179ms</li>
+<li>最慢山东青岛[联通] 394ms</li>
+<li>平均265.6ms</li>
+<li>测试</li>
+</ol>
+<ul>
+<li>国内夜间</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/10/u9OgjcCM3q5SZwv.png" style="zoom:33%;"></p>
+<p><img src="https://i.loli.net/2021/03/10/z1aHb5pr7EkySfO.png" style="zoom:50%;"></p>
+<ul>
+<li>国内白天</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/10/oPg7lHev9hsMTtf.png" style="zoom:50%;"></p>
+<p><img src="https://i.loli.net/2021/03/10/rvisJX7KmjDuZz5.png" alt=""></p>
+<h1 id="达拉斯-Dallas"><a href="#达拉斯-Dallas" class="headerlink" title="达拉斯 Dallas"></a>达拉斯 Dallas</h1><ol>
+<li>测试IP：108.61.224.175</li>
+<li>最快江苏常州[电信] 169ms</li>
+<li>最慢河南新乡[电信] 344ms</li>
+<li>平均234.7ms</li>
+<li>测试</li>
+</ol>
+<ul>
+<li>国内夜间</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/10/JtxhHoSCjQAO8Mp.png" style="zoom:33%;"></p>
+<p><img src="https://i.loli.net/2021/03/10/WvkwZNHoxIl6fLq.png" style="zoom:50%;"></p>
+<ul>
+<li>国内白天</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/10/akSOwWPLiEB1Guo.png" style="zoom:50%;"></p>
+<p><img src="https://i.loli.net/2021/03/10/ZgUyOzYpSrv4Ak2.png" alt=""></p>
+<h2 id="洛杉矶Los-Angeles"><a href="#洛杉矶Los-Angeles" class="headerlink" title="洛杉矶Los Angeles"></a>洛杉矶Los Angeles</h2><ol>
+<li>测试IP：108.61.219.200</li>
+<li>最快江苏常州[电信] 137ms</li>
+<li>最慢江苏徐州[移动] 250ms</li>
+<li>平均183.3ms</li>
+<li>测试</li>
+</ol>
+<ul>
+<li>国内夜间</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/10/XpogZe2mvkizwDJ.png" style="zoom:30%;"></p>
+<p><img src="https://i.loli.net/2021/03/10/LKa1D8rkCwqXhmI.png" style="zoom:50%;"></p>
+<ul>
+<li>国内白天</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/10/iP7SHDuBOeKXpwJ.png" style="zoom:50%;"></p>
+<p><img src="https://i.loli.net/2021/03/10/4FzBRMrvZw7DXCq.png" alt=""></p>
+<p>夜间和白天区别还是有点大的，不过好在大部分地区颜色变浅了。</p>
+<h2 id="迈阿密Miami"><a href="#迈阿密Miami" class="headerlink" title="迈阿密Miami"></a>迈阿密Miami</h2><ol>
+<li>测试IP：104.156.244.232</li>
+<li>最快江苏泰州[多线] 190ms</li>
+<li>最慢江苏徐州[移动] 349ms</li>
+<li>平均243.4ms</li>
+<li>测试</li>
+</ol>
+<ul>
+<li>国内夜间</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/10/a6kT1X2mveKpfHy.png" style="zoom:30%;"></p>
+<p><img src="https://i.loli.net/2021/03/10/V29dNZ3vDlqbKea.png" style="zoom:50%;"></p>
+<ul>
+<li>国内白天</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/10/ftBIGQZmo7NiMKg.png" style="zoom:50%;"></p>
+<p><img src="https://i.loli.net/2021/03/10/SLw7JcfXKiz6OWI.png" alt=""></p>
+<h2 id="新泽西New-Jersey"><a href="#新泽西New-Jersey" class="headerlink" title="新泽西New Jersey"></a>新泽西New Jersey</h2><ol>
+<li>测试IP：108.61.149.182</li>
+<li>最快韩国CN联通 184ms</li>
+<li>最慢广东深圳[联通] 312ms</li>
+<li>平均246.7ms</li>
+<li>测试</li>
+</ol>
+<ul>
+<li>国内夜间</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/10/mUGzg5iyjCIdxrs.png" style="zoom:33%;"></p>
+<p><img src="https://i.loli.net/2021/03/10/6ABsdHlhQtLiNCg.png" style="zoom:50%;"></p>
+<ul>
+<li>国内白天</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/10/3LTunJvH172kePx.png" style="zoom:50%;"></p>
+<p><img src="https://i.loli.net/2021/03/10/zSbwuhF8HcQlqiI.png" alt=""></p>
+<h2 id="西雅图Seattle"><a href="#西雅图Seattle" class="headerlink" title="西雅图Seattle"></a>西雅图Seattle</h2><ol>
+<li>测试IP：108.61.194.105</li>
+<li>最快山东青岛[联通] 161ms</li>
+<li>最慢上海[电信] 279ms</li>
+<li>平均194.7ms</li>
+<li>测试</li>
+</ol>
+<ul>
+<li>国内夜间</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/10/ytocYN25ZmfnwXb.png" style="zoom:33%;"></p>
+<p><img src="https://i.loli.net/2021/03/10/PsV2rGS5eNW6m3b.png" style="zoom:50%;"></p>
+<ul>
+<li>国内白天</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/10/JItV3MxDWdcYuAG.png" style="zoom:50%;"></p>
+<p><img src="https://i.loli.net/2021/03/10/RcdjDq4yWGAVB6s.png" alt=""></p>
+<h2 id="硅谷Silicon-Valley"><a href="#硅谷Silicon-Valley" class="headerlink" title="硅谷Silicon Valley"></a>硅谷Silicon Valley</h2><ol>
+<li>测试IP：104.156.230.107</li>
+<li>最快江苏宿迁[电信] 137ms</li>
+<li>最慢江苏常州[移动] 363ms</li>
+<li>平均181.8ms</li>
+<li>测试</li>
+</ol>
+<ul>
+<li>国内夜间</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/anjpWfm1iRhdZ6z.png" style="zoom:30%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/zDHZdhCsX7pWQNa.png" style="zoom:50%;"></p>
+<ul>
+<li>国内白天</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/zPebNCcXM1ls6ut.png" style="zoom:50%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/3FbvUQA8wL6ITK2.png" alt=""></p>
+<h2 id="多伦多-Toronto"><a href="#多伦多-Toronto" class="headerlink" title="多伦多 Toronto"></a>多伦多 Toronto</h2><ol>
+<li>测试IP：149.248.50.81</li>
+<li>最快韩国CN联通 184ms</li>
+<li>最慢江苏徐州[移动] 314ms</li>
+<li>平均241.8ms</li>
+<li>测试</li>
+</ol>
+<ul>
+<li>国内夜间</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/oBTNGYgpwJx8UcW.png" style="zoom:30%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/SJDhITU6omBOQRs.png" style="zoom:50%;"></p>
+<ul>
+<li>国内白天</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/h7lXi1FzyqUJKcs.png" style="zoom:50%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/lXGbAREFe2q7U1D.png" alt=""></p>
+<h1 id="欧洲Europe"><a href="#欧洲Europe" class="headerlink" title="欧洲Europe"></a>欧洲Europe</h1><h2 id="阿姆斯特丹Amsterdam"><a href="#阿姆斯特丹Amsterdam" class="headerlink" title="阿姆斯特丹Amsterdam"></a>阿姆斯特丹Amsterdam</h2><ol>
+<li>测试IP：108.61.198.102</li>
+<li>最快北京[电信] 157ms</li>
+<li>最慢安徽合肥[移动] 300ms</li>
+<li>平均220.0ms</li>
+<li>测试</li>
+</ol>
+<ul>
+<li>国内夜间</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/HRKmQfoUTBPFSrC.png" style="zoom:33%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/Le9GvAydNwj3gtD.png" style="zoom:50%;"></p>
+<ul>
+<li>国内白天</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/mrXRUdhMoEFxVWp.png" style="zoom:50%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/I7tCjVM6nWFvHaK.png" alt=""></p>
+<h2 id="法兰克福Frankfurt"><a href="#法兰克福Frankfurt" class="headerlink" title="法兰克福Frankfurt"></a>法兰克福Frankfurt</h2><ol>
+<li>测试IP：108.61.210.117</li>
+<li>最快北京[电信] 156ms</li>
+<li>最慢安徽合肥[移动] 312ms</li>
+<li>平均219.5ms</li>
+<li>测试</li>
+</ol>
+<ul>
+<li>国内夜间</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/H85TzwGsi2hJtmK.png" style="zoom:33%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/JOE7bwH1LTcoCW8.png" style="zoom:50%;"></p>
+<ul>
+<li>国内白天</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/cisuIgNmPFSp1Cj.png" style="zoom:50%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/sozhq6UgSOt5aDm.png" alt=""></p>
+<h2 id="伦敦London"><a href="#伦敦London" class="headerlink" title="伦敦London"></a>伦敦London</h2><ol>
+<li>测试IP：108.61.196.101</li>
+<li>最快河南新乡[多线] 173ms</li>
+<li>最慢云南昆明[电信] 323ms</li>
+<li>平均245.7ms</li>
+<li>测试</li>
+</ol>
+<ul>
+<li>国内夜间</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/4nHXfZjsveWGa6P.png" style="zoom:30%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/UbfL9WpyiugAJXr.png" style="zoom:50%;"></p>
+<ul>
+<li>国内白天</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/QPnMBfiHLD54Vgt.png" style="zoom:50%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/rYnPJAgM7CSoDBV.png" alt=""></p>
+<h2 id="巴黎Paris"><a href="#巴黎Paris" class="headerlink" title="巴黎Paris"></a>巴黎Paris</h2><ol>
+<li>测试IP：108.61.209.127</li>
+<li>最快河北皇岛[多线] 191ms</li>
+<li>最慢辽宁大连[电信] 317ms</li>
+<li>平均242.7ms</li>
+<li>测试</li>
+</ol>
+<ul>
+<li>国内夜间</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/lEjzDRiu1AP2WNS.png" style="zoom:30%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/92saPwvqWEHQg47.png" style="zoom:50%;"></p>
+<ul>
+<li>国内白天</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/xlYONBb62QctfeV.png" style="zoom:50%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/LdOwjYIqilt1fpH.png" alt=""></p>
+<h1 id="亚洲-Asia"><a href="#亚洲-Asia" class="headerlink" title="亚洲 Asia"></a>亚洲 Asia</h1><h2 id="首尔Seoul"><a href="#首尔Seoul" class="headerlink" title="首尔Seoul"></a>首尔Seoul</h2><ol>
+<li>测试IP：141.164.34.61</li>
+<li>最快韩国CN联通 2ms</li>
+<li>最慢河北皇岛[多线] 274ms</li>
+<li>平均142.2ms</li>
+<li>测试</li>
+</ol>
+<ul>
+<li>国内夜间</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/qsQVvx8eMoKRYmI.png" style="zoom:30%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/xqZuYho6rbzJNGT.png" style="zoom:50%;"></p>
+<ul>
+<li>国内白天</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/jdhyIYrAZqsFv9U.png" style="zoom:50%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/hLHlTjKaGRXtJ3k.png" alt=""></p>
+<h2 id="新加坡Singapore"><a href="#新加坡Singapore" class="headerlink" title="新加坡Singapore"></a>新加坡Singapore</h2><ol>
+<li>测试IP：45.32.100.168</li>
+<li>最快河南郑州[联通] 117ms</li>
+<li>最慢安徽合肥[移动] 368ms</li>
+<li>平均242.2ms</li>
+<li>测试</li>
+</ol>
+<ul>
+<li>国内夜间</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/4N57JhYAFfGjawR.png" style="zoom:30%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/hNKjmYGeraB7zX8.png" style="zoom:50%;"></p>
+<ul>
+<li>国内白天</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/tpEZa87eAbNxoTu.png" style="zoom:50%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/nqFclQ4jmx8RUID.png" alt=""></p>
+<h2 id="东京Tokyo"><a href="#东京Tokyo" class="headerlink" title="东京Tokyo"></a>东京Tokyo</h2><ol>
+<li>测试IP：108.61.201.151</li>
+<li>最快江苏宿迁[多线] 44ms</li>
+<li>最慢内蒙呼和浩特[多线] 213ms</li>
+<li>平均144.4ms</li>
+<li>测试</li>
+</ol>
+<ul>
+<li>国内夜间</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/iZfv7jtPUDaCwr1.png" style="zoom:33%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/9xOy8u4i5NjYzBl.png" style="zoom:50%;"></p>
+<ul>
+<li>国内白天</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/7cesruUzw3JOXkf.png" style="zoom:50%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/AlQiS5WNchC4yFZ.png" alt=""></p>
+<h1 id="澳洲"><a href="#澳洲" class="headerlink" title="澳洲"></a>澳洲</h1><h2 id="澳大利亚Australia"><a href="#澳大利亚Australia" class="headerlink" title="澳大利亚Australia"></a>澳大利亚Australia</h2><ol>
+<li>测试IP：108.61.212.117</li>
+<li>最快广东深圳[多线] 130ms</li>
+<li>最慢新疆哈密[电信] 401ms</li>
+<li>平均239.8ms</li>
+<li>测试</li>
+</ol>
+<ul>
+<li>国内夜间</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/D8WPRQKNnsc9i1j.png" style="zoom:30%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/Mf4CYBWqU6bEszo.png" style="zoom:50%;"></p>
+<ul>
+<li>国内白天</li>
+</ul>
+<p><img src="https://i.loli.net/2021/03/11/fVAhzNwDm8oJLkW.png" style="zoom:50%;"></p>
+<p><img src="https://i.loli.net/2021/03/11/KzEgpOaDAHeSx1P.png" alt=""></p>
+<p>测试完毕!</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="https://i.loli.net/2021/03/10/DQlFUVeE6CcmLxT.png" alt="各数据中心平均速度条形图" style="zoom:80%;"></p>
+<p>看我上面画的图，排在后面的直接不考虑了，最后经过我实际的体验测试（花钱），发现虽然韩国首尔的机子ping值低，但实际丢包率贼高（至少70%），所以不建议，日本东京的IP直接被墙了（估计被玩坏了），洛杉矶的还不错ping值在180左右和测试的差不多，洛杉矶和硅谷差不多，都属于美国的西海岸，但是硅谷相比洛杉矶，最高ping值达到360+，最后选择洛杉矶的了。</p>
+<h1 id="送福利"><a href="#送福利" class="headerlink" title="送福利"></a>送福利</h1><p><code>Vultr</code>的福利也不是经常有，这里送大家一个<strong>100美元</strong>的优惠券，注册后充值<strong>10美元</strong>才能得到，可以点这个链接：<a href="https://www.vultr.com/?ref=8705139-6G" target="_blank" rel="noopener">https://www.vultr.com/?ref=8705139-6G</a></p>
+<p><img src="https://i.loli.net/2021/03/08/cuGA972YBqOpRZx.png" alt=""></p>
+<hr>
+<p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
+<p><img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:20%;"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2021/3/5/VPS/A-speed-testing-of-datacenter-of-vultr/" data-id="ckpgmh71x0002uvcaxlwfjq0o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/VPS/">VPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/Vultr/">Vultr</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../../../../../2021/3/8/小程序/get-phone-number-in-miniprogram/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          小程序中获取用户手机号
+        
+      </div>
+    </a>
+  
+  
+    <a href="../../../../../2021/2/24/PHP/Laravel/The-Guard-in-Laravel-framework/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">关于Laravel框架中Guard的底层实现</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Algorithm/">Algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Devops/">Devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Electron/">Electron</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Electron/Node/">Node</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Electron/Node/Javascript/">Javascript</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Linux/">Linux</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Linux/Git/">Git</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Networks/">Networks</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Object-Oriented/">Object Oriented</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/PHP/">PHP</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/PHP/Laravel/">Laravel</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Reading/">Reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Regular-Expression/">Regular Expression</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Tools/">Tools</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/VPS/">VPS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Yangmao/">Yangmao</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/frontend/">frontend</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/notes/">notes</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/小程序/">小程序</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/小程序/PHP/">PHP</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/微信/">微信</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/设计/">设计</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="../../../../../tags/API/" style="font-size: 11.67px;">API</a> <a href="../../../../../tags/Big-Sur/" style="font-size: 10px;">Big Sur</a> <a href="../../../../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../../../../tags/CSS/" style="font-size: 15px;">CSS</a> <a href="../../../../../tags/DNS/" style="font-size: 10px;">DNS</a> <a href="../../../../../tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="../../../../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../../../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../../../../tags/Javascript/" style="font-size: 11.67px;">Javascript</a> <a href="../../../../../tags/Laravel/" style="font-size: 11.67px;">Laravel</a> <a href="../../../../../tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="../../../../../tags/Lumen/" style="font-size: 10px;">Lumen</a> <a href="../../../../../tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="../../../../../tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="../../../../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../../../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../../../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../../../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../../../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../../../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../../../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../../../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../../../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../../../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../../../../tags/Server/" style="font-size: 15px;">Server</a> <a href="../../../../../tags/Slim/" style="font-size: 10px;">Slim</a> <a href="../../../../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../../../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../../../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../../../../tags/Typora/" style="font-size: 10px;">Typora</a> <a href="../../../../../tags/UniApp/" style="font-size: 10px;">UniApp</a> <a href="../../../../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../../../../tags/VPS/" style="font-size: 10px;">VPS</a> <a href="../../../../../tags/Vue/" style="font-size: 11.67px;">Vue</a> <a href="../../../../../tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="../../../../../tags/angular/" style="font-size: 10px;">angular</a> <a href="../../../../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../../../../tags/babel/" style="font-size: 10px;">babel</a> <a href="../../../../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../../../../tags/cover-view/" style="font-size: 11.67px;">cover-view</a> <a href="../../../../../tags/curl/" style="font-size: 10px;">curl</a> <a href="../../../../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../../../../tags/electron/" style="font-size: 11.67px;">electron</a> <a href="../../../../../tags/emoji/" style="font-size: 10px;">emoji</a> <a href="../../../../../tags/firewall/" style="font-size: 10px;">firewall</a> <a href="../../../../../tags/framework/" style="font-size: 10px;">framework</a> <a href="../../../../../tags/git/" style="font-size: 10px;">git</a> <a href="../../../../../tags/gulp/" style="font-size: 10px;">gulp</a> <a href="../../../../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../../../../tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="../../../../../tags/life/" style="font-size: 10px;">life</a> <a href="../../../../../tags/linux/" style="font-size: 10px;">linux</a> <a href="../../../../../tags/macOS/" style="font-size: 10px;">macOS</a> <a href="../../../../../tags/networks/" style="font-size: 11.67px;">networks</a> <a href="../../../../../tags/node/" style="font-size: 10px;">node</a> <a href="../../../../../tags/notes/" style="font-size: 13.33px;">notes</a> <a href="../../../../../tags/npm/" style="font-size: 11.67px;">npm</a> <a href="../../../../../tags/permission/" style="font-size: 10px;">permission</a> <a href="../../../../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../../../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../../../../tags/ufw/" style="font-size: 10px;">ufw</a> <a href="../../../../../tags/公众号阅读笔记/" style="font-size: 10px;">公众号阅读笔记</a> <a href="../../../../../tags/小程序/" style="font-size: 18.33px;">小程序</a> <a href="../../../../../tags/微信/" style="font-size: 13.33px;">微信</a> <a href="../../../../../tags/羊毛/" style="font-size: 10px;">羊毛</a> <a href="../../../../../tags/软件设计/" style="font-size: 10px;">软件设计</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2021/05/">May 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2021/03/">March 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2021/02/">February 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2021/01/">January 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/12/">December 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/10/">October 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/06/">June 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/05/">May 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="../../../../../2021/5/31/frontend/primordials-is-not-defined/">How to fix ReferenceError primordials is not defined error</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2021/5/28/PHP/A-simple-PHP-framework/">一个简易的PHP框架</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2021/5/24/frontend/Babel-cannot-find-module-babel-runtime-regenerator/">Babel cannot find module babel-runtime/regenerator</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2021/5/21/notes/defference-between-URL-and-URI/">URL和URI之间的区别</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2021/5/16/Reading/reading-notes-2021-05-16/">阅读笔记2021-05-16</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 bilberry<br>
+      Powered by <a href="http://hexo.io/" target="_blank" rel="nofollow">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="../../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../../../../js/script.js"></script>
+
+  </div>
+</body>
+</html>

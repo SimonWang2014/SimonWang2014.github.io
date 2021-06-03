@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>MySQL中的索引学习 | 正义的程序猿</title>
+  <meta name="baidu-site-verification" content="yXEzwss0jm" />
+  <meta name="360-site-verification" content="878e013ea1c0235dec34a8b1c676cf65" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
+  
+  <meta name="description" content="什么是索引？在没有学数据库之前，大多数人对索引还是比较陌生（可能学完之后还是比较陌生：），今天我想告诉大家索引很有用，而且面试的时候都会问到。那么索引是什么呢？">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL中的索引学习">
+<meta property="og:url" content="https://www.xydida.com/2018/6/6/MySQL/Learn-MySQL-indexes/index.html">
+<meta property="og:site_name" content="正义的程序猿">
+<meta property="og:description" content="什么是索引？在没有学数据库之前，大多数人对索引还是比较陌生（可能学完之后还是比较陌生：），今天我想告诉大家索引很有用，而且面试的时候都会问到。那么索引是什么呢？">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fs2f97s3m4j31kw16o1kz.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fs1onskl51j31kw23vx6p.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fs1opioucuj31kw23vu0y.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fs1oq9j6zuj31kw23vx6q.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fs1qj978vfj30qe0cigms.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fs1r9yjm69j30mi06kgnw.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fs1sopkc84j30la068ac3.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fs1sqt9824j30l206iwgr.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fs1suh963uj30m207oacm.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fs2e082sw6j30lu07edif.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fs2e0s2v9ij30lu07edif.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fs2e0z82f0j30km07cmzr.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fs2e17ph34j30ku07ajtu.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fs2e1enqvrj314c010mxp.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fs2e7333k8j30tw01yt98.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fs2e9gd0sqj30t201wwf2.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fs2ecup96cj30t00220t8.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg">
+<meta property="og:updated_time" content="2020-11-02T02:28:14.981Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL中的索引学习">
+<meta name="twitter:description" content="什么是索引？在没有学数据库之前，大多数人对索引还是比较陌生（可能学完之后还是比较陌生：），今天我想告诉大家索引很有用，而且面试的时候都会问到。那么索引是什么呢？">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fs2f97s3m4j31kw16o1kz.jpg">
+  
+    <link rel="alternate" href="/sitemap.xml" title="正义的程序猿" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="../../../../../css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-98739349-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-98739349-1');
+</script>
+
+
+  
+<!-- Google Adscene -->
+<script data-ad-client="ca-pub-8701685410355750" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- End Google Analytics -->
+
+
+  
+    <!-- CNZZ Analytics -->
+    <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1257809326'%3E%3C/span%3E%3Cscript src='https://s95.cnzz.com/z_stat.php%3Fid%3D1257809326' type='text/javascript'%3E%3C/script%3E"));</script>
+    <style>
+        span#cnzz_stat_icon_1257809326 {display:none;}
+    </style>
+    <!-- End CNZZ Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../../../../index.html" id="logo">正义的程序猿</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../../../../index.html" id="subtitle">能找到我的也不是等闲之辈</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="../../../../../index.html">Home</a>
+        
+          <a class="main-nav-link" href="../../../../../archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/sitemap.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.xydida.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Learn-MySQL-indexes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../../../../2018/6/6/MySQL/Learn-MySQL-indexes/" class="article-date">
+  <time datetime="2018-06-06T11:10:04.000Z" itemprop="datePublished">2018-06-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../../../../categories/MySQL/">MySQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MySQL中的索引学习
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs2f97s3m4j31kw16o1kz.jpg" alt=""></p>
+<h1 id="什么是索引？"><a href="#什么是索引？" class="headerlink" title="什么是索引？"></a>什么是索引？</h1><p>在没有学数据库之前，大多数人对索引还是比较陌生（可能学完之后还是比较陌生：），今天我想告诉大家索引很有用，而且面试的时候都会问到。那么索引是什么呢？</p>
+<a id="more"></a>
+<p>其实索引这个东西我们很早就接触过了，想象一下当初学习《现代汉语词典》的时候，老师是如何教我们使用的，就可以理解什么是索引了。《现代汉语词典》有将近1800页，里面的汉字大概有1.3万多个，我们是如何在这么多的汉字中找到某个字呢？老师大概是这么教我们的：词典提供了“音节表”，“音节表”将所有汉子的汉语拼音编入其中，并且“音节表”按’a’到’z’的顺序排序，故而我们可以轻松的在音节表中找到某个字所对应的页数。其实不光是词典，我们看的书大部分都有目录，而这个目录就相当于索引的作用，如下是三本书的目录：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fs1onskl51j31kw23vx6p.jpg" alt="《禅与摩托车维修艺术》的目录"></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fs1opioucuj31kw23vu0y.jpg" alt="《黑客与画家》的目录"></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs1oq9j6zuj31kw23vx6q.jpg" alt="《计算机程序的构造和解释》的目录"></p>
+<p>通过上面三本书的目录的对比，很明显第一本书的目录写的很简单，第二本书稍详细一点，而第三本书的目录最详细，目录写得越详细，读者在阅读的时候就越方便。</p>
+<p>不管是词典中的音节表还是书的目录，它们实际都是索引的一种存在形式，都是为了能够提高查找的效率。</p>
+<h2 id="数据库中索引的本质"><a href="#数据库中索引的本质" class="headerlink" title="数据库中索引的本质"></a>数据库中索引的本质</h2><p>本质上，索引其实是数据库表中字段值的复制，该字段称为索引的关键字。</p>
+<h2 id="索引在计算机中的存储"><a href="#索引在计算机中的存储" class="headerlink" title="索引在计算机中的存储"></a>索引在计算机中的存储</h2><p>在学习数据结构时，曾讲到文件的概念，而数据库中所有的数据都是以文件的形式保存的计算机中的，所以文件系统是数据库系统的基础。而数据库在操作这些文件时，都是先将文件中的数据加载到内存，然后再以某种数据结构来操作这些数据，通常的数据结构可以是<a href="http://lib.csdn.net/article/datastructure/9204" target="_blank" rel="noopener">AVL树</a>、<a href="https://blog.csdn.net/v_july_v/article/details/6530142" target="_blank" rel="noopener">B树</a>、<a href="https://blog.csdn.net/v_july_v/article/details/6530142" target="_blank" rel="noopener">B+树</a>等。数据库中的往往是要存大量的数据的，而所有的数据不可能一次性全部加载到内存中，这时候就需要索引与分块加载来提高查询的速度，不过一般初学者不会体验到索引带来的高效，因为他们的电脑内存足够大完全可以一次性加载完所有数据，这也导致初学者忽略了对索引的仔细学习。如下是MyISAM存储引擎的索引示意图：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs1qj978vfj30qe0cigms.jpg" alt="MyISAM存储引擎teacher表的主索引及普通索引"></p>
+<p>更多关于数据库索引背后的数据结构和算法原理，请查看：<a href="https://www.cnblogs.com/tgycoder/p/5410057.html" target="_blank" rel="noopener">https://www.cnblogs.com/tgycoder/p/5410057.html</a></p>
+<h1 id="MySQL中的索引"><a href="#MySQL中的索引" class="headerlink" title="MySQL中的索引"></a>MySQL中的索引</h1><p>在MySQL中，共有4类索引：主键索引、唯一索引、常规索引和全文索引。</p>
+<h2 id="主键索引-Primary-key"><a href="#主键索引-Primary-key" class="headerlink" title="主键索引(Primary key)"></a>主键索引(Primary key)</h2><p>主键索引是关系数据库中最常见的索引类型。它根据主键自身的唯一性来唯一标识每条记录。因此该键必须是表中的唯一值。创建主键索引很简单，如下：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fs1r9yjm69j30mi06kgnw.jpg" alt=""></p>
+<p>每个表只能有一个自增字段，该字段必须指定为主键。此外，任何指定为主键的字段不能是NULL，即使没有声明为NOT NULL，MySQL会自己设置。</p>
+<h2 id="唯一索引-Unique"><a href="#唯一索引-Unique" class="headerlink" title="唯一索引(Unique)"></a>唯一索引(Unique)</h2><p>与主键索引一样，唯一索引可以防止创建重复的值。不同之处在于每个表只能有一个主键索引，但可以有多个唯一索引。修改上面的sql语句来增加唯一索引：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fs1sopkc84j30la068ac3.jpg" alt=""></p>
+<p>如前面所讲，表中可以指定多个唯一字段，我们现在将<code>name</code>字段也设置为唯一：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs1sqt9824j30l206iwgr.jpg" alt=""></p>
+<p>还可以指定多列唯一索引，比如上面的表结构中，允许用户插入重复的url，甚至可以插入重复的name值，但不希望出现重复的name和url的组合。可以创建多列唯一索引来强制这种约束，如下：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs1suh963uj30m207oacm.jpg" alt=""></p>
+<h2 id="常规索引-Index"><a href="#常规索引-Index" class="headerlink" title="常规索引(Index)"></a>常规索引(Index)</h2><p>可能经常需要对数据库的搜索效率进行优化，以便能够根据并非主键甚至并非唯一的列获取数据行。为此，最有效的方法是采用某种方式索引列，是的数据库尽可能快的查找想要的值。这就称为常规索引。</p>
+<h3 id="单列常规索引"><a href="#单列常规索引" class="headerlink" title="单列常规索引"></a>单列常规索引</h3><p>如果表中的某个列经常需要被查询到，就应该使用单列常规索引。假如，一张员工表you 4列：主键id，名字，姓氏和电子邮箱，若果大多数的查询操作都会针对员工的姓氏或者电子邮箱，因为员工的姓氏可以有重复的，而电子邮箱必须唯一，我们就可以给姓氏创建一个常规索引，电子邮箱创建一个唯一索引，如下：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fs2e082sw6j30lu07edif.jpg" alt=""></p>
+<p>同时，MySQL还提供了创建局部字段索引的特性，方式是：将某一字段的前N的字符作为索引，相比于单列常规索引，局部索引需要更少的磁盘空间，同时由于索引的数据短，因此效率会高一点。修改前面的示例，因为通常lastname的前5个字符就足以确保获取到唯一的数据，修改如下：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fs2e0s2v9ij30lu07edif.jpg" alt=""></p>
+<h3 id="多列常规索引"><a href="#多列常规索引" class="headerlink" title="多列常规索引"></a>多列常规索引</h3><p>一般查询时，通常需要包含多列，我们可以指定一些经常被查询的列为多列常规索引。MySQL的多列常规索引方法基于一种<a href="https://www.zhihu.com/question/36996520" target="_blank" rel="noopener">最左前缀(leftmost prefixing)</a>的策略。最左前缀指出包含列A、B和C的任何多列索引都可以提高涉及如下列组合的查询的性能：</p>
+<ul>
+<li>A、B、C</li>
+<li>A、B</li>
+<li>A</li>
+</ul>
+<p>创建多列索引：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fs2e0z82f0j30km07cmzr.jpg" alt=""></p>
+<p>上图中创建了三个索引，第一个是主键索引，第二个是电子邮箱的唯一索引，第三个就是多列索引，包括两列：lastname和firstname。</p>
+<h3 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h3><p>当字段类型为char、varchar或text时，我们可以使用全文索引。在MySQL中，对大量自然语言做全文搜索时，它提供了一种数据获取的机制，并生成最符合用户需要的结果。比如在对这样“Nginx is the world’s most popular web server”的字符串进行搜索时，单词is和the对结果几乎起不了任何作用，MySQL在搜索时，将文本分解为单词，默认忽略少于4个字符的单词。创建全文索引：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fs2e17ph34j30ku07ajtu.jpg" alt=""></p>
+<p>创建全文索引的方式与创建其他索引没什么区别，但基于全文索引的查询却有一点不同。在查询时，select语句需要使用两个特殊的MySQL函数<code>match()</code>和<code>againet()</code>。查询方式如下：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs2e1enqvrj314c010mxp.jpg" alt=""></p>
+<h4 id="Boolean全文搜索"><a href="#Boolean全文搜索" class="headerlink" title="Boolean全文搜索"></a>Boolean全文搜索</h4><p>Boolean全文搜索对查询提供了更加细的控制允许显示地标识候选结果中应当或不应当出现哪些词（MySQL默认会忽略少于4个字符的关键词）。以下是关于Boolean操作符的描述：</p>
+<p>+ 前导加号确保后面的单词出现在每个结果记录中<br>- 前导减号确保后面的单词不出现在任何结果记录中<br>* 结尾处的星号允许接受关键字变体，只要该变体以星号前面的单词所制定的字符串开头<br>“ “ 外围的双引号确保结果记录包含所包围的字符串，要严格按照输入时的形式出现<br>&lt; &gt; 前导的大于号和小于号分别用于增加和减少后面单词的搜索级别相关度<br>( ) 小括号用于将单词分组为子表达式</p>
+<p>如下是几个简单的例子：</p>
+<ol>
+<li>返回包含Nginx，但不包含manual的记录：</li>
+</ol>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fs2e7333k8j30tw01yt98.jpg" alt=""></p>
+<ol start="2">
+<li>返回包含单词Nginx，但不包含Apache或Tomcat的记录：</li>
+</ol>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fs2e9gd0sqj30t201wwf2.jpg" alt=""></p>
+<ol start="3">
+<li>返回包含web和scripting或者php和scripting的记录，但web scripting的搜索级别低于php scripting：</li>
+</ol>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fs2ecup96cj30t00220t8.jpg" alt=""></p>
+<p>注意，由于MySQL默认会忽略少于4个字符的单词，所以执行上面的SQL命令时，应该先修改<code>ft_min_word_len</code>参数。</p>
+<h1 id="索引选取的注意事项"><a href="#索引选取的注意事项" class="headerlink" title="索引选取的注意事项"></a>索引选取的注意事项</h1><ol>
+<li>只对<code>WHERE</code>和<code>ORDER BY</code>子句中需要的列添加索引，过多的索引会占用很多硬盘空间，在修改数据时还会降低性能，因为每次修改数据时都需要更新索引。</li>
+<li>如果创建如<code>INDEX(firstname, lastname)</code>的索引时，不要再创建<code>INDEX(firstname)</code>，因为MySQL的索引采用最左前缀策略。</li>
+<li>需要索引的列要不为空（NOT NULL），保证构建索引时不存储NULL值。</li>
+<li>可以开启慢查询日志，通过对慢查询日志的分析来优化索引。</li>
+</ol>
+<p>参考：<br>《PHP与MySQL程序设计（第四版）》</p>
+<hr>
+<p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
+<p><img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2018/6/6/MySQL/Learn-MySQL-indexes/" data-id="ckpgmh72s000suvcaainxmiwj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../../tags/MySQL/">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../../../../../2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          解决PHP中htmlspecialchars返回null的问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="../../../../../2018/6/5/PHP/The-secret-you-do-not-know-the-static-in-PHP/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PHP中的static关键字</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Algorithm/">Algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Devops/">Devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Electron/">Electron</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Electron/Node/">Node</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Electron/Node/Javascript/">Javascript</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Linux/">Linux</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Linux/Git/">Git</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Networks/">Networks</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Object-Oriented/">Object Oriented</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/PHP/">PHP</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/PHP/Laravel/">Laravel</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Reading/">Reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Regular-Expression/">Regular Expression</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Tools/">Tools</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/VPS/">VPS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/Yangmao/">Yangmao</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/frontend/">frontend</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/notes/">notes</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/小程序/">小程序</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/小程序/PHP/">PHP</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/微信/">微信</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../../../../categories/设计/">设计</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="../../../../../tags/API/" style="font-size: 11.67px;">API</a> <a href="../../../../../tags/Big-Sur/" style="font-size: 10px;">Big Sur</a> <a href="../../../../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../../../../tags/CSS/" style="font-size: 15px;">CSS</a> <a href="../../../../../tags/DNS/" style="font-size: 10px;">DNS</a> <a href="../../../../../tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="../../../../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../../../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../../../../tags/Javascript/" style="font-size: 11.67px;">Javascript</a> <a href="../../../../../tags/Laravel/" style="font-size: 11.67px;">Laravel</a> <a href="../../../../../tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="../../../../../tags/Lumen/" style="font-size: 10px;">Lumen</a> <a href="../../../../../tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="../../../../../tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="../../../../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../../../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../../../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../../../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../../../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../../../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../../../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../../../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../../../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../../../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../../../../tags/Server/" style="font-size: 15px;">Server</a> <a href="../../../../../tags/Slim/" style="font-size: 10px;">Slim</a> <a href="../../../../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../../../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../../../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../../../../tags/Typora/" style="font-size: 10px;">Typora</a> <a href="../../../../../tags/UniApp/" style="font-size: 10px;">UniApp</a> <a href="../../../../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../../../../tags/VPS/" style="font-size: 10px;">VPS</a> <a href="../../../../../tags/Vue/" style="font-size: 11.67px;">Vue</a> <a href="../../../../../tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="../../../../../tags/angular/" style="font-size: 10px;">angular</a> <a href="../../../../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../../../../tags/babel/" style="font-size: 10px;">babel</a> <a href="../../../../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../../../../tags/cover-view/" style="font-size: 11.67px;">cover-view</a> <a href="../../../../../tags/curl/" style="font-size: 10px;">curl</a> <a href="../../../../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../../../../tags/electron/" style="font-size: 11.67px;">electron</a> <a href="../../../../../tags/emoji/" style="font-size: 10px;">emoji</a> <a href="../../../../../tags/firewall/" style="font-size: 10px;">firewall</a> <a href="../../../../../tags/framework/" style="font-size: 10px;">framework</a> <a href="../../../../../tags/git/" style="font-size: 10px;">git</a> <a href="../../../../../tags/gulp/" style="font-size: 10px;">gulp</a> <a href="../../../../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../../../../tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="../../../../../tags/life/" style="font-size: 10px;">life</a> <a href="../../../../../tags/linux/" style="font-size: 10px;">linux</a> <a href="../../../../../tags/macOS/" style="font-size: 10px;">macOS</a> <a href="../../../../../tags/networks/" style="font-size: 11.67px;">networks</a> <a href="../../../../../tags/node/" style="font-size: 10px;">node</a> <a href="../../../../../tags/notes/" style="font-size: 13.33px;">notes</a> <a href="../../../../../tags/npm/" style="font-size: 11.67px;">npm</a> <a href="../../../../../tags/permission/" style="font-size: 10px;">permission</a> <a href="../../../../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../../../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../../../../tags/ufw/" style="font-size: 10px;">ufw</a> <a href="../../../../../tags/公众号阅读笔记/" style="font-size: 10px;">公众号阅读笔记</a> <a href="../../../../../tags/小程序/" style="font-size: 18.33px;">小程序</a> <a href="../../../../../tags/微信/" style="font-size: 13.33px;">微信</a> <a href="../../../../../tags/羊毛/" style="font-size: 10px;">羊毛</a> <a href="../../../../../tags/软件设计/" style="font-size: 10px;">软件设计</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2021/05/">May 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2021/03/">March 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2021/02/">February 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2021/01/">January 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/12/">December 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/10/">October 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/06/">June 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/05/">May 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../../archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="../../../../../2021/5/31/frontend/primordials-is-not-defined/">How to fix ReferenceError primordials is not defined error</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2021/5/28/PHP/A-simple-PHP-framework/">一个简易的PHP框架</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2021/5/24/frontend/Babel-cannot-find-module-babel-runtime-regenerator/">Babel cannot find module babel-runtime/regenerator</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2021/5/21/notes/defference-between-URL-and-URI/">URL和URI之间的区别</a>
+          </li>
+        
+          <li>
+            <a href="../../../../../2021/5/16/Reading/reading-notes-2021-05-16/">阅读笔记2021-05-16</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 bilberry<br>
+      Powered by <a href="http://hexo.io/" target="_blank" rel="nofollow">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="../../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../../../../js/script.js"></script>
+
+  </div>
+</body>
+</html>
