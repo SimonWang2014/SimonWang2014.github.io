@@ -113,6 +113,151 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-Learn-MySQL-indexes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../2018/6/6/MySQL/Learn-MySQL-indexes/" class="article-date">
+  <time datetime="2018-06-06T11:10:04.000Z" itemprop="datePublished">2018-06-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../categories/MySQL/">MySQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2018/6/6/MySQL/Learn-MySQL-indexes/">MySQL中的索引学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs2f97s3m4j31kw16o1kz.jpg" alt=""></p>
+<h1 id="什么是索引？"><a href="#什么是索引？" class="headerlink" title="什么是索引？"></a>什么是索引？</h1><p>在没有学数据库之前，大多数人对索引还是比较陌生（可能学完之后还是比较陌生：），今天我想告诉大家索引很有用，而且面试的时候都会问到。那么索引是什么呢？</p>
+        
+          <p class="article-more-link">
+            <a href="../../2018/6/6/MySQL/Learn-MySQL-indexes/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2018/6/6/MySQL/Learn-MySQL-indexes/" data-id="ckpqkruqm000qq4cal24ags0w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/MySQL/">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-The-secret-you-do-not-know-the-static-in-PHP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="../../2018/6/5/PHP/The-secret-you-do-not-know-the-static-in-PHP/" class="article-date">
+  <time datetime="2018-06-05T09:29:04.000Z" itemprop="datePublished">2018-06-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2018/6/5/PHP/The-secret-you-do-not-know-the-static-in-PHP/">PHP中的static关键字</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.loli.net/2021/05/06/6KPFQLpBO9NnTYw.jpg" style="zoom:67%;"></p>
+<p>PHP和Java中都会有<code>static</code>这个关键字，用法也类似，当问及PHP中的<code>static</code>用法是，很容易想出<code>static</code>可以声明类属性或方法为静态，静态属性和方法都是属于类的，静态属性不能通过对象访问，但静态方法可以通过对象访问。没错，是这样的，但是在PHP中<code>static</code>还有另外的用处哦。</p>
+<h2 id="先从static变量的作用域开始"><a href="#先从static变量的作用域开始" class="headerlink" title="先从static变量的作用域开始"></a>先从static变量的作用域开始</h2><p>PHP中<code>static</code>变量只存在于本地函数中，但是当程序执行完本函数后，<code>static</code>变量还会一直存在，考虑如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">function test()</span><br><span class="line">&#123;</span><br><span class="line">    $a = 0;</span><br><span class="line">    echo $a . &quot;\n&quot;;</span><br><span class="line">    $a++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 都会输出0</span><br><span class="line">for ($i=0; $i&lt;5; $i++) &#123;</span><br><span class="line">    test();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在每次调用这个函数的时候，函数都会将<code>$a</code>变量置0，再输出，尽管每次输出后，变量<code>$a</code>都加1了，为了每次都能将<code>$a</code>的值保存起来，我们可以将它声明为<code>static</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">function test()</span><br><span class="line">&#123;</span><br><span class="line">    static $a = 0;</span><br><span class="line">    echo $a . &quot;\n&quot;;</span><br><span class="line">    $a++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 输出</span><br><span class="line">// 0</span><br><span class="line">// 1</span><br><span class="line">// 2</span><br><span class="line">// 3</span><br><span class="line">// 4</span><br><span class="line">for ($i=0; $i&lt;5; $i++) &#123;</span><br><span class="line">    test();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在，<code>$a</code>只被初始化了一次，每次调用<code>test()</code>函数时，<code>$a</code>都会加1。</p>
+<p>在递归函数中，同样可以使用静态变量，我们可以设置一个<code>$count</code>静态变量的函数运行计数器，保存运行的次数，当<code>$count</code>到10时，就退出递归函数，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">function test()</span><br><span class="line">&#123;</span><br><span class="line">    static $count = 0;</span><br><span class="line"></span><br><span class="line">    $count++;</span><br><span class="line">    echo $count;</span><br><span class="line">    if ($count &lt; 10) &#123;</span><br><span class="line">        test();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+<p>静态变量初始化时只能是确定的一个值，不能是函数的返回值，下面的代码中，将<code>sqrt()</code>函数的结果赋值给静态变量<code>$a</code>会报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function foo()&#123;</span><br><span class="line">    static $a = 0;          // correct</span><br><span class="line">    static $a = 1+2;        // correct (as of PHP 5.6)</span><br><span class="line">    static $a = sqrt(121);  // wrong  (as it is a function)</span><br><span class="line"></span><br><span class="line">    echo $a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo();</span><br></pre></td></tr></table></figure>
+<p>程序没有运行前，再phpstorm中就已经其实不能用表达式初始化静态变量：</p>
+<p><img src="http://p8m3309kb.bkt.clouddn.com/assign%20expression%20to%20static.png" alt=""></p>
+<p>程序运行时也会报如下错误：</p>
+<p><img src="http://p8m3309kb.bkt.clouddn.com/run%20assign%20expression%20to%20static.png" alt=""></p>
+<h2 id="声明类属性或方法为静态"><a href="#声明类属性或方法为静态" class="headerlink" title="声明类属性或方法为静态"></a>声明类属性或方法为静态</h2><p>声明类属性或方法为静态，就可以不实例化类而直接访问。静态属性不能通过一个类已实例化的对象来访问（但静态方法可以）。为了兼容 PHP 4，如果没有指定访问控制，属性和方法默认为公有。由于静态方法不需要通过对象即可调用，所以伪变量 $this 在静态方法中不可用。静态属性不可以由对象通过 -&gt; 操作符来访问。用静态方式调用一个非静态方法会导致一个 E_STRICT 级别的错误。就像其它所有的 PHP 静态变量一样，静态属性只能被初始化为文字或常量，不能使用表达式。所以可以把静态属性初始化为整数或数组，但不能初始化为另一个变量或函数返回值，也不能指向一个对象。自 PHP 5.3.0 起，可以用一个变量来动态调用类。但该变量的值不能为关键字 self，parent 或 static。如下是静态属性的示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Foo</span><br><span class="line">&#123;</span><br><span class="line">    public static $my_static = &apos;foo&apos;;</span><br><span class="line"></span><br><span class="line">    public function staticValue() &#123;</span><br><span class="line">        return self::$my_static;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Bar extends Foo</span><br><span class="line">&#123;</span><br><span class="line">    public function fooStatic() &#123;</span><br><span class="line">        return parent::$my_static;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print Foo::$my_static . &quot;\n&quot;;</span><br><span class="line"></span><br><span class="line">$foo = new Foo();</span><br><span class="line">print $foo-&gt;staticValue() . &quot;\n&quot;;</span><br><span class="line">print $foo-&gt;my_static . &quot;\n&quot;;      // 对象不能使用-&gt;符号调用静态变量</span><br><span class="line"></span><br><span class="line">print $foo::$my_static . &quot;\n&quot;;</span><br><span class="line">$classname = &apos;Foo&apos;;</span><br><span class="line">print $classname::$my_static . &quot;\n&quot;; // 5.3开始可以使用变量调用类</span><br><span class="line"></span><br><span class="line">print Bar::$my_static . &quot;\n&quot;;</span><br><span class="line">$bar = new Bar();</span><br><span class="line">print $bar-&gt;fooStatic() . &quot;\n&quot;;</span><br></pre></td></tr></table></figure>
+<p>运行结果如下：</p>
+<p><img src="http://p8m3309kb.bkt.clouddn.com/examples%20of%20static%20attrs.png" alt=""></p>
+<p>作为静态变量，还可以在多个对象之间共享数据，创建好几个对象的时候，因为每次都是new的，所以创建的对象都不同，如果想让多个对象实例共享同一个变量，就可以用到静态变量。假设要编写一个类来跟踪网页浏览的人数，肯定不希望每次实例化该类时都把访问者数量置0，只是就可以将该属性设置为<code>static</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Visitor</span><br><span class="line">&#123;</span><br><span class="line">    private static $visitors = 0;</span><br><span class="line"></span><br><span class="line">    public function __construct()</span><br><span class="line">    &#123;</span><br><span class="line">        self::$visitors++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static function getVisitors()</span><br><span class="line">    &#123;</span><br><span class="line">        return self::$visitors;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 实例化</span><br><span class="line">$visitor1 = new Visitor();</span><br><span class="line">echo Visitor::getVisitors() . &quot;\n&quot;;        // 1</span><br><span class="line"></span><br><span class="line">$visitor2 = new Visitor();</span><br><span class="line">echo Visitor::getVisitors() . &quot;\n&quot;;        // 2</span><br></pre></td></tr></table></figure>
+<h1 id="延迟静态绑定"><a href="#延迟静态绑定" class="headerlink" title="延迟静态绑定"></a>延迟静态绑定</h1><p>PHP中的static关键字除了上述比较熟知的作用外，还可以作为延迟静态绑定使用，这是在5.3版本后才加入的功能。</p>
+<p>先看如下的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">abstract class DomainObject</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class User extends DomainObject</span><br><span class="line">&#123;</span><br><span class="line">    public static function create()</span><br><span class="line">    &#123;</span><br><span class="line">        return new User();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Document extends DomainObject</span><br><span class="line">&#123;</span><br><span class="line">    public static function create()</span><br><span class="line">    &#123;</span><br><span class="line">        return new Document();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先创建了一个抽象类，然后创建了两个子类<code>User</code>和<code>Document</code>分别继承自<code>DomainObject</code>抽象类，这个代码运行起来完全没问题，而且能很好的工作，如果你是一位懒惰的程序猿，看到这样重复的代码你会很恼火，尤其是重复代码比较多的时候，就会想着如何重构它。每个<code>DomainObject</code>子类都有一个相同的<code>create()</code>函数，我们试着把它放入父类当中去：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">abstract class DomainObject</span><br><span class="line">&#123;</span><br><span class="line">    public static function create()</span><br><span class="line">    &#123;</span><br><span class="line">        return new self();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class User extends DomainObject</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Document extends DomainObject</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Document::create();</span><br></pre></td></tr></table></figure>
+<p>很明显phpstorm会提示出错，我们试着运行会得到以下错误：</p>
+<p><img src="http://p8m3309kb.bkt.clouddn.com/create%20with%20self%20in%20baseclass.png" alt=""></p>
+<p>在上面的例子中，<code>self</code>对该类所起的作用与<code>$this</code>对对象所起的作用不完全相同，<code>self</code>被解析为定义<code>create()</code>的<code>DomainObject</code>，而不是解析为调用<code>self</code>的<code>Document</code>类。在PHP 5.3中延迟静态绑定的概念，最明显的标志就是使用<code>static</code>关键字，它指向的是被调用的类而不是包含类。上面的代码我们可以这么改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">abstract class DomainObject</span><br><span class="line">&#123;</span><br><span class="line">    public static function create()</span><br><span class="line">    &#123;</span><br><span class="line">        return new static();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class User extends DomainObject</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Document extends DomainObject</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print_r(Document::create());</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="http://p8m3309kb.bkt.clouddn.com/delay%20static%20binding1.png" alt=""></p>
+<p>static关键字不仅可以用于实例化，和<code>self</code>和<code>parent</code>一样，<code>static</code>还可以作为静态方法调用的标识符，甚至是从非静态上下文中调用。例如为<code>DomainObject</code>引入组的概念，默认组为<code>default</code>，可以用static为继承层次结构的某些子类重写组，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">abstract class DomainObject</span><br><span class="line">&#123;</span><br><span class="line">    private $group;</span><br><span class="line">    public function __construct()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;group = static::getGroup();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static function create()</span><br><span class="line">    &#123;</span><br><span class="line">        return new static();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static function getGroup()</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;default&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class User extends DomainObject</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Document extends DomainObject</span><br><span class="line">&#123;</span><br><span class="line">    public static function getGroup()</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;document&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class SpreadSheet extends Document</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print_r(User::create());</span><br><span class="line">print_r(SpreadSheet::create());</span><br></pre></td></tr></table></figure>
+<p>代码中，<code>DomainObject</code>的构造函数使用static调用静态方法<code>getGroup()</code>，设置默认组为<code>default</code>，在<code>Document</code>中重写了<code>getGroup()</code>方法，重新设置了组，下面是输出结果：</p>
+<p><img src="http://p8m3309kb.bkt.clouddn.com/static%20group.png" alt=""></p>
+<h2 id="PHP静态绑定的一个应用"><a href="#PHP静态绑定的一个应用" class="headerlink" title="PHP静态绑定的一个应用"></a>PHP静态绑定的一个应用</h2><blockquote>
+<p>该例子来自简书：<a href="https://www.jianshu.com/p/25a78620fa5c" target="_blank" rel="noopener">https://www.jianshu.com/p/25a78620fa5c</a></p>
+</blockquote>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>做的某项目有一个“转账”的功能，但是转账的类型有很多种，对应每种转账需要的参数也不同，举个例子一种转账是由系统转账给用户，那么就只有接收方和金额两个参数，另一种转账是用户之间的转账且支持留言，那么就有发送方接收方金额和留言四个参数。当然最简单的思路就是采用四个参数，对于第一种转账将不用的两个参数留空，这种方法的问题在于，考虑到未来可能增加的新的转账类型，可能会引入新的参数，那么代码很可能需要推倒重来，有没有更优雅的解决方式呢？</p>
+<h3 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h3><p>其实Laravel里就有实现类似需求的例子，那就是查询构造器(Query Builder)，它的一个使用的例子如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$users = DB::table(&apos;users&apos;)</span><br><span class="line">                     -&gt;select(DB::raw(&apos;count(*) as user_count, status&apos;))</span><br><span class="line">                     -&gt;where(&apos;status&apos;, &apos;&lt;&gt;&apos;, 1)</span><br><span class="line">                     -&gt;groupBy(&apos;status&apos;)</span><br><span class="line">                     -&gt;get();</span><br></pre></td></tr></table></figure>
+<p>这个方法和我们的需求就很像了，对于查询这一功能，传入哪些参数是未知的，例如某次具体的查询，可能需要调用groupBy也可能调用orderBy，也可能两者需要同时调用或者都不调用。一个思路就是针对每一个参数都写一个方法，需要时则调用，不需要时则不调用。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>整体的解决思路是写两个类，一个叫Transfer，一个叫Builder，每个参数对应的方法写在Builder里，由Transfer去调用Builder构造我们需要的转账类型，完成相关操作。这样当需求更新时（要增加新的参数时），只要在Builder里添加相应的方法即可，而不用改动现有代码。下面先贴一下对应的代码再做详细解释。<br>Transfer类代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Transfer</span><br><span class="line">&#123;</span><br><span class="line">    public function __call($method, $parameters)</span><br><span class="line">    &#123;</span><br><span class="line">        $builder = new Builder();</span><br><span class="line">        return call_user_func_array([$builder, $method], $parameters);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static function __callStatic($method, $parameters)</span><br><span class="line">    &#123;</span><br><span class="line">        $instance = new static;</span><br><span class="line">        return call_user_func_array([$instance, $method], $parameters);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Builder类实际上只涉及到具体的功能实现，就贴部分代码意思意思看看就行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Builder</span><br><span class="line">&#123;</span><br><span class="line">    protected $from = 0; // 0 represents system</span><br><span class="line">    protected $to = 0;</span><br><span class="line">    protected $amount = 0;</span><br><span class="line">    protected $comments = &apos;&apos;;</span><br><span class="line">    protected $related = [];</span><br><span class="line"></span><br><span class="line">    public function from($user)</span><br><span class="line">    &#123;</span><br><span class="line">        if ($user instanceof User) &#123;</span><br><span class="line">            $this-&gt;from = $user-&gt;getAuthIdentifier();</span><br><span class="line">        &#125; elseif (is_int($user)) &#123;</span><br><span class="line">            $this-&gt;from = $user;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            throw new InvalidArgumentException(sprintf(&apos;%s excepts $user parameter to be \App\User or integer, %s given.&apos;, __METHOD__, gettype($user)));</span><br><span class="line">        &#125;</span><br><span class="line">        return $this;</span><br><span class="line">    &#125;</span><br><span class="line">    public function to($user)&#123;...&#125;</span><br><span class="line">    public function amount(int $amount)&#123;...&#125;</span><br><span class="line">    public function comments($comments)&#123;...&#125;</span><br><span class="line">    public function related(int $type, int $id, $extra = null)&#123;...&#125;</span><br><span class="line">    public function transfer()&#123;...&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体调用Transfer功能的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Transfer::from($sender)-&gt;to($receiver)-&gt;amount($amount)-&gt;comments($comments)-&gt;related($related_type, $related_id, $related_extra)-&gt;transfer();</span><br></pre></td></tr></table></figure>
+<p>下面我们来走一遍调用Transfer的流程来看看。首先调用了<code>Transfer</code>类中的静态方法<code>from</code>，然而<code>Transfer</code>中并不存在这个静态方法，则会自动调用<code>__callStatic()</code>这个魔术方法。这个方法首先实例化了一个<code>static</code>对象。注意这里的static是一个类名，new出来的<code>$instance</code>是属于<code>static</code>这个类的一个实例化对象，有点拗口然后返回时调用了<code>call_user_func_array</code>这个方法，这个方法具体可以参考php的手册，实际上它完成了类似<code>$instance-&gt;method($parameters)</code>这样的操作，放到我们当前的情境下实际执行了<code>$transfer_instance-&gt;from($user)</code>这样的操作。</p>
+<p>然后发觉<code>Transfer</code>中并不存在这个动态方法，于是又会自动调用<code>__call()</code>这个魔术方法。这个方法首先创建了一个<code>Builder</code>类的实例，之后调用<code>call_user_func_array</code>这个方法，实际上相当于执行了<code>$builder-&gt;from($user)</code>方法，然后终于得<code>Builder</code>类里找到了这个<code>from()</code>方法，注意它的返回值是$this。</p>
+<p>然后当前这个<code>Builder</code>这个对象继续调用<code>to</code>方法，发觉又不存在又去调用<code>__call()</code>这个魔术方法，之后的过程同上，反复调用<code>Builder</code>中的方法把所有需要的参数都处理过以后最后调用了<code>transfer()</code>方法最终完成转账操作。</p>
+<p>参考：</p>
+<p><a href="http://www.php.net/manual/zh/language.oop5.static.php" target="_blank" rel="noopener">http://www.php.net/manual/zh/language.oop5.static.php</a><br><a href="https://www.jianshu.com/p/25a78620fa5c" target="_blank" rel="noopener">https://www.jianshu.com/p/25a78620fa5c</a></p>
+<p>欢迎关注我的公众号：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2650331-0a591295c0869965.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2018/6/5/PHP/The-secret-you-do-not-know-the-static-in-PHP/" data-id="ckpqkrur4001eq4cabzcai8w2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-What-is-PSR" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="../../2018/6/3/PHP/What-is-PSR/" class="article-date">
@@ -158,7 +303,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/6/3/PHP/What-is-PSR/" data-id="ckpgmq34a002d2zcaakforiom" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2018/6/3/PHP/What-is-PSR/" data-id="ckpqkrurk001wq4ca148bsu4k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PSR/">PSR</a></li></ul>
@@ -247,7 +392,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/6/1/Object-Oriented/rethinking-in-Object-Oriented/" data-id="ckpgmq35x004q2zcadrwityxt" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2018/6/1/Object-Oriented/rethinking-in-Object-Oriented/" data-id="ckpqkruwe008tq4caxytph4kq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Object-Oriented/">Object Oriented</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li></ul>
@@ -347,156 +492,10 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/5/31/PHP/the-autoload-of-php/" data-id="ckpgmq36900552zcar5p6oayv" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2018/5/31/PHP/the-autoload-of-php/" data-id="ckpqkruwz009iq4calcmgw11c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/autoload/">autoload</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Use-screen-to-manage-your-remote-session" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="../../2018/5/15/Linux/Use-screen-to-manage-your-remote-session/" class="article-date">
-  <time datetime="2018-05-15T09:33:36.000Z" itemprop="datePublished">2018-05-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="../../categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2018/5/15/Linux/Use-screen-to-manage-your-remote-session/">使用Screen管理远程回话</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>​    在本地开发时，经常需要使用远程连接到Linux服务器，一开始我自己都是有几个远程就开几个SSH窗口，这种方法很原始很直接，但每次都受够了密码输入，即使用了SSH免密码登录，也会觉得每次输入SSH的命令一点都不快速，况且况且窗口开多了，也会很混乱，不易管理，这种情况，Linux上的工具也有很多，今天就学习一下<code>screen</code>工具。</p>
-<p>​    在介绍<code>screen</code>工具时，先讨论一下，为什么连接服务器后，当执行长时间的任务时，我们关闭远程连接窗口，这个任务就被杀掉了呢？</p>
-<h3 id="元凶：SIGUP信号"><a href="#元凶：SIGUP信号" class="headerlink" title="元凶：SIGUP信号"></a>元凶：SIGUP信号</h3><p>​    在Linux／Unix中，有以下几个概念：</p>
-        
-          <p class="article-more-link">
-            <a href="../../2018/5/15/Linux/Use-screen-to-manage-your-remote-session/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/5/15/Linux/Use-screen-to-manage-your-remote-session/" data-id="ckpgmq33y001v2zcajnngidhl" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Server/">Server</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Routing-Selection" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="../../2018/5/14/Networks/Routing-Selection/" class="article-date">
-  <time datetime="2018-05-14T09:32:37.000Z" itemprop="datePublished">2018-05-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="../../categories/Networks/">Networks</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2018/5/14/Networks/Routing-Selection/">IP中的路由选择</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://p8m3309kb.bkt.clouddn.com/%E5%B0%8F%E5%9E%8B%E7%BD%91%E7%BB%9C.png" alt="一个小型网络"></p>
-<p>​    网络这个东西是很复杂得，像一张蜘蛛网一样，将每一台通信设备连在一起，在上图中，工作站A想要访问工作站C，有不止一条路可以走，在现实中可能这样的路有非常多，这些路有远有近，有快的有慢得，那么在连接网络时，设备是如何知道哪一条路是最优的呢？通常，通信设备中都会有一个路由表（Routing Table），其实就是一张二维表格，记录着这台设备如果要去某个地方需要线通过哪些设备中转。</p>
-<p>​    下面是我本机（mac系统）中的路由表（只是部分截图），不光是路由器，每个接入网络的设备都会有路由表：</p>
-<p><img src="http://p8m3309kb.bkt.clouddn.com/netstate%20-rn.png" alt="netstat -rn命令"></p>
-<p>​    上图是一张典型的主机路由表，执行<code>netstate</code>命令，<code>-r</code>选项是列出路由表，<code>-n</code>选项是以数字格式打印出IP地址（默认情况会打印网络名加主机名），本机的路由表大致由7列组成，下面介绍一下每一列的作用：</p>
-<ul>
-<li>Destination：目标网络地址；</li>
-<li>Gateway：网关地址，要去目标网络，需要先走这条路；</li>
-<li>Flags：此条路由记录的标志，可以设置的标志大致有：<ol>
-<li>U Up，该路由可以被使用；</li>
-<li>G Gateway，该路由是到一个网关（路由器），如果没有设置该标志，说明该条路由不是一个网关，是一条直接路由，Gateway列给出的是外出接口的IP地址；</li>
-<li>H Host，该路由是到一个主机，即Destination列给出的是一个完整的主机地址，如果没有设置该标志，说明该路由是到一个网络，而Destination列出的是一个网络地址：一个网络号，或者网络号与子网号的组合；</li>
-<li>D Dynamically，该路由是由ICMP重定向报文创建的；</li>
-<li>M Modified，该路由已被重定向报文修改；</li>
-</ol>
-</li>
-<li>Refs：正在使用该路由的活动进程个数，面向连接的协议如TCP在建立连接时需要固定路由，如果我们用Telnet连接<code>10.158.51.78</code>，它的值将增加1；</li>
-<li>Use：通过该路由发送的分组数；</li>
-<li>Netif：该记录使用的网络接口;</li>
-<li>Expire：该记录过期时间。</li>
-</ul>
-<p>​    标志G是非常重要的，因为它区分了直接路由和间接路由（对于直接路由来说没有标志G）。间接和直接路由的区别在于，发往直接路由的分组中不但具有指明目的端的IP地址，还具有链路层地址，可以理解为数据报中的目的IP地址和链路层目的地址是一样的。当分组被发往一个间接路由时，IP地址指明的是最终的目的地，但是链路层地址指明的是网关（即下一站路由器），可以理解为可以理解为数据报中的目的IP地址和链路层目的地址是不一样的。</p>
-<p>​    标志G和H之间的区别：都代表通行设备，不过功能不一样，G标志区分了直接路由和间接路由，而H标志表明目的地址是一个完整的主机地址。若没有设置H标志，则说明目的地只是一个网络地址（主机号部分为0）。当为某个目的IP地址搜索路由表时，主机地址项必须与目的地址完全匹配，而网络地址项只需要匹配目的地址的网络号和子网号。</p>
-<h2 id="路由算法"><a href="#路由算法" class="headerlink" title="路由算法"></a>路由算法</h2><h3 id="静态路由选择策略"><a href="#静态路由选择策略" class="headerlink" title="静态路由选择策略"></a>静态路由选择策略</h3><p>​    静态路由选择策略即非自适应路由选择，只在交换机启动时计算和交换路由，此后路由不再改变。特点是简单并且开销较小，但不能及时适应网络状态的变化。具体可以分为以下三种：</p>
-<ol>
-<li><p>扩散式路由选择</p>
-<p>一个网络节点从A线路收到分组后，立即把分组发向除A线路外的所有其他输出线路上，任何节点只接受最先到达的报文分组，不接受重复报文。适用于规模较小，对可靠性、健壮性要求很高的场合，还可被用于分发信息、判断可达性、寻找最短路径等。</p>
-</li>
-<li><p>固定路由选择</p>
-<p>所有网络节点都保存一张路由表，路由表中记录着所有为了到达某个目的节点而选择的下一个节点或链路，并不记录到该目的节点的所有中间节点。所以当一个分组到达节点时，只需要在查找这个路由表查找到对应的下一个节点，并发送分组。因为所有的路由都保存在一张表中，所以很简单，适合于一个负载稳定拓扑变化不大的网络中运行，但灵活度很差，无法对网络的拥塞和故障做出及时地反映。</p>
-</li>
-<li><p>随即路由选择</p>
-<p>当分组到达某节点后，随意选择一条线路进行分组转发。随即选择的路由不一定是最佳路由，增加了不必要的负载，而且分组传播延迟不可预期。</p>
-</li>
-</ol>
-<h3 id="动态路由选择策略"><a href="#动态路由选择策略" class="headerlink" title="动态路由选择策略"></a>动态路由选择策略</h3><p>​    动态路由选择策略即自适应路由选择，在交换机启动时进行初始化，当网络发生阻塞或故障时能够随时进行更新。</p>
-<ol>
-<li><p>孤立路由选择</p>
-<p>每个节点并不利用其他节点来的网络信息，仅根据本节点看到的信息来确定路由。最短等待法，将具有最短队列的链路作为最好路由你想学习算法（backward learning），将逆向的路由节点数最少的链路作为最好路由。</p>
-</li>
-<li><p>集中路由选择</p>
-<p>和固定路由选择一样，所有节点都保存一张路由表，和固定路由的区别在于固定路由算法中路由表的建立是手工完成的，而集中路由选择中路由表的建立是由网络中设置的一个路由控制中心RCC来几种完成的（收集、计算、分发）。缺点：离RCC较近的地方通信量的开销比较大，因为要周期性地从所有节点手机网络的状态信息的报告，同时还要生成路由表并从RCC发送到网内的所有节点；另一个是可靠性问题，一旦RCC出现故障，则整个网络就失去控制。</p>
-</li>
-<li><p>分布路由选择</p>
-<p>根据来自于相邻节点的信息，并通过一个最短花费路由算法计算出到每个目的地的路由。</p>
-</li>
-</ol>
-<h4 id="动态路由选择中常用的两种算法："><a href="#动态路由选择中常用的两种算法：" class="headerlink" title="动态路由选择中常用的两种算法："></a>动态路由选择中常用的两种算法：</h4><ol>
-<li><p>距离向量路由协议（Distance Vector Routing，DVR）</p>
-</li>
-<li><p>链路状态路由协议（Link State Routing）</p>
-</li>
-</ol>
-<p>​    路由选择是个非常复杂的问题，它既要 网络中所有节点协同工作，也需要路由选择适应环境的不断变化，并且这种变化是事先无法知道的，比如节点故障、网络拥塞等。</p>
-<p>参考：《TCP／IP详解 卷1:协议》</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/5/14/Networks/Routing-Selection/" data-id="ckpgmq33p001g2zcaitjs5rw7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/networks/">networks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/routing/">routing</a></li></ul>
 
     </footer>
   </div>
@@ -519,7 +518,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Devops/">Devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/">Electron</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/Node/">Node</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/Node/Javascript/">Javascript</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/Git/">Git</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Networks/">Networks</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Object-Oriented/">Object Oriented</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/PHP/">PHP</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/PHP/Laravel/">Laravel</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Reading/">Reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Regular-Expression/">Regular Expression</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Tools/">Tools</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/VPS/">VPS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Yangmao/">Yangmao</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/frontend/">frontend</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/notes/">notes</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/小程序/">小程序</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/小程序/PHP/">PHP</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/微信/">微信</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/设计/">设计</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Devops/">Devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/">Electron</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/Node/">Node</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Electron/Node/Javascript/">Javascript</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/Git/">Git</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Networks/">Networks</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Object-Oriented/">Object Oriented</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/PHP/">PHP</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/PHP/Laravel/">Laravel</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Reading/">Reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Regular-Expression/">Regular Expression</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Tools/">Tools</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/VPS/">VPS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Yangmao/">Yangmao</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/frontend/">frontend</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/notes/">notes</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/小程序/">小程序</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/小程序/PHP/">PHP</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/微信/">微信</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/设计/">设计</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -529,7 +528,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="../../tags/API/" style="font-size: 11.67px;">API</a> <a href="../../tags/Big-Sur/" style="font-size: 10px;">Big Sur</a> <a href="../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../tags/CSS/" style="font-size: 15px;">CSS</a> <a href="../../tags/DNS/" style="font-size: 10px;">DNS</a> <a href="../../tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Javascript/" style="font-size: 11.67px;">Javascript</a> <a href="../../tags/Laravel/" style="font-size: 11.67px;">Laravel</a> <a href="../../tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="../../tags/Lumen/" style="font-size: 10px;">Lumen</a> <a href="../../tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="../../tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../tags/Server/" style="font-size: 15px;">Server</a> <a href="../../tags/Slim/" style="font-size: 10px;">Slim</a> <a href="../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../tags/Typora/" style="font-size: 10px;">Typora</a> <a href="../../tags/UniApp/" style="font-size: 10px;">UniApp</a> <a href="../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../tags/VPS/" style="font-size: 10px;">VPS</a> <a href="../../tags/Vue/" style="font-size: 11.67px;">Vue</a> <a href="../../tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="../../tags/angular/" style="font-size: 10px;">angular</a> <a href="../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../tags/babel/" style="font-size: 10px;">babel</a> <a href="../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../tags/cover-view/" style="font-size: 11.67px;">cover-view</a> <a href="../../tags/curl/" style="font-size: 10px;">curl</a> <a href="../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../tags/electron/" style="font-size: 11.67px;">electron</a> <a href="../../tags/emoji/" style="font-size: 10px;">emoji</a> <a href="../../tags/firewall/" style="font-size: 10px;">firewall</a> <a href="../../tags/framework/" style="font-size: 10px;">framework</a> <a href="../../tags/git/" style="font-size: 10px;">git</a> <a href="../../tags/gulp/" style="font-size: 10px;">gulp</a> <a href="../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="../../tags/life/" style="font-size: 10px;">life</a> <a href="../../tags/linux/" style="font-size: 10px;">linux</a> <a href="../../tags/macOS/" style="font-size: 10px;">macOS</a> <a href="../../tags/networks/" style="font-size: 11.67px;">networks</a> <a href="../../tags/node/" style="font-size: 10px;">node</a> <a href="../../tags/notes/" style="font-size: 13.33px;">notes</a> <a href="../../tags/npm/" style="font-size: 11.67px;">npm</a> <a href="../../tags/permission/" style="font-size: 10px;">permission</a> <a href="../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../tags/ufw/" style="font-size: 10px;">ufw</a> <a href="../../tags/公众号阅读笔记/" style="font-size: 10px;">公众号阅读笔记</a> <a href="../../tags/小程序/" style="font-size: 18.33px;">小程序</a> <a href="../../tags/微信/" style="font-size: 13.33px;">微信</a> <a href="../../tags/羊毛/" style="font-size: 10px;">羊毛</a> <a href="../../tags/软件设计/" style="font-size: 10px;">软件设计</a>
+      <a href="../../tags/API/" style="font-size: 11.67px;">API</a> <a href="../../tags/Big-Sur/" style="font-size: 10px;">Big Sur</a> <a href="../../tags/C/" style="font-size: 10px;">C#</a> <a href="../../tags/CSS/" style="font-size: 16.67px;">CSS</a> <a href="../../tags/DNS/" style="font-size: 10px;">DNS</a> <a href="../../tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="../../tags/Go/" style="font-size: 10px;">Go</a> <a href="../../tags/Java/" style="font-size: 10px;">Java</a> <a href="../../tags/Javascript/" style="font-size: 11.67px;">Javascript</a> <a href="../../tags/Laravel/" style="font-size: 11.67px;">Laravel</a> <a href="../../tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="../../tags/Lumen/" style="font-size: 10px;">Lumen</a> <a href="../../tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="../../tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="../../tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="../../tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="../../tags/PHP/" style="font-size: 20px;">PHP</a> <a href="../../tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="../../tags/PSR/" style="font-size: 10px;">PSR</a> <a href="../../tags/Perl/" style="font-size: 10px;">Perl</a> <a href="../../tags/Python/" style="font-size: 10px;">Python</a> <a href="../../tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="../../tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="../../tags/SICP/" style="font-size: 10px;">SICP</a> <a href="../../tags/Server/" style="font-size: 15px;">Server</a> <a href="../../tags/Slim/" style="font-size: 10px;">Slim</a> <a href="../../tags/Something/" style="font-size: 10px;">Something</a> <a href="../../tags/Swift/" style="font-size: 10px;">Swift</a> <a href="../../tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="../../tags/Typora/" style="font-size: 10px;">Typora</a> <a href="../../tags/UniApp/" style="font-size: 10px;">UniApp</a> <a href="../../tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="../../tags/VPS/" style="font-size: 10px;">VPS</a> <a href="../../tags/Vue/" style="font-size: 11.67px;">Vue</a> <a href="../../tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="../../tags/angular/" style="font-size: 10px;">angular</a> <a href="../../tags/array-key-exists/" style="font-size: 10px;">array_key_exists</a> <a href="../../tags/array-search/" style="font-size: 10px;">array_search</a> <a href="../../tags/autoload/" style="font-size: 10px;">autoload</a> <a href="../../tags/babel/" style="font-size: 10px;">babel</a> <a href="../../tags/canvas/" style="font-size: 10px;">canvas</a> <a href="../../tags/cover-view/" style="font-size: 11.67px;">cover-view</a> <a href="../../tags/curl/" style="font-size: 10px;">curl</a> <a href="../../tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="../../tags/electron/" style="font-size: 11.67px;">electron</a> <a href="../../tags/emoji/" style="font-size: 10px;">emoji</a> <a href="../../tags/firewall/" style="font-size: 10px;">firewall</a> <a href="../../tags/framework/" style="font-size: 10px;">framework</a> <a href="../../tags/git/" style="font-size: 10px;">git</a> <a href="../../tags/gulp/" style="font-size: 10px;">gulp</a> <a href="../../tags/in-array/" style="font-size: 10px;">in_array</a> <a href="../../tags/interviews/" style="font-size: 10px;">interviews</a> <a href="../../tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="../../tags/life/" style="font-size: 10px;">life</a> <a href="../../tags/linux/" style="font-size: 10px;">linux</a> <a href="../../tags/macOS/" style="font-size: 10px;">macOS</a> <a href="../../tags/networks/" style="font-size: 11.67px;">networks</a> <a href="../../tags/node/" style="font-size: 10px;">node</a> <a href="../../tags/notes/" style="font-size: 13.33px;">notes</a> <a href="../../tags/npm/" style="font-size: 11.67px;">npm</a> <a href="../../tags/performance/" style="font-size: 10px;">performance</a> <a href="../../tags/permission/" style="font-size: 10px;">permission</a> <a href="../../tags/routing/" style="font-size: 10px;">routing</a> <a href="../../tags/tools/" style="font-size: 10px;">tools</a> <a href="../../tags/ufw/" style="font-size: 10px;">ufw</a> <a href="../../tags/公众号阅读笔记/" style="font-size: 10px;">公众号阅读笔记</a> <a href="../../tags/小程序/" style="font-size: 18.33px;">小程序</a> <a href="../../tags/微信/" style="font-size: 13.33px;">微信</a> <a href="../../tags/羊毛/" style="font-size: 10px;">羊毛</a> <a href="../../tags/软件设计/" style="font-size: 10px;">软件设计</a>
     </div>
   </div>
 
@@ -538,7 +537,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/05/">May 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/03/">March 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/02/">February 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/01/">January 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/12/">December 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/10/">October 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">June 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">May 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/06/">June 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/05/">May 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/03/">March 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/02/">February 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/01/">January 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/12/">December 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/10/">October 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">June 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">May 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -551,6 +550,14 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="../../2021/6/9/PHP/Some-different-ways-of-in-array/">判断元素是否在数组内的几种方法对比</a>
+          </li>
+        
+          <li>
+            <a href="../../2021/6/5/frontend/Pseudo-classes-in-CSS/">再次认识CSS中的伪类</a>
+          </li>
+        
+          <li>
             <a href="../../2021/5/31/frontend/primordials-is-not-defined/">How to fix ReferenceError primordials is not defined error</a>
           </li>
         
@@ -560,14 +567,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="../../2021/5/24/frontend/Babel-cannot-find-module-babel-runtime-regenerator/">Babel cannot find module babel-runtime/regenerator</a>
-          </li>
-        
-          <li>
-            <a href="../../2021/5/21/notes/defference-between-URL-and-URI/">URL和URI之间的区别</a>
-          </li>
-        
-          <li>
-            <a href="../../2021/5/16/Reading/reading-notes-2021-05-16/">阅读笔记2021-05-16</a>
           </li>
         
       </ul>

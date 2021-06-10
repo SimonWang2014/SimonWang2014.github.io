@@ -113,6 +113,139 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-Some-different-ways-of-in-array" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/6/9/PHP/Some-different-ways-of-in-array/" class="article-date">
+  <time datetime="2021-06-09T03:56:03.000Z" itemprop="datePublished">2021-06-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/6/9/PHP/Some-different-ways-of-in-array/">判断元素是否在数组内的几种方法对比</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>数组是很常用的一个数据结构，而且经常需要判断某个元素是否在数组中，这在<code>PHP</code>中有很多种方法，有：</p>
+<ul>
+<li><code>foreach</code>循环遍历数据</li>
+<li><code>in_array()</code></li>
+<li><code>array_search()</code></li>
+<li><code>isset()</code></li>
+<li><code>array_key_exists()</code></li>
+</ul>
+<p>还有其他方法，这里就不说了。我们在网上搜索相关问题基本都是清一色的教我们如何使用<code>in_array()</code>函数，好像PHP中判断数组包含某个元素只有这一种方式似的，这次本文就来分析下除<code>foreach</code>外其他四种方式的执行效率。</p>
+        
+          <p class="article-more-link">
+            <a href="/2021/6/9/PHP/Some-different-ways-of-in-array/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2021/6/9/PHP/Some-different-ways-of-in-array/" data-id="ckpqkruqs000zq4cad5bvy3ci" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/array-key-exists/">array_key_exists</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/array-search/">array_search</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/in-array/">in_array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/performance/">performance</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Pseudo-classes-in-CSS" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/6/5/frontend/Pseudo-classes-in-CSS/" class="article-date">
+  <time datetime="2021-06-05T02:33:01.000Z" itemprop="datePublished">2021-06-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="categories/frontend/">frontend</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/6/5/frontend/Pseudo-classes-in-CSS/">再次认识CSS中的伪类</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>CSS中的<code>伪类</code>真是个神奇的东西，有时要实现某些布局的时候菜鸟都是<code>div</code>套<code>div</code>，实在不行上<code>flex</code>，而高手一般都是用最少的元素来实现效果，比如巧妙的运用<code>伪类</code>来达到目的的同时减少元素节点，代码清爽了很多不用再写一坨<code>div</code>。</p>
+<p>这不，最近学习了几招伪类的使用，特此记录下。</p>
+<h1 id="列表最后一行左对齐"><a href="#列表最后一行左对齐" class="headerlink" title="列表最后一行左对齐"></a>列表最后一行左对齐</h1><p><code>flex</code>布局中，最后一行个数不满的情况：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.list</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">24%</span>; <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: skyblue;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">15px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后一行不足4个：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>1.png</p>
+<p>解决思路有很多，这里我只说一种方式：使用伪类动态计算最后一个元素的<code>margin</code>。比如每行有4个元素，最后一行只有3个，就计算最后一个的<code>margin-right</code>为“元素宽度+间隔大小”，若只有2个，则<code>margin-right</code>为”2个元素宽度+2个间隔大小”，以此类推，代码如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="comment">/* 两端对齐 */</span></span><br><span class="line">    <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.list</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">24%</span>; <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: skyblue;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">15px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 如果最后一行是3个元素 */</span></span><br><span class="line"><span class="selector-class">.list</span><span class="selector-pseudo">:last-child</span><span class="selector-pseudo">:nth-child(4n</span> <span class="selector-tag">-</span> 1) &#123;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="built_in">calc</span>(24% + 4% / 3);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 如果最后一行是2个元素 */</span></span><br><span class="line"><span class="selector-class">.list</span><span class="selector-pseudo">:last-child</span><span class="selector-pseudo">:nth-child(4n</span> <span class="selector-tag">-</span> 2) &#123;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="built_in">calc</span>(48% + 8% / 3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p>2.png</p>
+<p>黄色部分为动态计算的<code>margin</code>，上面代码最重要的就是<code>.list:last-child:nth-child(4n - 1)</code>，骚操作，头一次见，稍微解释下：</p>
+<ul>
+<li>.list:last-child:nth-child(4n - 1)：说明最后一个同时也是<code>4n-1</code>个，就是要么第3个元素，要么第7个元素…</li>
+<li>.list:last-child:nth-child(4n - 2)：说明最后一个同时也是<code>4n-2</code>个，就是要么第2个元素，要么第6个元素…</li>
+</ul>
+<h1 id="文本状态的切换"><a href="#文本状态的切换" class="headerlink" title="文本状态的切换"></a>文本状态的切换</h1><p>元素的展开和收起也是会经常遇到的，默认收起状态，点击后就会展开，类似于点击弹出下拉菜单，只涉及到两种状态，也可以结合伪类实现：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.btn</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">'展开'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#exp</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#exp</span><span class="selector-pseudo">:checked+.btn</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">'收起'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>html如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrap"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"exp"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"btn"</span> <span class="attr">for</span>=<span class="string">"exp"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p>3.png</p>
+<p>这里巧妙地借助<code>:checked</code>伪类实现状态的切换，换做<code>javascript</code>就要写好几行代码。</p>
+<h1 id="生成箭头"><a href="#生成箭头" class="headerlink" title="生成箭头"></a>生成箭头</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.arrow-button</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">180px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">64px</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#f49714</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.arrow-button</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">32px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">64px</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: -<span class="number">32px</span>;</span><br><span class="line">  <span class="attribute">background</span>:</span><br><span class="line">    <span class="built_in">linear-gradient</span>(-45deg, transparent 0, transparent 22px, #f49714 22px, #f49714 100%),</span><br><span class="line">    <span class="built_in">linear-gradient</span>(-135deg, transparent 0, transparent 22px, #f49714 22px, #f49714 100%);</span><br><span class="line">  <span class="attribute">background-size</span>: <span class="number">32px</span> <span class="number">32px</span>;</span><br><span class="line">  <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">  <span class="attribute">background-position</span>: <span class="number">0</span> bottom, <span class="number">0</span> top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p>4.png</p>
+<h1 id="根据文本长度自动调整字体大小"><a href="#根据文本长度自动调整字体大小" class="headerlink" title="根据文本长度自动调整字体大小"></a>根据文本长度自动调整字体大小</h1><p>这个就很极客了，先看看效果：</p>
+<p>5.png</p>
+<p>这个是先效果的背后和第一个例子一样使用了<code>伪类级联</code>，同一个选择器上使用多个伪类，核心代码如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> <span class="selector-tag">span</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">40px</span>;    </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-tag">span</span><span class="selector-pseudo">:first-child</span><span class="selector-pseudo">:nth-last-child(n+13)</span>,</span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-tag">span</span><span class="selector-pseudo">:first-child</span><span class="selector-pseudo">:nth-last-child(n+13)</span> ~ <span class="selector-tag">span</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">30px</span>;    </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-tag">span</span><span class="selector-pseudo">:first-child</span><span class="selector-pseudo">:nth-last-child(n+17)</span>,</span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-tag">span</span><span class="selector-pseudo">:first-child</span><span class="selector-pseudo">:nth-last-child(n+17)</span> ~ <span class="selector-tag">span</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;    </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-tag">span</span><span class="selector-pseudo">:first-child</span><span class="selector-pseudo">:nth-last-child(n+25)</span>,</span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-tag">span</span><span class="selector-pseudo">:first-child</span><span class="selector-pseudo">:nth-last-child(n+25)</span> ~ <span class="selector-tag">span</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">14px</span>;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过使用<code>伪类级联</code>能控制不同字符个数的样式。</p>
+<p>能实现的效果还有很多，很多我也不会。。。</p>
+<p>就我自己在开发时，很容易就把伪类这个东西抛之脑后了，下意识地习惯直接<code>div</code>一把梭，实现不了就用<code>javascript</code>，因为这种下意思的习惯成本很低，不要多加思考。其实有时候仔细想想，很多情况真的没必要“杀鸡用牛刀”，习惯也是有代价的，下意识的使用方式看起来似乎成本很低，但代码因此变得复杂，增加了后期的维护成本和理解成本。不光是我们在编码的时候，生活中也是如此，遇到问题不放多思考，不要急于作出反馈。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.zhangxinxu.com/wordpress/?p=1514" target="_blank" rel="noopener">http://www.zhangxinxu.com/wordpress/?p=1514</a></p>
+<p><a href="https://www.zhangxinxu.com/wordpress/?p=8540" target="_blank" rel="noopener">https://www.zhangxinxu.com/wordpress/?p=8540</a></p>
+<p><a href="https://segmentfault.com/a/1190000040030723" target="_blank" rel="noopener">https://segmentfault.com/a/1190000040030723</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2021/6/5/frontend/Pseudo-classes-in-CSS/" data-id="ckpqkruqp000sq4caoymuyhcb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/CSS/">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-primordials-is-not-defined" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/5/31/frontend/primordials-is-not-defined/" class="article-date">
@@ -163,7 +296,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/5/31/frontend/primordials-is-not-defined/" data-id="ckpgmq35p004b2zcay74jn031" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2021/5/31/frontend/primordials-is-not-defined/" data-id="ckpqkruvq0088q4cagvr84hcs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/gulp/">gulp</a></li></ul>
@@ -217,7 +350,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/5/28/PHP/A-simple-PHP-framework/" data-id="ckpgmq32o00022zcag058qlsm" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2021/5/28/PHP/A-simple-PHP-framework/" data-id="ckpqkruqc000lq4caqssw46ra" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/framework/">framework</a></li></ul>
@@ -267,100 +400,10 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/5/24/frontend/Babel-cannot-find-module-babel-runtime-regenerator/" data-id="ckpgmq32r00032zcafdefc5ja" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2021/5/24/frontend/Babel-cannot-find-module-babel-runtime-regenerator/" data-id="ckpqkruqe000mq4cahyaptwka" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/babel/">babel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/npm/">npm</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-defference-between-URL-and-URI" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/5/21/notes/defference-between-URL-and-URI/" class="article-date">
-  <time datetime="2021-05-21T06:27:34.000Z" itemprop="datePublished">2021-05-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/5/21/notes/defference-between-URL-and-URI/">URL和URI之间的区别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>浏览网页时，我们需要知道“网址”才能访问，这里说的“网址”通常就是指<code>URL</code>，比如：<code>https://www.xydida.com/index.html</code>，而平时也会说<code>URI</code>、<code>URN</code>，那又是什么呢？今天就来捋一捋。</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/5/21/notes/defference-between-URL-and-URI/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/5/21/notes/defference-between-URL-and-URI/" data-id="ckpgmq34p00322zcaemr5utgy" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/networks/">networks</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-reading-notes-2021-05-16" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/5/16/Reading/reading-notes-2021-05-16/" class="article-date">
-  <time datetime="2021-05-16T14:30:30.000Z" itemprop="datePublished">2021-05-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="categories/Reading/">Reading</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/5/16/Reading/reading-notes-2021-05-16/">阅读笔记2021-05-16</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近发现，我们每天都在阅读大量的文章，不管是主动查看的还是被动接受的，这其中有一些优秀的文章或文字经常被我们读过之后就扔在了一边，回头再想的时候已找不到哪去了，所以我觉得做阅读笔记是非常重要的，不光是摘录文章中好的句子，还可以记录自己当时的想法，积少成多，我想一定是比很大的财富。所有，现在就行动起来。</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/5/16/Reading/reading-notes-2021-05-16/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/5/16/Reading/reading-notes-2021-05-16/" data-id="ckpgmq35w004m2zcaq7ndz3e1" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/公众号阅读笔记/">公众号阅读笔记</a></li></ul>
 
     </footer>
   </div>
@@ -383,7 +426,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="categories/Algorithm/">Algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Devops/">Devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Electron/">Electron</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="categories/Electron/Node/">Node</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="categories/Electron/Node/Javascript/">Javascript</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="categories/Linux/">Linux</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="categories/Linux/Git/">Git</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Networks/">Networks</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Object-Oriented/">Object Oriented</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/PHP/">PHP</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="categories/PHP/Laravel/">Laravel</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="categories/Reading/">Reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Regular-Expression/">Regular Expression</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Tools/">Tools</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/VPS/">VPS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Yangmao/">Yangmao</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/frontend/">frontend</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/notes/">notes</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="categories/小程序/">小程序</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="categories/小程序/PHP/">PHP</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="categories/微信/">微信</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/设计/">设计</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="categories/Algorithm/">Algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Devops/">Devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Electron/">Electron</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="categories/Electron/Node/">Node</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="categories/Electron/Node/Javascript/">Javascript</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="categories/Linux/">Linux</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="categories/Linux/Git/">Git</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Networks/">Networks</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Object-Oriented/">Object Oriented</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/PHP/">PHP</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="categories/PHP/Laravel/">Laravel</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="categories/Reading/">Reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Regular-Expression/">Regular Expression</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Tools/">Tools</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/VPS/">VPS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Yangmao/">Yangmao</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/frontend/">frontend</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/notes/">notes</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="categories/小程序/">小程序</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="categories/小程序/PHP/">PHP</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="categories/微信/">微信</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/设计/">设计</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -393,7 +436,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="tags/API/" style="font-size: 11.67px;">API</a> <a href="tags/Big-Sur/" style="font-size: 10px;">Big Sur</a> <a href="tags/C/" style="font-size: 10px;">C#</a> <a href="tags/CSS/" style="font-size: 15px;">CSS</a> <a href="tags/DNS/" style="font-size: 10px;">DNS</a> <a href="tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="tags/Go/" style="font-size: 10px;">Go</a> <a href="tags/Java/" style="font-size: 10px;">Java</a> <a href="tags/Javascript/" style="font-size: 11.67px;">Javascript</a> <a href="tags/Laravel/" style="font-size: 11.67px;">Laravel</a> <a href="tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="tags/Lumen/" style="font-size: 10px;">Lumen</a> <a href="tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="tags/PHP/" style="font-size: 20px;">PHP</a> <a href="tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="tags/PSR/" style="font-size: 10px;">PSR</a> <a href="tags/Perl/" style="font-size: 10px;">Perl</a> <a href="tags/Python/" style="font-size: 10px;">Python</a> <a href="tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="tags/SICP/" style="font-size: 10px;">SICP</a> <a href="tags/Server/" style="font-size: 15px;">Server</a> <a href="tags/Slim/" style="font-size: 10px;">Slim</a> <a href="tags/Something/" style="font-size: 10px;">Something</a> <a href="tags/Swift/" style="font-size: 10px;">Swift</a> <a href="tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="tags/Typora/" style="font-size: 10px;">Typora</a> <a href="tags/UniApp/" style="font-size: 10px;">UniApp</a> <a href="tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="tags/VPS/" style="font-size: 10px;">VPS</a> <a href="tags/Vue/" style="font-size: 11.67px;">Vue</a> <a href="tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="tags/angular/" style="font-size: 10px;">angular</a> <a href="tags/autoload/" style="font-size: 10px;">autoload</a> <a href="tags/babel/" style="font-size: 10px;">babel</a> <a href="tags/canvas/" style="font-size: 10px;">canvas</a> <a href="tags/cover-view/" style="font-size: 11.67px;">cover-view</a> <a href="tags/curl/" style="font-size: 10px;">curl</a> <a href="tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="tags/electron/" style="font-size: 11.67px;">electron</a> <a href="tags/emoji/" style="font-size: 10px;">emoji</a> <a href="tags/firewall/" style="font-size: 10px;">firewall</a> <a href="tags/framework/" style="font-size: 10px;">framework</a> <a href="tags/git/" style="font-size: 10px;">git</a> <a href="tags/gulp/" style="font-size: 10px;">gulp</a> <a href="tags/interviews/" style="font-size: 10px;">interviews</a> <a href="tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="tags/life/" style="font-size: 10px;">life</a> <a href="tags/linux/" style="font-size: 10px;">linux</a> <a href="tags/macOS/" style="font-size: 10px;">macOS</a> <a href="tags/networks/" style="font-size: 11.67px;">networks</a> <a href="tags/node/" style="font-size: 10px;">node</a> <a href="tags/notes/" style="font-size: 13.33px;">notes</a> <a href="tags/npm/" style="font-size: 11.67px;">npm</a> <a href="tags/permission/" style="font-size: 10px;">permission</a> <a href="tags/routing/" style="font-size: 10px;">routing</a> <a href="tags/tools/" style="font-size: 10px;">tools</a> <a href="tags/ufw/" style="font-size: 10px;">ufw</a> <a href="tags/公众号阅读笔记/" style="font-size: 10px;">公众号阅读笔记</a> <a href="tags/小程序/" style="font-size: 18.33px;">小程序</a> <a href="tags/微信/" style="font-size: 13.33px;">微信</a> <a href="tags/羊毛/" style="font-size: 10px;">羊毛</a> <a href="tags/软件设计/" style="font-size: 10px;">软件设计</a>
+      <a href="tags/API/" style="font-size: 11.67px;">API</a> <a href="tags/Big-Sur/" style="font-size: 10px;">Big Sur</a> <a href="tags/C/" style="font-size: 10px;">C#</a> <a href="tags/CSS/" style="font-size: 16.67px;">CSS</a> <a href="tags/DNS/" style="font-size: 10px;">DNS</a> <a href="tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="tags/Go/" style="font-size: 10px;">Go</a> <a href="tags/Java/" style="font-size: 10px;">Java</a> <a href="tags/Javascript/" style="font-size: 11.67px;">Javascript</a> <a href="tags/Laravel/" style="font-size: 11.67px;">Laravel</a> <a href="tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="tags/Lumen/" style="font-size: 10px;">Lumen</a> <a href="tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="tags/PHP/" style="font-size: 20px;">PHP</a> <a href="tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="tags/PSR/" style="font-size: 10px;">PSR</a> <a href="tags/Perl/" style="font-size: 10px;">Perl</a> <a href="tags/Python/" style="font-size: 10px;">Python</a> <a href="tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="tags/SICP/" style="font-size: 10px;">SICP</a> <a href="tags/Server/" style="font-size: 15px;">Server</a> <a href="tags/Slim/" style="font-size: 10px;">Slim</a> <a href="tags/Something/" style="font-size: 10px;">Something</a> <a href="tags/Swift/" style="font-size: 10px;">Swift</a> <a href="tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="tags/Typora/" style="font-size: 10px;">Typora</a> <a href="tags/UniApp/" style="font-size: 10px;">UniApp</a> <a href="tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="tags/VPS/" style="font-size: 10px;">VPS</a> <a href="tags/Vue/" style="font-size: 11.67px;">Vue</a> <a href="tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="tags/angular/" style="font-size: 10px;">angular</a> <a href="tags/array-key-exists/" style="font-size: 10px;">array_key_exists</a> <a href="tags/array-search/" style="font-size: 10px;">array_search</a> <a href="tags/autoload/" style="font-size: 10px;">autoload</a> <a href="tags/babel/" style="font-size: 10px;">babel</a> <a href="tags/canvas/" style="font-size: 10px;">canvas</a> <a href="tags/cover-view/" style="font-size: 11.67px;">cover-view</a> <a href="tags/curl/" style="font-size: 10px;">curl</a> <a href="tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="tags/electron/" style="font-size: 11.67px;">electron</a> <a href="tags/emoji/" style="font-size: 10px;">emoji</a> <a href="tags/firewall/" style="font-size: 10px;">firewall</a> <a href="tags/framework/" style="font-size: 10px;">framework</a> <a href="tags/git/" style="font-size: 10px;">git</a> <a href="tags/gulp/" style="font-size: 10px;">gulp</a> <a href="tags/in-array/" style="font-size: 10px;">in_array</a> <a href="tags/interviews/" style="font-size: 10px;">interviews</a> <a href="tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="tags/life/" style="font-size: 10px;">life</a> <a href="tags/linux/" style="font-size: 10px;">linux</a> <a href="tags/macOS/" style="font-size: 10px;">macOS</a> <a href="tags/networks/" style="font-size: 11.67px;">networks</a> <a href="tags/node/" style="font-size: 10px;">node</a> <a href="tags/notes/" style="font-size: 13.33px;">notes</a> <a href="tags/npm/" style="font-size: 11.67px;">npm</a> <a href="tags/performance/" style="font-size: 10px;">performance</a> <a href="tags/permission/" style="font-size: 10px;">permission</a> <a href="tags/routing/" style="font-size: 10px;">routing</a> <a href="tags/tools/" style="font-size: 10px;">tools</a> <a href="tags/ufw/" style="font-size: 10px;">ufw</a> <a href="tags/公众号阅读笔记/" style="font-size: 10px;">公众号阅读笔记</a> <a href="tags/小程序/" style="font-size: 18.33px;">小程序</a> <a href="tags/微信/" style="font-size: 13.33px;">微信</a> <a href="tags/羊毛/" style="font-size: 10px;">羊毛</a> <a href="tags/软件设计/" style="font-size: 10px;">软件设计</a>
     </div>
   </div>
 
@@ -402,7 +445,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/05/">May 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/03/">March 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/02/">February 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/01/">January 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/12/">December 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/10/">October 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/06/">June 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/05/">May 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/06/">June 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/05/">May 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/03/">March 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/02/">February 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/01/">January 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/12/">December 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/10/">October 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/06/">June 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/05/">May 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -415,6 +458,14 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/2021/6/9/PHP/Some-different-ways-of-in-array/">判断元素是否在数组内的几种方法对比</a>
+          </li>
+        
+          <li>
+            <a href="/2021/6/5/frontend/Pseudo-classes-in-CSS/">再次认识CSS中的伪类</a>
+          </li>
+        
+          <li>
             <a href="/2021/5/31/frontend/primordials-is-not-defined/">How to fix ReferenceError primordials is not defined error</a>
           </li>
         
@@ -424,14 +475,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2021/5/24/frontend/Babel-cannot-find-module-babel-runtime-regenerator/">Babel cannot find module babel-runtime/regenerator</a>
-          </li>
-        
-          <li>
-            <a href="/2021/5/21/notes/defference-between-URL-and-URI/">URL和URI之间的区别</a>
-          </li>
-        
-          <li>
-            <a href="/2021/5/16/Reading/reading-notes-2021-05-16/">阅读笔记2021-05-16</a>
           </li>
         
       </ul>
