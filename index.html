@@ -141,46 +141,11 @@ ga('send', 'pageview');
       
         <p>在信息爆炸的当下，获取资讯是如此的便捷，各大平台纷纷推出自家的自媒体平台，比如语雀，CSDN，简书等，方便内容创作者的同时，读者也能享受到更好的服务，毕竟时代在进步，有人用的产品才是好的产品。</p>
 <p>最近发现很多平台在跳转到其他页面时，都会先跳到一个中间页，提示用户即将离开XXX前往xxx页面，这里所说的其他页面指目标网站不属于当前网站，简单理解就是跳转到另一个域名。</p>
-<p>以下举几个我常逛的网站：</p>
-<p>语雀：</p>
-<p><img src="https://i.loli.net/2021/07/31/F5jkRs7ySH1xLmB.png" alt=""></p>
-<p>CSDN：</p>
-<p><img src="https://i.loli.net/2021/07/31/UPzgAm7KCoYlwtd.png" alt=""></p>
-<p>知乎：</p>
-<p><img src="https://i.loli.net/2021/07/31/UIZ8j3nuoaSzs7H.png" alt=""></p>
-<p>开源中国：</p>
-<p><img src="https://i.loli.net/2021/07/31/rsDbmPAde7Y3KOo.png" alt=""></p>
-<p>从用户角度看，中间页的存在完全降低了用户体验，本来用户点击就是为了跳到目标网站查看内容，现在毫无防备的指向了中间页，需要再点击一下，大大提高了用户关闭页面的可能性。</p>
-<p>但是对于源网站并没有影响啊，你跳转到别的网站我给你一个提示看起来还很合理，一来可以免责，二来规避风险。可对于目标网站来说获取流量更难了，虽然用户仍然可以点击继续访问，但中间页的出现阻挡了很多访客，中间页的文案和多一步的操作让用户望而却步，对于因为好奇心的驱使才点击的访客，很大概率会关闭当前页面，从而目标网站又少了展示的机会，流量被大流量主死死掐住。</p>
-<p>作为开发者，我们来说分析下这些中间页背后的代码，先来看语雀，用户能操作的就是一个按钮，是一个a标签，href里面是跳转的地址：</p>
-<p><img src="https://i.loli.net/2021/07/31/H8f6w5A7YBbiFgZ.png" alt=""></p>
-<p>如上图所示，这是一个平平无奇的a标签，但设置了一个rel属性，值为noopener noreferrer nofollow，对于了解网站SEO的人，应该很清楚nofollow这意味着什么，我这边列了一个表：</p>
-<p><img src="https://i.loli.net/2021/07/31/euzQD9U2f835kP1.png" alt=""></p>
-<p>接着再来看看知乎，</p>
-<p><img src="https://i.loli.net/2021/07/31/YxtOnwoyvWI5eTu.png" alt=""></p>
-<p>居然这么仁慈，没有对流量做任何拦截操作，我这就有点怀疑了，平时知乎上发个软文，引个流都被封地死死的，怎么这里有这么大方了？抱着怀疑的态度我又查看了上游的页面，发现原来流量在上游就被切断了。</p>
-<p>在知乎专栏里，如果贴了连接的话，直接就nofollow noreferrer，精致了爬虫还防止refer泄漏，在知乎问答中也是类似：</p>
-<p><img src="https://i.loli.net/2021/07/31/79tisXKpPHNOvzg.png" alt=""></p>
-<p>以互联网牛皮癣广告著称的CSDN当然也不能放过：</p>
-<p><img src="https://i.loli.net/2021/07/31/VlMewdi2CHOr7oj.png" alt=""></p>
-<p>竟然也没有发现禁止爬虫爬取的nofollow属性，而且上游页面也没有！当时我就震惊了，难怪CSDN上很多引流文章。</p>
-<p>一番检查下来，发现中间页的作用主要还是为了规避风险、免责、防范钓鱼页面，所谓钓鱼大概就是：比如通过反向代理技术高仿一个知乎，然后把里面的链接改一下，你一点过去以为自己还在知乎，但发现自己不是登录状态了，要重新登录，就要输入账号密码。对于流量的把控也起到一定的作用，但不是主要的，毕竟禁止爬虫上游页面完全就可以做到了，不知道国外网站是否也有类似的措施？</p>
-<p>其实本章的核心我想说的是，在这个流量就是金钱的时代，各大互联网公司都在跑马圈地，野蛮扩张的同时，也不忘把控着流量。早已背离互联网开放、平等的初衷。毕竟赚钱才是王道，要不然怎么现在大家都在玩私域，想方设法把公域流量引入自己的私域内，比如各种知识星球，各种群，完美日记借着微信私域流量成功上市市值数百亿 🙃</p>
-<p>最后来一张2021全球互联网地图（请点击查看大图）：</p>
-<p><img src="https://i.loli.net/2021/07/31/TtaU8zEvA5xfD1n.png" alt=""></p>
-<p>这是国外的一位大佬花了一年时间做出来的，他收集了全球数千个网站，根据Alexa统计数据将不同的网站绘制成对应的一个“国家”，并按网站的类型来分类成几大洲，比如新闻类，搜索引擎类，电子商务类分别属于不同的洲，每一个互联网用户都是这个世界的居民。</p>
-<p><img src="https://i.loli.net/2021/07/31/z78weuOV4UshiWo.png" alt=""></p>
-<p>地图中心是一个很小的区域，由底层的服务提供商和浏览器组成，主要是一些网络运营商和浏览器：CNNIC，ATT，VERIZON，Google Chrome等，可见互联网的底层都是由它们构建的。</p>
-<p><img src="https://i.loli.net/2021/07/31/dKInicxSE67PVH4.png" alt=""></p>
-<p>和世界地图一样，在世界互联网地图的最南部，同样有一个未开发区域–<em>暗网</em>。</p>
-<p>没想到的是CSDN的面积有这么大：</p>
-<p><img src="https://i.loli.net/2021/07/31/DOV5puBer9NljA2.png" alt=""></p>
-<p>你最常访问互联网世界上哪些国家呢？</p>
-<p>最后附上地图网址，上面可以直接下载原图：<a href="https://www.halcyonmaps.com/map-of-the-internet-2021/" target="_blank" rel="noopener">https://www.halcyonmaps.com/map-of-the-internet-2021/</a></p>
-<hr>
-<p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
-<p><img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;"></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2021/7/31/notes/why-does-zhihu-jump-to-a-middle-page/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -228,78 +193,11 @@ ga('send', 'pageview');
 <p>API在概念上和语言无关，理论上具有网络操作能力的所有编程语言都可以提供API服务。Java、PHP、Node甚至C都可以实现web API，都是通过响应HTTP请求并构造HTTP包来完成的，但是内部实现原理不同。</p>
 <p>API在概念上和JSON和XML等媒体类型无关，JSON和XML只是一种传输或媒体格式，便于计算机解析和读取数据，因此都有一个共同特点就是具有几个基本数据类型，同时提供了嵌套和列表的数据表达方式。</p>
 <p>API设计的目的是为了让程序可读，应当遵从简单、易用、无状态等特性，这也是为什么Restful风格流行的原因。</p>
-<h1 id="RESTful"><a href="#RESTful" class="headerlink" title="RESTful"></a>RESTful</h1><p><img src="https://i.loli.net/2021/07/31/qVcB34k7ZvOiyds.png" alt=""></p>
-<p>REST（英文：Representational State Transfer，简称REST），RESTful是一种对基于HTTP的应用设计风格，只是提供了一组设计原则和约束条件，而不是一种标准。网络上有大量对RESTful风格的解读，简单来说Restful定义URI和HTTP状态码，让你的API设计变得更简洁、清晰和富有层次，对缓存等实现更有帮助。RESTful不是灵丹妙药，也不是银弹。</p>
-<p><img src="https://i.loli.net/2021/07/31/Te6gOrN5suZXmav.png" alt=""></p>
-<p><strong>RESTful的本质是基于HTTP协议对资源的增删改查操作做出定义。</strong>理解HTTP协议非常简单，HTTP是通过网络socket发送一段字符串，这个字符串由键值对组成的header部分和纯文本的body部分组成。Url、Cookie、Method都在header中。</p>
-<p>几个典型的RESTful API场景：</p>
-<p><img src="https://i.loli.net/2021/07/31/RWuUJOCYxQlpIKt.png" alt=""></p>
-<p><strong>RESTful的几个注意点：</strong></p>
-<ul>
-<li><p>URL只是表达被操作的资源位置，因此不应该使用动词，且注意单复数区分</p>
-</li>
-<li><p>除了POST和DELETE之外，其他的操作需要幂等的，例如对数据多次更新应该返回同样的内容</p>
-</li>
-<li><p>设计风格没有对错之分，RESTful一种设计风格，与此对应的还有RPC甚至自定义的风格</p>
-</li>
-<li><p>RESTful和语言、传输格式无关</p>
-</li>
-<li><p>无状态，HTTP设计本来就是没有状态的，之所以看起来有状态因为我们浏览器使用了Cookies，每次请求都会把Session ID（可以看做身份标识）传递到headers中。关于RESTful风格下怎么做用户身份认证我们会在后面讲到</p>
-</li>
-<li><p>RESTful没有定义body中内容传输的格式，有另外的规范来描述怎么设计body的数据结构，网络上有些文章对RESTful的范围理解有差异</p>
-</li>
-</ul>
-<blockquote>
-<p>URL中都是名词，所有的操作“增删改查”通过请求方式来定义，分别对应：post，delete，patch，get</p>
-</blockquote>
-<h1 id="JSON-API"><a href="#JSON-API" class="headerlink" title="JSON API"></a>JSON API</h1><h2 id="MIME-类型"><a href="#MIME-类型" class="headerlink" title="MIME 类型"></a>MIME 类型</h2><p>JSON API数据格式已经被IANA机构接受了注册，因此必须使用application/vnd.api+json类型。客户端请求头中Content-Type应该为application/vnd.api+json，并且在Accept中也必须包含application/vnd.api+json。如果指定错误服务器应该返回415或406状态码。</p>
-<blockquote>
-<p>好像一般都是application/json？vnd.api是什么鬼？</p>
-</blockquote>
-<h2 id="JSON文档结构"><a href="#JSON文档结构" class="headerlink" title="JSON文档结构"></a>JSON文档结构</h2><p>在顶级节点使用data、errors、meta，来描述数据、错误信息、元信息，注意data和errors应该互斥，不能再一个文档中同时存在，meta在项目实际上用的很少，只有特别情况才需要用到，比如返回服务器的一些信息。</p>
-<p><img src="https://i.loli.net/2021/07/31/1WQKPblzD72mwe6.png" alt=""></p>
-<h3 id="data属性"><a href="#data属性" class="headerlink" title="data属性"></a>data属性</h3><p>一个典型的data的对象格式，我们的有效信息一般都放在attributes中。</p>
-<blockquote>
-<p>应该是object的对象格式</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/07/31/wnlJT4YtZQBeDq6.png" alt=""></p>
-<ul>
-<li>id显而易见为唯一标识，可以为数字也可以为hash字符串，取决于后端实现</li>
-<li>type 描述数据的类型，可以对应为数据模型的类名</li>
-<li>attributes 代表资源的具体数据</li>
-<li>relationships、links为可选属性，用来放置关联数据和资源地址等数据</li>
-</ul>
-<h3 id="errors属性"><a href="#errors属性" class="headerlink" title="errors属性"></a>errors属性</h3><p>这里的errors和data有一点不同，一般来说返回值中errors作为列表存在，因为针对每个资源可能出现多个错误信息。最典型的例子为，我们请求的对象中某些字段不符合验证要求，这里需要返回验证信息，但是HTTP状态码会使用一个通用的401，然后把具体的验证信息在errors给出来。</p>
-<blockquote>
-<p>Errors返回一个列表？请求的每个字段都要验证，这应该取决于产品，一个字段验证失败就不该继续下去。401是unauthorized错误，请求参数错误应该是400 Bad request。</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/07/31/XjxCEi6AlLw7n9h.png" alt=""></p>
-<h3 id="常用的返回码"><a href="#常用的返回码" class="headerlink" title="常用的返回码"></a>常用的返回码</h3><p>查看HTTP协议文档，文档上有几十个状态码让你无从下手，在真实环境中用到的并不多。</p>
-<h4 id="200-OK"><a href="#200-OK" class="headerlink" title="200 OK"></a>200 OK</h4><p>200是一个最常用的状态码用来表示请求成功，例如GET请求到某一个资源，或者更新、删除某资源。 需要注意的是<strong>使用POST创建资源应该返回201表示数据被创建</strong>。</p>
-<h4 id="201-Created"><a href="#201-Created" class="headerlink" title="201 Created"></a>201 Created</h4><p>如果客户端发起一个POST请求，在RESTful部分我们提到，POST为创建资源，如果服务器处理成功应该返回一个创建成功的标志，在HTTP协议中，201为新建成功的状态。文档规定，服务器必须在data中返回id和type。 下面是一个HTTP的返回例子：</p>
-<p><img src="https://i.loli.net/2021/07/31/pq2xQKBmPugwWYs.png" alt=""></p>
-<h4 id="401-Unauthorized"><a href="#401-Unauthorized" class="headerlink" title="401 Unauthorized"></a>401 Unauthorized</h4><p>如果服务器在检查用户输入的时候，需要传入的参数不能满足条件，服务器可以给出401错误，标记客户端错误，需要客户端自查。</p>
-<blockquote>
-<p>400 Bad request？</p>
-</blockquote>
-<h4 id="415-Unsupported-Media-Type"><a href="#415-Unsupported-Media-Type" class="headerlink" title="415 Unsupported Media Type"></a>415 Unsupported Media Type</h4><p>当服务器媒体类型Content-Type和Accept指定错误的时候，应该返回415。</p>
-<h4 id="403-Forbidden"><a href="#403-Forbidden" class="headerlink" title="403 Forbidden"></a>403 Forbidden</h4><p>当客户端访问未授权的资源时，服务器应该返回403要求用户授权信息。</p>
-<h4 id="404-Not-Found"><a href="#404-Not-Found" class="headerlink" title="404 Not Found"></a>404 Not Found</h4><p>这个太常见了，当指定资源找不到时服务器应当返回404。</p>
-<h4 id="500-Internal-Server-Error"><a href="#500-Internal-Server-Error" class="headerlink" title="500 Internal Server Error"></a>500 Internal Server Error</h4><p>当服务器发生任何内部错误时，应当返回500，并给出errors字段，必要的时候需要返回错误的code，便于查错。一般来说，500错误是为了区分4XX错误，包括任何服务器内部技术或者业务异常都应该返回500。</p>
-<h3 id="HATEOAS"><a href="#HATEOAS" class="headerlink" title="HATEOAS"></a>HATEOAS</h3><p>Hypermedia As The Engine Of Application State，中文叫做超媒体应用程序状态的引擎，实际上HATEOAS算作被JSON API定义了的一部分，HATEOAS思想是既然Restful是利用HTTP协议来进行增删改查，那我们怎么在没有文档的情况下找到这些资源的地址呢，一种可行的办法就是在API的返回体里面加入导航信息，也就是links。这样就像HTML中的A标签实现了超文本文档一样，实现了超链接JSON文档。</p>
-<blockquote>
-<p>好像twitter的API就是这么返回的。</p>
-</blockquote>
-<p>如果在某个系统中产品和订单是一对多的关系，那我们给产品的返回值可以定义为：</p>
-<p><img src="https://i.loli.net/2021/07/31/OjxFdhD8RHQ6w2U.png" alt=""></p>
-<p>从返回中我们能得到links中product的的资源地址，同时也能得到orders的地址，这样我们不需要客户端自己拼装地址，就能够得到请求orders的地址。如果我们严格按照HATEOAS开发，客户端只需要在配置文件中定义一个入口地址就能够完成所有操作，在资源地址发生变化的时候也能自动适配。</p>
-<blockquote>
-<p>就是请求某接口后，通过返回结果就能知道后续相关的接口，无需文档。</p>
-</blockquote>
-<hr>
-<p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
-<p><img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;"></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2021/7/31/reading/notes-API-restful/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -398,44 +296,11 @@ ga('send', 'pageview');
       
         <p>CSS中的<code>伪类</code>真是个神奇的东西，有时要实现某些布局的时候菜鸟都是<code>div</code>套<code>div</code>，实在不行上<code>flex</code>，而高手一般都是用最少的元素来实现效果，比如巧妙的运用<code>伪类</code>来达到目的的同时减少元素节点，代码清爽了很多不用再写一坨<code>div</code>。</p>
 <p>这不，最近学习了几招伪类的使用，特此记录下。</p>
-<h1 id="列表最后一行左对齐"><a href="#列表最后一行左对齐" class="headerlink" title="列表最后一行左对齐"></a>列表最后一行左对齐</h1><p><code>flex</code>布局中，最后一行个数不满的情况：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.list</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">24%</span>; <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: skyblue;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">15px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最后一行不足4个：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2021/06/11/kpWb5PZnONJLAfx.png" alt=""></p>
-<p>解决思路有很多，这里我只说一种方式：使用伪类动态计算最后一个元素的<code>margin</code>。比如每行有4个元素，最后一行只有3个，就计算最后一个的<code>margin-right</code>为“元素宽度+间隔大小”，若只有2个，则<code>margin-right</code>为”2个元素宽度+2个间隔大小”，以此类推，代码如下：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="comment">/* 两端对齐 */</span></span><br><span class="line">    <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.list</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">24%</span>; <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: skyblue;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">15px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 如果最后一行是3个元素 */</span></span><br><span class="line"><span class="selector-class">.list</span><span class="selector-pseudo">:last-child</span><span class="selector-pseudo">:nth-child(4n</span> <span class="selector-tag">-</span> 1) &#123;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="built_in">calc</span>(24% + 4% / 3);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 如果最后一行是2个元素 */</span></span><br><span class="line"><span class="selector-class">.list</span><span class="selector-pseudo">:last-child</span><span class="selector-pseudo">:nth-child(4n</span> <span class="selector-tag">-</span> 2) &#123;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="built_in">calc</span>(48% + 8% / 3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>效果：</p>
-<p><img src="https://i.loli.net/2021/06/11/AGkJoefbiXC8Hp1.png" alt=""></p>
-<p>黄色部分为动态计算的<code>margin</code>，上面代码最重要的就是<code>.list:last-child:nth-child(4n - 1)</code>，骚操作，头一次见，稍微解释下：</p>
-<ul>
-<li>.list:last-child:nth-child(4n - 1)：说明最后一个同时也是<code>4n-1</code>个，就是要么第3个元素，要么第7个元素…</li>
-<li>.list:last-child:nth-child(4n - 2)：说明最后一个同时也是<code>4n-2</code>个，就是要么第2个元素，要么第6个元素…</li>
-</ul>
-<h1 id="文本状态的切换"><a href="#文本状态的切换" class="headerlink" title="文本状态的切换"></a>文本状态的切换</h1><p>元素的展开和收起也是会经常遇到的，默认收起状态，点击后就会展开，类似于点击弹出下拉菜单，只涉及到两种状态，也可以结合伪类实现：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.btn</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">'展开'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#exp</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#exp</span><span class="selector-pseudo">:checked+.btn</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">'收起'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>html如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrap"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"exp"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"btn"</span> <span class="attr">for</span>=<span class="string">"exp"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>效果：</p>
-<p><img src="https://i.loli.net/2021/06/11/Qez1Ryb8jnhYSco.gif" alt=""></p>
-<p>这里巧妙地借助<code>:checked</code>伪类实现状态的切换，换做<code>javascript</code>就要写好几行代码。</p>
-<h1 id="生成箭头"><a href="#生成箭头" class="headerlink" title="生成箭头"></a>生成箭头</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.arrow-button</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">180px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">64px</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#f49714</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.arrow-button</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">32px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">64px</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: -<span class="number">32px</span>;</span><br><span class="line">  <span class="attribute">background</span>:</span><br><span class="line">    <span class="built_in">linear-gradient</span>(-45deg, transparent 0, transparent 22px, #f49714 22px, #f49714 100%),</span><br><span class="line">    <span class="built_in">linear-gradient</span>(-135deg, transparent 0, transparent 22px, #f49714 22px, #f49714 100%);</span><br><span class="line">  <span class="attribute">background-size</span>: <span class="number">32px</span> <span class="number">32px</span>;</span><br><span class="line">  <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">  <span class="attribute">background-position</span>: <span class="number">0</span> bottom, <span class="number">0</span> top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>效果：</p>
-<p><img src="https://i.loli.net/2021/06/11/K3mAoVXD6Bb9SkP.png" alt=""></p>
-<h1 id="根据文本长度自动调整字体大小"><a href="#根据文本长度自动调整字体大小" class="headerlink" title="根据文本长度自动调整字体大小"></a>根据文本长度自动调整字体大小</h1><p>这个就很极客了，先看看效果：</p>
-<p><img src="https://i.loli.net/2021/06/11/YSoWF9hM52X6yHq.gif" alt=""></p>
-<p>这个是先效果的背后和第一个例子一样使用了<code>伪类级联</code>，同一个选择器上使用多个伪类，核心代码如下：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> <span class="selector-tag">span</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">40px</span>;    </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-tag">span</span><span class="selector-pseudo">:first-child</span><span class="selector-pseudo">:nth-last-child(n+13)</span>,</span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-tag">span</span><span class="selector-pseudo">:first-child</span><span class="selector-pseudo">:nth-last-child(n+13)</span> ~ <span class="selector-tag">span</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">30px</span>;    </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-tag">span</span><span class="selector-pseudo">:first-child</span><span class="selector-pseudo">:nth-last-child(n+17)</span>,</span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-tag">span</span><span class="selector-pseudo">:first-child</span><span class="selector-pseudo">:nth-last-child(n+17)</span> ~ <span class="selector-tag">span</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;    </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-tag">span</span><span class="selector-pseudo">:first-child</span><span class="selector-pseudo">:nth-last-child(n+25)</span>,</span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-tag">span</span><span class="selector-pseudo">:first-child</span><span class="selector-pseudo">:nth-last-child(n+25)</span> ~ <span class="selector-tag">span</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">14px</span>;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过使用<code>伪类级联</code>能控制不同字符个数的样式。</p>
-<p>能实现的效果还有很多，很多我也不会。。。</p>
-<p>就我自己在开发时，很容易就把伪类这个东西抛之脑后了，下意识地习惯直接<code>div</code>一把梭，实现不了就用<code>javascript</code>，因为这种下意思的习惯成本很低，不要多加思考。其实有时候仔细想想，很多情况真的没必要“杀鸡用牛刀”，习惯也是有代价的，下意识的使用方式看起来似乎成本很低，但代码因此变得复杂，增加了后期的维护成本和理解成本。不光是我们在编码的时候，生活中也是如此，遇到问题不放多思考，不要急于作出反馈。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.zhangxinxu.com/wordpress/?p=1514" target="_blank" rel="noopener">http://www.zhangxinxu.com/wordpress/?p=1514</a></p>
-<p><a href="https://www.zhangxinxu.com/wordpress/?p=8540" target="_blank" rel="noopener">https://www.zhangxinxu.com/wordpress/?p=8540</a></p>
-<p><a href="https://segmentfault.com/a/1190000040030723" target="_blank" rel="noopener">https://segmentfault.com/a/1190000040030723</a></p>
-<hr>
-<p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
-<p><img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;"></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2021/6/5/frontend/Pseudo-classes-in-CSS/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
