@@ -2,6 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.xydida.com/2018/6/3/PHP/What-is-PSR/</loc>
+    
+    <lastmod>2021-07-31T09:52:01.659Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/2020/10/28/Devops/what-is-TTL/</loc>
+    
+    <lastmod>2021-07-31T09:51:57.957Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/2021/7/31/notes/why-does-zhihu-jump-to-a-middle-page/</loc>
+    
+    <lastmod>2021-07-31T09:51:55.058Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/</loc>
+    
+    <lastmod>2021-07-31T09:51:52.739Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/2021/1/17/%E5%B0%8F%E7%A8%8B%E5%BA%8F/PHP/xiao-cheng-xu-yun-tuo-guan-CloudBase-PHP/</loc>
+    
+    <lastmod>2021-07-31T09:51:49.834Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/2021/1/14/Linux/YUMREPO-ERROR-ALL-MIRROR-URLS-ARE-NOT-USING-FTP-HTTP-S-OR-FILE/</loc>
+    
+    <lastmod>2021-07-31T09:51:47.593Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.xydida.com/2021/1/9/%E5%B0%8F%E7%A8%8B%E5%BA%8F/open-miniprogram-in-html/</loc>
     
     <lastmod>2021-07-31T09:00:38.952Z</lastmod>
@@ -54,13 +96,6 @@
     <loc>https://www.xydida.com/2021/5/28/PHP/A-simple-PHP-framework/</loc>
     
     <lastmod>2021-06-03T07:22:22.904Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/2018/6/3/PHP/What-is-PSR/</loc>
-    
-    <lastmod>2021-05-28T07:12:46.983Z</lastmod>
     
   </url>
   
@@ -275,20 +310,6 @@
   </url>
   
   <url>
-    <loc>https://www.xydida.com/2021/1/17/%E5%B0%8F%E7%A8%8B%E5%BA%8F/PHP/xiao-cheng-xu-yun-tuo-guan-CloudBase-PHP/</loc>
-    
-    <lastmod>2021-01-17T10:05:50.474Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/2021/1/14/Linux/YUMREPO-ERROR-ALL-MIRROR-URLS-ARE-NOT-USING-FTP-HTTP-S-OR-FILE/</loc>
-    
-    <lastmod>2021-01-14T06:29:34.153Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.xydida.com/2021/1/13/Linux/Git/how-git-treats-changes-in-file-permissions/</loc>
     
     <lastmod>2021-01-13T08:54:51.042Z</lastmod>
@@ -327,13 +348,6 @@
     <loc>https://www.xydida.com/2020/11/14/PHP/use-eloquent-in-slim-framework/</loc>
     
     <lastmod>2020-11-15T06:12:23.398Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/2020/10/28/Devops/what-is-TTL/</loc>
-    
-    <lastmod>2020-11-02T02:29:38.960Z</lastmod>
     
   </url>
   
@@ -446,13 +460,6 @@
     <loc>https://www.xydida.com/2018/8/11/Regular-Expression/The-Perfect-URL-Regular-Expression/</loc>
     
     <lastmod>2018-08-11T14:29:49.594Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/</loc>
-    
-    <lastmod>2018-06-19T01:35:14.605Z</lastmod>
     
   </url>
   
