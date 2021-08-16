@@ -113,63 +113,6 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
-    <article id="post-What-is-PSR" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/6/3/PHP/What-is-PSR/" class="article-date">
-  <time datetime="2018-06-03T10:11:40.000Z" itemprop="datePublished">2018-06-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PHP/">PHP</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/6/3/PHP/What-is-PSR/">什么是PSR规范？</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://i.loli.net/2021/05/28/AYVQXJTahwKn5Nq.png" alt=""></p>
-<h1 id="什么是PSR？"><a href="#什么是PSR？" class="headerlink" title="什么是PSR？"></a>什么是PSR？</h1><p>PSR是PHP Standards Recommendation的简称，这个是<a href="https://github.com/php-fig" target="_blank" rel="noopener">php-fig</a>组织制定的一套<a href="https://github.com/php-fig/fig-standards" target="_blank" rel="noopener">规范</a>。至今，php-fig已经发布了五个规范：</p>
-<ul>
-<li><a href="https://www.php-fig.org/psr/psr-0/" target="_blank" rel="noopener">PSR-0</a>：自动加载标准，2014-10-21该标准已经被废弃，使用PSR-4替代，不再细讲</li>
-<li><a href="https://www.php-fig.org/psr/psr-1/" target="_blank" rel="noopener">PSR-1</a>：基本的编码风格</li>
-<li><a href="https://www.php-fig.org/psr/psr-2/" target="_blank" rel="noopener">PSR-2</a>：编码风格（更严格）</li>
-<li><a href="https://www.php-fig.org/psr/psr-3/" target="_blank" rel="noopener">PSR-3</a>：日志记录器接口</li>
-<li><a href="https://www.php-fig.org/psr/psr-4/" target="_blank" rel="noopener">PSR-4</a>：自动加载</li>
-</ul>
-<h2 id="PSR-1"><a href="#PSR-1" class="headerlink" title="PSR-1"></a>PSR-1</h2><p>PHP标签：<br>PHP代码<strong>必须</strong>放在<code>&lt;?php ?&gt;</code>标签或<code>&lt;?= ?&gt;</code>标签中。</p>
-<p>编码：<br>PHP文件<strong>必须</strong>使用无<a href="https://en.wikipedia.org/wiki/Byte_order_mark" target="_blank" rel="noopener">BOM</a>的<a href="https://en.wikipedia.org/wiki/UTF-8" target="_blank" rel="noopener">UTF-8</a>编码。</p>
-        
-          <p class="article-more-link">
-            <a href="/2018/6/3/PHP/What-is-PSR/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/6/3/PHP/What-is-PSR/" data-id="cksebuxiq002ezaca7ymvx5ms" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PSR/">PSR</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-rethinking-in-Object-Oriented" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/6/1/Object-Oriented/rethinking-in-Object-Oriented/" class="article-date">
@@ -505,10 +448,83 @@ ga('send', 'pageview');
 
 
   
+    <article id="post-Base-configuration-for-a-new-server" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/2/4/Devops/Base-configuration-for-a-new-server/" class="article-date">
+  <time datetime="2018-02-04T12:03:02.000Z" itemprop="datePublished">2018-02-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Devops/">Devops</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/2/4/Devops/Base-configuration-for-a-new-server/">对一台新服务器的简单的配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.loli.net/2021/05/06/6FGAHLE3hySDuvo.png" alt="2650331-494786b4facec3e0"></p>
+<p>虽然不是专业的系统管理员，作为程序员还是会经常折腾一些VPS，势必要学会怎么配置一台服务器，而且，对于公司面试，掌握基本的系统管理知识还是有利的。况且，如今的网络安全环境下，掌握一些服务器安全方面的配置是非常有必要的。</p>
+<h2 id="1-远程登录用户"><a href="#1-远程登录用户" class="headerlink" title="1. 远程登录用户"></a>1. 远程登录用户</h2><p>在使用SSH远程登录时，由于root用户有着无限的权利，它能执行任何命令，所以尽量不要使用root用户登录。</p>
+<h6 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adduser jack  //创建非根用户</span><br><span class="line">usermod -a -G sudo jack  // 让jack用户拥有sudo权限(即通过密码认证后可以执行特殊的权限的命令)</span><br></pre></td></tr></table></figure>
+<h6 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adduser jack</span><br><span class="line">passwd jack  // 为jack用户设置密码</span><br><span class="line">usermod -a -G wheel jack  // 把jack加入wheel用户组</span><br></pre></td></tr></table></figure>
+<h2 id="2-SSH密钥对认证"><a href="#2-SSH密钥对认证" class="headerlink" title="2. SSH密钥对认证"></a>2. SSH密钥对认证</h2><p>上面创建完jack用户后，就可以执行下面的命令登录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh jack@123.123.78.90</span><br></pre></td></tr></table></figure>
+<p>此时，会要求你输入jack的密码，但密码认证也有漏洞，而且会受到暴力破解，不怀好意的人会不断尝试猜测你的密码，而且，每次登录时都要求你输入密码，是不是很麻烦呢？这时我们就需要创建SSH密码对认证（所谓密钥对，就是一对“密钥”，其中一个是私钥，保存在自己的电脑中，另一个是公钥，保存在服务器中，公钥加密的消息只能使用对应的私钥解密）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen  // 创建密钥对</span><br></pre></td></tr></table></figure>
+<p>然后按照屏幕提示输入所需要的信息，这个命令会在电脑创建两个文件：<code>~/.ssh/id_rsa.pub(公钥)</code>和<code>~/.ssh/id.rsa(私钥)</code>，私钥应该保存在本地电脑中，公钥上传到服务器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 把公钥上传到服务器中jack用户的家目录，后面一定要有&quot;:&quot;</span><br><span class="line">sup ~/.ssh/id_rsa.pub jack@123.123.78.90:</span><br></pre></td></tr></table></figure>
+<p>登录服务器，创建.ssh目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/.ssh</span><br></pre></td></tr></table></figure>
+<p>创建~/.ssh/authorized_keys文件，这个文件的内容是一系列允许登录这台服务器的公钥：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<p>把上传的公钥添加到~/.ssh/authorized_keys文件中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<p>最后修改下面几个目录和文件的访问权限，让jack用户访问~/.ssh目录和~/.ssh/ahthorized_keys文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chown -R jack:jack ~/.ssh</span><br><span class="line">chmod 700 ~/.ssh</span><br><span class="line">chmod 600 ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<h2 id="禁用密码和根用户登录"><a href="#禁用密码和根用户登录" class="headerlink" title="禁用密码和根用户登录"></a>禁用密码和根用户登录</h2><p>为了让服务器再安全一些，我们要禁止用户通过密码登录，还要禁止根用户登录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+<p>上打开的配置文件中，这样修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// /etc/ssh/sshd_config</span><br><span class="line">PasswordAuthentication no // 或者注释掉</span><br><span class="line">PermitRootLogin     no      // 或者注释掉</span><br></pre></td></tr></table></figure>
+<p>顺便解决下<code>ssh</code>自动断开的问题：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// /etc/ssh/sshd_config</span><br><span class="line">ClientAliveInterval 30 # 表示每30秒服务器向客户端发起一次心跳，如果客户端响应就保持连接</span><br><span class="line">ClientAliveCountMax 5  # 如果连续5服务器收不到心跳，就断开连接</span><br></pre></td></tr></table></figure>
+<p>改动之后，重启ssh服务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># ubuntu</span><br><span class="line">sudo service ssh restart</span><br><span class="line"></span><br><span class="line"># CentOS</span><br><span class="line">sudo systemctl restart sshd.service</span><br></pre></td></tr></table></figure>
+<p>运行完上面的命令，我们的服务器就安全很多了。</p>
+<hr>
+<p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
+<p><img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2018/2/4/Devops/Base-configuration-for-a-new-server/" data-id="cksebuxhb0006zacacw5m2sea" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Server/">Server</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/12/">&laquo;Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/14/">Next&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/12/">&laquo;Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/14/">Next&raquo;</a>
   </nav>
 
 </section>
@@ -538,7 +554,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -549,10 +565,6 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2021/8/16/notes/111/">111</a>
-          </li>
         
           <li>
             <a href="/2021/7/31/notes/why-does-zhihu-jump-to-a-middle-page/">为什么很多内容平台跳转都会有一个落地页？</a>
@@ -568,6 +580,10 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2021/6/5/frontend/Pseudo-classes-in-CSS/">再次认识CSS中的伪类</a>
+          </li>
+        
+          <li>
+            <a href="/2021/5/31/frontend/primordials-is-not-defined/">How to fix ReferenceError primordials is not defined error</a>
           </li>
         
       </ul>
