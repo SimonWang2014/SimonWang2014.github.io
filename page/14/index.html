@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>正义的程序猿</title>
-  <meta name="baidu-site-verification" content="yXEzwss0jm" />
-  <meta name="360-site-verification" content="878e013ea1c0235dec34a8b1c676cf65" />
+  <meta name="baidu-site-verification" content="yXEzwss0jm">
+  <meta name="360-site-verification" content="878e013ea1c0235dec34a8b1c676cf65">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
@@ -17,7 +17,7 @@
 <meta property="og:url" content="https://www.xydida.com/page/14/index.html">
 <meta property="og:site_name" content="正义的程序猿">
 <meta property="og:description" content="记录我的IT学习经历，分享技术">
-<meta property="og:locale" content="zh">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正义的程序猿">
 <meta name="twitter:description" content="记录我的IT学习经历，分享技术">
@@ -25,54 +25,20 @@
     <link rel="alternate" href="/sitemap.xml" title="正义的程序猿" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.ico">
   
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
   
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'true', 'auto');
-ga('send', 'pageview');
-
-</script>
-<!-- End Google Analytics -->
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-98739349-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-98739349-1');
-</script>
-
 
   
-<!-- Google Adscene -->
-<script data-ad-client="ca-pub-8701685410355750" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- End Google Analytics -->
-
 
   
-    <!-- CNZZ Analytics -->
-    <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1257809326'%3E%3C/span%3E%3Cscript src='https://s95.cnzz.com/z_stat.php%3Fid%3D1257809326' type='text/javascript'%3E%3C/script%3E"));</script>
-    <style>
-        span#cnzz_stat_icon_1257809326 {display:none;}
-    </style>
-    <!-- End CNZZ Analytics -->
-
 
 </head>
-
+</html>
 <body>
   <div id="container">
     <div id="wrap">
@@ -93,16 +59,16 @@ ga('send', 'pageview');
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-          <a class="main-nav-link" href="/">Home</a>
+          <a class="main-nav-link" href="/">首页</a>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          <a class="main-nav-link" href="/archives">归档</a>
         
       </nav>
       <nav id="sub-nav">
         
           <a id="nav-rss-link" class="nav-icon" href="/sitemap.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.xydida.com"></form>
@@ -146,14 +112,16 @@ ga('send', 'pageview');
 <h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>（前面关于流和无穷流的定义以及说明直接略过了，感兴趣的可以自己看）首先，这个无穷流从整数2开始，因为这是第一个素数。为了得到其余的素数，就需要从2后面的整数中过滤掉所有2的倍数，这样就留下一个从3开始的无穷流，而3也就是下一个素数。现在再从这个流的后面部分过滤掉所有3的倍数，这样就留下一个从5开头的无穷流，而5又是下一个素数，就这样继续下去。换句话说，这种方法就是通过一个筛选过程构造出各个素数。</p>
 <h4 id="筛选过程描述如下"><a href="#筛选过程描述如下" class="headerlink" title="筛选过程描述如下"></a>筛选过程描述如下</h4><p>对流S做筛选就是形成一个流，其中的第一个元素就是S的第一个元素，得到其随后的元素的方式是从S的其余元素中过滤掉所有S的第一个元素的倍数，而后再对得到的结果进行同样的筛选。</p>
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(define (sieve stream)</span><br><span class="line">  (cons-stream</span><br><span class="line">    (stream-car stream)</span><br><span class="line">    (sieve (stream-filter</span><br><span class="line">                 (lambda  (x)</span><br><span class="line">                      (not (divisible? x (stream-car stream))))</span><br><span class="line">                (stream-car stream)))))</span><br><span class="line"></span><br><span class="line">(define primes (sieve (integers-starting-from 2)))</span><br></pre></td></tr></table></figure>
+
 <p>上面的Lisp代码写得还是很精练的，没有任何多余的代码。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-8b12448528e629e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="将素数筛看作一个信号处理系统"></p>
+<img src="http://upload-images.jianshu.io/upload_images/2650331-8b12448528e629e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" title="" alt="将素数筛看作一个信号处理系统">
+
 <p>我们可以将上面的厄拉多塞筛法看作是一个信号处理系统。出入流溃入“<code>反cons</code>”，分解出这个流的首元素和其余元素，用这个首元素去构造一个可除性过滤取，让该流的其余部分穿过这个过滤器，这个过滤器的输出再溃入到另一个筛块，而后将原来的首元素<code>cons</code>到这个内部筛的输出上，形成最终的输出流。这样，不仅输入流是无穷的，信息处理器也是无穷的。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2017/12/19/Algorithm/sieve-stream/" data-id="cksebuxkb005ezacab538qyla" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2017/12/19/Algorithm/sieve-stream/" data-id="cksoq4yk8001js8ca6zzv3vtj" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SICP/">SICP</a></li></ul>
@@ -191,7 +159,8 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://upload-images.jianshu.io/upload_images/2650331-98fbdee9a1b55aac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="(图片来源:http://teahour.fm)"></p>
+        <img src="http://upload-images.jianshu.io/upload_images/2650331-98fbdee9a1b55aac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" title="" alt="(图片来源:http://teahour.fm)">
+
 <p>2017年10月31日，星期二，下午2点，如约接到了国内某容器云公司的电话面试。</p>
 <p>电话是从北京打过来的（我是在南京），刚接到电话，我深吸了一口气，安慰自己要放松，之后按下了接通键。</p>
 <p>首先，跟面试官简单介绍了一下自己，然后又问我以前做过什么东西没有，我回答道，之前跟着老师做过项目，也和同学接过私活做过。（刚开始的时候，有点紧张，并且还有点害羞😳，语速也有点快）</p>
@@ -204,7 +173,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2017/10/31/notes/My-first-experience-of-a-telephone-interview/" data-id="cksebuxi0000yzaca4rq3cp9p" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2017/10/31/notes/My-first-experience-of-a-telephone-interview/" data-id="cksoq4yi1000bs8ca9cc9qheq" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interviews/">interviews</a></li></ul>
@@ -242,46 +211,60 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://upload-images.jianshu.io/upload_images/2650331-c4e9975c93ab0893.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+        <img src="http://upload-images.jianshu.io/upload_images/2650331-c4e9975c93ab0893.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" title="" alt="">
+
 <p>box-sizing属性是css3中新添加的属性，用来替换原来的<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model" target="_blank" rel="noopener">css盒子模型</a>，box-sizing属性值的不同，元素的高度和宽度的计算方法也不同。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* box-sizing的三个属性值，我们只针对前两个说明 */</span></span><br><span class="line"><span class="selector-tag">box-sizing</span>: <span class="selector-tag">content-box</span>;</span><br><span class="line"><span class="selector-tag">box-sizing</span>: <span class="selector-tag">border-box</span>;</span><br><span class="line"><span class="selector-tag">box-sizing</span>: <span class="selector-tag">padding-box</span>;</span><br></pre></td></tr></table></figure>
-<p>在默认情况下，设置的<code>width</code>和<code>height</code>属性都是指元素内容（content box）的高度和宽度，如果这个元素设置了<code>border</code>或<code>padding</code>的话，那么整个元素的高度和宽度就是：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">totalWidth = border-left + padding-left + width + padding-right + border-right</span><br><span class="line">totalHeight = border-top + padding-top + height + padding-bottom + border-bottom</span><br></pre></td></tr></table></figure></p>
+
+<p>在默认情况下，设置的<code>width</code>和<code>height</code>属性都是指元素内容（content box）的高度和宽度，如果这个元素设置了<code>border</code>或<code>padding</code>的话，那么整个元素的高度和宽度就是：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">totalWidth = border-left + padding-left + width + padding-right + border-right</span><br><span class="line">totalHeight = border-top + padding-top + height + padding-bottom + border-bottom</span><br></pre></td></tr></table></figure>
+
 <p>所以，这个在做相应式设计的时候还是比较复杂的，现在，有了box-sizing属性，就可以根据不同的属性值计算元素的高度和宽度。</p>
 <ul>
 <li><code>content-box</code>：这是默认情况，根据这个属性值的名字也能大概猜出会是什么情况，整个元素的高度和宽度其实就是上面的两个公式</li>
 <li><code>border-box</code>：这种情况下，你设置的<code>width</code>和<code>height</code>属性值就是针对整个元素，包括了border，padding，和元素内容。</li>
 </ul>
 <h4 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h4><h5 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">5px</span> solid blue;</span><br><span class="line">    <span class="attribute">background-color</span>: orange;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box1</span> &#123;</span><br><span class="line">    <span class="attribute">box-sizing</span>: content-box;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box2</span> &#123;</span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h5 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box box1"</span>&gt;</span></span><br><span class="line">    content-box</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box box2"</span>&gt;</span></span><br><span class="line">    border-box</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>代码中，我们对两个div设置了相同的height、width、border和padding，可是现实效果却完全不同：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-f495dd644346ee59.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="demo"></p>
+<img src="http://upload-images.jianshu.io/upload_images/2650331-f495dd644346ee59.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" title="" alt="demo">
+
 <p>我们仔细分析下，两个div不同的地方在于box-sizing属性，第一个是<code>content-box</code>，第二个是<code>border-box</code>，针对第一个div，</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-877a3ce0e581d752.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-612a1672b0d750f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第一个div"></p>
-<p>我们发现，整个元素的高度和宽度是260x260，而元素的内容的高度和宽度是150x150，正好是我们想要的，对于260这个大小是怎么来的，我们不妨计算一下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5+50+150+50+5=260  // 高度</span><br><span class="line">5+50+150+50+5=260  // 宽度</span><br></pre></td></tr></table></figure></p>
+<img src="http://upload-images.jianshu.io/upload_images/2650331-877a3ce0e581d752.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" title="" alt="">
+
+<img src="http://upload-images.jianshu.io/upload_images/2650331-612a1672b0d750f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" title="" alt="第一个div">
+
+<p>我们发现，整个元素的高度和宽度是260x260，而元素的内容的高度和宽度是150x150，正好是我们想要的，对于260这个大小是怎么来的，我们不妨计算一下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5+50+150+50+5=260  // 高度</span><br><span class="line">5+50+150+50+5=260  // 宽度</span><br></pre></td></tr></table></figure>
+
 <p>正好是260，符合最上面的两个公式，所以最后元素的尺寸是260x260，并不是我们设置的150x150</p>
 <p>对于第二个div：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-ae3596bd4483e47f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-f80a425bad255ca7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第二个div"></p>
+<img src="http://upload-images.jianshu.io/upload_images/2650331-ae3596bd4483e47f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" title="" alt="">
+
+
+<img src="http://upload-images.jianshu.io/upload_images/2650331-f80a425bad255ca7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" title="" alt="第二个div">
+
 <p>很明显可以看到，第二个div里面的内容已经被挤了换行了，这个div的真实的高度和宽度和我们设置的一样，可以它的内容部分的尺寸只有40x40，远小于150，可以看到，这就是<code>content-box</code>和<code>border-box</code>的区别了，再来计算一下：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">150 = 5+50+40+50+5 // 高度</span><br><span class="line">150 = 5+50+40+50+5 // 宽度</span><br></pre></td></tr></table></figure>
+
 <p>可知，整个元素的高度其实是包括了border、padding和内容的高度，宽度也是如此。</p>
 <h4 id="浏览器的兼容性"><a href="#浏览器的兼容性" class="headerlink" title="浏览器的兼容性"></a>浏览器的兼容性</h4><ul>
-<li><p>桌面端<br><img src="http://upload-images.jianshu.io/upload_images/2650331-3a56c6fe15ff93e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-</li>
-<li><p>手机端<br><img src="http://upload-images.jianshu.io/upload_images/2650331-6bb890ae10bdf791.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-</li>
+<li><p>桌面端</p>
+<img src="http://upload-images.jianshu.io/upload_images/2650331-3a56c6fe15ff93e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" title="" alt=""></li>
+<li><p>手机端</p>
+<img src="http://upload-images.jianshu.io/upload_images/2650331-6bb890ae10bdf791.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" title="" alt=""></li>
 </ul>
 <p>可以看到，不管是手机端还是桌面端大部分都是不支持<code>padding-box</code>的，所以建议实际开发中避免使用<code>padding-box</code>。</p>
 <p>跟多详细内容请参考：<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing</a></p>
 <hr>
 <p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
-<p><img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;"></p>
-
+<img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;">
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2017/10/28/frontend/box-sizing-in-css3/" data-id="cksebuxiu002mzacad96fdang" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2017/10/28/frontend/box-sizing-in-css3/" data-id="cksoq4yix000us8cac9rhr9xa" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -293,9 +276,9 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-zh/first-test" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-zh-CN/first-test" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/10/20/notes/zh/first-test/" class="article-date">
+    <a href="/2017/10/20/notes/zh-CN/first-test/" class="article-date">
   <time datetime="2017-10-20T08:13:44.000Z" itemprop="datePublished">2017-10-20</time>
 </a>
     
@@ -311,7 +294,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/20/notes/zh/first-test/">博客迁移到Github啦^ _ ^</a>
+      <a class="article-title" href="/2017/10/20/notes/zh-CN/first-test/">博客迁移到Github啦^ _ ^</a>
     </h1>
   
 
@@ -319,15 +302,16 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="新的博客，新的起点，新的征程"><a href="#新的博客，新的起点，新的征程" class="headerlink" title="新的博客，新的起点，新的征程"></a>新的博客，新的起点，新的征程</h4><p>博客地址先甩上来：<a href="http://xydida.com" target="_blank" rel="noopener">http://xydida.com</a></p>
+        <h4 id="新的博客，新的起点，新的征程"><a href="#新的博客，新的起点，新的征程" class="headerlink" title="新的博客，新的起点，新的征程"></a>新的博客，新的起点，新的征程</h4><p>博客地址先甩上来：<a href="https://xydida.com/" target="_blank" rel="noopener">https://xydida.com</a></p>
 <p><code>echo &quot;Welcome to my Blog&quot;</code></p>
-<p>先说明一下，由于博客之前一直是放在<a href="https://www.openshift.com" target="_blank" rel="noopener">OpenShift</a>上面的，不过由于OpenShift最近更新了V3版本，这个版本的更新还挺大的，已经完全是一个容器云服务的平台，但感觉在上面搭一个wordpress比较麻烦，而且受限于国内的网络，之前早就想换到GitHub了，正好趁此机会，尝试一下<a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>，哈哈😄。下图是最新版本的OpenShift的控制台：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2650331-28569747d2d05234.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="openshift-manager"><br>由于之前博客上并没有写多少有深度的文章，我也就没有备份，以后将会多输出优质文章，记录生活点滴。</p>
+<p>先说明一下，由于博客之前一直是放在<a href="https://www.openshift.com/" target="_blank" rel="noopener">OpenShift</a>上面的，不过由于OpenShift最近更新了V3版本，这个版本的更新还挺大的，已经完全是一个容器云服务的平台，但感觉在上面搭一个wordpress比较麻烦，而且受限于国内的网络，之前早就想换到GitHub了，正好趁此机会，尝试一下<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>，哈哈😄。下图是最新版本的OpenShift的控制台：</p>
+<img src="/2017/10/20/notes/zh-CN/first-test/openshift-manager.png" alt="openshift manager">
+<p>由于之前博客上并没有写多少有深度的文章，我也就没有备份，以后将会多输出优质文章，记录生活点滴。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2017/10/20/notes/zh/first-test/" data-id="cksebuxm600amzacaej03f69a" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2017/10/20/notes/zh-CN/first-test/" data-id="cksoq4ysj0074s8ca6i912zrv" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Something/">Something</a></li></ul>
@@ -362,19 +346,23 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<h2 id="QUICK-START"><a href="#QUICK-START" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="CREATE-A-NEW-POST"><a href="#CREATE-A-NEW-POST" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h3 id="RUN-SERVER"><a href="#RUN-SERVER" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h3 id="GENERATE-STATIC-FILES"><a href="#GENERATE-STATIC-FILES" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h3 id="DEPLOY-TO-REMOTE-SITES"><a href="#DEPLOY-TO-REMOTE-SITES" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2017/10/20/notes/hello-world/" data-id="cksebuxjk003xzacapoglmakh" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2017/10/20/notes/hello-world/" data-id="cksoq4yjn0013s8califf9m6s" class="article-share-link">分享</a>
       
       
     </footer>
@@ -387,7 +375,7 @@ ga('send', 'pageview');
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/13/">&laquo;Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span>
+    <a class="extend prev" rel="prev" href="/page/13/">&laquo;上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span>
   </nav>
 
 </section>
@@ -396,7 +384,7 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">分类</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Devops/">Devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Electron/">Electron</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Electron/Node/">Node</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Electron/Node/Javascript/">Javascript</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Git/">Git</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Networks/">Networks</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Object-Oriented/">Object Oriented</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/Laravel/">Laravel</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Regular-Expression/">Regular Expression</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VPS/">VPS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Yangmao/">Yangmao</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/小程序/">小程序</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/小程序/PHP/">PHP</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/微信/">微信</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">1</span></li></ul>
     </div>
@@ -406,7 +394,7 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
       <a href="/tags/API/" style="font-size: 13.33px;">API</a> <a href="/tags/Big-Sur/" style="font-size: 10px;">Big Sur</a> <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CSS/" style="font-size: 16.67px;">CSS</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Javascript/" style="font-size: 11.67px;">Javascript</a> <a href="/tags/Laravel/" style="font-size: 11.67px;">Laravel</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Lumen/" style="font-size: 10px;">Lumen</a> <a href="/tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="/tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="/tags/PSR/" style="font-size: 10px;">PSR</a> <a href="/tags/Perl/" style="font-size: 10px;">Perl</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SICP/" style="font-size: 10px;">SICP</a> <a href="/tags/Server/" style="font-size: 15px;">Server</a> <a href="/tags/Slim/" style="font-size: 10px;">Slim</a> <a href="/tags/Something/" style="font-size: 10px;">Something</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/UniApp/" style="font-size: 10px;">UniApp</a> <a href="/tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="/tags/VPS/" style="font-size: 10px;">VPS</a> <a href="/tags/Vue/" style="font-size: 11.67px;">Vue</a> <a href="/tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/array-key-exists/" style="font-size: 10px;">array_key_exists</a> <a href="/tags/array-search/" style="font-size: 10px;">array_search</a> <a href="/tags/autoload/" style="font-size: 10px;">autoload</a> <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/cover-view/" style="font-size: 11.67px;">cover-view</a> <a href="/tags/curl/" style="font-size: 10px;">curl</a> <a href="/tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="/tags/electron/" style="font-size: 11.67px;">electron</a> <a href="/tags/emoji/" style="font-size: 10px;">emoji</a> <a href="/tags/firewall/" style="font-size: 10px;">firewall</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/in-array/" style="font-size: 10px;">in_array</a> <a href="/tags/interviews/" style="font-size: 10px;">interviews</a> <a href="/tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/macOS/" style="font-size: 10px;">macOS</a> <a href="/tags/networks/" style="font-size: 11.67px;">networks</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/notes/" style="font-size: 13.33px;">notes</a> <a href="/tags/npm/" style="font-size: 11.67px;">npm</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/routing/" style="font-size: 10px;">routing</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/ufw/" style="font-size: 10px;">ufw</a> <a href="/tags/公众号阅读笔记/" style="font-size: 10px;">公众号阅读笔记</a> <a href="/tags/小程序/" style="font-size: 18.33px;">小程序</a> <a href="/tags/微信/" style="font-size: 13.33px;">微信</a> <a href="/tags/羊毛/" style="font-size: 10px;">羊毛</a> <a href="/tags/软件设计/" style="font-size: 10px;">软件设计</a>
     </div>
@@ -415,9 +403,9 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -425,7 +413,7 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         

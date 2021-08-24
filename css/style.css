@@ -1019,6 +1019,7 @@ a.article-title:hover {
   line-height: 1em;
   margin-bottom: 0.5em;
   display: block;
+  text-align: right;
 }
 #page-nav {
   margin: 50px auto;
