@@ -281,12 +281,12 @@ ga('send', 'pageview');
   
     <article id="post-what-is-continuous-and-discrete-in-DSP" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/10/20/mathematics/what-is-continuous-and-discrete-in-DSP/" class="article-date">
+    <a href="/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/" class="article-date">
   <time datetime="2021-10-20T03:12:31.000Z" itemprop="datePublished">2021-10-20</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/mathematics/">mathematics</a>
+    <a class="article-category-link" href="/categories/DSP/">DSP</a>
   </div>
 
   </div>
@@ -297,7 +297,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/20/mathematics/what-is-continuous-and-discrete-in-DSP/">连续和离散是什么意思？</a>
+      <a class="article-title" href="/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/">连续和离散是什么意思？</a>
     </h1>
   
 
@@ -316,25 +316,25 @@ ga('send', 'pageview');
 <p>自然界的所有声音都是模拟的，在研究时通常需要转换成数字的，因为使用的处理工具都是数字的，毕竟电子产品都叫“digital products”，当然最开始也有“模拟计算机”，但慢慢就被时代淘汰了，为什么被淘汰，我也不是很清楚。</p>
 <p>上面说声音是模拟的，其实有点不恰当，应该说是连续的，模拟信号处理应该为<strong>连续信号处理</strong>。</p>
 <p>所谓“连续”即不间断的，<code>x轴</code>上连续，画出来的曲线是连着的：</p>
-<img src="/2021/10/20/mathematics/what-is-continuous-and-discrete-in-DSP/continuous-graph.png" alt="continuous-graph">
+<img src="/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/continuous-graph.png" alt="continuous-graph">
 
 <p>离散是一组量化的值，就是一组序列，在<code>x轴</code>每隔相同的间隔取点，然后找到对应的值，图像如下：</p>
-<img src="/2021/10/20/mathematics/what-is-continuous-and-discrete-in-DSP/discrete-graph.png" alt="discrete-graph">
+<img src="/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/discrete-graph.png" alt="discrete-graph">
 
 <p>如果用matlab分别来画连续曲线和离散曲线，可以这样：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x=[-pi:<span class="number">0.1</span>:pi];</span><br><span class="line"># 连续</span><br><span class="line">plot(x, <span class="built_in">sin</span>(x));</span><br><span class="line"></span><br><span class="line"># 离散</span><br><span class="line">stem(x, <span class="built_in">sin</span>(x));</span><br></pre></td></tr></table></figure>
 
 <p>图像分别是：</p>
-<img src="/2021/10/20/mathematics/what-is-continuous-and-discrete-in-DSP/plot-continuous.png" alt="plot">
+<img src="/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/plot-continuous.png" alt="plot">
 
-<img src="/2021/10/20/mathematics/what-is-continuous-and-discrete-in-DSP/stem-discrete.png" alt="stem">
+<img src="/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/stem-discrete.png" alt="stem">
 
 <p>图像可以很直观看出来区别。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/10/20/mathematics/what-is-continuous-and-discrete-in-DSP/" data-id="ckuzgn44f001z9vcalnj31nz6" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/" data-id="ckuzgn44f001z9vcalnj31nz6" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DSP/">DSP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math/">math</a></li></ul>
@@ -406,7 +406,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Devops/">Devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Electron/">Electron</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Electron/Node/">Node</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Electron/Node/Javascript/">Javascript</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Git/">Git</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Networks/">Networks</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Object-Oriented/">Object Oriented</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/Laravel/">Laravel</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Regular-Expression/">Regular Expression</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VPS/">VPS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Yangmao/">Yangmao</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mathematics/">mathematics</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/小程序/">小程序</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/小程序/PHP/">PHP</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/微信/">微信</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DSP/">DSP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Devops/">Devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Electron/">Electron</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Electron/Node/">Node</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Electron/Node/Javascript/">Javascript</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Git/">Git</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Networks/">Networks</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Object-Oriented/">Object Oriented</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/Laravel/">Laravel</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Regular-Expression/">Regular Expression</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VPS/">VPS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Yangmao/">Yangmao</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/小程序/">小程序</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/小程序/PHP/">PHP</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/微信/">微信</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -438,7 +438,7 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2021/10/20/mathematics/what-is-continuous-and-discrete-in-DSP/">连续和离散是什么意思？</a>
+            <a href="/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/">连续和离散是什么意思？</a>
           </li>
         
           <li>
