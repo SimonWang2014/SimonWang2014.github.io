@@ -3,25 +3,25 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
-  <title>简单聊聊PHP中的反射(Reflection) | 正义的程序猿</title>
+  <title>关于我 | 正义的程序猿</title>
   <meta name="baidu-site-verification" content="yXEzwss0jm">
   <meta name="360-site-verification" content="878e013ea1c0235dec34a8b1c676cf65">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="简单聊聊PHP中的反射(Reflection)">
-<meta name="keywords" content="PHP,Reflection">
-<meta property="og:type" content="article">
-<meta property="og:title" content="简单聊聊PHP中的反射(Reflection)">
-<meta property="og:url" content="https://www.xydida.com/2019/4/28/PHP/talk-about-reflection-in-PHP/index.html">
+  <meta name="description" content="本科毕业，小厂web开发工作三年，因对自己有更高要求，DIY申请了英国计算机硕士，现在英国University of Surrey攻读Artificial Intelligence，打算从事计算机视觉方向，平时会写点公众号：「正义的程序猿」。 联系：hejiu2013##hotmail.com">
+<meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于我">
+<meta property="og:url" content="https://www.xydida.com/about/index.html">
 <meta property="og:site_name" content="正义的程序猿">
-<meta property="og:description" content="简单聊聊PHP中的反射(Reflection)">
+<meta property="og:description" content="本科毕业，小厂web开发工作三年，因对自己有更高要求，DIY申请了英国计算机硕士，现在英国University of Surrey攻读Artificial Intelligence，打算从事计算机视觉方向，平时会写点公众号：「正义的程序猿」。 联系：hejiu2013##hotmail.com">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-28T01:40:02.674Z">
+<meta property="og:updated_time" content="2021-10-24T17:05:57.557Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="简单聊聊PHP中的反射(Reflection)">
-<meta name="twitter:description" content="简单聊聊PHP中的反射(Reflection)">
+<meta name="twitter:title" content="关于我">
+<meta name="twitter:description" content="本科毕业，小厂web开发工作三年，因对自己有更高要求，DIY申请了英国计算机硕士，现在英国University of Surrey攻读Artificial Intelligence，打算从事计算机视觉方向，平时会写点公众号：「正义的程序猿」。 联系：hejiu2013##hotmail.com">
   
     <link rel="alternate" href="/sitemap.xml" title="正义的程序猿" type="application/atom+xml">
   
@@ -114,16 +114,12 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-talk-about-reflection-in-PHP" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/4/28/PHP/talk-about-reflection-in-PHP/" class="article-date">
-  <time datetime="2019-04-27T23:19:00.000Z" itemprop="datePublished">2019-04-28</time>
+    <a href="/about/index.html" class="article-date">
+  <time datetime="2021-10-24T09:50:10.000Z" itemprop="datePublished">2021-10-24</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PHP/">PHP</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -132,7 +128,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      简单聊聊PHP中的反射(Reflection)
+      关于我
     </h1>
   
 
@@ -140,51 +136,19 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>简单聊聊PHP中的反射</p>
-<p>和Java一样PHP中也提供了一套完整的<code>反射API</code>，何为<code>反射</code>？以前我们是先写类，再在类中添加各种方法和属性，最后实例化一个类对象调用属性和方法。那有我们没有办法只通过这个实例对象获取到关于这个类的全部信息呢，包括有哪些方法和属性它们分别在多少行？答案就是<code>反射</code>。</p>
-<p>几个常用的反射API的类<br>类名    作用<br>Reflection    为类提供摘要信息<br>ReflectionClass    对类提供反射<br>ReflectionMethod    对方法提供反射<br>ReflectionParameter    对方法参数提供反射<br>ReflectionProperty    对类属性提供反射<br>ReflectionFunction    对函数提供反射<br>ReflectionExtension    对扩展提供反射<br>ReflectionException    对异常提供反射</p>
-<h3 id="REFLECTIONCLASS"><a href="#REFLECTIONCLASS" class="headerlink" title="ReflectionClass"></a>ReflectionClass</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class People &#123;</span><br><span class="line">    protected $name = &apos;Foo&apos;;</span><br><span class="line">    protected $age = 18;</span><br><span class="line"></span><br><span class="line">    public function __construct($name,$age)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;name = $name;</span><br><span class="line">        $this-&gt;age = $age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function toString()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;Name: $this-&gt;name, Age: $this-&gt;age&quot; . PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Student extends People &#123;</span><br><span class="line">    public $major;</span><br><span class="line"></span><br><span class="line">    public function __construct($name, $age, $major)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;major = $major;</span><br><span class="line">        parent::__construct($name, $age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function toString()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;Name: $this-&gt;name, Age: $this-&gt;age, Major: $this-&gt;major&quot; . PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$reflect = new ReflectionClass(&apos;Student&apos;);</span><br><span class="line">Reflection::export($reflect);</span><br></pre></td></tr></table></figure>
-
-<p>输出结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Class [ &lt;user&gt; class Student extends People ] &#123;</span><br><span class="line">  @@ /…/demo1.php 18-31</span><br><span class="line"></span><br><span class="line">  - Constants [0] &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  - Static properties [0] &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  - Static methods [0] &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  - Properties [3] &#123;</span><br><span class="line">    Property [ &lt;default&gt; public $major ]</span><br><span class="line">    Property [ &lt;default&gt; protected $name ]</span><br><span class="line">    Property [ &lt;default&gt; protected $age ]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  - Methods [2] &#123;</span><br><span class="line">    Method [ &lt;user, overwrites People, ctor&gt; public method __construct ] &#123;</span><br><span class="line">      @@ /…/demo1.php 21 - 25</span><br><span class="line"></span><br><span class="line">      - Parameters [3] &#123;</span><br><span class="line">        Parameter #0 [ &lt;required&gt; $name ]</span><br><span class="line">        Parameter #1 [ &lt;required&gt; $age ]</span><br><span class="line">        Parameter #2 [ &lt;required&gt; $major ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Method [ &lt;user, overwrites People, prototype People&gt; public method toString ] &#123;</span><br><span class="line">      @@ /…/demo1.php 27 - 30</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以看到，<code>Reflection::export</code>几乎提供了<code>Student</code>类的所以信息，包括属性和方法的访问控制状态，每个方法需要的参数以及每个方法在脚本中的位置，和<code>var_dump</code>相比，在使用<code>var_dump</code>前总是需要实例化一个对象，而且无法提供那么多详细信息。</p>
-<p><code>var_dump</code>输出如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">object(Student)#1 (3) &#123;</span><br><span class="line">  [&quot;major&quot;]=&gt;</span><br><span class="line">  string(2) &quot;CS&quot;</span><br><span class="line">  [&quot;name&quot;:protected]=&gt;</span><br><span class="line">  string(5) &quot;Jason&quot;</span><br><span class="line">  [&quot;age&quot;:protected]=&gt;</span><br><span class="line">  int(21)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>虽然<code>var_dump</code>和<code>print_r</code>是打印数据的利器，但对于类和函数，反射API提供了更高层次的功能。</p>
+        <p>本科毕业，小厂web开发工作三年，因对自己有更高要求，DIY申请了英国计算机硕士，现在英国<strong>University of Surrey</strong>攻读<strong>Artificial Intelligence</strong>，打算从事计算机视觉方向，平时会写点公众号：「正义的程序猿」。</p>
+<p>联系：hejiu2013##hotmail.com</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2019/4/28/PHP/talk-about-reflection-in-PHP/" data-id="ckv5gxhnt001vlxcabzgh3toj" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/about/index.html" data-id="ckv5gxhlz0001lxcadwd0ti40" class="article-share-link">分享</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reflection/">Reflection</a></li></ul>
-
     </footer>
   </div>
   
     
-<nav id="article-nav">
-  
-    <a href="/2019/5/31/Tools/Hot-key-to-select-same-occurrence-in-PHPStorm/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          PHPStorm中快速选中多个相同的单词
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/4/1/PHP/getter-and-setter-in-PHP/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">PHP代码优化—getter 和 setter</div>
-    </a>
-  
-</nav>
-
   
 </article>
 
