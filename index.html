@@ -312,23 +312,11 @@ ga('send', 'pageview');
 <li>数字信号处理</li>
 </ol>
 <p>自然界的所有声音都是模拟的，在研究时通常需要转换成数字的，因为使用的处理工具都是数字的，毕竟电子产品都叫“digital products”，当然最开始也有“模拟计算机”，但慢慢就被时代淘汰了，为什么被淘汰，我也不是很清楚。</p>
-<p>上面说声音是模拟的，其实有点不恰当，应该说是连续的，模拟信号处理应该为<strong>连续信号处理</strong>。</p>
-<p>所谓“连续”即不间断的，<code>x轴</code>上连续，画出来的曲线是连着的：</p>
-<img src="/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/continuous-graph.png" alt="continuous-graph">
-
-<p>离散是一组量化的值，就是一组序列，在<code>x轴</code>每隔相同的间隔取点，然后找到对应的值，图像如下：</p>
-<img src="/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/discrete-graph.png" alt="discrete-graph">
-
-<p>如果用matlab分别来画连续曲线和离散曲线，可以这样：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x=[-pi:<span class="number">0.1</span>:pi];</span><br><span class="line"># 连续</span><br><span class="line">plot(x, <span class="built_in">sin</span>(x));</span><br><span class="line"></span><br><span class="line"># 离散</span><br><span class="line">stem(x, <span class="built_in">sin</span>(x));</span><br></pre></td></tr></table></figure>
-
-<p>图像分别是：</p>
-<img src="/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/plot-continuous.png" alt="plot">
-
-<img src="/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/stem-discrete.png" alt="stem">
-
-<p>图像可以很直观看出来区别。</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">

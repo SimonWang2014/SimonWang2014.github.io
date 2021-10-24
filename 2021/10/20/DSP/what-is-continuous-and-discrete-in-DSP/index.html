@@ -10,22 +10,22 @@
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="这是我在学数字信号处理的笔记。  信号处理是分析一个过程，而这个过程是随时间变化的。分为2种：  模拟信号处理 数字信号处理  自然界的所有声音都是模拟的，在研究时通常需要转换成数字的，因为使用的处理工具都是数字的，毕竟电子产品都叫“digital products”，当然最开始也有“模拟计算机”，但慢慢就被时代淘汰了，为什么被淘汰，我也不是很清楚。 上面说声音是模拟的，其实有点不恰当，应该说是">
+  <meta name="description" content="这是我在学数字信号处理的笔记。  信号处理是分析一个过程，而这个过程是随时间变化的。分为2种：  模拟信号处理 数字信号处理  自然界的所有声音都是模拟的，在研究时通常需要转换成数字的，因为使用的处理工具都是数字的，毕竟电子产品都叫“digital products”，当然最开始也有“模拟计算机”，但慢慢就被时代淘汰了，为什么被淘汰，我也不是很清楚。">
 <meta name="keywords" content="DSP,math">
 <meta property="og:type" content="article">
 <meta property="og:title" content="连续和离散是什么意思？">
 <meta property="og:url" content="https://www.xydida.com/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/index.html">
 <meta property="og:site_name" content="正义的程序猿">
-<meta property="og:description" content="这是我在学数字信号处理的笔记。  信号处理是分析一个过程，而这个过程是随时间变化的。分为2种：  模拟信号处理 数字信号处理  自然界的所有声音都是模拟的，在研究时通常需要转换成数字的，因为使用的处理工具都是数字的，毕竟电子产品都叫“digital products”，当然最开始也有“模拟计算机”，但慢慢就被时代淘汰了，为什么被淘汰，我也不是很清楚。 上面说声音是模拟的，其实有点不恰当，应该说是">
+<meta property="og:description" content="这是我在学数字信号处理的笔记。  信号处理是分析一个过程，而这个过程是随时间变化的。分为2种：  模拟信号处理 数字信号处理  自然界的所有声音都是模拟的，在研究时通常需要转换成数字的，因为使用的处理工具都是数字的，毕竟电子产品都叫“digital products”，当然最开始也有“模拟计算机”，但慢慢就被时代淘汰了，为什么被淘汰，我也不是很清楚。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.xydida.com/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/continuous-graph.png">
 <meta property="og:image" content="https://www.xydida.com/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/discrete-graph.png">
 <meta property="og:image" content="https://www.xydida.com/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/plot-continuous.png">
 <meta property="og:image" content="https://www.xydida.com/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/stem-discrete.png">
-<meta property="og:updated_time" content="2021-10-20T17:22:37.221Z">
+<meta property="og:updated_time" content="2021-10-24T16:47:52.074Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="连续和离散是什么意思？">
-<meta name="twitter:description" content="这是我在学数字信号处理的笔记。  信号处理是分析一个过程，而这个过程是随时间变化的。分为2种：  模拟信号处理 数字信号处理  自然界的所有声音都是模拟的，在研究时通常需要转换成数字的，因为使用的处理工具都是数字的，毕竟电子产品都叫“digital products”，当然最开始也有“模拟计算机”，但慢慢就被时代淘汰了，为什么被淘汰，我也不是很清楚。 上面说声音是模拟的，其实有点不恰当，应该说是">
+<meta name="twitter:description" content="这是我在学数字信号处理的笔记。  信号处理是分析一个过程，而这个过程是随时间变化的。分为2种：  模拟信号处理 数字信号处理  自然界的所有声音都是模拟的，在研究时通常需要转换成数字的，因为使用的处理工具都是数字的，毕竟电子产品都叫“digital products”，当然最开始也有“模拟计算机”，但慢慢就被时代淘汰了，为什么被淘汰，我也不是很清楚。">
 <meta name="twitter:image" content="https://www.xydida.com/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/continuous-graph.png">
   
     <link rel="alternate" href="/sitemap.xml" title="正义的程序猿" type="application/atom+xml">
@@ -152,6 +152,8 @@ ga('send', 'pageview');
 <li>数字信号处理</li>
 </ol>
 <p>自然界的所有声音都是模拟的，在研究时通常需要转换成数字的，因为使用的处理工具都是数字的，毕竟电子产品都叫“digital products”，当然最开始也有“模拟计算机”，但慢慢就被时代淘汰了，为什么被淘汰，我也不是很清楚。</p>
+<a id="more"></a>
+
 <p>上面说声音是模拟的，其实有点不恰当，应该说是连续的，模拟信号处理应该为<strong>连续信号处理</strong>。</p>
 <p>所谓“连续”即不间断的，<code>x轴</code>上连续，画出来的曲线是连着的：</p>
 <img src="/2021/10/20/DSP/what-is-continuous-and-discrete-in-DSP/continuous-graph.png" alt="continuous-graph">
