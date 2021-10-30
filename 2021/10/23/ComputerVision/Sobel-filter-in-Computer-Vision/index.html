@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://www.xydida.com/2021/10/23/ComputerVision/Sobel-filter-in-Computer-Vision/sobel-demo-1.png">
 <meta property="og:image" content="https://www.xydida.com/2021/10/23/ComputerVision/Sobel-filter-in-Computer-Vision/sobel-demo-2.png">
 <meta property="og:image" content="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg">
-<meta property="og:updated_time" content="2021-10-24T16:45:46.863Z">
+<meta property="og:updated_time" content="2021-10-30T09:55:13.425Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="噪音、过滤器与边缘检测（我的「计算机视觉」学习）">
 <meta name="twitter:description" content="图像处理中有一个很重要的任务就是降低图像的噪音，噪音有很多种类型，一种常见的是斑点噪音（speckling），专业名称叫做：Additive white Gaussian noise (AWGN)。   上图左边即所谓的高斯噪音，">
@@ -236,8 +236,7 @@ ga('send', 'pageview');
 <p>一些经典的图像梯度算法是考虑图像的每个像素的某个邻域内的灰度变化，利用边缘临近的一阶或二阶导数变化规律，对原始图像中像素某个邻域设置梯度算子，通常我们用小区域模板进行卷积来计算，有Sobel算子、Robinson算子、Laplace算子等。</p>
 <p>（copy来的）算子也可以叫过滤器吧？</p>
 </blockquote>
-<p>##索贝尔算子（Sobel Operator）</p>
-<p>在图像处理中<strong>Sobel</strong>用的很多，它有个好处是能在检测边缘之前稍微地<strong>平滑图像</strong>，具体的矩阵如下：</p>
+<h1 id="索贝尔算子（SOBEL-OPERATOR）"><a href="#索贝尔算子（SOBEL-OPERATOR）" class="headerlink" title="索贝尔算子（Sobel Operator）"></a>索贝尔算子（Sobel Operator）</h1><p>在图像处理中<strong>Sobel</strong>用的很多，它有个好处是能在检测边缘之前稍微地<strong>平滑图像</strong>，具体的矩阵如下：</p>
 <img src="/2021/10/23/ComputerVision/Sobel-filter-in-Computer-Vision/sobel-operator.png" alt="sobel-operator">
 
 <p>怎么处理图片呢？我这里写了一个例子：</p>
@@ -260,7 +259,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/10/23/ComputerVision/Sobel-filter-in-Computer-Vision/" data-id="ckv5gxhmv000plxca84waf71q" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/10/23/ComputerVision/Sobel-filter-in-Computer-Vision/" data-id="ckvdmpa2w000kggcaawadqlvc" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/convolution/">convolution</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/edge-detect/">edge detect</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/filter/">filter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/image-processing/">image processing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kernel/">kernel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sobel/">sobel</a></li></ul>
