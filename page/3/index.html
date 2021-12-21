@@ -160,7 +160,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/6/9/PHP/Some-different-ways-of-in-array/" data-id="ckxgf70ph000p38ca88cxu9g7" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/6/9/PHP/Some-different-ways-of-in-array/" data-id="ckxgj50mi000q6gca4c9h2gmm" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array-key-exists/">array_key_exists</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array-search/">array_search</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/in-array/">in_array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/performance/">performance</a></li></ul>
@@ -208,7 +208,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/6/5/frontend/Pseudo-classes-in-CSS/" data-id="ckxgf70pb000k38ca7riodwwv" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/6/5/frontend/Pseudo-classes-in-CSS/" data-id="ckxgj50md000k6gcallqdlqyc" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -249,16 +249,16 @@ ga('send', 'pageview');
         <!-- Table of Contents -->
         
 
-        <p>When use <code>gulp</code> in an old project, It outputs an error: </p>
+        <p>When use <code>gulp</code> in an old project, It outputs an error:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fs.js:45</span><br><span class="line">&#125; = primordials;</span><br><span class="line">    ^</span><br><span class="line"></span><br><span class="line">ReferenceError: primordials is not defined</span><br><span class="line">// ...</span><br></pre></td></tr></table></figure>
-
 <p>And how to fix this error?</p>
 <p>It occurs when use <code>gulp 3.x</code> with <code>node</code> upper than <strong>12.x</strong>，because <code>gulp 3.x</code> depends on <code>graceful-fs@^3.0.0</code> which patches Node’s <code>fs</code> module and that patch worked well before <code>node v12</code>.</p>
-<h1 id="SOLUTIONS"><a href="#SOLUTIONS" class="headerlink" title="Solutions"></a>Solutions</h1><p>There are some solutions:</p>
+<h1 id="solutions"><a class="markdownIt-Anchor" href="#solutions"></a> Solutions</h1>
+<p>There are some solutions:</p>
 <ol>
 <li>upgarde gulp</li>
 <li>downgrade node</li>
-<li>to lock <code>graceful-fs</code> to version <code>4.2.2</code> </li>
+<li>to lock <code>graceful-fs</code> to version <code>4.2.2</code></li>
 </ol>
 <p>For me, i do not want to re-write and re-config my project toolchain, and i also cannot change node version. So lock the <code>gracefull-fs</code> is good for me. The concrete solution here:</p>
 <ol>
@@ -266,7 +266,6 @@ ga('send', 'pageview');
 <li>edit the  <code>npm-shrinkwrap.json</code>:</li>
 </ol>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"graceful-fs"</span>: &#123;</span><br><span class="line">        <span class="attr">"version"</span>: <span class="string">"4.2.2"</span></span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ol start="3">
 <li>re-run <code>npm install</code></li>
 </ol>
@@ -275,7 +274,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/5/31/frontend/primordials-is-not-defined/" data-id="ckxgf70qb001p38ca4f784a80" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/5/31/frontend/primordials-is-not-defined/" data-id="ckxgj50na001p6gcavakn2lie" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li></ul>
@@ -329,7 +328,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/5/28/PHP/A-simple-PHP-framework/" data-id="ckxgf70os000438camscds049" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/5/28/PHP/A-simple-PHP-framework/" data-id="ckxgj50lt00046gcaymzaf315" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li></ul>
@@ -372,21 +371,17 @@ ga('send', 'pageview');
 
         <p><code>npm</code>在打包老项目时会有如下报错：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Uncaught Error: Cannot find module &apos;babel-runtime/regenerator&apos;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
 <img src="https://i.loli.net/2021/05/24/s3iTSK8n5JOMC6L.png" title="" alt="">
-
 <p>解决方法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i babel-runtime --save</span><br></pre></td></tr></table></figure>
-
 <p>或者修改<code>package.json</code>文件添加如下代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line">  ...</span><br><span class="line">    &quot;babel-runtime&quot;: &quot;^6.26.0&quot;,</span><br><span class="line">  ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
 <p>问题解决。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/5/24/frontend/Babel-cannot-find-module-babel-runtime-regenerator/" data-id="ckxgf70ow000738caa7vzq28q" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/5/24/frontend/Babel-cannot-find-module-babel-runtime-regenerator/" data-id="ckxgj50ly00076gcat6aq3ue3" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/babel/">babel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>

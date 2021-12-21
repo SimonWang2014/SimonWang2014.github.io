@@ -10,18 +10,18 @@
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="有时候我们在使用Canvas绘制一段文本时，会需要通过measureText()方法获取文本的宽度，例如： 创建canvas标签1&amp;lt;canvas id=&amp;quot;canvas&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt;  获取一段文本的宽度">
+  <meta name="description" content="有时候我们在使用Canvas绘制一段文本时，会需要通过measureText()方法获取文本的宽度，例如：  创建canvas标签 1&amp;lt;canvas id=&amp;quot;canvas&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt;  获取一段文本的宽度">
 <meta name="keywords" content="小程序,canvas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在小程序Canvas中使用measureText">
 <meta property="og:url" content="https://www.xydida.com/2018/9/14/小程序/The-measureText-function-in-Wechat-miniprogram-canvas/index.html">
 <meta property="og:site_name" content="正义的程序猿">
-<meta property="og:description" content="有时候我们在使用Canvas绘制一段文本时，会需要通过measureText()方法获取文本的宽度，例如： 创建canvas标签1&amp;lt;canvas id=&amp;quot;canvas&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt;  获取一段文本的宽度">
+<meta property="og:description" content="有时候我们在使用Canvas绘制一段文本时，会需要通过measureText()方法获取文本的宽度，例如：  创建canvas标签 1&amp;lt;canvas id=&amp;quot;canvas&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt;  获取一段文本的宽度">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2021-02-23T05:46:31.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在小程序Canvas中使用measureText">
-<meta name="twitter:description" content="有时候我们在使用Canvas绘制一段文本时，会需要通过measureText()方法获取文本的宽度，例如： 创建canvas标签1&amp;lt;canvas id=&amp;quot;canvas&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt;  获取一段文本的宽度">
+<meta name="twitter:description" content="有时候我们在使用Canvas绘制一段文本时，会需要通过measureText()方法获取文本的宽度，例如：  创建canvas标签 1&amp;lt;canvas id=&amp;quot;canvas&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt;  获取一段文本的宽度">
   
     <link rel="alternate" href="/sitemap.xml" title="正义的程序猿" type="application/atom+xml">
   
@@ -146,12 +146,11 @@ ga('send', 'pageview');
         
 
         <p>有时候我们在使用Canvas绘制一段文本时，会需要通过<code>measureText()</code>方法获取文本的宽度，例如：</p>
-<h3 id="创建CANVAS标签"><a href="#创建CANVAS标签" class="headerlink" title="创建canvas标签"></a>创建canvas标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;canvas&quot;&gt;&lt;/canvas&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="获取一段文本的宽度"><a href="#获取一段文本的宽度" class="headerlink" title="获取一段文本的宽度"></a>获取一段文本的宽度</h3><a id="more"></a>
-
+<h3 id="创建canvas标签"><a class="markdownIt-Anchor" href="#创建canvas标签"></a> 创建canvas标签</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;canvas&quot;&gt;&lt;/canvas&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="获取一段文本的宽度"><a class="markdownIt-Anchor" href="#获取一段文本的宽度"></a> 获取一段文本的宽度</h3>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var canvas = document.getElementById(&apos;canvas&apos;);</span><br><span class="line">var ctx = canvas.getContext(&apos;2d&apos;);</span><br><span class="line"></span><br><span class="line">var text = ctx.measureText(&apos;foo&apos;); // TextMetrics object</span><br><span class="line">text.width; // 16;</span><br></pre></td></tr></table></figure>
-
 <p>如上所示，<code>measureText</code>返回的其实是一个<code>TextMetrics</code>对象，它包含了文本的宽度，<a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/measureText" target="_blank" rel="noopener">MDN</a>上的解释如下：</p>
 <blockquote>
 <p>The CanvasRenderingContext2D.measureText() method returns a TextMetrics object that contains information about the measured text (such as its width for example).</p>
@@ -159,11 +158,10 @@ ga('send', 'pageview');
 <p>在微信小程序现在的版本（v2.13.7）中，小程序的canvas还不支持<code>measureText</code>，所以我自己写了个类似于<code>measureText</code>方法，<strong>通过canvas获取文本的宽度</strong>，方法如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">function measureText (text, fontSize=10) &#123;</span><br><span class="line">    text = String(text);</span><br><span class="line">    var text = text.split(&apos;&apos;);</span><br><span class="line">    var width = 0;</span><br><span class="line">    text.forEach(function(item) &#123;</span><br><span class="line">        if (/[a-zA-Z]/.test(item)) &#123;</span><br><span class="line">            width += 7;</span><br><span class="line">        &#125; else if (/[0-9]/.test(item)) &#123;</span><br><span class="line">            width += 5.5;</span><br><span class="line">        &#125; else if (/\./.test(item)) &#123;</span><br><span class="line">            width += 2.7;</span><br><span class="line">        &#125; else if (/-/.test(item)) &#123;</span><br><span class="line">            width += 3.25;</span><br><span class="line">        &#125; else if (/[\u4e00-\u9fa5]/.test(item)) &#123;  //中文匹配</span><br><span class="line">            width += 10;</span><br><span class="line">        &#125; else if (/\(|\)/.test(item)) &#123;</span><br><span class="line">            width += 3.73;</span><br><span class="line">        &#125; else if (/\s/.test(item)) &#123;</span><br><span class="line">            width += 2.5;</span><br><span class="line">        &#125; else if (/%/.test(item)) &#123;</span><br><span class="line">            width += 8;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            width += 10;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    return width * fontSize / 10;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/9/14/小程序/The-measureText-function-in-Wechat-miniprogram-canvas/" data-id="ckxgf70pj000s38cakovdbzrr" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2018/9/14/小程序/The-measureText-function-in-Wechat-miniprogram-canvas/" data-id="ckxgj50mk000t6gca1inl7k9d" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/">canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li></ul>

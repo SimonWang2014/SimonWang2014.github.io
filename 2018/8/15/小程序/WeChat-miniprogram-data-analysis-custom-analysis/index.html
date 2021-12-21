@@ -160,14 +160,14 @@ ga('send', 'pageview');
         
 
         <p>在小程序后台，微信已经提供了强大的数据分析功能，包括实时统计、访问分析、来源分析和用户画像功能，可以说对一般的数据分析已经完全足够了，但有时应用需要做一些更加精准的数据分析，比如具体到某一个页面的分享，页面中某一个button的点击等，这时候就需要用到自定义分析功能。</p>
-<h3 id="什么是自定义分析？"><a href="#什么是自定义分析？" class="headerlink" title="什么是自定义分析？"></a>什么是自定义分析？</h3><p>引用下官方文档：</p>
+<h3 id="什么是自定义分析"><a class="markdownIt-Anchor" href="#什么是自定义分析"></a> 什么是自定义分析？</h3>
+<p>引用下官方文档：</p>
 <blockquote>
 <p>自定义分析支持灵活多维和近实时的用户行为分析，可以通过自定义上报，对用户在小程序内的行为做精细化跟踪，满足页面访问等标准统计以外的个性化分析需求。</p>
 </blockquote>
 <a id="more"></a>
-
-<h3 id="创建自定义事件"><a href="#创建自定义事件" class="headerlink" title="创建自定义事件"></a>创建自定义事件</h3><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fuarhk0wg3j310t0r741g.jpg" title="" alt="进入自定义事件页面">
-
+<h3 id="创建自定义事件"><a class="markdownIt-Anchor" href="#创建自定义事件"></a> 创建自定义事件</h3>
+<img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fuarhk0wg3j310t0r741g.jpg" title="" alt="进入自定义事件页面">
 <ul>
 <li>事件英文名称和事件中文名称按照说明要求填写，这两个名称都是唯一的，不能设置成已经设置过的，而且设置的时候尽量简洁、还要见名知意</li>
 <li>配置方式有：填写配置、API上报。</li>
@@ -175,25 +175,22 @@ ga('send', 'pageview');
 <li>填写配置的方式支持以下几种统计触发器，有：</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">click 点击时触发</span><br><span class="line">enterPage 进入页面时触发，包括新开、后退、切换到前台都属于进入页面</span><br><span class="line">leavePage 离开页面时触发，包括离开、切换到后台都属于离开页面</span><br><span class="line">pageLoad 新开页面时触发，即第一次进入页面</span><br><span class="line">pageUnload 回收页面时触发</span><br><span class="line">pullDownRefresh 下拉刷新时触发</span><br><span class="line">launch 加载小程序时触发</span><br><span class="line">background 切换到后台触发</span><br><span class="line">foreground 切换到前台触发</span><br><span class="line">share 右上角菜单分享</span><br><span class="line">switchTab 调用switchTab接口切换页面时触发</span><br></pre></td></tr></table></figure>
-
 <img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuas1d6p2aj31050rjdib.jpg" title="" alt="配置信息">
-
 <ul>
 <li>action指出发时的动作，一次性上报，表示在每一次 click 中，收集数据并上报一条数据；分步骤上报我也还没搞懂 😅</li>
 <li>page指要触发该事件的页面，这里填写的内容必须要和<code>app.json</code>中配置的页面路径一样</li>
 <li>data是选填的，是用来给事件触发时传递一些数据的，其中，字段值就是当前page的<code>data</code>中的数据名称</li>
 </ul>
-<h4 id="举个例子🌰"><a href="#举个例子🌰" class="headerlink" title="举个例子🌰"></a>举个例子🌰</h4><p>电商类小程序中，用户会有一个点击商品添加到购物车的动作，我们可以对这个动作进行数据分析，以下是<code>填写配置</code>的方式：</p>
+<h4 id="举个例子"><a class="markdownIt-Anchor" href="#举个例子"></a> 举个例子🌰</h4>
+<p>电商类小程序中，用户会有一个点击商品添加到购物车的动作，我们可以对这个动作进行数据分析，以下是<code>填写配置</code>的方式：</p>
 <ol>
 <li>填写事件英文和中文名称：</li>
 </ol>
 <img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuashtxxsxj30o008igml.jpg" title="" alt="填写事件英文和中文名称">
-
 <ol start="2">
 <li>填写事件配置，定义如何收集数据：</li>
 </ol>
 <img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fuasijuqzdj30wh0o9myn.jpg" title="" alt="填写事件配置">
-
 <p>这个例子中，用一个动作上报“加入购物车”事件。</p>
 <ul>
 <li>trigger：触发条件，click，表示点击操作触发；</li>
@@ -234,39 +231,30 @@ ga('send', 'pageview');
 <p>以上内容表示：当用户点击 viewProduct 页面上的 .addToCart 按钮时，上报一条记录到 add_to_cart 事件，事件的 product_id, product_name, product_price, product_category 字段， 取值分别是页面上的 itemID, itemName, price, category。</p>
 <p>填写完配置后，还要点击<code>检查字段</code>。</p>
 <img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fuaslz88fdj30o00dr0tm.jpg" title="" alt="">
-
 <p>此时会提示 add_to_cart 事件包含的具体字段，继续补充字段的名称、数据类型和备注信息。</p>
-<h4 id="关于API上报"><a href="#关于API上报" class="headerlink" title="关于API上报"></a>关于API上报</h4><p>API上报比填写配置的方式更加灵活，但这也涉及到一些代码的更改，需要发布新版本，而填写配置的方式几乎不需要更改代码，所以无需发布新版本。当我们选择<code>API上报</code>后，我们可以设置需要上报的一下参数：</p>
+<h4 id="关于api上报"><a class="markdownIt-Anchor" href="#关于api上报"></a> 关于API上报</h4>
+<p>API上报比填写配置的方式更加灵活，但这也涉及到一些代码的更改，需要发布新版本，而填写配置的方式几乎不需要更改代码，所以无需发布新版本。当我们选择<code>API上报</code>后，我们可以设置需要上报的一下参数：</p>
 <img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fuat0h1b9zj30x50dh3zb.jpg" title="" alt="API上报">
-
 <p>点击生成代码：</p>
 <img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fuat1kc176j30wl0hrwfs.jpg" title="" alt="">
-
 <p>时间创建完成后，点击保存，后台就生成了一条事件记录，并有唯一的ID与它对应：</p>
 <img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fuat5j1zfzj30zv086dgi.jpg" title="" alt="">
-
 <p>接着，我们在小程序代码中可以插入生成的代码，如下是我在转发成功后的<code>success()</code>回掉函数中提交API上报。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">// 转发成功</span><br><span class="line">success: function (res) &#123;</span><br><span class="line">       wx.reportAnalytics(&apos;click_share&apos;, &#123;</span><br><span class="line">          page_path: current_page_path,</span><br><span class="line">          from: from,</span><br><span class="line">       &#125;);</span><br><span class="line">&#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
 <p>不管是填写配置还是API上报，都需要在填写完配置后保存并测试。</p>
 <img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fuat6s7eezj30o108ygme.jpg" title="" alt="">
-
 <img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fuat73bhhpj30o10el760.jpg" title="" alt="">
-
 <img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fuat7qug37j30o20dqdgf.jpg" title="" alt="">
-
 <img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fuat81vmj9j30o00dqgm9.jpg" title="" alt="">
-
 <p>我们在测试事件的时候，往往要过一段时间才能接收到数据，大概1-2分钟，为了能够及时判断正确性，我们可以在手机上的小程序应用中，打开调试，这样，每次触发事件时，都会在控制台的Log中看到<code>[自定义分析]上报成功的字样</code>，点击查看还能看到更多数据，比如上报的参数等，里面的<code>eventID</code>就对应事件的英文名称，可以通过这种方式快速判断事件触发是否符合预期，如下截图：</p>
 <img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fuatn0zeyrj30f50qywoz.jpg" title="" alt="">
-
 <p>通过使用，我们发现小程序的自定义分析功能很强大，你可以在页面上分析任何元素、任何事件，使我们可以全方位的了解到小程序的使用情况，对数据加以分析总结，并以数据来驱动产品的迭代，提高用户留存。</p>
 <p>参考：小程序官方文档 <a href="https://developers.weixin.qq.com/miniprogram/analysis/custom" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/analysis/custom</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/8/15/小程序/WeChat-miniprogram-data-analysis-custom-analysis/" data-id="ckxgf70pl000v38camh19xojg" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2018/8/15/小程序/WeChat-miniprogram-data-analysis-custom-analysis/" data-id="ckxgj50mn000y6gcaz01mmgtd" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li></ul>

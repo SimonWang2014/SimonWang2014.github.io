@@ -145,10 +145,9 @@ ga('send', 'pageview');
       
         <p>When trying update CentOS with <strong>yum update</strong> command getting error:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Loaded plugins: fastestmirror, refresh-packagekit, security</span><br><span class="line">Setting up Update Process</span><br><span class="line">Determining fastest mirrors</span><br><span class="line">YumRepo Error: All mirror URLs are not using ftp, http[s] or file.</span><br><span class="line">Eg. Invalid release/repo/arch combination/</span><br><span class="line">removing mirrorlist with no valid mirrors: /var/cache/yum/x86_64/6/base/mirrorlist.txt</span><br><span class="line">Error: Cannot find a valid baseurl for repo: base</span><br></pre></td></tr></table></figure>
-
 <img src="https://i.loli.net/2021/01/14/jtopVsrWZk2zNS4.png" title="" alt="">
-
-<h1 id="CAUSE"><a href="#CAUSE" class="headerlink" title="Cause"></a>Cause</h1><p>My server is CentOS 6. But now CentOS 6 reached end of life on the 30th November 2020. YUM attempting connect to deprecated repositories. So, we need update deprecated repositories URL’s and point to the <strong>vault</strong>.</p>
+<h1 id="cause"><a class="markdownIt-Anchor" href="#cause"></a> Cause</h1>
+<p>My server is CentOS 6. But now CentOS 6 reached end of life on the 30th November 2020. YUM attempting connect to deprecated repositories. So, we need update deprecated repositories URL’s and point to the <strong>vault</strong>.</p>
         
           <p class="article-more-link">
             <a href="/2021/1/14/Linux/YUMREPO-ERROR-ALL-MIRROR-URLS-ARE-NOT-USING-FTP-HTTP-S-OR-FILE/#more">Read More</a>
@@ -157,7 +156,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/1/14/Linux/YUMREPO-ERROR-ALL-MIRROR-URLS-ARE-NOT-USING-FTP-HTTP-S-OR-FILE/" data-id="ckxgf70po000y38ca3j4stw74" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/1/14/Linux/YUMREPO-ERROR-ALL-MIRROR-URLS-ARE-NOT-USING-FTP-HTTP-S-OR-FILE/" data-id="ckxgj50mm000x6gcar52by0cn" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
@@ -204,7 +203,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/1/13/Linux/Git/how-git-treats-changes-in-file-permissions/" data-id="ckxgf70q6001h38caum0gl84p" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/1/13/Linux/Git/how-git-treats-changes-in-file-permissions/" data-id="ckxgj50n5001h6gca5c3rluq5" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/permission/">permission</a></li></ul>
@@ -252,7 +251,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/1/9/小程序/open-miniprogram-in-html/" data-id="ckxgf70qc001q38ca51jal73w" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/1/9/小程序/open-miniprogram-in-html/" data-id="ckxgj50n9001o6gca026bp2t9" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li></ul>
@@ -292,10 +291,8 @@ ga('send', 'pageview');
       
         <p>在开发<code>Electron</code>程序时，在引入<code>jQuery</code>和<code>Bootstrap</code>后，控制台报错：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Uncaught <span class="built_in">TypeError</span>: Bootstrap<span class="string">'s JavaScript requires jQuery. jQuery must be included before Bootstrap'</span>s JavaScript.</span><br><span class="line">    at <span class="built_in">Object</span>.jQueryDetection (bootstrap.min.js:<span class="number">6</span>)</span><br><span class="line">    at bootstrap.min.js:<span class="number">6</span></span><br><span class="line">    at bootstrap.min.js:<span class="number">6</span></span><br><span class="line">    at bootstrap.min.js:<span class="number">6</span></span><br></pre></td></tr></table></figure>
-
 <p>而反复查看代码没发现问题，引用的顺序没有问题：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"js/jquery.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script src=<span class="string">"js/bootstrap.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
 <p>后在网上找到了一些方法，解决了我的疑惑。</p>
         
           <p class="article-more-link">
@@ -305,7 +302,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/12/29/Electron/Node/Javascript/Bootstrap-s-JavaScript-requires-jQuery-Error/" data-id="ckxgf70p2000b38capc38b46r" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2020/12/29/Electron/Node/Javascript/Bootstrap-s-JavaScript-requires-jQuery-Error/" data-id="ckxgj50m4000c6gcaabcnz9vj" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/electron/">electron</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
@@ -353,7 +350,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/12/26/frontend/No-PostCSS-Config/" data-id="ckxgf70p9000h38cacdn6e6tk" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2020/12/26/frontend/No-PostCSS-Config/" data-id="ckxgj50mc000j6gcaul3fkpiy" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>

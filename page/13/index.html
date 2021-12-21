@@ -144,9 +144,9 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p>有时候我们在使用Canvas绘制一段文本时，会需要通过<code>measureText()</code>方法获取文本的宽度，例如：</p>
-<h3 id="创建CANVAS标签"><a href="#创建CANVAS标签" class="headerlink" title="创建canvas标签"></a>创建canvas标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;canvas&quot;&gt;&lt;/canvas&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="获取一段文本的宽度"><a href="#获取一段文本的宽度" class="headerlink" title="获取一段文本的宽度"></a>获取一段文本的宽度</h3>
+<h3 id="创建canvas标签"><a class="markdownIt-Anchor" href="#创建canvas标签"></a> 创建canvas标签</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;canvas&quot;&gt;&lt;/canvas&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="获取一段文本的宽度"><a class="markdownIt-Anchor" href="#获取一段文本的宽度"></a> 获取一段文本的宽度</h3>
         
           <p class="article-more-link">
             <a href="/2018/9/14/小程序/The-measureText-function-in-Wechat-miniprogram-canvas/#more">Read More</a>
@@ -155,7 +155,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/9/14/小程序/The-measureText-function-in-Wechat-miniprogram-canvas/" data-id="ckxgf70pj000s38cakovdbzrr" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2018/9/14/小程序/The-measureText-function-in-Wechat-miniprogram-canvas/" data-id="ckxgj50mk000t6gca1inl7k9d" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/">canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li></ul>
@@ -194,7 +194,8 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p>在小程序后台，微信已经提供了强大的数据分析功能，包括实时统计、访问分析、来源分析和用户画像功能，可以说对一般的数据分析已经完全足够了，但有时应用需要做一些更加精准的数据分析，比如具体到某一个页面的分享，页面中某一个button的点击等，这时候就需要用到自定义分析功能。</p>
-<h3 id="什么是自定义分析？"><a href="#什么是自定义分析？" class="headerlink" title="什么是自定义分析？"></a>什么是自定义分析？</h3><p>引用下官方文档：</p>
+<h3 id="什么是自定义分析"><a class="markdownIt-Anchor" href="#什么是自定义分析"></a> 什么是自定义分析？</h3>
+<p>引用下官方文档：</p>
 <blockquote>
 <p>自定义分析支持灵活多维和近实时的用户行为分析，可以通过自定义上报，对用户在小程序内的行为做精细化跟踪，满足页面访问等标准统计以外的个性化分析需求。</p>
 </blockquote>
@@ -206,7 +207,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/8/15/小程序/WeChat-miniprogram-data-analysis-custom-analysis/" data-id="ckxgf70pl000v38camh19xojg" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2018/8/15/小程序/WeChat-miniprogram-data-analysis-custom-analysis/" data-id="ckxgj50mn000y6gcaz01mmgtd" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li></ul>
@@ -248,51 +249,48 @@ ga('send', 'pageview');
         
 
         <p>开发中，经常会需要做一些正则匹配，比如手机号验证，email验证，URL匹配等，写此篇文章主要是记录如何使用正则表达式匹配URL，方便以后再遇到此问题时不必到处搜索而得不到满意的答案。</p>
-<h2 id="PHP（使用PREG-MATCH"><a href="#PHP（使用PREG-MATCH" class="headerlink" title="PHP（使用preg_match)"></a>PHP（使用<a href="http://php.net/manual/en/function.preg-match.php" target="_blank" rel="noopener">preg_match</a>)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@|\d&#123;1,3&#125;(?:\.\d&#123;1,3&#125;)&#123;3&#125;|(?:(?:[a-z\d\x&#123;00a1&#125;-\x&#123;ffff&#125;]+-?)*[a-z\d\x&#123;00a1&#125;-\x&#123;ffff&#125;]+)(?:\.(?:[a-z\d\x&#123;00a1&#125;-\x&#123;ffff&#125;]+-?)*[a-z\d\x&#123;00a1&#125;-\x&#123;ffff&#125;]+)*(?:\.[a-z\x&#123;00a1&#125;-\x&#123;ffff&#125;]&#123;2,6&#125;))(?::\d+)?(?:[^\s]*)?$%iu</span><br></pre></td></tr></table></figure>
-
-<h2 id="PHP（使用VALIDATE-FILTER"><a href="#PHP（使用VALIDATE-FILTER" class="headerlink" title="PHP（使用validate filter)"></a>PHP（使用<a href="http://php.net/manual/en/filter.filters.validate.php" target="_blank" rel="noopener">validate filter</a>)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (filter_var($url, FILTER_VALIDATE_URL) !== false)...</span><br></pre></td></tr></table></figure>
-
-<h2 id="PYTHON"><a href="#PYTHON" class="headerlink" title="Python"></a>Python</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&amp;+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+</span><br></pre></td></tr></table></figure>
-
-<h2 id="JAVASCRIPT"><a href="#JAVASCRIPT" class="headerlink" title="Javascript"></a>Javascript</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/((([A-Za-z]&#123;3,9&#125;:(?:\/\/)?)(?:[\-;:&amp;=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&amp;=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&amp;;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/</span><br></pre></td></tr></table></figure>
-
-<h2 id="HTML5"><a href="#HTML5" class="headerlink" title="HTML5"></a>HTML5</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;url&quot; /&gt;</span><br></pre></td></tr></table></figure>
-
+<h2 id="php使用preg_match"><a class="markdownIt-Anchor" href="#php使用preg_match"></a> PHP（使用<a href="http://php.net/manual/en/function.preg-match.php" target="_blank" rel="noopener">preg_match</a>)</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@|\d&#123;1,3&#125;(?:\.\d&#123;1,3&#125;)&#123;3&#125;|(?:(?:[a-z\d\x&#123;00a1&#125;-\x&#123;ffff&#125;]+-?)*[a-z\d\x&#123;00a1&#125;-\x&#123;ffff&#125;]+)(?:\.(?:[a-z\d\x&#123;00a1&#125;-\x&#123;ffff&#125;]+-?)*[a-z\d\x&#123;00a1&#125;-\x&#123;ffff&#125;]+)*(?:\.[a-z\x&#123;00a1&#125;-\x&#123;ffff&#125;]&#123;2,6&#125;))(?::\d+)?(?:[^\s]*)?$%iu</span><br></pre></td></tr></table></figure>
+<h2 id="php使用validate-filter"><a class="markdownIt-Anchor" href="#php使用validate-filter"></a> PHP（使用<a href="http://php.net/manual/en/filter.filters.validate.php" target="_blank" rel="noopener">validate filter</a>)</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (filter_var($url, FILTER_VALIDATE_URL) !== false)...</span><br></pre></td></tr></table></figure>
+<h2 id="python"><a class="markdownIt-Anchor" href="#python"></a> Python</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&amp;+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+</span><br></pre></td></tr></table></figure>
+<h2 id="javascript"><a class="markdownIt-Anchor" href="#javascript"></a> Javascript</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/((([A-Za-z]&#123;3,9&#125;:(?:\/\/)?)(?:[\-;:&amp;=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&amp;=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&amp;;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/</span><br></pre></td></tr></table></figure>
+<h2 id="html5"><a class="markdownIt-Anchor" href="#html5"></a> HTML5</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;url&quot; /&gt;</span><br></pre></td></tr></table></figure>
 <p>匹配上面<code>input</code>输入的URL（<a href="https://www.ietf.org/rfc/rfc3986.txt" target="_blank" rel="noopener">RFC3986</a>）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?</span><br></pre></td></tr></table></figure>
-
-<h2 id="PERL"><a href="#PERL" class="headerlink" title="Perl"></a>Perl</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(((ht|f)tp(s?))\://)?(www.|[a-zA-Z].)[a-zA-Z0-9\-\.]+\.(com|edu|gov|mil|net|org|biz|info|name|museum|us|ca|uk)(\:[0-9]+)*(/($|[a-zA-Z0-9\.\,\;\?\&apos;\\\+&amp;%\$#\=~_\-]+))*$</span><br></pre></td></tr></table></figure>
-
-<h2 id="RUBY"><a href="#RUBY" class="headerlink" title="Ruby"></a>Ruby</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\A(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d&#123;1,3&#125;)&#123;3&#125;)(?!127(?:\.\d&#123;1,3&#125;)&#123;3&#125;)(?!169\.254(?:\.\d&#123;1,3&#125;)&#123;2&#125;)(?!192\.168(?:\.\d&#123;1,3&#125;)&#123;2&#125;)(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d&#123;1,3&#125;)&#123;2&#125;)(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d&#123;1,2&#125;|2[0-4]\d|25[0-5]))&#123;2&#125;(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]&#123;2,&#125;)))(?::\d&#123;2,5&#125;)?(?:\/[^\s]*)?\z/i</span><br></pre></td></tr></table></figure>
-
-<h2 id="GO-使用GOVALIDATOR-ISURL"><a href="#GO-使用GOVALIDATOR-ISURL" class="headerlink" title="Go (使用govalidator.IsURL)"></a>Go (使用govalidator.IsURL)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"> import (</span><br><span class="line">         &quot;fmt&quot;</span><br><span class="line">         &quot;github.com/asaskevich/govalidator&quot;</span><br><span class="line"> )</span><br><span class="line"> func main() &#123;</span><br><span class="line">         str := &quot;http://www.urlregex.com&quot;</span><br><span class="line">         validURL := govalidator.IsURL(str)</span><br><span class="line">         fmt.Printf(&quot;%s is a valid URL : %v \n&quot;, str, validURL)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="OBJECTIVE-C"><a href="#OBJECTIVE-C" class="headerlink" title="Objective-C"></a>Objective-C</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+</span><br></pre></td></tr></table></figure>
-
-<h2 id="SWIFT"><a href="#SWIFT" class="headerlink" title="Swift"></a>Swift</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w&#123;2,3&#125;(\\.\\w&#123;2&#125;)?(/(?&lt;=/)(?:[\\w\\d\\-./_]+)?)?</span><br></pre></td></tr></table></figure>
-
+<h2 id="perl"><a class="markdownIt-Anchor" href="#perl"></a> Perl</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(((ht|f)tp(s?))\://)?(www.|[a-zA-Z].)[a-zA-Z0-9\-\.]+\.(com|edu|gov|mil|net|org|biz|info|name|museum|us|ca|uk)(\:[0-9]+)*(/($|[a-zA-Z0-9\.\,\;\?\&apos;\\\+&amp;%\$#\=~_\-]+))*$</span><br></pre></td></tr></table></figure>
+<h2 id="ruby"><a class="markdownIt-Anchor" href="#ruby"></a> Ruby</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\A(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d&#123;1,3&#125;)&#123;3&#125;)(?!127(?:\.\d&#123;1,3&#125;)&#123;3&#125;)(?!169\.254(?:\.\d&#123;1,3&#125;)&#123;2&#125;)(?!192\.168(?:\.\d&#123;1,3&#125;)&#123;2&#125;)(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d&#123;1,3&#125;)&#123;2&#125;)(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d&#123;1,2&#125;|2[0-4]\d|25[0-5]))&#123;2&#125;(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]&#123;2,&#125;)))(?::\d&#123;2,5&#125;)?(?:\/[^\s]*)?\z/i</span><br></pre></td></tr></table></figure>
+<h2 id="go-使用govalidatorisurl"><a class="markdownIt-Anchor" href="#go-使用govalidatorisurl"></a> Go (使用govalidator.IsURL)</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"> import (</span><br><span class="line">         &quot;fmt&quot;</span><br><span class="line">         &quot;github.com/asaskevich/govalidator&quot;</span><br><span class="line"> )</span><br><span class="line"> func main() &#123;</span><br><span class="line">         str := &quot;http://www.urlregex.com&quot;</span><br><span class="line">         validURL := govalidator.IsURL(str)</span><br><span class="line">         fmt.Printf(&quot;%s is a valid URL : %v \n&quot;, str, validURL)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="objective-c"><a class="markdownIt-Anchor" href="#objective-c"></a> Objective-C</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+</span><br></pre></td></tr></table></figure>
+<h2 id="swift"><a class="markdownIt-Anchor" href="#swift"></a> Swift</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w&#123;2,3&#125;(\\.\\w&#123;2&#125;)?(/(?&lt;=/)(?:[\\w\\d\\-./_]+)?)?</span><br></pre></td></tr></table></figure>
 <p>定义一个函数方法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func canOpenURL(string: String?) -&gt; Bool &#123;</span><br><span class="line">    let regEx = &quot;((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+&quot;</span><br><span class="line">    let predicate = NSPredicate(format:&quot;SELF MATCHES %@&quot;, argumentArray:[regEx])</span><br><span class="line">    return predicate.evaluateWithObject(string)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>使用：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if canOpenURL(&quot;http://www.urlregex.com&quot;) &#123;</span><br><span class="line">    print(&quot;valid url.&quot;)</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    print(&quot;invalid url.&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="SWIFT-使用官方提供的CANOPENURL"><a href="#SWIFT-使用官方提供的CANOPENURL" class="headerlink" title="Swift (使用官方提供的canOpenURL)"></a>Swift (使用官方提供的<a href="https://developer.apple.com/documentation/uikit/uiapplication/1622952-canopenurl" target="_blank" rel="noopener">canOpenURL</a>)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UIApplication.sharedApplication().canOpenURL(urlString)</span><br></pre></td></tr></table></figure>
-
-<h2 id="JAVA"><a href="#JAVA" class="headerlink" title="Java"></a>Java</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(https?|ftp|file)://[-a-zA-Z0-9+&amp;@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&amp;@#/%=~_|]</span><br></pre></td></tr></table></figure>
-
-<h2 id="VB-NET"><a href="#VB-NET" class="headerlink" title="VB.NET"></a>VB.NET</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(http(s)?://)?([\w-]+\.)+[\w-]+[.com]+(/[/?%&amp;=]*)?</span><br></pre></td></tr></table></figure>
-
-<h2 id="C"><a href="#C" class="headerlink" title="C#"></a>C#</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\&apos;\/\\\+&amp;%\$#_]*)?$</span><br></pre></td></tr></table></figure>
-
-<h2 id="MYSQL"><a href="#MYSQL" class="headerlink" title="MySQL"></a>MySQL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT field FROM table </span><br><span class="line">WHERE field </span><br><span class="line">REGEXP &quot;^(https?://|www\\.)[\.A-Za-z0-9\-]+\\.[a-zA-Z]&#123;2,4&#125;</span><br></pre></td></tr></table></figure>
-
-<p>整理自：<a href="http://urlregex.com/" target="_blank" rel="noopener">http://urlregex.com</a></p>
+<h2 id="swift-使用官方提供的canopenurl"><a class="markdownIt-Anchor" href="#swift-使用官方提供的canopenurl"></a> Swift (使用官方提供的<a href="https://developer.apple.com/documentation/uikit/uiapplication/1622952-canopenurl" target="_blank" rel="noopener">canOpenURL</a>)</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UIApplication.sharedApplication().canOpenURL(urlString)</span><br></pre></td></tr></table></figure>
+<h2 id="java"><a class="markdownIt-Anchor" href="#java"></a> Java</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(https?|ftp|file)://[-a-zA-Z0-9+&amp;@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&amp;@#/%=~_|]</span><br></pre></td></tr></table></figure>
+<h2 id="vbnet"><a class="markdownIt-Anchor" href="#vbnet"></a> <a href="http://VB.NET" target="_blank" rel="noopener">VB.NET</a></h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(http(s)?://)?([\w-]+\.)+[\w-]+[.com]+(/[/?%&amp;=]*)?</span><br></pre></td></tr></table></figure>
+<h2 id="c"><a class="markdownIt-Anchor" href="#c"></a> C#</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\&apos;\/\\\+&amp;%\$#_]*)?$</span><br></pre></td></tr></table></figure>
+<h2 id="mysql"><a class="markdownIt-Anchor" href="#mysql"></a> MySQL</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT field FROM table </span><br><span class="line">WHERE field </span><br><span class="line">REGEXP &quot;^(https?://|www\\.)[\.A-Za-z0-9\-]+\\.[a-zA-Z]&#123;2,4&#125;</span><br></pre></td></tr></table></figure>
+<p>整理自：<a href="http://urlregex.com" target="_blank" rel="noopener">http://urlregex.com</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/8/11/Regular-Expression/The-Perfect-URL-Regular-Expression/" data-id="ckxgf70pi000q38cag943oo1d" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2018/8/11/Regular-Expression/The-Perfect-URL-Regular-Expression/" data-id="ckxgj50mj000s6gcawgcke1wz" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Go/">Go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Perl/">Perl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby/">Ruby</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VB-NET/">VB.NET</a></li></ul>
@@ -337,32 +335,25 @@ ga('send', 'pageview');
 <p>今天在使用<code>htmlspecialchars()</code>做特殊字符的转换时，一直返回<code>null</code>，当我换成<code>htmlentities()</code>也是同样的问题，查官方手册才发现原来是编码的问题。</p>
 <p>函数声明：</p>
 <img src="https://ws1.sinaimg.cn/large/006tNc79gy1fsg8j0lpb8j30oj01r3yx.jpg" title="" alt="">
-
 <p>问题主要处在第三个参数上，对于第三个参数官方是这么说的：</p>
 <img src="https://ws1.sinaimg.cn/large/006tNc79gy1fsg8jbqp36j30sq05tmyn.jpg" title="" alt="">
-
 <p>这个参数的作用是设置转换字符时采用的编码，在PHP 5.4 和5.5中使用了<strong>UTF-8</strong>作为默认编码，而在PHP 5.4之前使用<strong>ISO-8859-1</strong>作为默认编码，从PHP 5.6开始就使用PHP配置文件中的<code>default_charset</code>参数作为默认编码。<code>encoding</code>参数支持的字符集：</p>
 <img src="https://ws2.sinaimg.cn/large/006tNc79gy1fsg8jl4onxj30r80ir0xa.jpg" title="" alt="">
-
 <p>从PHP的更新日志也能看到这个参数的变化：</p>
 <img src="https://ws4.sinaimg.cn/large/006tNc79gy1fsg8js1l1aj30sk05jab6.jpg" title="" alt="">
-
 <p>一般我们是这么使用的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$str=&apos;&lt;a href=&quot;test.html&quot;&gt;\&apos;测试页面\&apos;&lt;/a&gt;&lt;script&gt;alert(213)&lt;/script&gt;&apos;;</span><br><span class="line">echo htmlspecialchars($str);</span><br><span class="line">// 输出：&amp;lt;a href=&amp;quot;test.html&amp;quot;&amp;gt;&apos;测试页面&apos;&amp;lt;/a&amp;gt;&amp;lt;script&amp;gt;alert(213)&amp;lt;/script&amp;gt;</span><br></pre></td></tr></table></figure>
-
 <p>今天在使用的时候，结果一直返回null，其实就是编码的问题，这个时候就需要用到第三个参数了：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo htmlspecialchars($string, ENT_COMPAT,&apos;ISO-8859-1&apos;, true);</span><br></pre></td></tr></table></figure>
-
 <p>同样，也适用于<code>htmlentities</code>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo htmlentities($string, ENT_COMPAT,&apos;ISO-8859-1&apos;, true);</span><br></pre></td></tr></table></figure>
-
 <hr>
 <p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
 <img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;">
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/" data-id="ckxgf70qn002538ca1nljy8ww" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/" data-id="ckxgj50np00246gcan41u77gn" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
@@ -402,7 +393,6 @@ ga('send', 'pageview');
       
         <img src="https://ws2.sinaimg.cn/large/006tNc79gy1fs2f97s3m4j31kw16o1kz.jpg" title="" alt="">
 # 什么是索引？
-
 <p>在没有学数据库之前，大多数人对索引还是比较陌生（可能学完之后还是比较陌生：），今天我想告诉大家索引很有用，而且面试的时候都会问到。那么索引是什么呢？</p>
         
           <p class="article-more-link">
@@ -412,7 +402,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/6/6/MySQL/Learn-MySQL-indexes/" data-id="ckxgf70p5000e38caujpmnqn6" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2018/6/6/MySQL/Learn-MySQL-indexes/" data-id="ckxgj50ma000h6gcak9rd3yuq" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>

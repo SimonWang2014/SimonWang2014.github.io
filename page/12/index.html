@@ -145,20 +145,17 @@ ga('send', 'pageview');
       
         <p>PHP中数组插入数据通常有这么几种：</p>
 <ol>
-<li> 定义的时候直接赋值</li>
+<li>定义的时候直接赋值</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$arr = array(‘apple’, ’banana’);</span><br></pre></td></tr></table></figure>
-
 <ol start="2">
-<li> 使用数组变量操作</li>
+<li>使用数组变量操作</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$arr = array();</span><br><span class="line">$arr[] = ‘apple’;</span><br><span class="line">$arr[] = ‘banana’;</span><br></pre></td></tr></table></figure>
-
 <ol start="3">
-<li> 使用array_push()插入</li>
+<li>使用array_push()插入</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$arr = array(‘apple’);</span><br><span class="line">array_push($arr, ‘banana’, ‘orange’);</span><br></pre></td></tr></table></figure>
-
 <p>在项目中，我们大部分情况都是先从数据库中获取数据，然后转成数组形式，而对于第一种情况，在定义数组的时候直接赋值往往只适合数据量很小，而且是已知的情况，所以就不存在什么代码优化了，我们主要讲第二种和第三种。</p>
         
           <p class="article-more-link">
@@ -168,7 +165,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2019/3/13/PHP/array-push-in-PHP/" data-id="ckxgf70pu001038cazv3r7vf6" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2019/3/13/PHP/array-push-in-PHP/" data-id="ckxgj50mn000z6gcaohnkstsg" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
@@ -207,18 +204,18 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fyp45fw225j310c06odfz.jpg" title="" alt="PhpSpreadsheet">
-
 <p>PHP读取excel、csv文件的库有很多，但用的比较多的有： <a href="https://github.com/PHPOffice/PHPExcel" target="_blank" rel="noopener">PHPOffice/PHPExcel</a>、<a href="https://github.com/PHPOffice/PhpSpreadsheet" target="_blank" rel="noopener">PHPOffice/PhpSpreadsheet</a>，现在PHPExcel已经不再维护了，最新的一次提交还是在2017年12月25号，建议直接使用PhpSpreadsheet，而且这两个项目都是同一个组织维护的，本文介绍PhpSpreadsheet的使用。</p>
-<h2 id="介绍PHPSPREADSHEET"><a href="#介绍PHPSPREADSHEET" class="headerlink" title="介绍PhpSpreadsheet"></a>介绍PhpSpreadsheet</h2><p>PhpSpreadsheet这个库是纯PHP写的，提供了非常丰富的类和方法，而且支持很多文件格式：</p>
+<h2 id="介绍phpspreadsheet"><a class="markdownIt-Anchor" href="#介绍phpspreadsheet"></a> 介绍PhpSpreadsheet</h2>
+<p>PhpSpreadsheet这个库是纯PHP写的，提供了非常丰富的类和方法，而且支持很多文件格式：</p>
 <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fyp2c7y09qj314m0mmmxs.jpg" title="" alt="PhpSpreadsheet支持的文件格式">
-
-<h2 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h2><ul>
+<h2 id="环境要求"><a class="markdownIt-Anchor" href="#环境要求"></a> 环境要求</h2>
+<ul>
 <li>PHP &gt;= 5.6</li>
 <li>开启<code>php_zip</code>扩展</li>
 <li>开启<code>php_xml</code>扩展</li>
 <li>开启<code>php_gd2</code>扩展</li>
 </ul>
-<h2 id="开始使用😄"><a href="#开始使用😄" class="headerlink" title="开始使用😄"></a>开始使用😄</h2>
+<h2 id="开始使用"><a class="markdownIt-Anchor" href="#开始使用"></a> 开始使用😄</h2>
         
           <p class="article-more-link">
             <a href="/2019/1/2/PHP/PHP-read-excel-and-csv-files/#more">Read More</a>
@@ -227,7 +224,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2019/1/2/PHP/PHP-read-excel-and-csv-files/" data-id="ckxgf70pa000i38caqf0qi9tq" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2019/1/2/PHP/PHP-read-excel-and-csv-files/" data-id="ckxgj50mg000n6gca4bzsrumh" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
@@ -270,34 +267,26 @@ ga('send', 'pageview');
 
         <p>PHP中，<code>=</code>的作用都是将一个值复制给另一个（大多数编程语言都是一样），将<code>=</code>作用在基本数据类型上时，就直接进行了赋值，并且变量的修改互不影响，如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$a = 1;</span><br><span class="line">$b = $a;</span><br><span class="line">$b = 2;</span><br><span class="line">print_r($a);  // 1</span><br><span class="line">print_r($b);  // 2</span><br></pre></td></tr></table></figure>
-
 <p>而在复制对象时，<code>=</code>只是简单地将两个变量指向同一个类实例，测试一下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class Student</span><br><span class="line">&#123;</span><br><span class="line">    public $name;</span><br><span class="line">    public $age;</span><br><span class="line"></span><br><span class="line">    function __construct($name, $age) &#123;</span><br><span class="line">        $this-&gt;name = $name;</span><br><span class="line">        $this-&gt;age = $age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$student1 = new Student(&apos;mike&apos;, 19);</span><br><span class="line">$student2 = $student1;</span><br><span class="line"></span><br><span class="line">print_r($student1);</span><br><span class="line">print_r($student2);</span><br><span class="line">var_dump($student1 == $student2);</span><br><span class="line">var_dump($student1 === $student2);</span><br><span class="line"></span><br><span class="line">// 输出</span><br><span class="line">Student Object</span><br><span class="line">(</span><br><span class="line">    [name] =&gt; mike</span><br><span class="line">    [age] =&gt; 19</span><br><span class="line">)</span><br><span class="line">Student Object</span><br><span class="line">(</span><br><span class="line">    [name] =&gt; mike</span><br><span class="line">    [age] =&gt; 19</span><br><span class="line">)</span><br><span class="line">bool(true)</span><br><span class="line">bool(true)</span><br></pre></td></tr></table></figure>
-
 <p>从上面的代码中，就能明显看出<code>$student1</code>和<code>$student2</code>两个变量指向的是同一个对象，新手看到这可能并没有发现其中蹊跷，而且等值检测也没有问题啊（其实这里的等值检测是看不出什么的），这时，如果我继续修改<code>$student2</code>中的属性时，就能发现问题：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$student2-&gt;name = &apos;Jack&apos;;</span><br><span class="line">$student2-&gt;age = 22;</span><br><span class="line"></span><br><span class="line">print_r($student1);</span><br><span class="line">print_r($student2);</span><br><span class="line"></span><br><span class="line">// 输出</span><br><span class="line">Student Object</span><br><span class="line">(</span><br><span class="line">    [name] =&gt; Jack</span><br><span class="line">    [age] =&gt; 22</span><br><span class="line">)</span><br><span class="line">Student Object</span><br><span class="line">(</span><br><span class="line">    [name] =&gt; Jack</span><br><span class="line">    [age] =&gt; 22</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
 <p>为什么会这样呢，我只是想修改<code>$student2</code>的属性，为什么<code>$student1</code>也改了，这就好比Dota里面的地卜师，只要逮到你一个分身，你就挂了。</p>
 <img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fydl82dnpej30gr0a0gxc.jpg" title="" alt="地卜师">
-
 <p>其实，看到这种情况，大概就能猜到PHP中对象的赋值都是通过引用操作，<code>$student1</code>和<code>$student2</code>没有各自保留一份单独的副本，在内存中的分配大概就是这样的：</p>
 <img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fydl911erwj309z05xmx4.jpg" title="" alt="">
-
 <p>两个变量指向的是同一个内存地址，所以我们改变其中一个变量的属性是另一个也会变，但如果我们想要对两个变量做不同的操作并且互不影响该怎么办？</p>
 <p>好在PHP提供了一个<code>clone</code>关键字来达到这个目的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$student1 = new Student(&apos;mike&apos;, 19);</span><br><span class="line">$student2 = clone $student1;</span><br><span class="line"></span><br><span class="line">$student2-&gt;name = &apos;Jack&apos;;</span><br><span class="line">$student2-&gt;age = 22;</span><br><span class="line"></span><br><span class="line">print_r($student1);</span><br><span class="line">print_r($student2);</span><br><span class="line"></span><br><span class="line">// 输出</span><br><span class="line">Student Object</span><br><span class="line">(</span><br><span class="line">    [name] =&gt; mike</span><br><span class="line">    [age] =&gt; 19</span><br><span class="line">)</span><br><span class="line">Student Object</span><br><span class="line">(</span><br><span class="line">    [name] =&gt; Jack</span><br><span class="line">    [age] =&gt; 22</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
 <p>通过<code>clone</code>复制后，现在<code>$student1</code>和<code>$student2</code>就是两个不同的变量，修改互不影响。</p>
-<h3 id="关于-CLONE-方法"><a href="#关于-CLONE-方法" class="headerlink" title="关于__clone()方法"></a>关于__clone()方法</h3><p>现在有这么一种情况，在复制对象时，想做一些修改操作，实际开发中，<code>$id</code>属性可能会与数据库表中某条记录一一对应，在复制之后，两个对象就指向数据库中的同一条记录了，那么使用<code>__clone()</code>就能控制复制时，哪些属性可以复制，哪些应该不复制或者置空。<code>__clone()</code>是个魔术方法，在对象上调用<code>clone</code>关键字时会自动调用。如下代码所示：</p>
+<h3 id="关于__clone方法"><a class="markdownIt-Anchor" href="#关于__clone方法"></a> 关于__clone()方法</h3>
+<p>现在有这么一种情况，在复制对象时，想做一些修改操作，实际开发中，<code>$id</code>属性可能会与数据库表中某条记录一一对应，在复制之后，两个对象就指向数据库中的同一条记录了，那么使用<code>__clone()</code>就能控制复制时，哪些属性可以复制，哪些应该不复制或者置空。<code>__clone()</code>是个魔术方法，在对象上调用<code>clone</code>关键字时会自动调用。如下代码所示：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">class Student</span><br><span class="line">&#123;</span><br><span class="line">    public $id;</span><br><span class="line">    public $name;</span><br><span class="line">    public $age;</span><br><span class="line"></span><br><span class="line">    function __construct($id, $name, $age) &#123;</span><br><span class="line">        $this-&gt;id = $id;</span><br><span class="line">        $this-&gt;name = $name;</span><br><span class="line">        $this-&gt;age = $age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __clone() &#123;</span><br><span class="line">        $this-&gt;id = 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$student1 = new Student(1,&apos;mike&apos;, 19);</span><br><span class="line">$student2 = clone $student1;</span><br><span class="line"></span><br><span class="line">print_r($student1);</span><br><span class="line">print_r($student2);</span><br><span class="line"></span><br><span class="line">// 输出</span><br><span class="line">Student Object</span><br><span class="line">(</span><br><span class="line">    [id] =&gt; 1</span><br><span class="line">    [name] =&gt; mike</span><br><span class="line">    [age] =&gt; 19</span><br><span class="line">)</span><br><span class="line">Student Object</span><br><span class="line">(</span><br><span class="line">    [id] =&gt; 0</span><br><span class="line">    [name] =&gt; mike</span><br><span class="line">    [age] =&gt; 19</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
 <p>当在<code>$student1</code>上调用<code>clone</code>时，产生一个新的副本给<code>$student2</code> ，这时<code>$student2</code>上就会自动调用<code>__clone</code>方法，使<code>$id</code>为0。</p>
 <p>上面通过<code>clone</code>和<code>__clone()</code>可以保证所有的基础数据类型可以被完全复制，但如果复制的对象中的属性也是一个对象时，复制后的两个对象都会引用同一个属性，修改时会互相影响，如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">Class Score &#123;</span><br><span class="line">    public $english;</span><br><span class="line">    public $math;</span><br><span class="line"></span><br><span class="line">    function __construct($english, $math) &#123;</span><br><span class="line">        $this-&gt;english = $english;</span><br><span class="line">        $this-&gt;math = $math;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Student</span><br><span class="line">&#123;</span><br><span class="line">    public $id;</span><br><span class="line">    public $name;</span><br><span class="line">    public $age;</span><br><span class="line">    public $score;</span><br><span class="line"></span><br><span class="line">    function __construct($id, $name, $age, Score $score) &#123;</span><br><span class="line">        $this-&gt;id = $id;</span><br><span class="line">        $this-&gt;name = $name;</span><br><span class="line">        $this-&gt;age = $age;</span><br><span class="line">        $this-&gt;score = $score;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __clone() &#123;</span><br><span class="line">        $this-&gt;id = 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$student1 = new Student(1,&apos;mike&apos;, 19, new Score(80, 90));</span><br><span class="line">$student2 = clone $student1;</span><br><span class="line"></span><br><span class="line">// 我们需要修改$student1的英语成绩</span><br><span class="line">$student1-&gt;score-&gt;english = 99;</span><br><span class="line"></span><br><span class="line">//结果$student2的英语成绩也被修改了</span><br><span class="line">echo $student2-&gt;score-&gt;english;</span><br><span class="line"></span><br><span class="line">// 输出</span><br><span class="line">99</span><br></pre></td></tr></table></figure>
-
 <p>上面这种情况并不是我们希望看到的，我们不想对象属性复制后被共享。解决方法就是在<code>__clone()</code>做做一些修改：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function __clone() &#123;</span><br><span class="line">      $this-&gt;id = 0;</span><br><span class="line">      $this-&gt;score = clone $this-&gt;score;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 输出</span><br><span class="line">80</span><br></pre></td></tr></table></figure>
-
 <p>我所了解的PHP中对象复制大概就是这样，类似<code>__clone()</code>这样的魔术方法还有好几个，常见的还有：<code>__set()</code>、<code>__unset()</code>、<code>__call()</code>等，利用这些魔术方法可以实现更多复杂的操作，以后慢慢学习。</p>
 <hr>
 <p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
@@ -305,7 +294,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/12/20/PHP/Clone-Object-in-PHP/" data-id="ckxgf70p3000c38caodhq9y90" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2018/12/20/PHP/Clone-Object-in-PHP/" data-id="ckxgj50m8000f6gcaj8t3qld8" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
@@ -343,11 +332,11 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="0-修改指令前缀"><a href="#0-修改指令前缀" class="headerlink" title="0. 修改指令前缀"></a>0. 修改指令前缀</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// ~/.tmux.conf</span><br><span class="line">ubind C-b</span><br><span class="line">set -g prefix C-a</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-新建会话"><a href="#1-新建会话" class="headerlink" title="1. 新建会话"></a>1. 新建会话</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tmux</span><br><span class="line">tmux new -s session-name	// 可以设置会话名称</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-断开会话，后台运行"><a href="#2-断开会话，后台运行" class="headerlink" title="2. 断开会话，后台运行"></a>2. 断开会话，后台运行</h3>
+        <h3 id="0-修改指令前缀"><a class="markdownIt-Anchor" href="#0-修改指令前缀"></a> 0. 修改指令前缀</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// ~/.tmux.conf</span><br><span class="line">ubind C-b</span><br><span class="line">set -g prefix C-a</span><br></pre></td></tr></table></figure>
+<h3 id="1-新建会话"><a class="markdownIt-Anchor" href="#1-新建会话"></a> 1. 新建会话</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tmux</span><br><span class="line">tmux new -s session-name	// 可以设置会话名称</span><br></pre></td></tr></table></figure>
+<h3 id="2-断开会话后台运行"><a class="markdownIt-Anchor" href="#2-断开会话后台运行"></a> 2. 断开会话，后台运行</h3>
         
           <p class="article-more-link">
             <a href="/2018/12/16/Linux/my-Tmux-notes/#more">Read More</a>
@@ -356,7 +345,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/12/16/Linux/my-Tmux-notes/" data-id="ckxgf70qa001n38ca42b1lf2q" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2018/12/16/Linux/my-Tmux-notes/" data-id="ckxgj50n8001m6gcajgi4ls30" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tmux/">Tmux</a></li></ul>
@@ -399,15 +388,13 @@ ga('send', 'pageview');
 
         <p>Mac上更新PHP 7.2后，再次使用<code>Valet</code>时提示无法定位到PHP，如下所示：</p>
 <img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fy7hi8ormwj308902hglj.jpg" title="" alt="">
-
 <p>一条命令解决：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/opt/php@7.2/bin/php /usr/local/bin/php</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/" data-id="ckxgf70pl000u38ca4rgga01q" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/" data-id="ckxgj50mm000w6gcav5dhqwzd" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>

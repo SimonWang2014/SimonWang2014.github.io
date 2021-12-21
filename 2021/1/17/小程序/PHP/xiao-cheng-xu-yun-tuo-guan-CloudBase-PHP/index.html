@@ -158,72 +158,65 @@ ga('send', 'pageview');
 
         <p>小程序发布至今也有几年了，围绕小程序开发的生态做的非常丰富，云开发出来之后更是方便了我们快速开发上线一个小程序。使用云开发，我们无需自己去单独购买阿里云，腾讯云的服务器，只要开通小程序云开发，即刻拥有云服务器环境，开通后可以免费使用1个月，但是配置不是很高，但这足以应付绝大多数的应用了，当然用的人多了也可以在小程序云开发上快速横向扩展。今天就来说说怎么用小程序云托管部署PHP程序代码。</p>
 <a id="more"></a>
-
-
-
-<h1 id="1-开通云开发"><a href="#1-开通云开发" class="headerlink" title="1. 开通云开发"></a>1. 开通云开发</h1><img src="https://i.loli.net/2021/01/17/b8r9vTCtKwfIqOd.png" style="zoom:70%;">
-
+<h1 id="1-开通云开发"><a class="markdownIt-Anchor" href="#1-开通云开发"></a> 1. 开通云开发</h1>
+<img src="https://i.loli.net/2021/01/17/b8r9vTCtKwfIqOd.png" style="zoom:70%;">
 <p>进入小程序管理后台，点击<strong>开发</strong>-<strong>云开发</strong>，进入后直接开通，这个是免费的。</p>
-<h1 id="2-开通云托管"><a href="#2-开通云托管" class="headerlink" title="2. 开通云托管"></a>2. 开通云托管</h1><p>进入<code>小程序开发者工具</code>，点击云开发：</p>
+<h1 id="2-开通云托管"><a class="markdownIt-Anchor" href="#2-开通云托管"></a> 2. 开通云托管</h1>
+<p>进入<code>小程序开发者工具</code>，点击云开发：</p>
 <img src="https://i.loli.net/2021/01/17/mMoQOcXW2hHN96w.png" title="" alt="">
-
 <p>在云开发控制台开通云托管，也可以在 “设置 -&gt; 拓展功能” 中开通。：</p>
 <img src="https://i.loli.net/2021/01/17/Pn792rCOiA6gyFI.png" title="" alt="">
-
-<h1 id="3-创建服务"><a href="#3-创建服务" class="headerlink" title="3. 创建服务"></a>3. 创建服务</h1><p>这里以<code>PHP</code>为例子，其他的都差不多，点击<code>创建服务</code>，填写服务名称后点<code>确定</code>：</p>
+<h1 id="3-创建服务"><a class="markdownIt-Anchor" href="#3-创建服务"></a> 3. 创建服务</h1>
+<p>这里以<code>PHP</code>为例子，其他的都差不多，点击<code>创建服务</code>，填写服务名称后点<code>确定</code>：</p>
 <img src="https://i.loli.net/2021/01/17/Mt2dBlNvDh4EU58.png" title="" alt="">
-
-<h1 id="4-准备代码"><a href="#4-准备代码" class="headerlink" title="4. 准备代码"></a>4. 准备代码</h1><h2 id="创建一个空文件夹用于放我们的PHP代码："><a href="#创建一个空文件夹用于放我们的PHP代码：" class="headerlink" title="创建一个空文件夹用于放我们的PHP代码："></a>创建一个空文件夹用于放我们的PHP代码：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir helloworld</span><br><span class="line">cd helloworld</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建INDEX-PHP并写入如下内容："><a href="#创建INDEX-PHP并写入如下内容：" class="headerlink" title="创建index.php并写入如下内容："></a>创建<code>index.php</code>并写入如下内容：</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="keyword">echo</span> <span class="string">'Hello World!'</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建DOCKERFILE并编辑如下："><a href="#创建DOCKERFILE并编辑如下：" class="headerlink" title="创建Dockerfile并编辑如下："></a>创建<code>Dockerfile</code>并编辑如下：</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用官方 PHP 7.3 镜像.</span></span><br><span class="line"><span class="comment"># https://hub.docker.com/_/php</span></span><br><span class="line"><span class="keyword">FROM</span> php:<span class="number">7.3</span>-apache</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将本地代码复制到容器内</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> index.php /var/www/html/</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># Apache 配置文件内使用 8080 端口</span></span></span><br><span class="line"><span class="bash">RUN sed -i <span class="string">'s/80/8080/g'</span> /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 将 PHP 配置为开发环境</span></span></span><br><span class="line"><span class="bash"><span class="comment"># 如果您需要配置为生产环境，可以运行以下命令</span></span></span><br><span class="line"><span class="bash"><span class="comment"># RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"</span></span></span><br><span class="line"><span class="bash"><span class="comment"># 参考：https://hub.docker.com/_/php#configuration</span></span></span><br><span class="line"><span class="bash">RUN mv <span class="string">"<span class="variable">$PHP_INI_DIR</span>/php.ini-development"</span> <span class="string">"<span class="variable">$PHP_INI_DIR</span>/php.ini"</span></span></span><br></pre></td></tr></table></figure>
-
-<h2 id="添加-DOCKERIGNORE文件"><a href="#添加-DOCKERIGNORE文件" class="headerlink" title="添加.dockerignore文件"></a>添加<code>.dockerignore</code>文件</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dockerfile</span><br><span class="line">README.md</span><br><span class="line">vendor</span><br></pre></td></tr></table></figure>
-
+<h1 id="4-准备代码"><a class="markdownIt-Anchor" href="#4-准备代码"></a> 4. 准备代码</h1>
+<h2 id="创建一个空文件夹用于放我们的php代码"><a class="markdownIt-Anchor" href="#创建一个空文件夹用于放我们的php代码"></a> 创建一个空文件夹用于放我们的PHP代码：</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir helloworld</span><br><span class="line">cd helloworld</span><br></pre></td></tr></table></figure>
+<h2 id="创建indexphp并写入如下内容"><a class="markdownIt-Anchor" href="#创建indexphp并写入如下内容"></a> 创建<code>index.php</code>并写入如下内容：</h2>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="keyword">echo</span> <span class="string">'Hello World!'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="创建dockerfile并编辑如下"><a class="markdownIt-Anchor" href="#创建dockerfile并编辑如下"></a> 创建<code>Dockerfile</code>并编辑如下：</h2>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用官方 PHP 7.3 镜像.</span></span><br><span class="line"><span class="comment"># https://hub.docker.com/_/php</span></span><br><span class="line"><span class="keyword">FROM</span> php:<span class="number">7.3</span>-apache</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将本地代码复制到容器内</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> index.php /var/www/html/</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># Apache 配置文件内使用 8080 端口</span></span></span><br><span class="line"><span class="bash">RUN sed -i <span class="string">'s/80/8080/g'</span> /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 将 PHP 配置为开发环境</span></span></span><br><span class="line"><span class="bash"><span class="comment"># 如果您需要配置为生产环境，可以运行以下命令</span></span></span><br><span class="line"><span class="bash"><span class="comment"># RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"</span></span></span><br><span class="line"><span class="bash"><span class="comment"># 参考：https://hub.docker.com/_/php#configuration</span></span></span><br><span class="line"><span class="bash">RUN mv <span class="string">"<span class="variable">$PHP_INI_DIR</span>/php.ini-development"</span> <span class="string">"<span class="variable">$PHP_INI_DIR</span>/php.ini"</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="添加dockerignore文件"><a class="markdownIt-Anchor" href="#添加dockerignore文件"></a> 添加<code>.dockerignore</code>文件</h2>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dockerfile</span><br><span class="line">README.md</span><br><span class="line">vendor</span><br></pre></td></tr></table></figure>
 <p>这个文件的内容是要排除指定的内容。</p>
-<h1 id="新建服务版本"><a href="#新建服务版本" class="headerlink" title="新建服务版本"></a>新建服务版本</h1><p>给刚刚创建的服务添加一个版本：</p>
+<h1 id="新建服务版本"><a class="markdownIt-Anchor" href="#新建服务版本"></a> 新建服务版本</h1>
+<p>给刚刚创建的服务添加一个版本：</p>
 <img src="https://i.loli.net/2021/01/17/vc1rdHYQoIFl4NR.png" title="" alt="">
-
 <p>选择本地上传：</p>
 <img src="https://i.loli.net/2021/01/17/mnDurpihTZXVYjL.png" title="" alt="">
-
 <p>云托管支持本地上传和代码库拉取两种方式：</p>
 <ul>
 <li>本地上传可以选择文件夹或 ZIP 压缩包进行上传。需要上传包含正确 Dockerfile 的代码目录，否则，将提示 Dockerfile 不合法。</li>
 <li>代码库拉取支持 GitHub，GitLab 和 Gitee 的代码库拉取，需要点击授权后，才可以看到自己的代码仓库。在弹出的界面完成代码授权后，关闭即可看到自己的代码仓库。</li>
 </ul>
 <blockquote>
-<p> 需要注意，文件夹或 ZIP 压缩包上传的代码中不能超过 2 MB </p>
+<p>需要注意，文件夹或 ZIP 压缩包上传的代码中不能超过 2 MB</p>
 </blockquote>
 <p>在创建版本时，可以选择「稍后配置」或「开启 100% 流量」两种流量配置，若选择「稍后配置」，该版本将不会被分配流量。</p>
 <p>点击确认后，就会自动帮你创建了：</p>
 <img src="https://i.loli.net/2021/01/17/FaQIYmsqKVf6yET.png" title="" alt="">
-
 <p>点击版本右侧的「详情」，可以查看版本的详细信息，包括版本的构建日志，版本详情以及实例信息：</p>
 <ul>
 <li>构建日志：提供版本构建日志信息。若版本构建失败，可以在下方建议处点击「重新构建」</li>
 <li>版本详情：可以针对版本的备注和扩缩容实例数量进行调整</li>
 <li>实例信息：可以看到当前容器的实例，对应的实例 ID 以及创建时间。点击「Web Shell」，可以在弹出的窗口中对实例进行操作。</li>
 </ul>
-<h1 id="调用云托管服务"><a href="#调用云托管服务" class="headerlink" title="调用云托管服务"></a>调用云托管服务</h1><p>调用云托管服务需要基础版本库在<strong>2.13.1</strong>以上，先检查下当前的基础库版本：</p>
+<h1 id="调用云托管服务"><a class="markdownIt-Anchor" href="#调用云托管服务"></a> 调用云托管服务</h1>
+<p>调用云托管服务需要基础版本库在<strong>2.13.1</strong>以上，先检查下当前的基础库版本：</p>
 <img src="https://i.loli.net/2021/01/17/lFQoj43amsgVqXA.png" style="zoom:80%;">
-
-<h1 id="调用云托管服务-1"><a href="#调用云托管服务-1" class="headerlink" title="调用云托管服务"></a>调用云托管服务</h1><p>在小程序中，使用如下的代码就可以调用云托管容器：</p>
+<h1 id="调用云托管服务-2"><a class="markdownIt-Anchor" href="#调用云托管服务-2"></a> 调用云托管服务</h1>
+<p>在小程序中，使用如下的代码就可以调用云托管容器：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 确认已经在 onLaunch 中调用过 wx.cloud.init 初始化环境</span></span><br><span class="line"><span class="keyword">const</span> res = <span class="keyword">await</span> wx.cloud.callContainer(&#123;</span><br><span class="line">  path: <span class="string">'/container-helloworld'</span>, <span class="comment">// 填入容器的访问路径（云托管-服务列表-路径）</span></span><br><span class="line">  method: <span class="string">'GET'</span>,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(res)</span><br></pre></td></tr></table></figure>
-
 <p>在 Web 端，可以使用如下代码进行调用：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化 Cloud 实例</span></span><br><span class="line"><span class="comment">// 容器调用必填环境id，不能为空</span></span><br><span class="line"><span class="keyword">var</span> c1 = <span class="keyword">new</span> wx.cloud.Cloud(&#123;</span><br><span class="line">  resourceEnv: <span class="string">'环境id'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">await</span> c1.init()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回值同 wx.request</span></span><br><span class="line"><span class="keyword">const</span> res = <span class="keyword">await</span> c1.callContainer(&#123;</span><br><span class="line">  path: <span class="string">'/container-helloworld'</span>, <span class="comment">// 填入容器的访问路径（云托管-服务列表-路径）</span></span><br><span class="line">  <span class="comment">// 其余参数同 wx.request</span></span><br><span class="line">  method: <span class="string">'POST'</span>,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(res)</span><br></pre></td></tr></table></figure>
-
 <img src="https://i.loli.net/2021/01/17/U1mwMNOfZgTbhCj.png" title="" alt="">
-
 <hr>
 <p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
 <img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;">
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/1/17/小程序/PHP/xiao-cheng-xu-yun-tuo-guan-CloudBase-PHP/" data-id="ckxgf70qo002638cakzt6xg1h" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/1/17/小程序/PHP/xiao-cheng-xu-yun-tuo-guan-CloudBase-PHP/" data-id="ckxgj50nq00256gcavsk4dhqs" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信/">微信</a></li></ul>

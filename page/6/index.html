@@ -143,7 +143,8 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1-什么是GUARD"><a href="#1-什么是GUARD" class="headerlink" title="1. 什么是Guard"></a>1. 什么是Guard</h1><p>在<code>Laravel/Lumen</code>框架中，用户的登录/注册的认证基本都已经封装好了，开箱即用。而登录/注册认证的核心就是：</p>
+        <h1 id="1-什么是guard"><a class="markdownIt-Anchor" href="#1-什么是guard"></a> 1. 什么是Guard</h1>
+<p>在<code>Laravel/Lumen</code>框架中，用户的登录/注册的认证基本都已经封装好了，开箱即用。而登录/注册认证的核心就是：</p>
 <ol>
 <li>用户的注册信息存入数据库（登记）</li>
 <li>从数据库中读取数据和用户输入的对比（认证）</li>
@@ -157,7 +158,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/2/24/PHP/Laravel/The-Guard-in-Laravel-framework/" data-id="ckxgf70pi000r38cacjt7xxa6" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/2/24/PHP/Laravel/The-Guard-in-Laravel-framework/" data-id="ckxgj50mi000r6gcaa7po3u8k" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Laravel/">Laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lumen/">Lumen</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
@@ -200,7 +201,6 @@ ga('send', 'pageview');
 <li>Named arguments</li>
 </ol>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// php 7.x</span></span><br><span class="line">htmlspecialchars($string, ENT_COMPAT | ENT_HTML401, <span class="string">'UTF-8'</span>, <span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// php 8.0</span></span><br><span class="line">htmlspecialchars($string, double_encode: <span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
-
 <p>传递参数时，可以通过指定参数名传递。</p>
         
           <p class="article-more-link">
@@ -210,7 +210,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/2/23/PHP/Saner-string-to-number-comparisons/" data-id="ckxgf70q6001i38cahr237jnp" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/2/23/PHP/Saner-string-to-number-comparisons/" data-id="ckxgj50mf000m6gcaq90qor8n" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
@@ -256,13 +256,15 @@ ga('send', 'pageview');
 <li>4xx：客户端错误</li>
 <li>5xx：服务器错误</li>
 </ul>
-<h2 id="1XX状态码"><a href="#1XX状态码" class="headerlink" title="1xx状态码"></a>1xx状态码</h2><ul>
+<h2 id="1xx状态码"><a class="markdownIt-Anchor" href="#1xx状态码"></a> 1xx状态码</h2>
+<ul>
 <li>100: Continue</li>
 <li>101: Switching Protocols</li>
 <li>102: Processing RFC2518</li>
 <li>103: Early Hints</li>
 </ul>
-<h2 id="2XX状态码"><a href="#2XX状态码" class="headerlink" title="2xx状态码"></a>2xx状态码</h2><ul>
+<h2 id="2xx状态码"><a class="markdownIt-Anchor" href="#2xx状态码"></a> 2xx状态码</h2>
+<ul>
 <li>200: OK
         
           <p class="article-more-link">
@@ -272,7 +274,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/1/29/Networks/HTTP-status-code/" data-id="ckxgf70pf000o38caar34rd9g" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/1/29/Networks/HTTP-status-code/" data-id="ckxgj50m5000d6gcauigy2kzj" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Server/">Server</a></li></ul>
@@ -308,9 +310,7 @@ ga('send', 'pageview');
       
         <p>设置边框最常使用<code>border</code>，比如这样：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">dashed</span> <span class="selector-id">#333</span>;</span><br></pre></td></tr></table></figure>
-
 <img src="https://i.loli.net/2021/01/19/UwQu9Foa25zE4Dt.png" title="" alt="">
-
 <p>这是最常规的方法了，今天再来说说其他两种方法，</p>
 <ol>
 <li>outline方式</li>
@@ -324,7 +324,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/1/19/notes/css-border-trickies/" data-id="ckxgf70py001538ca68jabhgl" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/1/19/notes/css-border-trickies/" data-id="ckxgj50mt00166gcaa0zvo9ix" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -371,7 +371,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/1/17/小程序/PHP/xiao-cheng-xu-yun-tuo-guan-CloudBase-PHP/" data-id="ckxgf70qo002638cakzt6xg1h" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/1/17/小程序/PHP/xiao-cheng-xu-yun-tuo-guan-CloudBase-PHP/" data-id="ckxgj50nq00256gcavsk4dhqs" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信/">微信</a></li></ul>

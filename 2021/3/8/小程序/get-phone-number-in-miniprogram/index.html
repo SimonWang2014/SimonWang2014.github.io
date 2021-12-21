@@ -10,13 +10,13 @@
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="在使用小程序的时候，经常会遇到获取手机号的提示框，不给手机号就不让访问，比如下面这个：     这种情况还经常发生在饭店点餐的时候，原先纸质的菜单直接被一个二维码取代，用户扫码后首先就要获取你的手机号你才能点餐。 不得不说小程序获取用户手机号是非常的便捷，今天这篇文章就来学习下小程序获取手机号的流程。">
+  <meta name="description" content="在使用小程序的时候，经常会遇到获取手机号的提示框，不给手机号就不让访问，比如下面这个：  这种情况还经常发生在饭店点餐的时候，原先纸质的菜单直接被一个二维码取代，用户扫码后首先就要获取你的手机号你才能点餐。 不得不说小程序获取用户手机号是非常的便捷，今天这篇文章就来学习下小程序获取手机号的流程。">
 <meta name="keywords" content="Javascript,小程序,微信,UniApp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小程序中获取用户手机号">
 <meta property="og:url" content="https://www.xydida.com/2021/3/8/小程序/get-phone-number-in-miniprogram/index.html">
 <meta property="og:site_name" content="正义的程序猿">
-<meta property="og:description" content="在使用小程序的时候，经常会遇到获取手机号的提示框，不给手机号就不让访问，比如下面这个：     这种情况还经常发生在饭店点餐的时候，原先纸质的菜单直接被一个二维码取代，用户扫码后首先就要获取你的手机号你才能点餐。 不得不说小程序获取用户手机号是非常的便捷，今天这篇文章就来学习下小程序获取手机号的流程。">
+<meta property="og:description" content="在使用小程序的时候，经常会遇到获取手机号的提示框，不给手机号就不让访问，比如下面这个：  这种情况还经常发生在饭店点餐的时候，原先纸质的菜单直接被一个二维码取代，用户扫码后首先就要获取你的手机号你才能点餐。 不得不说小程序获取用户手机号是非常的便捷，今天这篇文章就来学习下小程序获取手机号的流程。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2021/03/08/jkYBNRfvtrCPmKU.jpg">
 <meta property="og:image" content="https://i.loli.net/2021/03/08/HXm4JKxf6wWAGF2.png">
@@ -25,7 +25,7 @@
 <meta property="og:updated_time" content="2021-03-08T10:26:04.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序中获取用户手机号">
-<meta name="twitter:description" content="在使用小程序的时候，经常会遇到获取手机号的提示框，不给手机号就不让访问，比如下面这个：     这种情况还经常发生在饭店点餐的时候，原先纸质的菜单直接被一个二维码取代，用户扫码后首先就要获取你的手机号你才能点餐。 不得不说小程序获取用户手机号是非常的便捷，今天这篇文章就来学习下小程序获取手机号的流程。">
+<meta name="twitter:description" content="在使用小程序的时候，经常会遇到获取手机号的提示框，不给手机号就不让访问，比如下面这个：  这种情况还经常发生在饭店点餐的时候，原先纸质的菜单直接被一个二维码取代，用户扫码后首先就要获取你的手机号你才能点餐。 不得不说小程序获取用户手机号是非常的便捷，今天这篇文章就来学习下小程序获取手机号的流程。">
 <meta name="twitter:image" content="https://i.loli.net/2021/03/08/jkYBNRfvtrCPmKU.jpg">
   
     <link rel="alternate" href="/sitemap.xml" title="正义的程序猿" type="application/atom+xml">
@@ -152,16 +152,13 @@ ga('send', 'pageview');
 
         <p>在使用小程序的时候，经常会遇到获取手机号的提示框，不给手机号就不让访问，比如下面这个：</p>
 <img src="https://i.loli.net/2021/03/08/jkYBNRfvtrCPmKU.jpg" style="zoom:50%;">
-
-
-
 <p>这种情况还经常发生在饭店点餐的时候，原先纸质的菜单直接被一个二维码取代，用户扫码后首先就要获取你的手机号你才能点餐。 不得不说小程序获取用户手机号是非常的便捷，今天这篇文章就来学习下小程序获取手机号的流程。</p>
 <a id="more"></a>
-
 <blockquote>
 <p>说明：小程序获取手机号功能不是谁都可以用的，必须是非个人账号，而且还要认证过的哦</p>
 </blockquote>
-<h1 id="功能拆分"><a href="#功能拆分" class="headerlink" title="功能拆分"></a>功能拆分</h1><p>大事化小，我们先把整个流程拆分下：</p>
+<h1 id="功能拆分"><a class="markdownIt-Anchor" href="#功能拆分"></a> 功能拆分</h1>
+<p>大事化小，我们先把整个流程拆分下：</p>
 <ol>
 <li><code>wx.login()</code>用户认证，获取<code>session_key</code>用于后面数据解密</li>
 <li>点击获取用户手机号，弹出微信授权界面</li>
@@ -170,34 +167,30 @@ ga('send', 'pageview');
 </ol>
 <p>流程图大致如下：</p>
 <img src="https://i.loli.net/2021/03/08/HXm4JKxf6wWAGF2.png" title="" alt="">
-
 <p>下面就按上面的步骤一步一步来开发，下面所用的代码是<code>UniAPP</code>[1]代码，后端接口为<code>PHP</code>代码。</p>
-<h1 id="用户认证"><a href="#用户认证" class="headerlink" title="用户认证"></a>用户认证</h1><p><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html" target="_blank" rel="noopener">小程序文档</a>[2]中开头就指明需要<code>wx.login()</code>这一步，所以这一步绝对不能跳过：</p>
+<h1 id="用户认证"><a class="markdownIt-Anchor" href="#用户认证"></a> 用户认证</h1>
+<p><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html" target="_blank" rel="noopener">小程序文档</a>[2]中开头就指明需要<code>wx.login()</code>这一步，所以这一步绝对不能跳过：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">onload()&#123;  </span><br><span class="line">  uni.checkSession(&#123;</span><br><span class="line">    success() &#123;</span><br><span class="line">      <span class="comment">// 认证有效</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 之前的认证失效</span></span><br><span class="line">    fail() &#123;</span><br><span class="line">      uni.login(&#123;</span><br><span class="line">        success(res) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(res)</span><br><span class="line">          <span class="comment">// 微信登录成功 已拿到code  </span></span><br><span class="line">          <span class="keyword">if</span> (res.code) &#123;</span><br><span class="line">            uni.request(&#123;</span><br><span class="line">              url: <span class="string">`https://abc.com/getSessionKey?code=<span class="subst">$&#123;res.code&#125;</span>`</span>,</span><br><span class="line">              method: <span class="string">'GET'</span>,</span><br><span class="line">              success (resp) &#123;</span><br><span class="line">                <span class="comment">// 换取成功后 可以讲下面的数据存入storage</span></span><br><span class="line">                <span class="keyword">this</span>.openid = resp.data.openid	<span class="comment">//openid 用户唯一标识  </span></span><br><span class="line">                <span class="keyword">this</span>.unionid = resp.data.unionid	<span class="comment">//unionid 开放平台唯一标识  </span></span><br><span class="line">                <span class="keyword">this</span>.session_key = resp.data.session_key	<span class="comment">//session_key  会话密钥  </span></span><br><span class="line">                uni.setStorageSync(<span class="string">'openid'</span>, resp.data.openid)</span><br><span class="line">                uni.setStorageSync(<span class="string">'unionid'</span>, resp.data.unionid)</span><br><span class="line">                uni.setStorageSync(<span class="string">'session_key'</span>, resp.data.session_key)</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>调用<code>login</code>前，先可以<code>checkSession</code>一下，如果过期了再更新<code>session_key</code>，减少网络请求。</p>
 <p><code>PHP</code>接口相对简单很多：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$appid = <span class="string">'xxxx'</span>;</span><br><span class="line">$secret = <span class="string">'xxxx'</span>;</span><br><span class="line"></span><br><span class="line">$js_code = $_GET[<span class="string">'code'</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 接口地址</span></span><br><span class="line">$url = <span class="string">"https://api.weixin.qq.com/sns/jscode2session?appid=&#123;$appid&#125;&amp;secret=&#123;$secret&#125;&amp;js_code=&#123;$js_code&#125;&amp;grant_type=authorization_code"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送curl请求获取数据</span></span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
-
 <p>有两个注意点：</p>
 <ol>
 <li>如果请求 <code>jscode2session</code> 接口失败，你需要的再小程序后台【request合法域名】中添加接口域名</li>
 <li><code>unionid</code>并不是每个账号都会返回，必须要<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/union-id.html" target="_blank" rel="noopener">绑定同一个开放平台后</a>[3]才会有</li>
 </ol>
-<h1 id="触发点击按钮事件"><a href="#触发点击按钮事件" class="headerlink" title="触发点击按钮事件"></a>触发点击按钮事件</h1><p>创建一个按钮：</p>
+<h1 id="触发点击按钮事件"><a class="markdownIt-Anchor" href="#触发点击按钮事件"></a> 触发点击按钮事件</h1>
+<p>创建一个按钮：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"default"</span> <span class="attr">open-type</span>=<span class="string">"getPhoneNumber"</span> @<span class="attr">getphonenumber</span>=<span class="string">"getPhoneNumberCallback"</span>&gt;</span>手机号<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>创建对应的回掉函数：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">  getPhoneNumberCallback (r) &#123;</span><br><span class="line">		<span class="keyword">if</span>(e.detail.errMsg==<span class="string">"getPhoneNumber:fail user deny"</span>)&#123;<span class="comment">//用户决绝授权  </span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">//允许授权  </span></span><br><span class="line">      <span class="built_in">console</span>.log(r.detail.encryptedData)  </span><br><span class="line">      r.detail.encryptedData      <span class="comment">//加密的用户信息  </span></span><br><span class="line">      r.detail.iv     <span class="comment">//加密算法的初始向量  时要用到  </span></span><br><span class="line">      uni.request(&#123;</span><br><span class="line">        url: <span class="string">'https://abc.com/decode'</span>,</span><br><span class="line">        data: &#123;</span><br><span class="line">          session_key: uni.getStorageSync(<span class="string">'session_key'</span>),</span><br><span class="line">          encryptedData: r.detail.encryptedData,</span><br><span class="line">          iv: r.detail.iv</span><br><span class="line">        &#125;,</span><br><span class="line">        success (resp) &#123;</span><br><span class="line">          <span class="comment">// todo</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>回掉函数中可以拿到加密过后的用户数据：</p>
 <img src="https://i.loli.net/2021/03/08/XA2DVmFpBf6bo3k.png" title="" alt="">
-
 <p>接下来就是解密数据了。</p>
-<h1 id="数据解密"><a href="#数据解密" class="headerlink" title="数据解密"></a>数据解密</h1><p>看很多文章说直接在小程序端解密数据，方法是可行的，而且不用写后端接口，但是小程序可以被<code>反编译</code>，造成<code>appid</code>和<code>secret</code>的泄漏，安全性很低，所以我建议还是后端解密。</p>
+<h1 id="数据解密"><a class="markdownIt-Anchor" href="#数据解密"></a> 数据解密</h1>
+<p>看很多文章说直接在小程序端解密数据，方法是可行的，而且不用写后端接口，但是小程序可以被<code>反编译</code>，造成<code>appid</code>和<code>secret</code>的泄漏，安全性很低，所以我建议还是后端解密。</p>
 <p>详细的解密步骤可以参看<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/signature.html" target="_blank" rel="noopener">官方文档</a>[4]，这里只贴一张官方的图：</p>
 <img src="https://i.loli.net/2021/03/08/xmH3nBQgIPstwEA.jpg" style="zoom:80%;">
-
 <blockquote>
 <p>签名校验以及数据加解密涉及用户的会话密钥 session_key。 开发者应该事先通过<a href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html" target="_blank" rel="noopener">wx.login</a> 登录流程获取会话密钥 session_key 并保存在服务器。为了数据不被篡改，开发者不应该把 session_key 传到小程序客户端等服务器外的环境。</p>
 </blockquote>
@@ -210,27 +203,31 @@ ga('send', 'pageview');
 </ol>
 <p>微信官方提供了多种编程语言的<a href="https://res.wx.qq.com/wxdoc/dist/assets/media/aes-sample.eae1f364.zip" target="_blank" rel="noopener">示例代码</a>[5]，我们直接下载后使用，这里以<code>PHP</code>为例：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">include_once</span> <span class="string">"wxBizDataCrypt.php"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$appid = <span class="string">'wx4f4bc4dec97d474b'</span>;</span><br><span class="line">$sessionKey = <span class="string">'tiihtNczf5v6AKRyjwEUhQ=='</span>;</span><br><span class="line"></span><br><span class="line">$encryptedData=<span class="string">"CiyLU1Aw2KjvrjMdj8YKliAjtP4gsMZM</span></span><br><span class="line"><span class="string">                QmRzooG2xrDcvSnxIMXFufNstNGTyaGS</span></span><br><span class="line"><span class="string">                9uT5geRa0W4oTOb1WT7fJlAC+oNPdbB+</span></span><br><span class="line"><span class="string">                3hVbJSRgv+4lGOETKUQz6OYStslQ142d</span></span><br><span class="line"><span class="string">                NCuabNPGBzlooOmB231qMM85d2/fV6Ch</span></span><br><span class="line"><span class="string">                evvXvQP8Hkue1poOFtnEtpyxVLW1zAo6</span></span><br><span class="line"><span class="string">                /1Xx1COxFvrc2d7UL/lmHInNlxuacJXw</span></span><br><span class="line"><span class="string">                u0fjpXfz/YqYzBIBzD6WUfTIF9GRHpOn</span></span><br><span class="line"><span class="string">                /Hz7saL8xz+W//FRAUid1OksQaQx4CMs</span></span><br><span class="line"><span class="string">                8LOddcQhULW4ucetDf96JcR3g0gfRK4P</span></span><br><span class="line"><span class="string">                C7E/r7Z6xNrXd2UIeorGj5Ef7b1pJAYB</span></span><br><span class="line"><span class="string">                6Y5anaHqZ9J6nKEBvB4DnNLIVWSgARns</span></span><br><span class="line"><span class="string">                /8wR2SiRS7MNACwTyrGvt9ts8p12PKFd</span></span><br><span class="line"><span class="string">                lqYTopNHR1Vf7XjfhQlVsAJdNiKdYmYV</span></span><br><span class="line"><span class="string">                oKlaRv85IfVunYzO0IKXsyl7JCUjCpoG</span></span><br><span class="line"><span class="string">                20f0a04COwfneQAGGwd5oa+T8yO5hzuy</span></span><br><span class="line"><span class="string">                Db/XcxxmK01EpqOyuxINew=="</span>;</span><br><span class="line"></span><br><span class="line">$iv = <span class="string">'r7BXXKkLb8qrSNn05n0qiA=='</span>;</span><br><span class="line"></span><br><span class="line">$pc = <span class="keyword">new</span> WXBizDataCrypt($appid, $sessionKey);</span><br><span class="line">$errCode = $pc-&gt;decryptData($encryptedData, $iv, $data );</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ($errCode == <span class="number">0</span>) &#123;</span><br><span class="line">  	<span class="comment">// 解密成功，返回数据</span></span><br><span class="line">    <span class="keyword">print</span>($data . <span class="string">"\n"</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">print</span>($errCode . <span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>最后，通过一顿操作后成功拿到数据交给前端处理。</p>
 <hr>
 <p>参考：</p>
 <ol>
-<li><p>UniApp：<a href="https://uniapp.dcloud.io/" target="_blank" rel="noopener">https://uniapp.dcloud.io</a></p>
+<li>
+<p>UniApp：<a href="https://uniapp.dcloud.io" target="_blank" rel="noopener">https://uniapp.dcloud.io</a></p>
 </li>
-<li><p>小程序文档：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html</a></p>
+<li>
+<p>小程序文档：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html</a></p>
 </li>
-<li><p>UnionId机制：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/union-id.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/union-id.html</a></p>
+<li>
+<p>UnionId机制：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/union-id.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/union-id.html</a></p>
 </li>
-<li><p>小程序开放数据解密：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/signature.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/signature.html</a></p>
+<li>
+<p>小程序开放数据解密：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/signature.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/signature.html</a></p>
 </li>
-<li><p>小程序解密示例代码：<a href="https://res.wx.qq.com/wxdoc/dist/assets/media/aes-sample.eae1f364.zip" target="_blank" rel="noopener">https://res.wx.qq.com/wxdoc/dist/assets/media/aes-sample.eae1f364.zip</a></p>
+<li>
+<p>小程序解密示例代码：<a href="https://res.wx.qq.com/wxdoc/dist/assets/media/aes-sample.eae1f364.zip" target="_blank" rel="noopener">https://res.wx.qq.com/wxdoc/dist/assets/media/aes-sample.eae1f364.zip</a></p>
 </li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/3/8/小程序/get-phone-number-in-miniprogram/" data-id="ckxgf70q3001e38cao5xar35n" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/3/8/小程序/get-phone-number-in-miniprogram/" data-id="ckxgj50n2001d6gca6g9fkhtx" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UniApp/">UniApp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信/">微信</a></li></ul>

@@ -165,24 +165,18 @@ ga('send', 'pageview');
 <li>直接箭头<code>-&gt;</code>调用属性(最常用)，不管有没有声明这个属性，都可以使用，但会报<code>Notice</code>级别的错误</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$dog = new Dog();</span><br><span class="line">$dog-&gt;name = &apos;hey&apos;;</span><br></pre></td></tr></table></figure>
-
 <img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g1nglil8abj30du09ejrz.jpg" title="" alt="">
-
 <a id="more"></a>
-
 <ol start="2">
 <li>添加<code>setter</code>和<code>getter</code>方法，类似于Java</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Dog </span><br><span class="line">&#123;</span><br><span class="line">    private $name = &apos;&apos;;</span><br><span class="line">    public function setName($name) &#123;</span><br><span class="line">        $this-&gt;name = $name;</span><br><span class="line">    &#125;</span><br><span class="line">    public function getName() &#123;</span><br><span class="line">        return $this-&gt;name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ol start="3">
 <li>使用魔术方法(最装x)</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Dog1</span><br><span class="line">&#123;</span><br><span class="line">    private $_name = &apos;&apos;;</span><br><span class="line">    function __set($property, $value) &#123;</span><br><span class="line">        if ($property === &apos;name&apos;) $this-&gt;_name = $value;</span><br><span class="line">    &#125;</span><br><span class="line">    function __get($property) &#123;</span><br><span class="line">        if ($property === &apos;name&apos;) return $this-&gt;_name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>上面三种方法，大部分人能都想到的也就是前两种方法，对于第三种方法PHP小白看了第一感觉就是好厉害（心中暗想这人一定是大佬），但是这样写真的能体现出编程水平吗？</p>
 <img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g1ngltx6uxj305a04cdfr.jpg" title="" alt="">
-
 <p>对这几种方法，我们来对比下它们的执行效率：</p>
 <p>方法一代码：<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g1ngm63tt5j30rs0h50tm.jpg" title="" alt=""></p>
 <p>方法二代码：<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g1ngmn40ogj30rs0lpt9y.jpg" title="" alt=""></p>
@@ -191,22 +185,20 @@ ga('send', 'pageview');
 <p>方法一：<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g1ngnl5r3hj30ne02qjrf.jpg" title="" alt=""></p>
 <p>方法二：<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g1ngnusfwgj30nc02uaa4.jpg" title="" alt=""></p>
 <p>方法三：<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g1ngo98o7lj30n602w0sr.jpg" title="" alt=""></p>
-<p>会什么方法三会这么慢？有人可能会说可能因为魔术方法里面的<code>if</code>判断，那我现在把<code>if</code>去掉试试：<br><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g1ngop1lcyj30p40akjs0.jpg" title="" alt=""></p>
+<p>会什么方法三会这么慢？有人可能会说可能因为魔术方法里面的<code>if</code>判断，那我现在把<code>if</code>去掉试试：<br>
+<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g1ngop1lcyj30p40akjs0.jpg" title="" alt=""></p>
 <p>执行结果如下：<img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g1ngouz17jj30ni02m3yj.jpg" title="" alt=""></p>
 <p>发现<code>if</code>的影响很小，而且这种写法也并不推荐，这里的魔术方法就相当于一个拦截器，当调用未定义的属性时就会调用魔术方法，但这里只是测试，真实环境一定不能这么写。</p>
 <p>从结果可以看出，我们直接使用箭头函数速度是最快的，最常用最简单的方法执行效率也是最高的，后面两种方法不仅代码行数多了一些，而且执行效率不及第一种，特别是使用魔术方法，执行效率是第一种的<code>6倍</code>左右，是第二种的<code>2倍</code>左右，古人常说“智者千虑必有一失，愚者千虑必有一得”大概就是这个意思吧，在这里代码行数和执行效率都增多了。</p>
 <p>不过，对于第一种方法，可读性就不是很高，不管属性有没有定义都能随便调用，代码并不规范，其他人在审查你的代码时就不是很方便，建议属性属性使用前声明下。</p>
 <p>####魔术方法还有哪些？</p>
 <img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g1ngp6vzljj30kc08ogmh.jpg" title="" alt="PHP中的魔术方法">
-
 <p>PHP中，<code>__call()</code>方法可能是最有用的魔术方法了，用它可以实现很tricky的东西。当要调用类中未定义的方法时，<code>__call()</code>会被调用，第一个参数是调用未定义的方法名称，第二个参数是传递给调用方法的所有参数，是一个数组，<code>__call()</code>的返回值会返回给调用者，这样就好像调用一个真实存在的方法一样。</p>
 <p>同时<code>__call</code>也可以用来实现<code>委托</code>，<code>委托</code>是指一个对象转发一个请求给另一个对象，把请求的处理委托给另一个对象。这就有点类似于继承，和在子类中调用父类的方法有点相似。但在继承是父类与子类的关系是固定的，而使用委托可以在运行时改变使用的对象，委托比继承具有更大的灵活性。代码如下：<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g1ngpwr0vrj30rs11bdid.jpg" title="" alt=""></p>
 <p>代码中<code>Doctor</code>类接收一个<code>PersonWriter</code>对象作为构造函数的参数，并将它存储在<code>$printer</code>中，在<code>__call()</code>中检查<code>PersonWriter</code>中是否存在<code>$methodName</code>方法，如果存在，就委托<code>PersonWriter</code>对象来处理，并将当前类<code>Doctor</code>的实例传给它，运行结果如下：</p>
 <img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g1ngq3yy3cj30d403qa9z.jpg" title="" alt="">
-
 <p>这样我们就不用在<code>Doctor</code>中手动调用如下方法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$this-&gt;printer-&gt;printMe($this);</span><br></pre></td></tr></table></figure>
-
 <p>如果此时给<code>PersonWriter</code>增加几个新的方法，使用委托可以节省很多时间，但代码也会变得不清晰，不易理解。对于调用者来说，你提供的是一个动态的接口，没有办法进行反射（reflection），因为调用的类与被委托的类之间的交互比较模糊，使用时需要提供说明文档。</p>
 <p>回到文章主题，我们对PHP的<code>getter</code>和<code>setter</code>相关使用进行了对比，以<code>Java</code>程序猿的思维看第二种方法中规中矩，没有任何套路，第一种和第三种应该是PHP才有的，但第三种方式执行的效率远不及前两种，而第一种方式虽然效率最高，但使用时尽量还是把属性声明下，使代码的结构更清晰。</p>
 <hr>
@@ -215,7 +207,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2019/4/1/PHP/getter-and-setter-in-PHP/" data-id="ckxgf70q4001f38cafmz2kwzg" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2019/4/1/PHP/getter-and-setter-in-PHP/" data-id="ckxgj50n3001f6gcavjebf12l" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>

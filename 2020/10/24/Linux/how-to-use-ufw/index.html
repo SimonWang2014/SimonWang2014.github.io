@@ -146,58 +146,60 @@ ga('send', 'pageview');
         
 
         <p><code>UFW（Uncomplicated Firewal）</code>是<code>Ubuntu</code>上基于<code>iptables</code>的一个防火墙管理软件，使用<code>UFW</code>我们可以更方便的管理服务器上的防火墙，本文记录一些关于<code>UFW</code>使用教程。</p>
-<h1 id="安装UFW"><a href="#安装UFW" class="headerlink" title="安装UFW"></a>安装UFW</h1><a id="more"></a>
-
+<h1 id="安装ufw"><a class="markdownIt-Anchor" href="#安装ufw"></a> 安装UFW</h1>
+<a id="more"></a>
 <p>一条命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ufw</span><br></pre></td></tr></table></figure>
-
 <p>如果返回了具体版本信息，说明安装成功：</p>
 <p>查看版本：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw version</span><br><span class="line">// ufw 0.36</span><br><span class="line">// Copyright 2008-2015 Canonical Ltd.</span><br></pre></td></tr></table></figure>
-
-<h1 id="食用UFW"><a href="#食用UFW" class="headerlink" title="食用UFW"></a>食用UFW</h1><h2 id="查看状态："><a href="#查看状态：" class="headerlink" title="查看状态："></a>查看状态：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// inactive 关闭</span><br><span class="line">// active 开启</span><br><span class="line">sudo ufw status</span><br><span class="line"></span><br><span class="line">// 输出</span><br><span class="line">Status: active</span><br><span class="line"></span><br><span class="line">To                         Action      From</span><br><span class="line">--                         ------      ----</span><br><span class="line">OpenSSH                    ALLOW       Anywhere                  </span><br><span class="line">Nginx HTTP                 ALLOW       Anywhere                  </span><br><span class="line">OpenSSH (v6)               ALLOW       Anywhere (v6)             </span><br><span class="line">Nginx HTTP (v6)            ALLOW       Anywhere (v6)</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看状态详细信息，可以在后面加VERBOSE："><a href="#查看状态详细信息，可以在后面加VERBOSE：" class="headerlink" title="查看状态详细信息，可以在后面加verbose："></a>查看状态详细信息，可以在后面加verbose：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw status verbose</span><br></pre></td></tr></table></figure>
-
-<h2 id="显示服务编号："><a href="#显示服务编号：" class="headerlink" title="显示服务编号："></a>显示服务编号：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw status numbered</span><br></pre></td></tr></table></figure>
-
-<h2 id="开启-关闭UFW"><a href="#开启-关闭UFW" class="headerlink" title="开启/关闭ufw"></a>开启/关闭ufw</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 开启</span><br><span class="line">sudo ufw enable</span><br><span class="line">// 关闭</span><br><span class="line">sudo ufw disable</span><br></pre></td></tr></table></figure>
-
-<h2 id="设置UFW的默认策略："><a href="#设置UFW的默认策略：" class="headerlink" title="设置ufw的默认策略："></a>设置ufw的默认策略：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 默认禁止所有其它主机连接该主机</span><br><span class="line">sudo ufw default deny incoming</span><br><span class="line"></span><br><span class="line">// 默认允许该主机所有对外连接请求</span><br><span class="line">sudo ufw default allow outgoing</span><br></pre></td></tr></table></figure>
-
-<h2 id="设置其他链接规则"><a href="#设置其他链接规则" class="headerlink" title="设置其他链接规则"></a>设置其他链接规则</h2><h3 id="只允许特定的服务（服务名）"><a href="#只允许特定的服务（服务名）" class="headerlink" title="只允许特定的服务（服务名）"></a>只允许特定的服务（服务名）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 只允许ssh服务</span><br><span class="line">sudo ufw allow ssh</span><br></pre></td></tr></table></figure>
-
-<h3 id="只允许特定的服务（端口）"><a href="#只允许特定的服务（端口）" class="headerlink" title="只允许特定的服务（端口）"></a>只允许特定的服务（端口）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 22</span><br></pre></td></tr></table></figure>
-
-<h3 id="只允许特定协议的端口访问"><a href="#只允许特定协议的端口访问" class="headerlink" title="只允许特定协议的端口访问"></a>只允许特定协议的端口访问</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 21/tcp</span><br></pre></td></tr></table></figure>
-
-<h3 id="允许特定端口范围"><a href="#允许特定端口范围" class="headerlink" title="允许特定端口范围"></a>允许特定端口范围</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 6000:6007/tcp</span><br><span class="line">sudo ufw allow 6000:6007/udp</span><br></pre></td></tr></table></figure>
-
-<h3 id="允许特定IP地址访问"><a href="#允许特定IP地址访问" class="headerlink" title="允许特定IP地址访问"></a>允许特定IP地址访问</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow from 192.168.1.100</span><br></pre></td></tr></table></figure>
-
-<h3 id="允许特定范围主机（192-168-1-1-192-168-1-254）"><a href="#允许特定范围主机（192-168-1-1-192-168-1-254）" class="headerlink" title="允许特定范围主机（192.168.1.1 - 192.168.1.254）"></a>允许特定范围主机（192.168.1.1 - 192.168.1.254）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow from 192.168.168.1/24</span><br></pre></td></tr></table></figure>
-
-<h3 id="允许特定范围主机访问特定端口"><a href="#允许特定范围主机访问特定端口" class="headerlink" title="允许特定范围主机访问特定端口"></a>允许特定范围主机访问特定端口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow from 192.168.1.0/24 to any port 22</span><br></pre></td></tr></table></figure>
-
-<h3 id="允许连接到特定的网卡"><a href="#允许连接到特定的网卡" class="headerlink" title="允许连接到特定的网卡"></a>允许连接到特定的网卡</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow in on eth0 to any port 80</span><br></pre></td></tr></table></figure>
-
-<h2 id="拒绝链接规则"><a href="#拒绝链接规则" class="headerlink" title="拒绝链接规则"></a>拒绝链接规则</h2><h3 id="将-ALLOW-替换为-DENY（服务名）"><a href="#将-ALLOW-替换为-DENY（服务名）" class="headerlink" title="将 allow 替换为 deny（服务名）"></a>将 allow 替换为 deny（服务名）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw deny http</span><br></pre></td></tr></table></figure>
-
-<h3 id="将-ALLOW-替换为-DENY（IP）"><a href="#将-ALLOW-替换为-DENY（IP）" class="headerlink" title="将 allow 替换为 deny（ip）"></a>将 allow 替换为 deny（ip）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw deny from 192.168.1.100</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除链接规则"><a href="#删除链接规则" class="headerlink" title="删除链接规则"></a>删除链接规则</h2><h3 id="按编号删除规则"><a href="#按编号删除规则" class="headerlink" title="按编号删除规则"></a>按编号删除规则</h3><p>这时就需要用到我们上面的规则编号了：</p>
+<h1 id="食用ufw"><a class="markdownIt-Anchor" href="#食用ufw"></a> 食用UFW</h1>
+<h2 id="查看状态"><a class="markdownIt-Anchor" href="#查看状态"></a> 查看状态：</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// inactive 关闭</span><br><span class="line">// active 开启</span><br><span class="line">sudo ufw status</span><br><span class="line"></span><br><span class="line">// 输出</span><br><span class="line">Status: active</span><br><span class="line"></span><br><span class="line">To                         Action      From</span><br><span class="line">--                         ------      ----</span><br><span class="line">OpenSSH                    ALLOW       Anywhere                  </span><br><span class="line">Nginx HTTP                 ALLOW       Anywhere                  </span><br><span class="line">OpenSSH (v6)               ALLOW       Anywhere (v6)             </span><br><span class="line">Nginx HTTP (v6)            ALLOW       Anywhere (v6)</span><br></pre></td></tr></table></figure>
+<h2 id="查看状态详细信息可以在后面加verbose"><a class="markdownIt-Anchor" href="#查看状态详细信息可以在后面加verbose"></a> 查看状态详细信息，可以在后面加verbose：</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw status verbose</span><br></pre></td></tr></table></figure>
+<h2 id="显示服务编号"><a class="markdownIt-Anchor" href="#显示服务编号"></a> 显示服务编号：</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw status numbered</span><br></pre></td></tr></table></figure>
+<h2 id="开启关闭ufw"><a class="markdownIt-Anchor" href="#开启关闭ufw"></a> 开启/关闭ufw</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 开启</span><br><span class="line">sudo ufw enable</span><br><span class="line">// 关闭</span><br><span class="line">sudo ufw disable</span><br></pre></td></tr></table></figure>
+<h2 id="设置ufw的默认策略"><a class="markdownIt-Anchor" href="#设置ufw的默认策略"></a> 设置ufw的默认策略：</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 默认禁止所有其它主机连接该主机</span><br><span class="line">sudo ufw default deny incoming</span><br><span class="line"></span><br><span class="line">// 默认允许该主机所有对外连接请求</span><br><span class="line">sudo ufw default allow outgoing</span><br></pre></td></tr></table></figure>
+<h2 id="设置其他链接规则"><a class="markdownIt-Anchor" href="#设置其他链接规则"></a> 设置其他链接规则</h2>
+<h3 id="只允许特定的服务服务名"><a class="markdownIt-Anchor" href="#只允许特定的服务服务名"></a> 只允许特定的服务（服务名）</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 只允许ssh服务</span><br><span class="line">sudo ufw allow ssh</span><br></pre></td></tr></table></figure>
+<h3 id="只允许特定的服务端口"><a class="markdownIt-Anchor" href="#只允许特定的服务端口"></a> 只允许特定的服务（端口）</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 22</span><br></pre></td></tr></table></figure>
+<h3 id="只允许特定协议的端口访问"><a class="markdownIt-Anchor" href="#只允许特定协议的端口访问"></a> 只允许特定协议的端口访问</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 21/tcp</span><br></pre></td></tr></table></figure>
+<h3 id="允许特定端口范围"><a class="markdownIt-Anchor" href="#允许特定端口范围"></a> 允许特定端口范围</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 6000:6007/tcp</span><br><span class="line">sudo ufw allow 6000:6007/udp</span><br></pre></td></tr></table></figure>
+<h3 id="允许特定ip地址访问"><a class="markdownIt-Anchor" href="#允许特定ip地址访问"></a> 允许特定IP地址访问</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow from 192.168.1.100</span><br></pre></td></tr></table></figure>
+<h3 id="允许特定范围主机19216811-1921681254"><a class="markdownIt-Anchor" href="#允许特定范围主机19216811-1921681254"></a> 允许特定范围主机（192.168.1.1 - 192.168.1.254）</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow from 192.168.168.1/24</span><br></pre></td></tr></table></figure>
+<h3 id="允许特定范围主机访问特定端口"><a class="markdownIt-Anchor" href="#允许特定范围主机访问特定端口"></a> 允许特定范围主机访问特定端口</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow from 192.168.1.0/24 to any port 22</span><br></pre></td></tr></table></figure>
+<h3 id="允许连接到特定的网卡"><a class="markdownIt-Anchor" href="#允许连接到特定的网卡"></a> 允许连接到特定的网卡</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow in on eth0 to any port 80</span><br></pre></td></tr></table></figure>
+<h2 id="拒绝链接规则"><a class="markdownIt-Anchor" href="#拒绝链接规则"></a> 拒绝链接规则</h2>
+<h3 id="将-allow-替换为-deny服务名"><a class="markdownIt-Anchor" href="#将-allow-替换为-deny服务名"></a> 将 allow 替换为 deny（服务名）</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw deny http</span><br></pre></td></tr></table></figure>
+<h3 id="将-allow-替换为-denyip"><a class="markdownIt-Anchor" href="#将-allow-替换为-denyip"></a> 将 allow 替换为 deny（ip）</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw deny from 192.168.1.100</span><br></pre></td></tr></table></figure>
+<h2 id="删除链接规则"><a class="markdownIt-Anchor" href="#删除链接规则"></a> 删除链接规则</h2>
+<h3 id="按编号删除规则"><a class="markdownIt-Anchor" href="#按编号删除规则"></a> 按编号删除规则</h3>
+<p>这时就需要用到我们上面的规则编号了：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw status numbered</span><br><span class="line">// 删除编号为2的规则</span><br><span class="line">sudo ufw delete allow 2</span><br></pre></td></tr></table></figure>
-
-<h3 id="按服务名删除"><a href="#按服务名删除" class="headerlink" title="按服务名删除"></a>按服务名删除</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw delete allow ssh</span><br></pre></td></tr></table></figure>
-
-<h2 id="重置UFW"><a href="#重置UFW" class="headerlink" title="重置ufw"></a>重置ufw</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw reset</span><br></pre></td></tr></table></figure>
-
+<h3 id="按服务名删除"><a class="markdownIt-Anchor" href="#按服务名删除"></a> 按服务名删除</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw delete allow ssh</span><br></pre></td></tr></table></figure>
+<h2 id="重置ufw"><a class="markdownIt-Anchor" href="#重置ufw"></a> 重置ufw</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw reset</span><br></pre></td></tr></table></figure>
 <p>这个命令会将<code>ufw</code>恢复至初始状态。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/10/24/Linux/how-to-use-ufw/" data-id="ckxgf70q8001k38caj9qe8nub" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2020/10/24/Linux/how-to-use-ufw/" data-id="ckxgj50n6001j6gca3mzguogk" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/firewall/">firewall</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ufw/">ufw</a></li></ul>

@@ -152,15 +152,22 @@ ga('send', 'pageview');
 <p>要说这个<code>TTL</code>，我们先来简单解释下DNS域名解析的整个过程吧。</p>
 <p>一开始域名这个概念还没出来的时候，都只是通过IP来访问，但IP根本不方便记忆，这是聪明的我们就想到给每一台服务器起一个别名，然后维护一个别名到IP地址的映射，转换过程全部由计算机自动完成，这就是我们经常说的<code>hosts</code>文件。</p>
 <a id="more"></a>
-
 <p>到后来，互联网越来越普及，人们发现维护这个域名IP映射文件非常吃力，<code>hosts</code>文件非常大，别名还不能冲突，维护成本巨大。这时候就出现了<strong>域名系统</strong>、<strong>DNS协议</strong>、<strong>域名空间</strong>，这里我们不做赘述。我们以一个非常生动的例子来讲解<code>DNS</code>解析的过程（<a href="https://selfboot.cn/2015/11/05/dns_theory/%EF%BC%89%EF%BC%9A" target="_blank" rel="noopener">https://selfboot.cn/2015/11/05/dns_theory/）：</a></p>
 <blockquote>
-<p>1.用户：喂，本地域名服务器，告诉我math.sysu.edu.cn的地址；<br>2.本地域名服务器：哎呀，我不知道啊，不在我的辖区，容我去问问老大哥吧。root老大，能告诉我math.sysu.edu.cn的地址吗；<br>3.根域名服务器：忙着呢，你去问B（.cn）；<br>4.本地域名服务器：喂，B，告诉我math.sysu.edu.cn的地址；<br>5.B：你去问D（.edu.cn）；<br>6.本地域名服务器：喂，D，告诉我math.sysu.edu.cn的地址；<br>7.D：你去问F（sysu.edu.cn）；<br>8.本地域名服务器：喂，F，告诉我math.sysu.edu.cn的地址；<br>9.F：容老衲看看，哎呀，找到了，是X.X.X.X；<br>10.本地域名服务器：踏破铁鞋终于找到啦，喂用户，出来啊，我找到了，是X.X.X.X</p>
+<p>1.用户：喂，本地域名服务器，告诉我math.sysu.edu.cn的地址；<br>
+2.本地域名服务器：哎呀，我不知道啊，不在我的辖区，容我去问问老大哥吧。root老大，能告诉我math.sysu.edu.cn的地址吗；<br>
+3.根域名服务器：忙着呢，你去问B（.cn）；<br>
+4.本地域名服务器：喂，B，告诉我math.sysu.edu.cn的地址；<br>
+5.B：你去问D（.edu.cn）；<br>
+6.本地域名服务器：喂，D，告诉我math.sysu.edu.cn的地址；<br>
+7.D：你去问F（<a href="http://sysu.edu.cn" target="_blank" rel="noopener">sysu.edu.cn</a>）；<br>
+8.本地域名服务器：喂，F，告诉我math.sysu.edu.cn的地址；<br>
+9.F：容老衲看看，哎呀，找到了，是X.X.X.X；<br>
+10.本地域名服务器：踏破铁鞋终于找到啦，喂用户，出来啊，我找到了，是X.X.X.X</p>
 </blockquote>
 <p>整个过程就和快递配送一样，比如有一个快递要从美国寄到南京市玄武区，首先快递会送到中国，然后再往下到达江苏省，接着是南京市，最后到达玄武区了。</p>
 <p>虽然域名系统已经提供了域名解析服务，但当我们输入域名访问一个网站时，DNS请求会一步一步往上询问网站的ip地址是多少，直到找到为止（允许时间范围内），试想一下无果我们每次访问这个网站的时候，都要去做一次这样的域名查找操作，既浪费资源又浪费时间。</p>
 <img src="https://i.loli.net/2020/11/01/FGgMoaS84EqTCvk.png" title="" alt="">
-
 <p>聪明的我们就想到把每次的结果缓存起来，这样再次查询的时候就不用那么费事了。所以<code>TTL（Time To Live）</code>就是来干这个事的，每次查询后，DNS服务器把结果记录下来，下次就直接读取缓存，<code>TTL</code>就是决定缓存多长时间，相当于浏览器<code>cookie</code>的缓存时间一样，代表这条DNS记录在DNS服务器上的缓存时间。假设一条DNS记录的<code>TTL</code>为10分钟（就是我们常见的600秒），那么10分钟后这条记录就会被删除。<code>TTL</code>设置的越长，修改后的响应时间就会越长，反之很快就能正确响应，而通常的免费DNS解析商都只支持600秒，想要更快就需要付费了。</p>
 <hr>
 <p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
@@ -168,7 +175,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/10/28/Devops/what-is-TTL/" data-id="ckxgf70ql002238caiqoop32o" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2020/10/28/Devops/what-is-TTL/" data-id="ckxgj50nn00216gcasmokks1m" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DNS/">DNS</a></li></ul>

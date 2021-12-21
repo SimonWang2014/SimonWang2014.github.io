@@ -10,13 +10,13 @@
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="在开发中，经常需要对用户传过来的数据进行过滤，来阻止一些用户的恶意输入，在PHP中常用到htmlspecialchars()、htmlentities()和strip_tags()函数来处理。 今天在使用htmlspecialchars()做特殊字符的转换时，一直返回null，当我换成htmlentities()也是同样的问题，查官方手册才发现原来是编码的问题。 函数声明：   问题主要处在第三个">
+  <meta name="description" content="在开发中，经常需要对用户传过来的数据进行过滤，来阻止一些用户的恶意输入，在PHP中常用到htmlspecialchars()、htmlentities()和strip_tags()函数来处理。 今天在使用htmlspecialchars()做特殊字符的转换时，一直返回null，当我换成htmlentities()也是同样的问题，查官方手册才发现原来是编码的问题。 函数声明：  问题主要处在第三个参">
 <meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决PHP中htmlspecialchars返回null的问题">
 <meta property="og:url" content="https://www.xydida.com/2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/index.html">
 <meta property="og:site_name" content="正义的程序猿">
-<meta property="og:description" content="在开发中，经常需要对用户传过来的数据进行过滤，来阻止一些用户的恶意输入，在PHP中常用到htmlspecialchars()、htmlentities()和strip_tags()函数来处理。 今天在使用htmlspecialchars()做特殊字符的转换时，一直返回null，当我换成htmlentities()也是同样的问题，查官方手册才发现原来是编码的问题。 函数声明：   问题主要处在第三个">
+<meta property="og:description" content="在开发中，经常需要对用户传过来的数据进行过滤，来阻止一些用户的恶意输入，在PHP中常用到htmlspecialchars()、htmlentities()和strip_tags()函数来处理。 今天在使用htmlspecialchars()做特殊字符的转换时，一直返回null，当我换成htmlentities()也是同样的问题，查官方手册才发现原来是编码的问题。 函数声明：  问题主要处在第三个参">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fsg8j0lpb8j30oj01r3yx.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fsg8jbqp36j30sq05tmyn.jpg">
@@ -26,7 +26,7 @@
 <meta property="og:updated_time" content="2021-07-31T09:51:52.739Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决PHP中htmlspecialchars返回null的问题">
-<meta name="twitter:description" content="在开发中，经常需要对用户传过来的数据进行过滤，来阻止一些用户的恶意输入，在PHP中常用到htmlspecialchars()、htmlentities()和strip_tags()函数来处理。 今天在使用htmlspecialchars()做特殊字符的转换时，一直返回null，当我换成htmlentities()也是同样的问题，查官方手册才发现原来是编码的问题。 函数声明：   问题主要处在第三个">
+<meta name="twitter:description" content="在开发中，经常需要对用户传过来的数据进行过滤，来阻止一些用户的恶意输入，在PHP中常用到htmlspecialchars()、htmlentities()和strip_tags()函数来处理。 今天在使用htmlspecialchars()做特殊字符的转换时，一直返回null，当我换成htmlentities()也是同样的问题，查官方手册才发现原来是编码的问题。 函数声明：  问题主要处在第三个参">
 <meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fsg8j0lpb8j30oj01r3yx.jpg">
   
     <link rel="alternate" href="/sitemap.xml" title="正义的程序猿" type="application/atom+xml">
@@ -155,32 +155,25 @@ ga('send', 'pageview');
 <p>今天在使用<code>htmlspecialchars()</code>做特殊字符的转换时，一直返回<code>null</code>，当我换成<code>htmlentities()</code>也是同样的问题，查官方手册才发现原来是编码的问题。</p>
 <p>函数声明：</p>
 <img src="https://ws1.sinaimg.cn/large/006tNc79gy1fsg8j0lpb8j30oj01r3yx.jpg" title="" alt="">
-
 <p>问题主要处在第三个参数上，对于第三个参数官方是这么说的：</p>
 <img src="https://ws1.sinaimg.cn/large/006tNc79gy1fsg8jbqp36j30sq05tmyn.jpg" title="" alt="">
-
 <p>这个参数的作用是设置转换字符时采用的编码，在PHP 5.4 和5.5中使用了<strong>UTF-8</strong>作为默认编码，而在PHP 5.4之前使用<strong>ISO-8859-1</strong>作为默认编码，从PHP 5.6开始就使用PHP配置文件中的<code>default_charset</code>参数作为默认编码。<code>encoding</code>参数支持的字符集：</p>
 <img src="https://ws2.sinaimg.cn/large/006tNc79gy1fsg8jl4onxj30r80ir0xa.jpg" title="" alt="">
-
 <p>从PHP的更新日志也能看到这个参数的变化：</p>
 <img src="https://ws4.sinaimg.cn/large/006tNc79gy1fsg8js1l1aj30sk05jab6.jpg" title="" alt="">
-
 <p>一般我们是这么使用的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$str=&apos;&lt;a href=&quot;test.html&quot;&gt;\&apos;测试页面\&apos;&lt;/a&gt;&lt;script&gt;alert(213)&lt;/script&gt;&apos;;</span><br><span class="line">echo htmlspecialchars($str);</span><br><span class="line">// 输出：&amp;lt;a href=&amp;quot;test.html&amp;quot;&amp;gt;&apos;测试页面&apos;&amp;lt;/a&amp;gt;&amp;lt;script&amp;gt;alert(213)&amp;lt;/script&amp;gt;</span><br></pre></td></tr></table></figure>
-
 <p>今天在使用的时候，结果一直返回null，其实就是编码的问题，这个时候就需要用到第三个参数了：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo htmlspecialchars($string, ENT_COMPAT,&apos;ISO-8859-1&apos;, true);</span><br></pre></td></tr></table></figure>
-
 <p>同样，也适用于<code>htmlentities</code>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo htmlentities($string, ENT_COMPAT,&apos;ISO-8859-1&apos;, true);</span><br></pre></td></tr></table></figure>
-
 <hr>
 <p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
 <img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;">
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/" data-id="ckxgf70qn002538ca1nljy8ww" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2018/6/18/PHP/why-htmlspecialchars-returns-null-in-PHP/" data-id="ckxgj50np00246gcan41u77gn" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>

@@ -10,19 +10,19 @@
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="安装Nginx12sudo apt updatesudo apt install nginx  如果能看到版本号，说明安装成功： 12nginx -v// nginx version: nginx/1.14.0 (Ubuntu)">
+  <meta name="description" content="安装Nginx 12sudo apt updatesudo apt install nginx 如果能看到版本号，说明安装成功： 12nginx -v// nginx version: nginx/1.14.0 (Ubuntu)">
 <meta name="keywords" content="Linux,Nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu(18.04)安装Nginx并配置">
 <meta property="og:url" content="https://www.xydida.com/2020/10/24/Linux/install-and-config-nginx-on-ubuntu/index.html">
 <meta property="og:site_name" content="正义的程序猿">
-<meta property="og:description" content="安装Nginx12sudo apt updatesudo apt install nginx  如果能看到版本号，说明安装成功： 12nginx -v// nginx version: nginx/1.14.0 (Ubuntu)">
+<meta property="og:description" content="安装Nginx 12sudo apt updatesudo apt install nginx 如果能看到版本号，说明安装成功： 12nginx -v// nginx version: nginx/1.14.0 (Ubuntu)">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2020/10/24/c4vNrKwUDxp3C6u.png">
 <meta property="og:updated_time" content="2020-12-29T03:22:31.232Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu(18.04)安装Nginx并配置">
-<meta name="twitter:description" content="安装Nginx12sudo apt updatesudo apt install nginx  如果能看到版本号，说明安装成功： 12nginx -v// nginx version: nginx/1.14.0 (Ubuntu)">
+<meta name="twitter:description" content="安装Nginx 12sudo apt updatesudo apt install nginx 如果能看到版本号，说明安装成功： 12nginx -v// nginx version: nginx/1.14.0 (Ubuntu)">
 <meta name="twitter:image" content="https://i.loli.net/2020/10/24/c4vNrKwUDxp3C6u.png">
   
     <link rel="alternate" href="/sitemap.xml" title="正义的程序猿" type="application/atom+xml">
@@ -147,57 +147,52 @@ ga('send', 'pageview');
         <!-- Table of Contents -->
         
 
-        <h1 id="安装NGINX"><a href="#安装NGINX" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
-
+        <h1 id="安装nginx"><a class="markdownIt-Anchor" href="#安装nginx"></a> 安装Nginx</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
 <p>如果能看到版本号，说明安装成功：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx -v</span><br><span class="line">// nginx version: nginx/1.14.0 (Ubuntu)</span><br></pre></td></tr></table></figure>
-
 <a id="more"></a>
-
-<h1 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">systemctl status nginx</span><br><span class="line"></span><br><span class="line">// 输出</span><br><span class="line">● nginx.service - A high performance web server and a reverse proxy server</span><br><span class="line">   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: active (running) since Fri 2018-04-20 16:08:19 UTC; 3 days ago</span><br><span class="line">     Docs: man:nginx(8)</span><br><span class="line"> Main PID: 2369 (nginx)</span><br><span class="line">    Tasks: 2 (limit: 1153)</span><br><span class="line">   CGroup: /system.slice/nginx.service</span><br><span class="line">           ├─2369 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;</span><br><span class="line">           └─2380 nginx: worker process</span><br></pre></td></tr></table></figure>
-
+<h1 id="查看状态"><a class="markdownIt-Anchor" href="#查看状态"></a> 查看状态</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">systemctl status nginx</span><br><span class="line"></span><br><span class="line">// 输出</span><br><span class="line">● nginx.service - A high performance web server and a reverse proxy server</span><br><span class="line">   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: active (running) since Fri 2018-04-20 16:08:19 UTC; 3 days ago</span><br><span class="line">     Docs: man:nginx(8)</span><br><span class="line"> Main PID: 2369 (nginx)</span><br><span class="line">    Tasks: 2 (limit: 1153)</span><br><span class="line">   CGroup: /system.slice/nginx.service</span><br><span class="line">           ├─2369 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;</span><br><span class="line">           └─2380 nginx: worker process</span><br></pre></td></tr></table></figure>
 <p>看到<code>running</code>说明已经启动成功了，再来通过ip访问下看看：</p>
 <img src="https://i.loli.net/2020/10/24/c4vNrKwUDxp3C6u.png" title="" alt="">
-
-<h1 id="NGINX常用的几个命令"><a href="#NGINX常用的几个命令" class="headerlink" title="nginx常用的几个命令"></a>nginx常用的几个命令</h1><h2 id="关闭"><a href="#关闭" class="headerlink" title="关闭"></a>关闭</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop nginx</span><br></pre></td></tr></table></figure>
-
-<h2 id="开启"><a href="#开启" class="headerlink" title="开启"></a>开启</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start nginx</span><br></pre></td></tr></table></figure>
-
-<h2 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart nginx</span><br></pre></td></tr></table></figure>
-
-<h2 id="重载配置文件，一般用不关闭NGINX更新配置"><a href="#重载配置文件，一般用不关闭NGINX更新配置" class="headerlink" title="重载配置文件，一般用不关闭nginx更新配置"></a>重载配置文件，一般用不关闭nginx更新配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl reload nginx</span><br></pre></td></tr></table></figure>
-
-<h2 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable nginx</span><br></pre></td></tr></table></figure>
-
-<h2 id="关闭开机自启"><a href="#关闭开机自启" class="headerlink" title="关闭开机自启"></a>关闭开机自启</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl disable nginx</span><br></pre></td></tr></table></figure>
-
-<h1 id="配置一个站点"><a href="#配置一个站点" class="headerlink" title="配置一个站点"></a>配置一个站点</h1><h2 id="1-首先，把我们的站点创建在-VAR-WWW-EXAMPLE-COM目录下："><a href="#1-首先，把我们的站点创建在-VAR-WWW-EXAMPLE-COM目录下：" class="headerlink" title="1. 首先，把我们的站点创建在/var/www/example.com目录下："></a>1. 首先，把我们的站点创建在<code>/var/www/example.com</code>目录下：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /var/www/example.com</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-设置目录的权限"><a href="#2-设置目录的权限" class="headerlink" title="2. 设置目录的权限"></a>2. 设置目录的权限</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R $USER:$USER /var/www/example.com</span><br><span class="line">sudo chmod -R 755 /var/www/example.com</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-创建INDEX-HTML"><a href="#3-创建INDEX-HTML" class="headerlink" title="3. 创建index.html"></a>3. 创建index.html</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /var/www/example.com/index.html</span><br></pre></td></tr></table></figure>
-
+<h1 id="nginx常用的几个命令"><a class="markdownIt-Anchor" href="#nginx常用的几个命令"></a> nginx常用的几个命令</h1>
+<h2 id="关闭"><a class="markdownIt-Anchor" href="#关闭"></a> 关闭</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop nginx</span><br></pre></td></tr></table></figure>
+<h2 id="开启"><a class="markdownIt-Anchor" href="#开启"></a> 开启</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start nginx</span><br></pre></td></tr></table></figure>
+<h2 id="重启"><a class="markdownIt-Anchor" href="#重启"></a> 重启</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart nginx</span><br></pre></td></tr></table></figure>
+<h2 id="重载配置文件一般用不关闭nginx更新配置"><a class="markdownIt-Anchor" href="#重载配置文件一般用不关闭nginx更新配置"></a> 重载配置文件，一般用不关闭nginx更新配置</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl reload nginx</span><br></pre></td></tr></table></figure>
+<h2 id="开机自启"><a class="markdownIt-Anchor" href="#开机自启"></a> 开机自启</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable nginx</span><br></pre></td></tr></table></figure>
+<h2 id="关闭开机自启"><a class="markdownIt-Anchor" href="#关闭开机自启"></a> 关闭开机自启</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl disable nginx</span><br></pre></td></tr></table></figure>
+<h1 id="配置一个站点"><a class="markdownIt-Anchor" href="#配置一个站点"></a> 配置一个站点</h1>
+<h2 id="1-首先把我们的站点创建在varwwwexamplecom目录下"><a class="markdownIt-Anchor" href="#1-首先把我们的站点创建在varwwwexamplecom目录下"></a> 1. 首先，把我们的站点创建在<code>/var/www/example.com</code>目录下：</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /var/www/example.com</span><br></pre></td></tr></table></figure>
+<h2 id="2-设置目录的权限"><a class="markdownIt-Anchor" href="#2-设置目录的权限"></a> 2. 设置目录的权限</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R $USER:$USER /var/www/example.com</span><br><span class="line">sudo chmod -R 755 /var/www/example.com</span><br></pre></td></tr></table></figure>
+<h2 id="3-创建indexhtml"><a class="markdownIt-Anchor" href="#3-创建indexhtml"></a> 3. 创建index.html</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /var/www/example.com/index.html</span><br></pre></td></tr></table></figure>
 <p>内容如下：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="4-修改NGINX"><a href="#4-修改NGINX" class="headerlink" title="4. 修改nginx"></a>4. 修改nginx</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/nginx/sites-available/example.com</span><br></pre></td></tr></table></figure>
-
+<h2 id="4-修改nginx"><a class="markdownIt-Anchor" href="#4-修改nginx"></a> 4. 修改nginx</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/nginx/sites-available/example.com</span><br></pre></td></tr></table></figure>
 <p>内容如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        listen [::]:80;</span><br><span class="line"></span><br><span class="line">        root /var/www/example.com;</span><br><span class="line">        index index.html index.htm;</span><br><span class="line"></span><br><span class="line">        server_name example.com www.example.com;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                try_files $uri $uri/ =404;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>创建软连接到<code>sites-enable</code>目录：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-检查NGINX配置"><a href="#5-检查NGINX配置" class="headerlink" title="5. 检查nginx配置"></a>5. 检查nginx配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br><span class="line"></span><br><span class="line">nginx: the configuration file /etc/nginx/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /etc/nginx/nginx.conf test is successful</span><br></pre></td></tr></table></figure>
-
+<h2 id="5-检查nginx配置"><a class="markdownIt-Anchor" href="#5-检查nginx配置"></a> 5. 检查nginx配置</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br><span class="line"></span><br><span class="line">nginx: the configuration file /etc/nginx/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /etc/nginx/nginx.conf test is successful</span><br></pre></td></tr></table></figure>
 <p>没有问题的话，就可以重启<code>nginx</code>了：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart nginx</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/10/24/Linux/install-and-config-nginx-on-ubuntu/" data-id="ckxgf70qa001m38ca3s4wx9ts" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2020/10/24/Linux/install-and-config-nginx-on-ubuntu/" data-id="ckxgj50n7001k6gcax5z3tt83" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li></ul>

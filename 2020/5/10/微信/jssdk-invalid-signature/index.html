@@ -10,13 +10,13 @@
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="最近做公众号网页开发，使用微信jssdk页面签名时IOS中一直报错，这才刚开始就被这只拦路虎拦住了，报错如下：   然而Android和开发者工具中好得很，没有任何问题：">
+  <meta name="description" content="最近做公众号网页开发，使用微信jssdk页面签名时IOS中一直报错，这才刚开始就被这只拦路虎拦住了，报错如下：  然而Android和开发者工具中好得很，没有任何问题：">
 <meta name="keywords" content="微信">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信jssdk踩坑—invalid signature">
 <meta property="og:url" content="https://www.xydida.com/2020/5/10/微信/jssdk-invalid-signature/index.html">
 <meta property="og:site_name" content="正义的程序猿">
-<meta property="og:description" content="最近做公众号网页开发，使用微信jssdk页面签名时IOS中一直报错，这才刚开始就被这只拦路虎拦住了，报错如下：   然而Android和开发者工具中好得很，没有任何问题：">
+<meta property="og:description" content="最近做公众号网页开发，使用微信jssdk页面签名时IOS中一直报错，这才刚开始就被这只拦路虎拦住了，报错如下：  然而Android和开发者工具中好得很，没有任何问题：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2020/05/10/Pz1NrBLaelkSTi2.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/10/BSTNHZpYPclVa3R.png">
@@ -28,7 +28,7 @@
 <meta property="og:updated_time" content="2021-02-23T05:46:03.688Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信jssdk踩坑—invalid signature">
-<meta name="twitter:description" content="最近做公众号网页开发，使用微信jssdk页面签名时IOS中一直报错，这才刚开始就被这只拦路虎拦住了，报错如下：   然而Android和开发者工具中好得很，没有任何问题：">
+<meta name="twitter:description" content="最近做公众号网页开发，使用微信jssdk页面签名时IOS中一直报错，这才刚开始就被这只拦路虎拦住了，报错如下：  然而Android和开发者工具中好得很，没有任何问题：">
 <meta name="twitter:image" content="https://i.loli.net/2020/05/10/Pz1NrBLaelkSTi2.png">
   
     <link rel="alternate" href="/sitemap.xml" title="正义的程序猿" type="application/atom+xml">
@@ -155,40 +155,31 @@ ga('send', 'pageview');
 
         <p>最近做公众号网页开发，使用微信<code>jssdk</code>页面签名时<code>IOS</code>中一直报错，这才刚开始就被这只拦路虎拦住了，报错如下：</p>
 <img src="https://i.loli.net/2020/05/10/Pz1NrBLaelkSTi2.png" style="zoom:50%;">
-
 <p>然而<code>Android</code>和开发者工具中好得很，没有任何问题：<a id="more"></a></p>
 <img src="https://i.loli.net/2020/05/10/BSTNHZpYPclVa3R.png" title="" alt="">
-
 <p>既然提示<code>签名非法</code>，那就是签名有问题咯，但是同样的接口，为什么Android没问题？是真是假还是用官方的签名校验工具验证下：</p>
 <img src="https://i.loli.net/2020/05/10/N4BLxXtl5HcZJhp.png" title="" alt="">
-
 <img src="https://i.loli.net/2020/05/10/xopqamK9QuADw7v.png" title="" alt="">
-
 <p>生成的签名完全没有问题，这就奇怪了，按照网上说的<code>url</code>改成如下方式也不行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url = window.location.href.split(&apos;#&apos;)[0]</span><br></pre></td></tr></table></figure>
-
 <p>突然看到网上有人说是因为<code>SPA</code>的原因，经过几番测试，问题锁定在了<code>SPA</code>。先来解释下为什么会这样，我们使用<code>Vue Router</code>切换页面时，底层使用的是<code>pushState</code>技术，这是<code>H5</code>的一个新特性，虽然表面上看页面的<code>path</code>变了，内容也换了，但是页面是没有刷新的。</p>
 <p>现在知道问题出在哪里，再来实际确认一下。首先进入项目的首页，地址是<code>https://www.abc.com/weixin/quan?rr=234wfwf</code>，然后点击进入我们要分享的页面，这时候会提示<code>invalid signature</code>，这时jssdk是配置失败的，分享出去的就是原始的页面链接，然而问题出现了：</p>
 <img src="https://i.loli.net/2020/05/10/6NsfXt8zYuOrkDH.png" title="" alt="">
-
 <p>分享后的链接仍然是首页进入的链接，这是微信的BUG啊，原来在微信的网页中不支持<code>pushState</code>，这就导致我们在jssdk从配置时传入的<code>url</code>（<code>window.location.href</code>得到）和微信识别到的不一样，这时候在分享的页面刷新一下，配置就会正常。</p>
 <p>后面再看官方文档时也提到了这一点：</p>
 <img src="https://i.loli.net/2020/05/10/18mA9LoDsXjSh7B.png" title="" alt="">
-
 <p>然而我的Android没这个问题，iOS反而出现了这个问题（IOS版本13.3.1，微信版本7.0.9，jssdk 1.6）</p>
-<h3 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h3><ol>
+<h3 id="如何解决"><a class="markdownIt-Anchor" href="#如何解决"></a> 如何解决</h3>
+<ol>
 <li>在跳转到要分享的页面时，不用<code>pushState</code>，在<code>Vue router</code>中就是不用<code>push</code>方式跳转，方式如下：</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">window.location.href = 要跳转的链接</span><br><span class="line">// _this.$router.push(&#123;</span><br><span class="line">// …</span><br><span class="line">// &#125;)</span><br></pre></td></tr></table></figure>
-
 <ol start="2">
 <li>既然<code>SPA</code>在微信中只认第一个页面的<code>path</code>，那我们就在第一次进入页面时记录下<code>path</code>，其他页面用这个<code>path</code>。我们在<code>App.vue</code>或者<code>main.js</code>中记录下这个<code>path</code>：</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.sessionStorage.setItem(&apos;firstEntryUrl&apos;, window.location.href)</span><br></pre></td></tr></table></figure>
-
 <p>然后在需要分享的页面，使用这个<code>path</code>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let url = window.location.href.split(&apos;#&apos;)[0]</span><br><span class="line">if (utils.isIOS() &amp;&amp; window.sessionStorage.getItem(&apos;firstEntryUrl&apos;)) &#123;</span><br><span class="line">	url = window.sessionStorage.getItem(&apos;firstEntryUrl&apos;).split(&apos;#&apos;)[0]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>经测试，上述两种方法都能完美解决。</p>
 <hr>
 <p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
@@ -196,7 +187,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/5/10/微信/jssdk-invalid-signature/" data-id="ckxgf70q9001l38cameobveak" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2020/5/10/微信/jssdk-invalid-signature/" data-id="ckxgj50n7001l6gcayyh7xo05" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信/">微信</a></li></ul>

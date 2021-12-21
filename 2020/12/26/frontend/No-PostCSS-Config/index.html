@@ -149,16 +149,12 @@ ga('send', 'pageview');
 
         <p>一个使用了<code>Webpack</code>的老项目，最近在<code>build</code>时，报出如下错误：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Module build failed: ModuleBuildError: Module build failed: Error: No PostCSS Config found in: ....</span><br></pre></td></tr></table></figure>
-
 <a id="more"></a>
-
 <p>大致意思就是没有<code>postcss</code>的配置文件，一看目录确实没有（可能是<code>webpack</code>版本造成的，修复方法很简单，如下：</p>
 <p>项目根目录新建如下配置文件：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">postcss.config.js</span><br></pre></td></tr></table></figure>
-
 <p>文件内容：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// postcss.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;&#125;</span><br></pre></td></tr></table></figure>
-
 <p>重新<code>build</code>错误消失。</p>
 <hr>
 <p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
@@ -166,7 +162,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/12/26/frontend/No-PostCSS-Config/" data-id="ckxgf70p9000h38cacdn6e6tk" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2020/12/26/frontend/No-PostCSS-Config/" data-id="ckxgj50mc000j6gcaul3fkpiy" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>

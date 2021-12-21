@@ -147,17 +147,16 @@ ga('send', 'pageview');
 
         <p><code>ssh</code>在登录时，默认会使用当前用户<code>home</code>目录下的<code>id_rsa</code>文件来认证，由于我们在用<code>ssh-keygen</code>生成key时，由于指定了目录，所有就找不到私钥，报错，解决办法如下：</p>
 <a id="more"></a>
-
-<p>创建<code>config</code>文件：<br><code>vim ~/.ssh/config</code></p>
+<p>创建<code>config</code>文件：<br>
+<code>vim ~/.ssh/config</code></p>
 <p>修改文件内容如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Host aaa.com</span><br><span class="line">  User git</span><br><span class="line">  Hostname aaa.com</span><br><span class="line">  IdentityFile 私钥地址</span><br><span class="line"></span><br><span class="line">Host 123.123.123.123</span><br><span class="line">  User bill</span><br><span class="line">  Hostname 123.123.123.123</span><br><span class="line">  IdentityFile 私钥地址</span><br></pre></td></tr></table></figure>
-
 <p>用这个配置文件，就能针对不同<code>ip</code>/<code>域名</code>使用不同的私钥了。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/10/19/Linux/ssh-login-Permission-denied-publickey/" data-id="ckxgf70qf001v38ca1emn06hz" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2020/10/19/Linux/ssh-login-Permission-denied-publickey/" data-id="ckxgj50nk001w6gcae99ixku1" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Server/">Server</a></li></ul>

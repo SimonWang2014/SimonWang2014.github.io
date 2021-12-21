@@ -143,7 +143,6 @@ ga('send', 'pageview');
         
 
         <img src="https://i.loli.net/2019/08/25/dHjVozCPY3Gwbe6.jpg" title="" alt="封面来源: https://unsplash.com">
-
 <blockquote>
 <p>《A Philosophy of Software Design》读书笔记（1）</p>
 </blockquote>
@@ -153,7 +152,6 @@ ga('send', 'pageview');
 <p>当然，鱼和熊掌不能兼得。事实上几乎大多数大型的复杂的软件系统使用起来都不简单。</p>
 <p>软件设计的复杂性通常是由一些常见的活动决定的，如果一个系统中有些部分特别复杂，但是这些部分从来不会被使用到，那么它们就不会影响到整个系统的复杂性，我们可以用如下的数学公式来描述一下：</p>
 <img src="https://i.loli.net/2019/08/25/6ECOi3mpxH1PhMy.png" title="" alt="">
-
 <p>整个系统的复杂性（C）是由每个部分的复杂性(cp)决定的，cp的权重是开发人员在该部分花费的时间(tp)的比例。</p>
 <p>相较于开发人员，复杂性对使用者来说更加明显。比如你写了一段自认为很简单的代码，如果别人阅读你的代码时感觉到复杂，那就说明这段代码是复杂的。当遇到这种情况时，我觉得有必要向别人讨论复杂的原因，与别人交流观点也是很有意思的。工程师的职责并不只是写出你认为简单的代码，也需要让同事之间的合作更方便。</p>
 <hr>
@@ -162,7 +160,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2019/8/25/notes/reading-notes-1-about-a-philosophy-of-software-design/" data-id="ckxgf70qd001s38ca2900ci1i" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2019/8/25/notes/reading-notes-1-about-a-philosophy-of-software-design/" data-id="ckxgj50nc001q6gcal99aljkw" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/notes/">notes</a></li></ul>
@@ -206,7 +204,6 @@ ga('send', 'pageview');
         <p>如何在编辑器中快速选中相同的单词，类似于<code>Visual Studio Code</code>中的<code>Command+D</code>，强大的<code>IDEA</code>怎么会不支持呢。拿<code>PHPStorm</code>来说一下吧。</p>
 <p><code>Preference</code>里面，选择<code>keymap</code>，在右边搜索<code>select next</code>，会出现如下结果：</p>
 <img src="https://i.loli.net/2019/05/31/5cf0a3bfaff9466420.png" title="" alt="phpstorm preference">
-
 <p><code>Add Selection for Next Occurrence</code>就是我们想要的，默认是<code>^+G</code>，就是<code>control+G</code>，这两个键的距离里的还是很远的，我们可以手动设置，同时，这个选项的上一个选项<code>Find Next / Move to Next Occurrence</code>，这也是一个很实用的快捷键，可以快速调转到下一个相同的词，快捷键为<code>Command+G</code>。</p>
 <p>不止于此，插件市场中还有相关的插件，在插件市场中搜索<code>browse wor</code>（不需要写全，会自动出来）</p>
 <p>[<img src="https://i.loli.net/2019/05/31/5cf0a6848a01917314.png)](https://i.loli.net/2019/05/31/5cf0a6848a01917314.png" title="" alt="BrowseWordCaret"></p>
@@ -217,7 +214,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2019/5/31/Tools/Hot-key-to-select-same-occurrence-in-PHPStorm/" data-id="ckxgf70p4000d38ca2d69te2q" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2019/5/31/Tools/Hot-key-to-select-same-occurrence-in-PHPStorm/" data-id="ckxgj50m7000e6gcaf2v4eguf" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHPStorm/">PHPStorm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/efficiency/">efficiency</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
@@ -260,22 +257,29 @@ ga('send', 'pageview');
 
         <p>简单聊聊PHP中的反射</p>
 <p>和Java一样PHP中也提供了一套完整的<code>反射API</code>，何为<code>反射</code>？以前我们是先写类，再在类中添加各种方法和属性，最后实例化一个类对象调用属性和方法。那有我们没有办法只通过这个实例对象获取到关于这个类的全部信息呢，包括有哪些方法和属性它们分别在多少行？答案就是<code>反射</code>。</p>
-<p>几个常用的反射API的类<br>类名    作用<br>Reflection    为类提供摘要信息<br>ReflectionClass    对类提供反射<br>ReflectionMethod    对方法提供反射<br>ReflectionParameter    对方法参数提供反射<br>ReflectionProperty    对类属性提供反射<br>ReflectionFunction    对函数提供反射<br>ReflectionExtension    对扩展提供反射<br>ReflectionException    对异常提供反射</p>
-<h3 id="REFLECTIONCLASS"><a href="#REFLECTIONCLASS" class="headerlink" title="ReflectionClass"></a>ReflectionClass</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class People &#123;</span><br><span class="line">    protected $name = &apos;Foo&apos;;</span><br><span class="line">    protected $age = 18;</span><br><span class="line"></span><br><span class="line">    public function __construct($name,$age)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;name = $name;</span><br><span class="line">        $this-&gt;age = $age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function toString()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;Name: $this-&gt;name, Age: $this-&gt;age&quot; . PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Student extends People &#123;</span><br><span class="line">    public $major;</span><br><span class="line"></span><br><span class="line">    public function __construct($name, $age, $major)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;major = $major;</span><br><span class="line">        parent::__construct($name, $age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function toString()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;Name: $this-&gt;name, Age: $this-&gt;age, Major: $this-&gt;major&quot; . PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$reflect = new ReflectionClass(&apos;Student&apos;);</span><br><span class="line">Reflection::export($reflect);</span><br></pre></td></tr></table></figure>
-
+<p>几个常用的反射API的类<br>
+类名	作用<br>
+Reflection	为类提供摘要信息<br>
+ReflectionClass	对类提供反射<br>
+ReflectionMethod	对方法提供反射<br>
+ReflectionParameter	对方法参数提供反射<br>
+ReflectionProperty	对类属性提供反射<br>
+ReflectionFunction	对函数提供反射<br>
+ReflectionExtension	对扩展提供反射<br>
+ReflectionException	对异常提供反射</p>
+<h3 id="reflectionclass"><a class="markdownIt-Anchor" href="#reflectionclass"></a> ReflectionClass</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class People &#123;</span><br><span class="line">    protected $name = &apos;Foo&apos;;</span><br><span class="line">    protected $age = 18;</span><br><span class="line"></span><br><span class="line">    public function __construct($name,$age)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;name = $name;</span><br><span class="line">        $this-&gt;age = $age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function toString()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;Name: $this-&gt;name, Age: $this-&gt;age&quot; . PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Student extends People &#123;</span><br><span class="line">    public $major;</span><br><span class="line"></span><br><span class="line">    public function __construct($name, $age, $major)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;major = $major;</span><br><span class="line">        parent::__construct($name, $age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function toString()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;Name: $this-&gt;name, Age: $this-&gt;age, Major: $this-&gt;major&quot; . PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$reflect = new ReflectionClass(&apos;Student&apos;);</span><br><span class="line">Reflection::export($reflect);</span><br></pre></td></tr></table></figure>
 <p>输出结果如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Class [ &lt;user&gt; class Student extends People ] &#123;</span><br><span class="line">  @@ /…/demo1.php 18-31</span><br><span class="line"></span><br><span class="line">  - Constants [0] &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  - Static properties [0] &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  - Static methods [0] &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  - Properties [3] &#123;</span><br><span class="line">    Property [ &lt;default&gt; public $major ]</span><br><span class="line">    Property [ &lt;default&gt; protected $name ]</span><br><span class="line">    Property [ &lt;default&gt; protected $age ]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  - Methods [2] &#123;</span><br><span class="line">    Method [ &lt;user, overwrites People, ctor&gt; public method __construct ] &#123;</span><br><span class="line">      @@ /…/demo1.php 21 - 25</span><br><span class="line"></span><br><span class="line">      - Parameters [3] &#123;</span><br><span class="line">        Parameter #0 [ &lt;required&gt; $name ]</span><br><span class="line">        Parameter #1 [ &lt;required&gt; $age ]</span><br><span class="line">        Parameter #2 [ &lt;required&gt; $major ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Method [ &lt;user, overwrites People, prototype People&gt; public method toString ] &#123;</span><br><span class="line">      @@ /…/demo1.php 27 - 30</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>可以看到，<code>Reflection::export</code>几乎提供了<code>Student</code>类的所以信息，包括属性和方法的访问控制状态，每个方法需要的参数以及每个方法在脚本中的位置，和<code>var_dump</code>相比，在使用<code>var_dump</code>前总是需要实例化一个对象，而且无法提供那么多详细信息。</p>
 <p><code>var_dump</code>输出如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">object(Student)#1 (3) &#123;</span><br><span class="line">  [&quot;major&quot;]=&gt;</span><br><span class="line">  string(2) &quot;CS&quot;</span><br><span class="line">  [&quot;name&quot;:protected]=&gt;</span><br><span class="line">  string(5) &quot;Jason&quot;</span><br><span class="line">  [&quot;age&quot;:protected]=&gt;</span><br><span class="line">  int(21)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>虽然<code>var_dump</code>和<code>print_r</code>是打印数据的利器，但对于类和函数，反射API提供了更高层次的功能。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2019/4/28/PHP/talk-about-reflection-in-PHP/" data-id="ckxgf70qh001x38carthekafd" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2019/4/28/PHP/talk-about-reflection-in-PHP/" data-id="ckxgj50nj001v6gcav7ky04fy" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reflection/">Reflection</a></li></ul>
@@ -318,7 +322,6 @@ ga('send', 'pageview');
 <li>直接箭头<code>-&gt;</code>调用属性(最常用)，不管有没有声明这个属性，都可以使用，但会报<code>Notice</code>级别的错误</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$dog = new Dog();</span><br><span class="line">$dog-&gt;name = &apos;hey&apos;;</span><br></pre></td></tr></table></figure>
-
 <img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g1nglil8abj30du09ejrz.jpg" title="" alt="">
         
           <p class="article-more-link">
@@ -328,7 +331,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2019/4/1/PHP/getter-and-setter-in-PHP/" data-id="ckxgf70q4001f38cafmz2kwzg" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2019/4/1/PHP/getter-and-setter-in-PHP/" data-id="ckxgj50n3001f6gcavjebf12l" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
@@ -371,49 +374,39 @@ ga('send', 'pageview');
 
         <p>今天小伙伴在群里问了这么一个问题：</p>
 <img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g1ngcvyuuqj30qg0fiaae.jpg" title="" alt="">
-
 <img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g1ngdl4nq6j30rs0fndg6.jpg" title="" alt="">
-
 <img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g1ngdy0w48j30na0ccgln.jpg" title="" alt="">
-
 <img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g1nge7kz95j30rs0mt3ys.jpg" title="" alt="">
-
 <p>出现这种情况就是因为内存不足，<code>PHP</code>程序直接退出了，报错大概如下：</p>
 <img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g1ngegjxugj30rs04s746.jpg" title="" alt="报错">
-
-<p>上图的意思就是说，我们能使用的内存最大是8M，但是处理这个图片还需要额外的41bytes，就会导致内存不足，这是一个很严重的错误。在对图片进行操作前需要将图片的所有信息读入内存中，同时还会使用另一部分内存同于处理计算并缓存输出，所以内存大小的使用还是和图片的大小有关。 </p>
+<p>上图的意思就是说，我们能使用的内存最大是8M，但是处理这个图片还需要额外的41bytes，就会导致内存不足，这是一个很严重的错误。在对图片进行操作前需要将图片的所有信息读入内存中，同时还会使用另一部分内存同于处理计算并缓存输出，所以内存大小的使用还是和图片的大小有关。</p>
 <p><code>PHP</code>中图片的处理都是使用了<code>GD</code>库，这个库提供了很多方法让<code>PHP</code>可以更方便地对图片进行操作，支持的图片格式如下：</p>
 <img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g1ngeqqm0bj30rs0b9q3k.jpg" title="" alt="">
-
 <p>回到一开始的问题，那个小伙伴需要处理高分辨的图片，图片大小必然很大，所以就会出现内存不够的情况，解决方法还是有很多的。</p>
-<h3 id="1-设置图片最大可上传的大小"><a href="#1-设置图片最大可上传的大小" class="headerlink" title="1. 设置图片最大可上传的大小"></a>1. 设置图片最大可上传的大小</h3><p>前端上传前可以先检测下大小，如果超过最大值直接就不请求接口，同时为安全起见，后端接收到请求后也要检测大小，防止程序异常退出。</p>
-<h3 id="2-压缩图片"><a href="#2-压缩图片" class="headerlink" title="2. 压缩图片"></a>2. 压缩图片</h3><h3 id="3-关闭MEMORY-LIMIT"><a href="#3-关闭MEMORY-LIMIT" class="headerlink" title="3. 关闭memory_limit"></a>3. 关闭<code>memory_limit</code></h3><p>群里的小伙伴最后使用了一种<strong>简单粗暴的方式</strong>解决了该问题，直接在PHP中关闭<code>memory_limit</code>：</p>
+<h3 id="1-设置图片最大可上传的大小"><a class="markdownIt-Anchor" href="#1-设置图片最大可上传的大小"></a> 1. 设置图片最大可上传的大小</h3>
+<p>前端上传前可以先检测下大小，如果超过最大值直接就不请求接口，同时为安全起见，后端接收到请求后也要检测大小，防止程序异常退出。</p>
+<h3 id="2-压缩图片"><a class="markdownIt-Anchor" href="#2-压缩图片"></a> 2. 压缩图片</h3>
+<h3 id="3-关闭memory_limit"><a class="markdownIt-Anchor" href="#3-关闭memory_limit"></a> 3. 关闭<code>memory_limit</code></h3>
+<p>群里的小伙伴最后使用了一种<strong>简单粗暴的方式</strong>解决了该问题，直接在PHP中关闭<code>memory_limit</code>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> set_time_limit(0);</span><br><span class="line">@ini_set(&apos;memory_limit&apos;,&apos;-1&apos;);</span><br></pre></td></tr></table></figure>
-
 <p>这样虽然解决了问题，但不优雅也不安全，同样在<code>php.ini</code>配置文件中将<code>memory_limit</code>的值设置很大也能解决：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">memory_limit = 256M</span><br></pre></td></tr></table></figure>
-
 <p>PHP代码中也可以这样设置：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ini_set(&apos;memory_limit&apos;, &apos;256M&apos;);</span><br></pre></td></tr></table></figure>
-
 <p>上面我们将<code>memory_limit</code>参数固定了，这就带来一个弊端，因为大多数情况下不需要这么大的内存，有点浪费资源，最好的做法就是根据需要来设置<code>memory_limit</code>，我写了一个如下方法可供参考：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public function setMemoryLimit($filename)&#123;</span><br><span class="line">    // 控制执行时间</span><br><span class="line">    set_time_limit(50);</span><br><span class="line"></span><br><span class="line">    $maxMemoryUsage = 256M;</span><br><span class="line">    $width = 0;</span><br><span class="line">    $height = 0;</span><br><span class="line">    $size = ini_get(&apos;memory_limit&apos;);</span><br><span class="line"></span><br><span class="line">    // 获取图片大小</span><br><span class="line">    list($width, $height) = getimagesize($filename);</span><br><span class="line"></span><br><span class="line">    // 计算需要的内存，并转换成&apos;M&apos;单位</span><br><span class="line">    // 4 因为png图片一个像素有4字节</span><br><span class="line">    // 1.5 是一个调整因子，因为memory_limit不是那么精确</span><br><span class="line">    // 详细可以查看: http://php.net/imagecreatefromjpeg#76968</span><br><span class="line">    $size = $size + floor(($width * $height * 4 * 1.5 + 1048576) / 1048576);</span><br><span class="line"></span><br><span class="line">    if ($size &gt; $maxMemoryUsage)&#123;</span><br><span class="line">        $size = $maxMemoryUsage;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   // 更新</span><br><span class="line">   ini_set(&apos;memory_limit&apos;,$size.&apos;M&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>最后说一下，<code>GD</code>库其实是比较耗内存的，但我这里没有做过测试。Github上有个<code>C</code>的项目叫<code>libvips/libvips</code>：</p>
 <img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g1ngf6k0dnj30rs0hdwfw.jpg" title="" alt="libvips/libvips">
-
 <img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g1ngfvzc84j30rs0dt76a.jpg" title="" alt="libvips/libvips readme">
-
 <p>可以在不占用很多内存的情况下提高图片处理的速度，这是地址:<a href="https://github.com/libvips/libvips%EF%BC%8C%E6%9C%89%E6%97%B6%E9%97%B4%E5%8F%AF%E4%BB%A5%E5%AD%A6%E4%B9%A0%E4%B8%8B%E3%80%82" target="_blank" rel="noopener">https://github.com/libvips/libvips，有时间可以学习下。</a></p>
 <img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g11ghafpgzj309k09k744.jpg" title="" alt="正义的程序猿">
-
 <hr>
 <p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
 <img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;">
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2019/4/1/PHP/PHP处理高分辨率图片引起的思考/" data-id="ckxgf70pc000l38catevzjaa5" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2019/4/1/PHP/PHP处理高分辨率图片引起的思考/" data-id="ckxgj50me000l6gcass2ltthm" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>

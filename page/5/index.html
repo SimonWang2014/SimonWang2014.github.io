@@ -147,28 +147,22 @@ ga('send', 'pageview');
         
 
         <blockquote>
-<p>欢迎大家关注我的公众号【正义的程序猿】<br>大部分都是聊技术，偶尔会发点感概，生活总结。</p>
+<p>欢迎大家关注我的公众号【正义的程序猿】<br>
+大部分都是聊技术，偶尔会发点感概，生活总结。</p>
 </blockquote>
 <p>先来看下效果：</p>
 <img src="https://i.loli.net/2021/04/03/5gpL91ZBS7swxAo.gif" title="" alt="">
-
 <p>可以看到，光标的位置像一个手电筒一样照着，这就是今天我们要实现的光照效果，主要代码如下：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"effect"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-row item-list-row"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-side flex-row item"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-side icon"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-main"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"name"</span>&gt;</span>系统<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"desc"</span>&gt;</span>显示、声音、通知、电源<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>CSS样式：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.flex-row</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: -webkit-flex;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">-webkit-flex-direction</span>: row;</span><br><span class="line">  <span class="attribute">flex-direction</span>: row;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#000</span>;</span><br><span class="line">  <span class="attribute">--pt-x</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">--pt-y</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-class">.effect</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(</span><br><span class="line">    circle at calc(var(--pt-x) * <span class="number">1px</span>) <span class="built_in">calc</span>(var(--pt-y) * <span class="number">1px</span>),</span><br><span class="line">    <span class="number">#fff</span>,</span><br><span class="line">    <span class="built_in">rgba</span>(255, 255, 255, 0) <span class="number">4em</span></span><br><span class="line">  );</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-class">.item-list</span> &#123;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-class">.item-list</span> <span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">1.5em</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">2px</span> solid <span class="built_in">rgba</span>(255, 255, 255, 0.5);</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(0, 0, 0, 0.7);</span><br><span class="line">  <span class="attribute">background-clip</span>: padding-box;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1em</span> <span class="number">#000</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-class">.item-list</span> <span class="selector-class">.item</span> <span class="selector-class">.icon</span> &#123;</span><br><span class="line">  <span class="attribute">margin-right</span>: <span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">1.5em</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">1.5em</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(255, 255, 255, 0.5);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-class">.item-list</span> <span class="selector-class">.item</span> <span class="selector-class">.desc</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>然后是几行javascript代码：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"DOMContentLoaded"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> domBox = <span class="built_in">document</span>.querySelector(<span class="string">".box"</span>);</span><br><span class="line">  domBox.addEventListener(<span class="string">"mousemove"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$evt</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> rect = domBox.getBoundingClientRect();</span><br><span class="line">    domBox.style.setProperty(<span class="string">"--pt-x"</span>, $evt.pageX - rect.left);</span><br><span class="line">    domBox.style.setProperty(<span class="string">"--pt-y"</span>, $evt.pageY - rect.top);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
 <p>稍微讲解下原理，首先样式的效果主要是在<code>&lt;div class=&quot;effect&quot;&gt;&lt;/div&gt;</code>这个标签上设置的，然后设置样式为<code>absolute</code><strong>绝对定位</strong>，就相当于父级元素的蒙层，背景颜色是一个径向渐变，大概是这样：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box-effect</span> &#123;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">310px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">120px</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(    #fff,</span><br><span class="line">    rgba(0, 0, 0, 1) <span class="number">4em</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <img src="https://i.loli.net/2021/04/03/vUxw9OPXDZirnyt.png" title="" alt="">
-
 <p>javascript代码就是获取鼠标的位置，然后把上面径向渐变的中心点实时修改成鼠标的位置，大概就是这样：</p>
 <img src="https://i.loli.net/2021/04/03/QdrMujDCUI9i5qR.gif" title="" alt="">
-
 <p>最后，调整CSS将光照涂层和另一个图层合并，效果就实现了，CSS调整大致就是<code>z-index</code>，<code>position</code>和背景色<code>rgba</code>的设置，具体就不讲解了，原理大概就是这样了。</p>
 <hr>
 <p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
@@ -176,7 +170,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/4/3/frontend/CSS-illumination/" data-id="ckxgf70oy000938ca4fr83ztf" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/4/3/frontend/CSS-illumination/" data-id="ckxgj50m3000b6gcade0izkkb" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -218,29 +212,25 @@ ga('send', 'pageview');
         
 
         <p><code>Vue.js</code>中<code>slot</code>的意为“插槽”，我的理解是它为其他构件提供一个盛放它们的容器，用到的构件直接往这个容器里面放。非常的高内聚、低耦合，说人话就是，构件的样式、属性都是内部的，插槽定义的只是这个容器的样式和属性，构件的修改不会影响到外部的插槽，真的很模块化。</p>
-<h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><p>插槽的使用是在组件的基础上的，我们先定义一个简单的组件：</p>
+<h1 id="组件"><a class="markdownIt-Anchor" href="#组件"></a> 组件</h1>
+<p>插槽的使用是在组件的基础上的，我们先定义一个简单的组件：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// component.vue</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"card"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span>标题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">            这是内容</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"footer"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"cancel"</span>&gt;</span>取消<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"confirm"</span>&gt;</span>确认<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">      </span><br><span class="line">// app.vue</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">card</span>&gt;</span><span class="tag">&lt;/<span class="name">card</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>渲染出来的效果：</p>
 <p>流程图：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph TD;</span><br><span class="line">	A--&gt;B;</span><br><span class="line">	A--&gt;D;</span><br><span class="line">	B--&gt;C;</span><br></pre></td></tr></table></figure>
-
 <p>时序图：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sequenceDiagram</span><br><span class="line">    Alice-&gt;&gt;John: Hello John, how are you?</span><br><span class="line">    John--&gt;&gt;Alice: Great!</span><br></pre></td></tr></table></figure>
-
 <p>状态图：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h1><p>插槽需要在组件中使用<code>slot</code>标签定义：</p>
+<h1 id="插槽"><a class="markdownIt-Anchor" href="#插槽"></a> 插槽</h1>
+<p>插槽需要在组件中使用<code>slot</code>标签定义：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// component.vue</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"card"</span>&gt;</span></span><br><span class="line">        // ...</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        // ...</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// app.vue</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">card</span>&gt;</span>这是slot内容<span class="tag">&lt;/<span class="name">card</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>使用的时候直接将内容放在组件的标签内，就当是一个普通的<code>html</code>标签，渲染时就会替换掉组件的<code>&lt;slot&gt;</code>部分：</p>
 <p><code>&lt;slot&gt;&lt;/slot&gt;</code>标签内也可以放入内容，作用是作为默认内容，比如：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// component.vue</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"card"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span>标题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">slot</span>&gt;</span>这是默认内容<span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"footer"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"cancel"</span>&gt;</span>取消<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"confirm"</span>&gt;</span>确认<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// app.vue</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">card</span>&gt;</span><span class="tag">&lt;/<span class="name">card</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h1><p>就是有名字的插槽，作用时当组件中有多个插槽时便于区分，如果没有指定名称，默认就是<code>default</code>，父子组件中分别这么写：</p>
+<h1 id="具名插槽"><a class="markdownIt-Anchor" href="#具名插槽"></a> 具名插槽</h1>
+<p>就是有名字的插槽，作用时当组件中有多个插槽时便于区分，如果没有指定名称，默认就是<code>default</code>，父子组件中分别这么写：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// component.vue</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"card"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span>标题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"detail"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">"detail"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"footer"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"cancel"</span>&gt;</span>取消<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"confirm"</span>&gt;</span>确认<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// app.vue</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">card</span>&gt;</span></span><br><span class="line">      这是slot内容</span><br><span class="line">      <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:detail</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是详细内容<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">card</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>渲染后：</p>
 <p>可以看到，根据不同的插槽名称渲染进去，没指定名称就被渲染到<code>default</code>里面，</p>
 <p>使用可以使代码更加独立和低耦合，</p>
@@ -248,7 +238,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/3/30/frontend/Learn-Vue-slot/" data-id="ckxgf70p6000f38caojdmvxnz" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/3/30/frontend/Learn-Vue-slot/" data-id="ckxgj50m9000g6gcaw69nmtv6" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
@@ -291,13 +281,11 @@ ga('send', 'pageview');
 
         <p>macOS 更新完<code>Big Sur</code>后，链接iOS后弹出“文件找不到”提示框，如下：</p>
 <img src="https://i.loli.net/2021/03/19/XOEK3ikaybN985r.png" title="" alt="">
-
 <p>解决办法：</p>
 <ul>
 <li>打开<strong>图像捕捉</strong>程序</li>
 </ul>
 <img src="https://i.loli.net/2021/03/19/k26YKW3OeZunBzb.png" title="" alt="">
-
 <ul>
 <li>在图像捕捉里选择你连接的iphone设备</li>
 <li>点击图像捕捉程序上方的那三个点</li>
@@ -307,7 +295,9 @@ ga('send', 'pageview');
 <li>拔掉iphone。然后再插上usb。</li>
 </ul>
 <p>这时候会弹出图像捕捉的应用程序不会弹出找不到文件了。如果不想弹出图像捕捉，那么再打开图像捕捉。点击那三个点。选择不打开任何应用程序。</p>
-<h1 id="“THE-FILE-CAN’T-BE-FOUND”-WHEN-I-PLUG-IN-MY-IPHONE-ON-MACOS-BIG-SUR"><a href="#“THE-FILE-CAN’T-BE-FOUND”-WHEN-I-PLUG-IN-MY-IPHONE-ON-MACOS-BIG-SUR" class="headerlink" title="“The File can’t be found” when I plug in my iPhone on macOS Big Sur"></a>“The File can’t be found” when I plug in my iPhone on macOS Big Sur</h1><h2 id="SOLUTION"><a href="#SOLUTION" class="headerlink" title="Solution:"></a>Solution:</h2><ul>
+<h1 id="the-file-cant-be-found-when-i-plug-in-my-iphone-on-macos-big-sur"><a class="markdownIt-Anchor" href="#the-file-cant-be-found-when-i-plug-in-my-iphone-on-macos-big-sur"></a> “The File can’t be found” when I plug in my iPhone on macOS Big Sur</h1>
+<h2 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution:</h2>
+<ul>
 <li>Open the <strong>Image Capture application</strong></li>
 <li>Click on the dots icon (left of trash can icon) and in the drop-down for ‘Connecting this iPhone opens:’ select ‘Other’</li>
 <li>In the Finder navigator, select <strong>Image Capture</strong></li>
@@ -324,7 +314,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/3/19/macOS/Big-Sur-the-File-can-t-be-found/" data-id="ckxgf70p1000a38cajkttkoa5" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/3/19/macOS/Big-Sur-the-File-can-t-be-found/" data-id="ckxgj50m000096gca2hzsygo4" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Big-Sur/">Big Sur</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/macOS/">macOS</a></li></ul>
@@ -364,9 +354,6 @@ ga('send', 'pageview');
       
         <p>在使用小程序的时候，经常会遇到获取手机号的提示框，不给手机号就不让访问，比如下面这个：</p>
 <img src="https://i.loli.net/2021/03/08/jkYBNRfvtrCPmKU.jpg" style="zoom:50%;">
-
-
-
 <p>这种情况还经常发生在饭店点餐的时候，原先纸质的菜单直接被一个二维码取代，用户扫码后首先就要获取你的手机号你才能点餐。 不得不说小程序获取用户手机号是非常的便捷，今天这篇文章就来学习下小程序获取手机号的流程。</p>
         
           <p class="article-more-link">
@@ -376,7 +363,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/3/8/小程序/get-phone-number-in-miniprogram/" data-id="ckxgf70q3001e38cao5xar35n" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/3/8/小程序/get-phone-number-in-miniprogram/" data-id="ckxgj50n2001d6gca6g9fkhtx" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UniApp/">UniApp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信/">微信</a></li></ul>
@@ -420,27 +407,32 @@ ga('send', 'pageview');
 <p>迫于我的小鸡IP被墙，需要重新部署新的server，又不确定哪个地区的机房好用，于是就有了下文。<strong>多图预警</strong>。</p>
 <blockquote>
 <p>测试时间：2021-03-05</p>
-<p>测试工具：<a href="https://ping.chinaz.com/" target="_blank" rel="noopener">https://ping.chinaz.com</a></p>
+<p>测试工具：<a href="https://ping.chinaz.com" target="_blank" rel="noopener">https://ping.chinaz.com</a></p>
 </blockquote>
-<h1 id="北美洲-NORTH-AMERICA"><a href="#北美洲-NORTH-AMERICA" class="headerlink" title="北美洲 North America"></a>北美洲 North America</h1><h2 id="亚特兰大-ATLANTA"><a href="#亚特兰大-ATLANTA" class="headerlink" title="亚特兰大 Atlanta"></a>亚特兰大 Atlanta</h2><ol>
-<li><p>测试IP：108.61.193.166</p>
+<h1 id="北美洲-north-america"><a class="markdownIt-Anchor" href="#北美洲-north-america"></a> 北美洲 North America</h1>
+<h2 id="亚特兰大-atlanta"><a class="markdownIt-Anchor" href="#亚特兰大-atlanta"></a> 亚特兰大 Atlanta</h2>
+<ol>
+<li>
+<p>测试IP：108.61.193.166</p>
 </li>
-<li><p>最快韩国CN联通 196ms</p>
+<li>
+<p>最快韩国CN联通 196ms</p>
 </li>
-<li><p>最慢江苏徐州[移动] 334ms</p>
+<li>
+<p>最慢江苏徐州[移动] 334ms</p>
 </li>
-<li><p>平均251.8ms</p>
+<li>
+<p>平均251.8ms</p>
 </li>
-<li><p>测试</p>
+<li>
+<p>测试</p>
 </li>
 </ol>
 <ul>
 <li>国内夜间</li>
 </ul>
 <img src="https://i.loli.net/2021/03/10/pzncWXjGOsxoFiv.png" style="zoom:33%;">
-
 <img src="https://i.loli.net/2021/03/10/4c8tZvodkPFW56j.png" style="zoom:50%;">
-
 <ul>
 <li>国内白天</li>
 </ul>
@@ -452,7 +444,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/3/5/VPS/A-speed-testing-of-datacenter-of-vultr/" data-id="ckxgf70ou000638cav4sl5w0q" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2021/3/5/VPS/A-speed-testing-of-datacenter-of-vultr/" data-id="ckxgj50lv00056gca3qonsp2q" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPS/">VPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vultr/">Vultr</a></li></ul>
