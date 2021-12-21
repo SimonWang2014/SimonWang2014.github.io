@@ -84,6 +84,8 @@ ga('send', 'pageview');
     <!-- End CNZZ Analytics -->
 
 
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.15.1/katex.min.css" rel="stylesheet" type="text/css">
 </head>
 </html>
 <body>
@@ -152,6 +154,9 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
+        <!-- Table of Contents -->
+        
+
         <h1 id="COVER-VIEW内只支持部分标签"><a href="#COVER-VIEW内只支持部分标签" class="headerlink" title="cover-view内只支持部分标签"></a>cover-view内只支持部分标签</h1><p>可以使用的有：<code>cover-view</code>、<code>cover-image</code>，<code>button</code>，<code>&lt;ad&gt;</code>，<code>&lt;navigator&gt;</code>，其他的一律不显示</p>
 <h1 id="COVER-VIEW不支持设置单边框"><a href="#COVER-VIEW不支持设置单边框" class="headerlink" title="cover-view不支持设置单边框"></a>cover-view不支持设置单边框</h1><p>意思就是要么设置四周的边框，要么就不显示，单独使用<code>border-left</code>，<code>border-right</code>，<code>border-top</code>，<code>border-bottom</code>都不会显示，那么问题来了，如果要绘制类似于表格的东西，单元格之间边框肯定会很粗，这就需要单独设置某一条边的边框，这恰恰是<code>cover-view</code>不支持的，<a id="more"></a>例如：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 表格每一个元素</span><br><span class="line"><span class="selector-class">.td</span> &#123;</span><br><span class="line">		<span class="attribute">border-right</span>: <span class="number">1px</span> solid <span class="number">#ECDFCA</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
@@ -276,7 +281,7 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2021/12/19/Algorithm/A-simple-encrypt-and-decrypt-algorithm/">Simple encrypt and decrypt algorithms</a>
+            <a href="/2021/12/19/Algorithm/A-simple-encrypt-and-decrypt-algorithm/">Caeser&#39;s cipher and Diffie-Hallman key exchange</a>
           </li>
         
           <li>

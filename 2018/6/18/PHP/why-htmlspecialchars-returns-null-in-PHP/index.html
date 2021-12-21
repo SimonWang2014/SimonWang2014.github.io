@@ -78,6 +78,8 @@ ga('send', 'pageview');
     <!-- End CNZZ Analytics -->
 
 
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.15.1/katex.min.css" rel="stylesheet" type="text/css">
 </head>
 </html>
 <body>
@@ -146,6 +148,9 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
+        <!-- Table of Contents -->
+        
+
         <p>在开发中，经常需要对用户传过来的数据进行过滤，来阻止一些用户的恶意输入，在PHP中常用到<code>htmlspecialchars()</code>、<code>htmlentities()</code>和<code>strip_tags()</code>函数来处理。</p>
 <p>今天在使用<code>htmlspecialchars()</code>做特殊字符的转换时，一直返回<code>null</code>，当我换成<code>htmlentities()</code>也是同样的问题，查官方手册才发现原来是编码的问题。</p>
 <p>函数声明：</p>
@@ -246,7 +251,7 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2021/12/19/Algorithm/A-simple-encrypt-and-decrypt-algorithm/">Simple encrypt and decrypt algorithms</a>
+            <a href="/2021/12/19/Algorithm/A-simple-encrypt-and-decrypt-algorithm/">Caeser&#39;s cipher and Diffie-Hallman key exchange</a>
           </li>
         
           <li>

@@ -80,6 +80,8 @@ ga('send', 'pageview');
     <!-- End CNZZ Analytics -->
 
 
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.15.1/katex.min.css" rel="stylesheet" type="text/css">
 </head>
 </html>
 <body>
@@ -148,6 +150,9 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
+        <!-- Table of Contents -->
+        
+
         <p>​    在本地开发时，经常需要使用远程连接到Linux服务器，一开始我自己都是有几个远程就开几个SSH窗口，这种方法很原始很直接，但每次都受够了密码输入，即使用了SSH免密码登录，也会觉得每次输入SSH的命令一点都不快速，况且况且窗口开多了，也会很混乱，不易管理，这种情况，Linux上的工具也有很多，今天就学习一下<code>screen</code>工具。</p>
 <p>​    在介绍<code>screen</code>工具时，先讨论一下，为什么连接服务器后，当执行长时间的任务时，我们关闭远程连接窗口，这个任务就被杀掉了呢？</p>
 <h3 id="元凶：SIGUP信号"><a href="#元凶：SIGUP信号" class="headerlink" title="元凶：SIGUP信号"></a>元凶：SIGUP信号</h3><p>​    在Linux／Unix中，有以下几个概念：</p>
@@ -278,7 +283,7 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2021/12/19/Algorithm/A-simple-encrypt-and-decrypt-algorithm/">Simple encrypt and decrypt algorithms</a>
+            <a href="/2021/12/19/Algorithm/A-simple-encrypt-and-decrypt-algorithm/">Caeser&#39;s cipher and Diffie-Hallman key exchange</a>
           </li>
         
           <li>
