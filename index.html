@@ -145,11 +145,14 @@ ga('send', 'pageview');
 
 <p>In my IoT class, one of my coursework is to implement a <strong>Diffie-Hallman key exchange</strong> algorithm which is used to exchange data without leaking safty information in the network communications. In my experiment, some communications take place between a client and a server, the transmitted data have been encrypted and decrypt with <strong>Caeser’s cipher</strong> when sent to the server from client after the connection is built. So my task is just to add Diffie-Hallman key exchange to secure a message delivery. In this article, I’ll introduce two algorithms, <strong>Caeser’s cipher or shift cipher</strong><a href="https://en.wikipedia.org/wiki/Caesar_cipher" target="_blank" rel="noopener">^1</a> and <strong>Diffie-Hallman key exchange</strong>. </p>
 <h1 id="CAESER’S-CIPHER"><a href="#CAESER’S-CIPHER" class="headerlink" title="Caeser’s cipher"></a>Caeser’s cipher</h1><p>Caeser’s cipher is one of the simplest and widely known techniques to do encrypt and decrypt. The task of this algorithm is to replace each alphabet to another alphabet. But how to get the new alphabet? Let me see an example:(公众号：正义的程序猿)</p>
-<p>![job done](A-simple-encrypt-and-decrypt-algorithm/job done.png)</p>
+<img src="/2021/12/19/Algorithm/A-simple-encrypt-and-decrypt-algorithm/job-done.png" alt="job done">
+
 <p>The original data is “job done”, after the decryption, it is “qvi kvul”, the data is changed and we can not understand the meaning except the whitespace. Even though these alphabete have been disrupted, you can also find some regulations or patterns if you’re a sensetive person. That’s the secret of the <strong>Caeser’s cipher</strong>. The ASCII code of  each alphabete is added 7 or each alphabete has been right shifted of 7.</p>
-<p>![shadow-character set from Wikipedia](A-simple-encrypt-and-decrypt-algorithm/character set.png)</p>
+<img src="/2021/12/19/Algorithm/A-simple-encrypt-and-decrypt-algorithm/character-set.png" alt="shadow-character set from Wikipedia">
+
 <p>In my data, the character ‘j’ has a ASCII code of 6A in Hex format(106 Dec format), while it is replaced by ‘q’ (71 in Hex format, 113 in Dec format). In this demo, we have a right shift of 7. (公众号：正义的程序猿)Also the shift key can be any number including positive and negtive number. If shift key is negtive, it means left shift. The data then can be transmitted with the encrypt format:</p>
-<p>![data transmit](A-simple-encrypt-and-decrypt-algorithm/data transmit.png)</p>
+<img src="/2021/12/19/Algorithm/A-simple-encrypt-and-decrypt-algorithm/data-transmit.png" alt="data transmit">
+
 <p>Here is my code which can be used for the lower case letters:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">encrypt</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> *input, <span class="keyword">unsigned</span> <span class="keyword">char</span> *output, <span class="keyword">int</span> shiftKey)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i;</span><br><span class="line">  <span class="keyword">int</span> shift = shiftKey%<span class="number">26</span>;</span><br><span class="line">  <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="built_in">strlen</span>(input); i++)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> (input[i]&gt;=<span class="string">'a'</span> &amp;&amp; input[i]&lt;=<span class="string">'z'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      output[i] = input[i] + shift;</span><br><span class="line">      <span class="keyword">if</span> (output[i]&gt;<span class="string">'z'</span>) output[i]-=<span class="number">26</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> output[i] = input[i];</span><br><span class="line">  &#125;</span><br><span class="line">  output[i] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -178,9 +181,15 @@ ga('send', 'pageview');
 <li>Magically, both parties arrive to the same K value!!!</li>
 </ul>
 <p>During the process, whoever knowing <em>p</em>, <em>g</em> and both <em>r</em> values,(公众号：正义的程序猿) but without any <em>s</em>, can not compute <em>K</em>. See a cryptographic explanation of Diffie-Hallman from wikipedia:</p>
-<p>![Cryptographic explanation of Diffie-Hallman](A-simple-encrypt-and-decrypt-algorithm/Cryptographic explanation of Diffie-Hallman.png)</p>
+<img src="/2021/12/19/Algorithm/A-simple-encrypt-and-decrypt-algorithm/Cryptographic-explanation-of-Diffie-Hallman.png" alt="Cryptographic explanation of Diffie-Hallman">
+
 <p>An demo of Diffie-Hallman:</p>
-<p>![illustration table of Diffie-Hallman](../../../Downloads/illustration table of Diffie-Hallman.png)</p>
+<img src="/2021/12/19/Algorithm/A-simple-encrypt-and-decrypt-algorithm/illustration-table-of-Diffie-Hallman.png" alt="illustration table of Diffie-Hallman">
+
+
+
+
+
 <h1 id="REFERENCE"><a href="#REFERENCE" class="headerlink" title="reference"></a>reference</h1><p>[^2]: W. Diffie and M. E. Hellman, “New directions in cryptography,” IEEE Transactions on Information Theory, vol. 22, no. 6, Nov 1976, pp. 644-654.</p>
 
       
