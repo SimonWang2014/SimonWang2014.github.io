@@ -623,10 +623,33 @@ a.article-title:hover {
   padding: 10px 0;
 }
 .article-entry blockquote {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.4em;
-  margin: 1.6em 20px;
-  text-align: center;
+  position: relative;
+  padding: 24px 16px 12px;
+  margin: 24px 0 36px;
+  font-size: 1em;
+  font-style: normal;
+  line-height: 1.6;
+  color: #777;
+  text-indent: 0;
+  border: none;
+  border-left: 2px solid #555;
+}
+.article-entry blockquote::before {
+  position: absolute;
+  top: 0;
+  left: 12px;
+  font-family: Arial, serif;
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 1em;
+  color: #555;
+  content: '“';
+}
+.article-entry blockquote blockquote {
+  padding-right: 0;
+}
+.article-entry blockquote a {
+  color: #258fb8;
 }
 .article-entry blockquote footer {
   font-size: 14px;
@@ -967,6 +990,24 @@ a.article-title:hover {
 }
 #toc.toc-article .toc-child {
   margin-left: 1em;
+}
+@media screen and (max-width: 479px) {
+  #toc {
+    float: unset;
+  }
+  #toc.toc-article {
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  #toc {
+    float: unset;
+  }
+  #toc.toc-article {
+    margin-left: 0;
+    max-width: 100%;
+  }
 }
 #comments {
   background: #fff;
