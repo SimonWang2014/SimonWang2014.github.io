@@ -117,6 +117,59 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-The-Guard-in-Laravel-framework" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/2/24/PHP/Laravel/The-Guard-in-Laravel-framework/" class="article-date">
+  <time datetime="2021-02-24T10:39:43.000Z" itemprop="datePublished">2021-02-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>►<a class="article-category-link" href="/categories/PHP/Laravel/">Laravel</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/2/24/PHP/Laravel/The-Guard-in-Laravel-framework/">关于Laravel框架中Guard的底层实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-什么是guard"><a class="markdownIt-Anchor" href="#1-什么是guard"></a> 1. 什么是Guard</h1>
+<p>在<code>Laravel/Lumen</code>框架中，用户的登录/注册的认证基本都已经封装好了，开箱即用。而登录/注册认证的核心就是：</p>
+<ol>
+<li>用户的注册信息存入数据库（登记）</li>
+<li>从数据库中读取数据和用户输入的对比（认证）</li>
+</ol>
+<p>上述两步是登录/注册的基本，可以看到都会涉及到数据库的操作，这两步框架底层已经帮我们做好了，而且考虑到了很多情况，比如用户认证的数据表不是<code>user表</code>而是<code>admin_user</code>，认证字段是<code>phone</code>而不是<code>email</code>，等等一些问题都是<code>Guard</code>所要解决的，通过<code>Guard</code>可以指定使用哪个数据表什么字段等，<code>Guard</code>能非常灵活的构建一套自己的认证体系。</p>
+        
+          <p class="article-more-link">
+            <a href="/2021/2/24/PHP/Laravel/The-Guard-in-Laravel-framework/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2021/2/24/PHP/Laravel/The-Guard-in-Laravel-framework/" data-id="ckzepviga000r6ycai3xixj34" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Laravel/">Laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lumen/">Lumen</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-APP-URL-Scheme" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/1/notes/APP-URL-Scheme/" class="article-date">
@@ -162,80 +215,6 @@ ga('send', 'pageview');
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/notes/">notes</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-DeepEMD-Few-Shot-Image-Classification" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/2/8/Image-Processing/DeepEMD-Few-Shot-Image-Classification/" class="article-date">
-  <time datetime="2022-02-08T10:55:59.000Z" itemprop="datePublished">2022-02-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Image-Processing/">Image Processing</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/2/8/Image-Processing/DeepEMD-Few-Shot-Image-Classification/">DeepEMD A Few-Shot Image Classification method</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-
-        <p>A reading note on <a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Zhang_DeepEMD_Few-Shot_Image_Classification_With_Differentiable_Earth_Movers_Distance_and_CVPR_2020_paper.pdf" target="_blank" rel="noopener">DeepEMD: Few-Shot Image Classification with Differentiable Earth Mover’s Distance and Structured Classifiers</a>.</p>
-<img src="/2022/2/8/Image-Processing/DeepEMD-Few-Shot-Image-Classification/Earth%20mover%20distance.png" alt="Illustration of Earth mover distance">
-<h1 id="problems"><a class="markdownIt-Anchor" href="#problems"></a> Problems</h1>
-<p>Deep Neural Networks achieve high performance under the large labelled datasets. For some circumstances, no enough labelled images are provided. One of most well-studied machine learning algorithms is few-shot image classification. Only with small labelled data, few-shot algorithms can categorize new images.</p>
-<h1 id="previous-solutions"><a class="markdownIt-Anchor" href="#previous-solutions"></a> Previous solutions</h1>
-<p>Two main streams in few-shot classification:</p>
-<ul>
-<li>Metric-based approaches</li>
-<li>optimization-based approaches</li>
-</ul>
-<p>Metric-based methods often employ a CNN to learn image features representations, but replace the fully connected layer with a distance function, such as <strong>cosine distance</strong> and <strong>Euclidean distance</strong>. However, these methods bypasses the difficult optimization problem in learning a classier for few-shot images.</p>
-<h1 id="difficulties"><a class="markdownIt-Anchor" href="#difficulties"></a> Difficulties</h1>
-<p>Promising results have been achieved by previous solutions, but for some cluttered background and large intra-class appearance variations may lead to these methods make an unsatisfactory performance. Although the problem can be alleviated by the neural network under the <strong>fully supervised training</strong>, thanks to the activation functions and abundant training images, it is almost inevitably amplified in low-data regimes and thus negatively impacts the image classification. Moreover, a mixed global representation destroys image structures and loses local features. Local features can provide discriminative and transferable information across categories, which can be important for image classification in the few-shot scenario.</p>
-<h1 id="deepemd"><a class="markdownIt-Anchor" href="#deepemd"></a> DeepEMD</h1>
-<p>Key features:</p>
-<ul>
-<li>Earth Mover’s Distance (EMD)</li>
-<li>cross-reference mechanism</li>
-<li>structured fully connected layer</li>
-</ul>
-<p>The <strong>building blocks</strong> can be compared when compare two complex structered representations. The difficulty lies in that we do not have their correspondence supervision for training and not all building elements can always find their counterparts in the other structures. In this papre, Zhang <em>et, al</em> formalized the few-shot classification as an instance of optimal matching. They adopted t the <strong>Earth Mover’s Distance (EMD)</strong> to compute their structural similarity. EMD is the metric for computing distance between structural representations, which was originally proposed for image retrieval. EMD can acquire the optimal matching flows with the minimum cost and it can also be embedded into network for end-to-end training.</p>
-<img src="/2022/2/8/Image-Processing/DeepEMD-Few-Shot-Image-Classification/one%20shot%20image%20classification.png" alt="one shot image classification">
-<p>Problem of EMD: EMD has the formulation of the transportation problem and the global minimum can be achieved by solving a Linear Programming problem. They apply the implicit function theorem to form the Jacobian matrix of the optimal optimization variable with respect to the problem parameters.</p>
-<p>An important problem parameter in the EMD formulation is the weight of each element. Elements with large weights generate more matching flows and thus contribute more to the overall distance, while irrelevant regions have less weight. To find which element is important, they propose a <strong>cross-reference mechanism</strong>. In this mechanism, each node is determined by comparing it with the global statistics of the other structure. This aims to give less weight to the high-variance background regions and the object parts that are not co-occurrent in two images. <strong>Structured fully connected layer</strong> is proposed as the classifier for classification to make use of the increasing number of training images. <strong>Structured fully connected layer</strong> is en extension of the <strong>standard fully connected layer</strong> which replaces <strong>dot product operations</strong> between vectors with <strong>EMD</strong> function between vector sets. Structured FC layer can directly classify feature maps.</p>
-<img src="/2022/2/8/Image-Processing/DeepEMD-Few-Shot-Image-Classification/standart%20and%20structured%20fully%20connected%20layer.png" alt="standart and structured fully connected layer">
-<h1 id="achievement"><a class="markdownIt-Anchor" href="#achievement"></a> Achievement</h1>
-<img src="/2022/2/8/Image-Processing/DeepEMD-Few-Shot-Image-Classification/comparison%20with%20the%20state%20of%20the%20art.png" alt="comparison with the state of the art">
-<h1 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> reference</h1>
-<p><a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Zhang_DeepEMD_Few-Shot_Image_Classification_With_Differentiable_Earth_Movers_Distance_and_CVPR_2020_paper.pdf" target="_blank" rel="noopener">https://openaccess.thecvf.com/content_CVPR_2020/papers/Zhang_DeepEMD_Few-Shot_Image_Classification_With_Differentiable_Earth_Movers_Distance_and_CVPR_2020_paper.pdf</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2022/2/8/Image-Processing/DeepEMD-Few-Shot-Image-Classification/" data-id="ckzepwuoc00008zcalji4bzhz" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/few-shot-classification/">few-shot classification</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/image-processing/">image processing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sketch/">sketch</a></li></ul>
 
     </footer>
   </div>

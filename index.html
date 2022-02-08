@@ -117,6 +117,56 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-DeepEMD-Few-Shot-Image-Classification" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/2/8/Image-Processing/DeepEMD-Few-Shot-Image-Classification/" class="article-date">
+  <time datetime="2022-02-08T10:55:59.000Z" itemprop="datePublished">2022-02-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Image-Processing/">Image Processing</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/2/8/Image-Processing/DeepEMD-Few-Shot-Image-Classification/">DeepEMD A Few-Shot Image Classification method</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>A reading note on <a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Zhang_DeepEMD_Few-Shot_Image_Classification_With_Differentiable_Earth_Movers_Distance_and_CVPR_2020_paper.pdf" target="_blank" rel="noopener">DeepEMD: Few-Shot Image Classification with Differentiable Earth Mover’s Distance and Structured Classifiers</a>.</p>
+<img src="/2022/2/8/Image-Processing/DeepEMD-Few-Shot-Image-Classification/Earth%20mover%20distance.png" alt="Illustration of Earth mover distance">
+<h1 id="problems"><a class="markdownIt-Anchor" href="#problems"></a> Problems</h1>
+<p>Deep Neural Networks achieve high performance under the large labelled datasets. For some circumstances, no enough labelled images are provided. One of most well-studied machine learning algorithms is few-shot image classification. Only with small labelled data, few-shot algorithms can categorize new images.</p>
+        
+          <p class="article-more-link">
+            <a href="/2022/2/8/Image-Processing/DeepEMD-Few-Shot-Image-Classification/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2022/2/8/Image-Processing/DeepEMD-Few-Shot-Image-Classification/" data-id="ckzepwuoc00008zcalji4bzhz" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/few-shot-classification/">few-shot classification</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/image-processing/">image processing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sketch/">sketch</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-pay-for-graduate-career" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2022/1/26/Life/pay-for-graduate-career/" class="article-date">
@@ -304,59 +354,6 @@ ga('send', 'pageview');
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Artificial-Intelligence/">Artificial Intelligence</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ethics/">Ethics</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-The-Guard-in-Laravel-framework" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/2/24/PHP/Laravel/The-Guard-in-Laravel-framework/" class="article-date">
-  <time datetime="2021-02-24T10:39:43.000Z" itemprop="datePublished">2021-02-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PHP/">PHP</a>►<a class="article-category-link" href="/categories/PHP/Laravel/">Laravel</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/2/24/PHP/Laravel/The-Guard-in-Laravel-framework/">关于Laravel框架中Guard的底层实现</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1-什么是guard"><a class="markdownIt-Anchor" href="#1-什么是guard"></a> 1. 什么是Guard</h1>
-<p>在<code>Laravel/Lumen</code>框架中，用户的登录/注册的认证基本都已经封装好了，开箱即用。而登录/注册认证的核心就是：</p>
-<ol>
-<li>用户的注册信息存入数据库（登记）</li>
-<li>从数据库中读取数据和用户输入的对比（认证）</li>
-</ol>
-<p>上述两步是登录/注册的基本，可以看到都会涉及到数据库的操作，这两步框架底层已经帮我们做好了，而且考虑到了很多情况，比如用户认证的数据表不是<code>user表</code>而是<code>admin_user</code>，认证字段是<code>phone</code>而不是<code>email</code>，等等一些问题都是<code>Guard</code>所要解决的，通过<code>Guard</code>可以指定使用哪个数据表什么字段等，<code>Guard</code>能非常灵活的构建一套自己的认证体系。</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/2/24/PHP/Laravel/The-Guard-in-Laravel-framework/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2021/2/24/PHP/Laravel/The-Guard-in-Laravel-framework/" data-id="ckzepviga000r6ycai3xixj34" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Laravel/">Laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lumen/">Lumen</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
 
     </footer>
   </div>

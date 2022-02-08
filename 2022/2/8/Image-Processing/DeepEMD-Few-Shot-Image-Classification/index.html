@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://www.xydida.com/2022/2/8/Image-Processing/DeepEMD-Few-Shot-Image-Classification/one%20shot%20image%20classification.png">
 <meta property="og:image" content="https://www.xydida.com/2022/2/8/Image-Processing/DeepEMD-Few-Shot-Image-Classification/standart%20and%20structured%20fully%20connected%20layer.png">
 <meta property="og:image" content="https://www.xydida.com/2022/2/8/Image-Processing/DeepEMD-Few-Shot-Image-Classification/comparison%20with%20the%20state%20of%20the%20art.png">
-<meta property="og:updated_time" content="2022-02-08T22:51:47.499Z">
+<meta property="og:updated_time" content="2022-02-08T22:52:56.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DeepEMD A Few-Shot Image Classification method">
 <meta name="twitter:description" content="A reading note on DeepEMD: Few-Shot Image Classification with Differentiable Earth Mover’s Distance and Structured Classifiers.   Problems Deep Neural Networks achieve high performance under the large">
@@ -149,11 +149,17 @@ ga('send', 'pageview');
       
         <!-- Table of Contents -->
         
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">文章目录</strong>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#problems"><span class="toc-number">1.</span> <span class="toc-text"> Problems</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#previous-solutions"><span class="toc-number">2.</span> <span class="toc-text"> Previous solutions</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#difficulties"><span class="toc-number">3.</span> <span class="toc-text"> Difficulties</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#deepemd"><span class="toc-number">4.</span> <span class="toc-text"> DeepEMD</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#achievement"><span class="toc-number">5.</span> <span class="toc-text"> Achievement</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#reference"><span class="toc-number">6.</span> <span class="toc-text"> reference</span></a></li></ol>
+          </div>
+        
 
         <p>A reading note on <a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Zhang_DeepEMD_Few-Shot_Image_Classification_With_Differentiable_Earth_Movers_Distance_and_CVPR_2020_paper.pdf" target="_blank" rel="noopener">DeepEMD: Few-Shot Image Classification with Differentiable Earth Mover’s Distance and Structured Classifiers</a>.</p>
 <img src="/2022/2/8/Image-Processing/DeepEMD-Few-Shot-Image-Classification/Earth%20mover%20distance.png" alt="Illustration of Earth mover distance">
 <h1 id="problems"><a class="markdownIt-Anchor" href="#problems"></a> Problems</h1>
 <p>Deep Neural Networks achieve high performance under the large labelled datasets. For some circumstances, no enough labelled images are provided. One of most well-studied machine learning algorithms is few-shot image classification. Only with small labelled data, few-shot algorithms can categorize new images.</p>
+<a id="more"></a>
 <h1 id="previous-solutions"><a class="markdownIt-Anchor" href="#previous-solutions"></a> Previous solutions</h1>
 <p>Two main streams in few-shot classification:</p>
 <ul>
