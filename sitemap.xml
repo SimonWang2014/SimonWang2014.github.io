@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.xydida.com/2022/2/8/Image-Processing/DeepEMD-Few-Shot-Image-Classification/</loc>
+    <loc>https://www.xydida.com/2022/2/8/Image-Processing/reading/DeepEMD-Few-Shot-Image-Classification/</loc>
     
     <lastmod>2022-02-08</lastmod>
     
@@ -1463,6 +1463,13 @@
   
   <url>
     <loc>https://www.xydida.com/categories/Image-Processing/</loc>
+    <lastmod>2022-02-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/categories/Image-Processing/reading/</loc>
     <lastmod>2022-02-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
