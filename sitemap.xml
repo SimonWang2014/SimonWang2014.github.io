@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.xydida.com/2022/2/8/Image-Processing/DeepEMD-Few-Shot-Image-Classification/</loc>
+    
+    <lastmod>2022-02-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.xydida.com/2022/1/26/Life/pay-for-graduate-career/</loc>
     
     <lastmod>2022-01-31</lastmod>
@@ -1235,6 +1242,20 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://www.xydida.com/tags/few-shot-classification/</loc>
+    <lastmod>2022-02-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/tags/sketch/</loc>
+    <lastmod>2022-02-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
@@ -1435,6 +1456,13 @@
   
   <url>
     <loc>https://www.xydida.com/categories/Electron/Node/Javascript/</loc>
+    <lastmod>2022-02-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/categories/Image-Processing/</loc>
     <lastmod>2022-02-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
