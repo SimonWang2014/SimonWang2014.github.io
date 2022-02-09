@@ -613,14 +613,28 @@
 
   
   <url>
-    <loc>https://www.xydida.com/tags/framework/</loc>
+    <loc>https://www.xydida.com/tags/notes/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.xydida.com/tags/PHP/</loc>
+    <loc>https://www.xydida.com/tags/Linux/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/tags/Vultr/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/tags/VPS/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -662,28 +676,14 @@
   </url>
   
   <url>
-    <loc>https://www.xydida.com/tags/Linux/</loc>
+    <loc>https://www.xydida.com/tags/PHP/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.xydida.com/tags/Vultr/</loc>
-    <lastmod>2022-02-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/tags/VPS/</loc>
-    <lastmod>2022-02-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/tags/notes/</loc>
+    <loc>https://www.xydida.com/tags/Server/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -704,14 +704,21 @@
   </url>
   
   <url>
-    <loc>https://www.xydida.com/tags/Server/</loc>
+    <loc>https://www.xydida.com/tags/CSS/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.xydida.com/tags/CSS/</loc>
+    <loc>https://www.xydida.com/tags/image-processing/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/tags/few-shot-classification/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -733,20 +740,6 @@
   
   <url>
     <loc>https://www.xydida.com/tags/electron/</loc>
-    <lastmod>2022-02-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/tags/image-processing/</loc>
-    <lastmod>2022-02-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/tags/few-shot-classification/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -788,14 +781,14 @@
   </url>
   
   <url>
-    <loc>https://www.xydida.com/tags/Vue/</loc>
+    <loc>https://www.xydida.com/tags/interviews/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.xydida.com/tags/interviews/</loc>
+    <loc>https://www.xydida.com/tags/Vue/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -963,20 +956,6 @@
   </url>
   
   <url>
-    <loc>https://www.xydida.com/tags/Laravel/</loc>
-    <lastmod>2022-02-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/tags/Lumen/</loc>
-    <lastmod>2022-02-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.xydida.com/tags/PSR/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
@@ -991,6 +970,13 @@
   </url>
   
   <url>
+    <loc>https://www.xydida.com/tags/Laravel/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.xydida.com/tags/cover-view/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
@@ -999,6 +985,13 @@
   
   <url>
     <loc>https://www.xydida.com/tags/Typora/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/tags/Lumen/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1040,13 +1033,6 @@
   </url>
   
   <url>
-    <loc>https://www.xydida.com/tags/emoji/</loc>
-    <lastmod>2022-02-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.xydida.com/tags/curl/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
@@ -1068,13 +1054,6 @@
   </url>
   
   <url>
-    <loc>https://www.xydida.com/tags/reading/</loc>
-    <lastmod>2022-02-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.xydida.com/tags/permission/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
@@ -1090,6 +1069,20 @@
   
   <url>
     <loc>https://www.xydida.com/tags/linux/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/tags/reading/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/tags/emoji/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1131,13 +1124,6 @@
   </url>
   
   <url>
-    <loc>https://www.xydida.com/tags/gulp/</loc>
-    <lastmod>2022-02-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.xydida.com/tags/postgraduate/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
@@ -1145,7 +1131,7 @@
   </url>
   
   <url>
-    <loc>https://www.xydida.com/tags/%E5%85%AC%E4%BC%97%E5%8F%B7%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://www.xydida.com/tags/gulp/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1166,6 +1152,20 @@
   </url>
   
   <url>
+    <loc>https://www.xydida.com/tags/%E5%85%AC%E4%BC%97%E5%8F%B7%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/tags/SICP/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.xydida.com/tags/2021/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
@@ -1174,13 +1174,6 @@
   
   <url>
     <loc>https://www.xydida.com/tags/summary/</loc>
-    <lastmod>2022-02-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/tags/SICP/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1222,6 +1215,13 @@
   </url>
   
   <url>
+    <loc>https://www.xydida.com/tags/DNS/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.xydida.com/tags/DSP/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
@@ -1236,14 +1236,14 @@
   </url>
   
   <url>
-    <loc>https://www.xydida.com/tags/DNS/</loc>
+    <loc>https://www.xydida.com/tags/life/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.xydida.com/tags/life/</loc>
+    <loc>https://www.xydida.com/tags/framework/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1259,7 +1259,14 @@
 
   
   <url>
-    <loc>https://www.xydida.com/categories/PHP/</loc>
+    <loc>https://www.xydida.com/categories/notes/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xydida.com/categories/VPS/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1280,14 +1287,7 @@
   </url>
   
   <url>
-    <loc>https://www.xydida.com/categories/VPS/</loc>
-    <lastmod>2022-02-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/categories/notes/</loc>
+    <loc>https://www.xydida.com/categories/Devops/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1301,7 +1301,7 @@
   </url>
   
   <url>
-    <loc>https://www.xydida.com/categories/Devops/</loc>
+    <loc>https://www.xydida.com/categories/reading/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1315,7 +1315,7 @@
   </url>
   
   <url>
-    <loc>https://www.xydida.com/categories/Image-Processing/</loc>
+    <loc>https://www.xydida.com/categories/PHP/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1385,20 +1385,6 @@
   </url>
   
   <url>
-    <loc>https://www.xydida.com/categories/%E5%BE%AE%E4%BF%A1/</loc>
-    <lastmod>2022-02-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/categories/reading/</loc>
-    <lastmod>2022-02-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.xydida.com/categories/Life/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
@@ -1406,7 +1392,7 @@
   </url>
   
   <url>
-    <loc>https://www.xydida.com/categories/Reading/</loc>
+    <loc>https://www.xydida.com/categories/%E5%BE%AE%E4%BF%A1/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1427,6 +1413,13 @@
   </url>
   
   <url>
+    <loc>https://www.xydida.com/categories/Reading/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.xydida.com/categories/DSP/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
@@ -1435,13 +1428,6 @@
   
   <url>
     <loc>https://www.xydida.com/categories/Electron/Node/</loc>
-    <lastmod>2022-02-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.xydida.com/categories/Image-Processing/reading/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

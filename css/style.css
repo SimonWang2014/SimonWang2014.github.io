@@ -968,6 +968,8 @@ a.article-title:hover {
   line-height: 1em;
   font-size: 0.9em;
   float: right;
+  position: relative;
+  z-index: 1;
 }
 #toc.toc-article {
   background: #eee;
