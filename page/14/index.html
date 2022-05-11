@@ -117,6 +117,81 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-PHP处理高分辨率图片引起的思考" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/4/1/PHP/PHP处理高分辨率图片引起的思考/" class="article-date">
+  <time datetime="2019-04-01T13:24:40.000Z" itemprop="datePublished">2019-04-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/4/1/PHP/PHP处理高分辨率图片引起的思考/">PHP处理高分辨率图片引起的思考</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+
+        <p>今天小伙伴在群里问了这么一个问题：</p>
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g1ngcvyuuqj30qg0fiaae.jpg" title="" alt="">
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g1ngdl4nq6j30rs0fndg6.jpg" title="" alt="">
+<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g1ngdy0w48j30na0ccgln.jpg" title="" alt="">
+<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g1nge7kz95j30rs0mt3ys.jpg" title="" alt="">
+<p>出现这种情况就是因为内存不足，<code>PHP</code>程序直接退出了，报错大概如下：</p>
+<img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g1ngegjxugj30rs04s746.jpg" title="" alt="报错">
+<p>上图的意思就是说，我们能使用的内存最大是8M，但是处理这个图片还需要额外的41bytes，就会导致内存不足，这是一个很严重的错误。在对图片进行操作前需要将图片的所有信息读入内存中，同时还会使用另一部分内存同于处理计算并缓存输出，所以内存大小的使用还是和图片的大小有关。</p>
+<p><code>PHP</code>中图片的处理都是使用了<code>GD</code>库，这个库提供了很多方法让<code>PHP</code>可以更方便地对图片进行操作，支持的图片格式如下：</p>
+<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g1ngeqqm0bj30rs0b9q3k.jpg" title="" alt="">
+<p>回到一开始的问题，那个小伙伴需要处理高分辨的图片，图片大小必然很大，所以就会出现内存不够的情况，解决方法还是有很多的。</p>
+<h3 id="1-设置图片最大可上传的大小"><a class="markdownIt-Anchor" href="#1-设置图片最大可上传的大小"></a> 1. 设置图片最大可上传的大小</h3>
+<p>前端上传前可以先检测下大小，如果超过最大值直接就不请求接口，同时为安全起见，后端接收到请求后也要检测大小，防止程序异常退出。</p>
+<h3 id="2-压缩图片"><a class="markdownIt-Anchor" href="#2-压缩图片"></a> 2. 压缩图片</h3>
+<h3 id="3-关闭memory_limit"><a class="markdownIt-Anchor" href="#3-关闭memory_limit"></a> 3. 关闭<code>memory_limit</code></h3>
+<p>群里的小伙伴最后使用了一种<strong>简单粗暴的方式</strong>解决了该问题，直接在PHP中关闭<code>memory_limit</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> set_time_limit(0);</span><br><span class="line">@ini_set(&apos;memory_limit&apos;,&apos;-1&apos;);</span><br></pre></td></tr></table></figure>
+<p>这样虽然解决了问题，但不优雅也不安全，同样在<code>php.ini</code>配置文件中将<code>memory_limit</code>的值设置很大也能解决：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">memory_limit = 256M</span><br></pre></td></tr></table></figure>
+<p>PHP代码中也可以这样设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ini_set(&apos;memory_limit&apos;, &apos;256M&apos;);</span><br></pre></td></tr></table></figure>
+<p>上面我们将<code>memory_limit</code>参数固定了，这就带来一个弊端，因为大多数情况下不需要这么大的内存，有点浪费资源，最好的做法就是根据需要来设置<code>memory_limit</code>，我写了一个如下方法可供参考：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public function setMemoryLimit($filename)&#123;</span><br><span class="line">    // 控制执行时间</span><br><span class="line">    set_time_limit(50);</span><br><span class="line"></span><br><span class="line">    $maxMemoryUsage = 256M;</span><br><span class="line">    $width = 0;</span><br><span class="line">    $height = 0;</span><br><span class="line">    $size = ini_get(&apos;memory_limit&apos;);</span><br><span class="line"></span><br><span class="line">    // 获取图片大小</span><br><span class="line">    list($width, $height) = getimagesize($filename);</span><br><span class="line"></span><br><span class="line">    // 计算需要的内存，并转换成&apos;M&apos;单位</span><br><span class="line">    // 4 因为png图片一个像素有4字节</span><br><span class="line">    // 1.5 是一个调整因子，因为memory_limit不是那么精确</span><br><span class="line">    // 详细可以查看: http://php.net/imagecreatefromjpeg#76968</span><br><span class="line">    $size = $size + floor(($width * $height * 4 * 1.5 + 1048576) / 1048576);</span><br><span class="line"></span><br><span class="line">    if ($size &gt; $maxMemoryUsage)&#123;</span><br><span class="line">        $size = $maxMemoryUsage;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   // 更新</span><br><span class="line">   ini_set(&apos;memory_limit&apos;,$size.&apos;M&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后说一下，<code>GD</code>库其实是比较耗内存的，但我这里没有做过测试。Github上有个<code>C</code>的项目叫<code>libvips/libvips</code>：</p>
+<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g1ngf6k0dnj30rs0hdwfw.jpg" title="" alt="libvips/libvips">
+<img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g1ngfvzc84j30rs0dt76a.jpg" title="" alt="libvips/libvips readme">
+<p>可以在不占用很多内存的情况下提高图片处理的速度，这是地址:<a href="https://github.com/libvips/libvips%EF%BC%8C%E6%9C%89%E6%97%B6%E9%97%B4%E5%8F%AF%E4%BB%A5%E5%AD%A6%E4%B9%A0%E4%B8%8B%E3%80%82" target="_blank" rel="noopener">https://github.com/libvips/libvips，有时间可以学习下。</a></p>
+<img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g11ghafpgzj309k09k744.jpg" title="" alt="正义的程序猿">
+<hr>
+<p>欢迎阅读本篇文章，如有兴趣可以关注博主公众号哦：</p>
+<img src="https://i.loli.net/2020/09/20/SYRsd7hOGkxiuCQ.jpg" style="zoom:28%;">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2019/4/1/PHP/PHP处理高分辨率图片引起的思考/" data-id="cl2v0q77b000r0zca8ydkpxnb" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-array-push-in-PHP" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/3/13/PHP/array-push-in-PHP/" class="article-date">
@@ -165,7 +240,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2019/3/13/PHP/array-push-in-PHP/" data-id="cl0zk8huw00145scaq435nhk4" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2019/3/13/PHP/array-push-in-PHP/" data-id="cl2v0q78200180zcaq3vg0sk5" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
@@ -224,7 +299,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2019/1/2/PHP/PHP-read-excel-and-csv-files/" data-id="cl0zk8huj000n5sca9k3xo9mx" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2019/1/2/PHP/PHP-read-excel-and-csv-files/" data-id="cl2v0q776000q0zcad03vw7p5" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
@@ -294,7 +369,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/12/20/PHP/Clone-Object-in-PHP/" data-id="cl0zk8hua000c5scac024kqmo" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2018/12/20/PHP/Clone-Object-in-PHP/" data-id="cl2v0q76f000e0zcawa6kc2rx" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
@@ -345,59 +420,10 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/12/16/Linux/my-Tmux-notes/" data-id="cl0zk8hva001r5scabbn3u817" class="article-share-link">分享</a>
+      <a data-url="https://www.xydida.com/2018/12/16/Linux/my-Tmux-notes/" data-id="cl2v0q78r001r0zca5b4c7jh1" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tmux/">Tmux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Valet-problem-Unable-to-determine-linked-PHP" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/" class="article-date">
-  <time datetime="2018-12-15T07:36:02.000Z" itemprop="datePublished">2018-12-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PHP/">PHP</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/">Valet problem: Unable to determine linked PHP</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-
-        <p>Mac上更新PHP 7.2后，再次使用<code>Valet</code>时提示无法定位到PHP，如下所示：</p>
-<img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fy7hi8ormwj308902hglj.jpg" title="" alt="">
-<p>一条命令解决：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/opt/php@7.2/bin/php /usr/local/bin/php</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2018/12/15/PHP/Valet-problem-Unable-to-determine-linked-PHP/" data-id="cl0zk8hur000x5sca2bz39kx0" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
 
     </footer>
   </div>
@@ -420,7 +446,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Artificial-Intelligence/">Artificial Intelligence</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ComputerVision/">ComputerVision</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DSP/">DSP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Deep-learning/">Deep learning</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Devops/">Devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Electron/">Electron</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Networks/">Networks</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Neural-Network/">Neural Network</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Object-Oriented/">Object Oriented</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Regular-Expression/">Regular Expression</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VPS/">VPS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Yangmao/">Yangmao</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/小程序/">小程序</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/微信/">微信</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Artificial-Intelligence/">Artificial Intelligence</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ComputerVision/">ComputerVision</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DSP/">DSP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Deep-learning/">Deep learning</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Devops/">Devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Electron/">Electron</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Networks/">Networks</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Neural-Network/">Neural Network</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Object-Oriented/">Object Oriented</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming-Language/">Programming Language</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Regular-Expression/">Regular Expression</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VPS/">VPS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Yangmao/">Yangmao</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/小程序/">小程序</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/微信/">微信</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -430,7 +456,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2021/" style="font-size: 10px;">2021</a> <a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/API/" style="font-size: 13.33px;">API</a> <a href="/tags/Artificial-Intelligence/" style="font-size: 10px;">Artificial Intelligence</a> <a href="/tags/Big-Sur/" style="font-size: 10px;">Big Sur</a> <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CSS/" style="font-size: 16.67px;">CSS</a> <a href="/tags/DIGITS/" style="font-size: 10px;">DIGITS</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/DSP/" style="font-size: 10px;">DSP</a> <a href="/tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="/tags/Ethics/" style="font-size: 10px;">Ethics</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Javascript/" style="font-size: 13.33px;">Javascript</a> <a href="/tags/Laravel/" style="font-size: 11.67px;">Laravel</a> <a href="/tags/LeNet/" style="font-size: 10px;">LeNet</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Lloyds-bank/" style="font-size: 10px;">Lloyds bank</a> <a href="/tags/Lumen/" style="font-size: 10px;">Lumen</a> <a href="/tags/MNIST/" style="font-size: 10px;">MNIST</a> <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="/tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="/tags/PSR/" style="font-size: 10px;">PSR</a> <a href="/tags/Perl/" style="font-size: 10px;">Perl</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SICP/" style="font-size: 10px;">SICP</a> <a href="/tags/Server/" style="font-size: 15px;">Server</a> <a href="/tags/Slim/" style="font-size: 10px;">Slim</a> <a href="/tags/Something/" style="font-size: 10px;">Something</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/UK/" style="font-size: 13.33px;">UK</a> <a href="/tags/UniApp/" style="font-size: 10px;">UniApp</a> <a href="/tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="/tags/VPS/" style="font-size: 10px;">VPS</a> <a href="/tags/VirtualBox/" style="font-size: 10px;">VirtualBox</a> <a href="/tags/Vue/" style="font-size: 11.67px;">Vue</a> <a href="/tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/array-key-exists/" style="font-size: 10px;">array_key_exists</a> <a href="/tags/array-search/" style="font-size: 10px;">array_search</a> <a href="/tags/autoload/" style="font-size: 10px;">autoload</a> <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/convolution/" style="font-size: 10px;">convolution</a> <a href="/tags/cover-view/" style="font-size: 11.67px;">cover-view</a> <a href="/tags/cryptography/" style="font-size: 10px;">cryptography</a> <a href="/tags/curl/" style="font-size: 10px;">curl</a> <a href="/tags/decrypt/" style="font-size: 10px;">decrypt</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep learning</a> <a href="/tags/edge-detect/" style="font-size: 10px;">edge detect</a> <a href="/tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="/tags/electron/" style="font-size: 11.67px;">electron</a> <a href="/tags/emoji/" style="font-size: 10px;">emoji</a> <a href="/tags/encrypt/" style="font-size: 10px;">encrypt</a> <a href="/tags/event-loop/" style="font-size: 10px;">event-loop</a> <a href="/tags/few-shot-classification/" style="font-size: 11.67px;">few-shot classification</a> <a href="/tags/filter/" style="font-size: 11.67px;">filter</a> <a href="/tags/firewall/" style="font-size: 10px;">firewall</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/image-processing/" style="font-size: 13.33px;">image processing</a> <a href="/tags/in-array/" style="font-size: 10px;">in_array</a> <a href="/tags/interviews/" style="font-size: 10px;">interviews</a> <a href="/tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="/tags/kernel/" style="font-size: 10px;">kernel</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/macOS/" style="font-size: 10px;">macOS</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/networks/" style="font-size: 11.67px;">networks</a> <a href="/tags/neural-network/" style="font-size: 10px;">neural network</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/noise/" style="font-size: 10px;">noise</a> <a href="/tags/notes/" style="font-size: 16.67px;">notes</a> <a href="/tags/npm/" style="font-size: 11.67px;">npm</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/postgraduate/" style="font-size: 11.67px;">postgraduate</a> <a href="/tags/reading/" style="font-size: 10px;">reading</a> <a href="/tags/routing/" style="font-size: 10px;">routing</a> <a href="/tags/sobel/" style="font-size: 10px;">sobel</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/ufw/" style="font-size: 10px;">ufw</a> <a href="/tags/公众号阅读笔记/" style="font-size: 10px;">公众号阅读笔记</a> <a href="/tags/小程序/" style="font-size: 18.33px;">小程序</a> <a href="/tags/微信/" style="font-size: 13.33px;">微信</a> <a href="/tags/羊毛/" style="font-size: 10px;">羊毛</a> <a href="/tags/软件设计/" style="font-size: 10px;">软件设计</a>
+      <a href="/tags/2021/" style="font-size: 10px;">2021</a> <a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/API/" style="font-size: 13.33px;">API</a> <a href="/tags/Artificial-Intelligence/" style="font-size: 11.67px;">Artificial Intelligence</a> <a href="/tags/Big-Sur/" style="font-size: 10px;">Big Sur</a> <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CSS/" style="font-size: 16.67px;">CSS</a> <a href="/tags/DIGITS/" style="font-size: 10px;">DIGITS</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/DSP/" style="font-size: 10px;">DSP</a> <a href="/tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="/tags/Ethics/" style="font-size: 10px;">Ethics</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Javascript/" style="font-size: 13.33px;">Javascript</a> <a href="/tags/Laravel/" style="font-size: 11.67px;">Laravel</a> <a href="/tags/LeNet/" style="font-size: 10px;">LeNet</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Lloyds-bank/" style="font-size: 10px;">Lloyds bank</a> <a href="/tags/Lumen/" style="font-size: 10px;">Lumen</a> <a href="/tags/MNIST/" style="font-size: 10px;">MNIST</a> <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="/tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="/tags/PSR/" style="font-size: 10px;">PSR</a> <a href="/tags/Perl/" style="font-size: 10px;">Perl</a> <a href="/tags/Prolog/" style="font-size: 10px;">Prolog</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SICP/" style="font-size: 10px;">SICP</a> <a href="/tags/Server/" style="font-size: 15px;">Server</a> <a href="/tags/Slim/" style="font-size: 10px;">Slim</a> <a href="/tags/Something/" style="font-size: 10px;">Something</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/UK/" style="font-size: 13.33px;">UK</a> <a href="/tags/UniApp/" style="font-size: 10px;">UniApp</a> <a href="/tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="/tags/VPS/" style="font-size: 10px;">VPS</a> <a href="/tags/VirtualBox/" style="font-size: 10px;">VirtualBox</a> <a href="/tags/Vue/" style="font-size: 11.67px;">Vue</a> <a href="/tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/array-key-exists/" style="font-size: 10px;">array_key_exists</a> <a href="/tags/array-search/" style="font-size: 10px;">array_search</a> <a href="/tags/autoload/" style="font-size: 10px;">autoload</a> <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/convolution/" style="font-size: 10px;">convolution</a> <a href="/tags/cover-view/" style="font-size: 11.67px;">cover-view</a> <a href="/tags/cryptography/" style="font-size: 10px;">cryptography</a> <a href="/tags/curl/" style="font-size: 10px;">curl</a> <a href="/tags/decrypt/" style="font-size: 10px;">decrypt</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep learning</a> <a href="/tags/edge-detect/" style="font-size: 10px;">edge detect</a> <a href="/tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="/tags/electron/" style="font-size: 11.67px;">electron</a> <a href="/tags/emoji/" style="font-size: 10px;">emoji</a> <a href="/tags/encrypt/" style="font-size: 10px;">encrypt</a> <a href="/tags/event-loop/" style="font-size: 10px;">event-loop</a> <a href="/tags/few-shot-classification/" style="font-size: 11.67px;">few-shot classification</a> <a href="/tags/filter/" style="font-size: 11.67px;">filter</a> <a href="/tags/firewall/" style="font-size: 10px;">firewall</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/image-processing/" style="font-size: 13.33px;">image processing</a> <a href="/tags/in-array/" style="font-size: 10px;">in_array</a> <a href="/tags/interviews/" style="font-size: 10px;">interviews</a> <a href="/tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="/tags/kernel/" style="font-size: 10px;">kernel</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/macOS/" style="font-size: 10px;">macOS</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/networks/" style="font-size: 11.67px;">networks</a> <a href="/tags/neural-network/" style="font-size: 10px;">neural network</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/noise/" style="font-size: 10px;">noise</a> <a href="/tags/notes/" style="font-size: 16.67px;">notes</a> <a href="/tags/npm/" style="font-size: 11.67px;">npm</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/postgraduate/" style="font-size: 11.67px;">postgraduate</a> <a href="/tags/reading/" style="font-size: 10px;">reading</a> <a href="/tags/routing/" style="font-size: 10px;">routing</a> <a href="/tags/sobel/" style="font-size: 10px;">sobel</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/ufw/" style="font-size: 10px;">ufw</a> <a href="/tags/公众号阅读笔记/" style="font-size: 10px;">公众号阅读笔记</a> <a href="/tags/小程序/" style="font-size: 18.33px;">小程序</a> <a href="/tags/微信/" style="font-size: 13.33px;">微信</a> <a href="/tags/羊毛/" style="font-size: 10px;">羊毛</a> <a href="/tags/软件设计/" style="font-size: 10px;">软件设计</a>
     </div>
   </div>
 
@@ -439,7 +465,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -450,6 +476,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/5/6/Programming-Language/Learn-Prolog/">Learn Prolog</a>
+          </li>
         
           <li>
             <a href="/2022/3/20/Deep-learning/Training-Model-on-Nvidia-Digits/">Training Model on Nvidia DIGITS</a>
@@ -465,10 +495,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2022/2/19/Neural-Network/Neural-Networks-1/">神经网络-初识Perceptron感知器</a>
-          </li>
-        
-          <li>
-            <a href="/2022/2/9/reading/Interpolating-between-Optimal-Transport-and-MMD-using-Sinkhorn-Divergences/">Interpolating between Optimal Transport and MMD using Sinkhorn Divergences</a>
           </li>
         
       </ul>
