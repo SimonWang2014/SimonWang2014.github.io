@@ -26,7 +26,8 @@
 <meta property="og:image" content="https://www.xydida.com/2022/8/6/Python/OpenSlide-indroduction/conda-activate-error.PNG">
 <meta property="og:image" content="https://www.xydida.com/2022/8/6/Python/OpenSlide-indroduction/conda-list.PNG">
 <meta property="og:image" content="https://www.xydida.com/2022/8/6/Python/OpenSlide-indroduction/import-openslide.PNG">
-<meta property="og:updated_time" content="2022-08-06T16:08:16.511Z">
+<meta property="og:image" content="https://www.xydida.com/2022/8/6/Python/OpenSlide-indroduction/wsi-tissue.jpg">
+<meta property="og:updated_time" content="2022-08-10T08:57:11.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenSlide indroduction">
 <meta name="twitter:description" content="What is OpenSlide? How to install OpenSlide and OpenSlide Python in Ubuntu and Windows? OpenSlide tutorial, read medical images with OpenSlide.">
@@ -231,6 +232,7 @@ ga('send', 'pageview');
 <p>The slide object has some useful functions to use, such as <code>level_count</code> return total number of level, <code>level_dimensions</code> return the dimension for thar target level of the slide.</p>
 <p>In my task, I need to read a small part in the WSI at the target level, OpenSlide provides <code>read_region(location, level, size)</code> that can simplify my work.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">slide = openslide.OpenSlide(<span class="string">r'F17-011490.ndpi'</span>)</span><br><span class="line"><span class="comment"># first parameter location is a tuple that contains the left top point </span></span><br><span class="line"><span class="comment"># of the tissue tile, it is the original pixel in source image.</span></span><br><span class="line"><span class="comment"># third parameter size is also a tuple that contains the width and </span></span><br><span class="line"><span class="comment"># height of the tissue tile, it is the reduced size!</span></span><br><span class="line">patch = slide.read_region((<span class="number">1407</span> * <span class="number">32</span>, <span class="number">1156</span> * <span class="number">32</span>), <span class="number">5</span>, (<span class="number">240</span>, <span class="number">160</span>))</span><br><span class="line"><span class="comment"># matplotlib read the image</span></span><br><span class="line">plt.imshow(patch)</span><br><span class="line">plt.show()</span><br><span class="line">slide.close()</span><br></pre></td></tr></table></figure>
+<img src="/2022/8/6/Python/OpenSlide-indroduction/wsi-tissue.jpg" alt="WSI tissue tile">
 <p>For the full usage, please visit <a href="https://openslide.org/api/python/#basic-usage" target="_blank" rel="noopener">https://openslide.org/api/python/#basic-usage</a></p>
 <p>Happy coding.</p>
 
