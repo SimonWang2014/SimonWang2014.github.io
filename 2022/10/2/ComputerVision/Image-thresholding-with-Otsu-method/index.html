@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://www.xydida.com/2022/10/2/ComputerVision/Image-thresholding-with-Otsu-method/variances-with-different-threshold.png">
 <meta property="og:image" content="https://www.xydida.com/2022/10/2/ComputerVision/Image-thresholding-with-Otsu-method/edinburg.png">
 <meta property="og:image" content="https://www.xydida.com/2022/10/2/ComputerVision/Image-thresholding-with-Otsu-method/flower.png">
-<meta property="og:updated_time" content="2022-10-03T01:19:36.099Z">
+<meta property="og:updated_time" content="2022-10-03T01:28:56.476Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Image thresholding with Otsu method">
 <meta name="twitter:description" content="What is Otsu thresholding? Otsu thresholding examples.">
@@ -159,6 +159,7 @@ ga('send', 'pageview');
 
         <p>Image thresholding is a process for separating the foreground and background of the image. There are lots of methods for image thresholding, Otsu method is one of the methods proposed by <a href="https://en.wikipedia.org/wiki/Nobuyuki_Otsu" target="_blank" rel="noopener">Nobuyuki Otsu</a>. The Otsu algorithm is a variance-based way to automatically find a threshold value by which the weighted variance between foreground and background is the least.</p>
 <p>With different threshold value, the pixel values of foreground and background are various. Hence, both pixels have different variance for different thresholding. The key of Otsu algorithm is to calculate the total variance from the two variances of both distributions. The process needs to iterate through all the possible threshold vlaues and find a threshold that makes the total variance is smallest.</p>
+<a id="more"></a>
 <h1 id="algorithm"><a class="markdownIt-Anchor" href="#algorithm"></a> Algorithm</h1>
 <p>The Otsu method iteratively search for the threshold value that minimizes the weighted sum of variance of the two classes (foreground and background). The pixel value is usually betwwen 0-255, So if the threshold value is 100, then all the pixels with values that less than 100 will be the background and all the pixels with values that greater than or equal to 100 will be the foreground of the image. The formula for find the variance at any threshold of <em>t</em> is given by:</p>
 <p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable width="100%"><mtr><mtd width="50%"></mtd><mtd><mrow><msup><mi>θ</mi><mn>2</mn></msup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi>ω</mi><mrow><mi>b</mi><mi>g</mi></mrow></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><msubsup><mi>θ</mi><mrow><mi>b</mi><mi>g</mi></mrow><mn>2</mn></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>+</mo><msub><mi>ω</mi><mrow><mi>f</mi><mi>g</mi></mrow></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><msubsup><mi>θ</mi><mrow><mi>f</mi><mi>g</mi></mrow><mn>2</mn></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mtd><mtd width="50%"></mtd><mtd><mtext>(1)</mtext></mtd></mtr></mtable><annotation encoding="application/x-tex">\theta^2(t) = \omega_{bg}(t)\theta^2_{bg}(t) + \omega_{fg}(t)\theta^2_{fg}(t) \tag{1}
