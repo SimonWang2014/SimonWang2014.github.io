@@ -117,59 +117,6 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
-    <article id="post-APP-URL-Scheme" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/1/notes/APP-URL-Scheme/" class="article-date">
-  <time datetime="2020-10-01T02:38:12.000Z" itemprop="datePublished">2020-10-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/notes/">notes</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/1/notes/APP-URL-Scheme/">一些常用APP的URL Scheme</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="全网最全url-schemedeeplink"><a class="markdownIt-Anchor" href="#全网最全url-schemedeeplink"></a> 全网最全Url Scheme(Deeplink)</h1>
-<p><strong>注意⚠️</strong></p>
-<p>**如果微信小程序打开失效，请更换开发者ID(wx开头的字符)，**比如北京健康码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// wxd930ea5d5a258f4f 是开发者ID</span></span><br><span class="line">weixin:<span class="comment">//app/wxd930ea5d5a258f4f/jumpWxa/?userName=gh_e3b81975fe3c</span></span><br></pre></td></tr></table></figure>
-<p>如果上面的URL Scheme失效了，请更换开发者ID如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">weixin:<span class="comment">//app/wx5599d44c9774e754/jumpWxa/?userName=gh_e3b81975fe3c</span></span><br></pre></td></tr></table></figure>
-<p>当前收集到的开发者ID如下：</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/10/1/notes/APP-URL-Scheme/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2020/10/1/notes/APP-URL-Scheme/" data-id="cl90stjq5000btyca44jo42bk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/notes/">notes</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-Learn-Prolog" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2022/5/6/Programming-Language/Learn-Prolog/" class="article-date">
@@ -261,6 +208,57 @@ ga('send', 'pageview');
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lloyds-bank/">Lloyds bank</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Interpolating-between-Optimal-Transport-and-MMD-using-Sinkhorn-Divergences" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/2/9/reading/Interpolating-between-Optimal-Transport-and-MMD-using-Sinkhorn-Divergences/" class="article-date">
+  <time datetime="2022-02-09T02:41:11.000Z" itemprop="datePublished">2022-02-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/reading/">reading</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/2/9/reading/Interpolating-between-Optimal-Transport-and-MMD-using-Sinkhorn-Divergences/">Interpolating between Optimal Transport and MMD using Sinkhorn Divergences</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Reading notes on <a href="https://proceedings.mlr.press/v89/feydy19a.html" target="_blank" rel="noopener">Interpolating between Optimal Transport and MMD using Sinkhorn Divergences</a></p>
+<p>The purpose of this paper is to show that the Sinkhorn divergences are convex, smooth, positive definite loss functions that metrize the convergence in law.</p>
+</blockquote>
+<p>Countless methods in machine learning and image processing reley on comparisons betwen probability distributions. But simple dissimilarities such as the <strong>Total Variation norm</strong> or the <strong>Kullback-Leibler</strong> relative entropy do not take into account the distance d on the feature space <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>χ</mi></mrow><annotation encoding="application/x-tex">\chi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">χ</span></span></span></span>. As a result, they do not metrize the convergence in law and are unstable with respect to deformations of the distributions’ support. <strong>Optimal Transport distances (sometimes refeered as Earth Mover’s Distance)</strong> and <strong>Maximum Mean Discrepancies</strong> are continuous with respect to convergence in law and metrize its topology when feature space <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>χ</mi></mrow><annotation encoding="application/x-tex">\chi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">χ</span></span></span></span> is compact.</p>
+        
+          <p class="article-more-link">
+            <a href="/2022/2/9/reading/Interpolating-between-Optimal-Transport-and-MMD-using-Sinkhorn-Divergences/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2022/2/9/reading/Interpolating-between-Optimal-Transport-and-MMD-using-Sinkhorn-Divergences/" data-id="cl90stjqh000ntycatsc9kak3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/few-shot-classification/">few-shot classification</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/image-processing/">image processing</a></li></ul>
 
     </footer>
   </div>

@@ -325,14 +325,14 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Training-Model-on-Nvidia-Digits" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-salt-and-pepper-noise" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2022/3/20/Deep-learning/Training-Model-on-Nvidia-Digits/" class="article-date">
-  <time datetime="2022-03-20T07:52:20.000Z" itemprop="datePublished">2022-03-20</time>
+    <a href="/2022/2/27/ComputerVision/salt-and-pepper-noise/" class="article-date">
+  <time datetime="2022-02-27T09:39:23.000Z" itemprop="datePublished">2022-02-27</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Deep-learning/">Deep learning</a>
+    <a class="article-category-link" href="/categories/ComputerVision/">ComputerVision</a>
   </div>
 
   </div>
@@ -343,7 +343,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/3/20/Deep-learning/Training-Model-on-Nvidia-Digits/">Training Model on Nvidia DIGITS</a>
+      <a class="article-title" href="/2022/2/27/ComputerVision/salt-and-pepper-noise/">Salt Pepper噪声以及使用median filter来减少噪声</a>
     </h1>
   
 
@@ -351,27 +351,19 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="about-nvidia-digits"><a class="markdownIt-Anchor" href="#about-nvidia-digits"></a> About Nvidia DIGITS</h1>
-<p>GPU has high efficient on training model especially for Deep Neural Network. Honestly, training model is not an easy task that we need to prepare datasets, choose network and config lots of parameters. It is a big challenge for you don’t have much experience with programming and frameworks like Python, Py-torch. <a href="https://developer.nvidia.com/digits" target="_blank" rel="noopener">Nvidia DIGITS</a> is a web platform which allows us train model with user friendly GUI without coding. DIGITS simplifies common deep learning tasks such as managing data, designing and training neural networks on multi-GPU systems, monitoring performance in real time with advanced visualizations, and selecting the best performing model from the results browser for deployment. DIGITS is completely interactive so that data scientists can focus on designing and training networks rather than programming and debugging.</p>
-<p>In this article, I’ll use <a href="https://en.wikipedia.org/wiki/MNIST_database" target="_blank" rel="noopener">MNIST</a> dataset and <a href="https://en.wikipedia.org/wiki/LeNet" target="_blank" rel="noopener">LeNet</a> network to train a model which can classify numbers. Training process can be divided into three steps:</p>
-<ol>
-<li>Import Dataset</li>
-<li>Training</li>
-<li>Testing and analysing</li>
-</ol>
-<p>Now we start. If you are confused with how to install DIGITS, please go to the <a href="https://developer.nvidia.com/digits" target="_blank" rel="noopener">document</a>.</p>
+        <p>处理图像时，我们用的图片往往都会有很多噪声。在黑暗中或是设备感光器受到影响，拍出来的图像就会有很多噪声，俗称“噪点”，<code>Salt &amp; Pepper</code>就是其中一种。为什么会叫盐和胡椒粉？因为这些噪声不是<strong>白的</strong>就是<strong>黑的</strong>，看起来很像是在图片上撒了盐和胡椒粉，而更专业点的会叫它<strong>脉冲噪声</strong>，这是在图像信号中突然且尖锐的(sudden and sharp)扰动导致图片变得粗糙。</p>
         
           <p class="article-more-link">
-            <a href="/2022/3/20/Deep-learning/Training-Model-on-Nvidia-Digits/#more">Read More</a>
+            <a href="/2022/2/27/ComputerVision/salt-and-pepper-noise/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.xydida.com/2022/3/20/Deep-learning/Training-Model-on-Nvidia-Digits/" data-id="cl90stjqx0016tycayy0n8ifz" class="article-share-link">Share</a>
+      <a data-url="https://www.xydida.com/2022/2/27/ComputerVision/salt-and-pepper-noise/" data-id="cl90stjs6002dtycavohm5n9g" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DIGITS/">DIGITS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeNet/">LeNet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MNIST/">MNIST</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Matlab/">Matlab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/filter/">filter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/noise/">noise</a></li></ul>
 
     </footer>
   </div>
