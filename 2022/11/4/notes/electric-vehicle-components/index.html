@@ -3,24 +3,30 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
-  <title>Category: notes | Hui Wang&#39;s Blog</title>
+  <title>电动汽车核心组成 | Hui Wang&#39;s Blog</title>
   <meta name="baidu-site-verification" content="yXEzwss0jm">
   <meta name="360-site-verification" content="878e013ea1c0235dec34a8b1c676cf65">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
   
-  <meta name="description" content="记录我的IT学习经历，分享技术">
-<meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hui Wang&#39;s Blog">
-<meta property="og:url" content="https://www.xydida.com/categories/Life/notes/index.html">
+  <meta name="description" content="介绍电动汽车内部核心组成。">
+<meta name="keywords" content="Car,Electric Vehicle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电动汽车核心组成">
+<meta property="og:url" content="https://www.xydida.com/2022/11/4/notes/electric-vehicle-components/index.html">
 <meta property="og:site_name" content="Hui Wang&#39;s Blog">
-<meta property="og:description" content="记录我的IT学习经历，分享技术">
+<meta property="og:description" content="介绍电动汽车内部核心组成。">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://www.xydida.com/2022/11/4/notes/electric-vehicle-components/ac-diagram.png">
+<meta property="og:image" content="https://www.xydida.com/2022/11/4/notes/electric-vehicle-components/induction-motor.png">
+<meta property="og:image" content="https://www.xydida.com/2022/11/4/notes/electric-vehicle-components/motor.png">
+<meta property="og:image" content="https://www.xydida.com/2022/11/4/notes/electric-vehicle-components/cell-pack.jpeg">
+<meta property="og:updated_time" content="2022-11-09T00:41:23.234Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hui Wang&#39;s Blog">
-<meta name="twitter:description" content="记录我的IT学习经历，分享技术">
+<meta name="twitter:title" content="电动汽车核心组成">
+<meta name="twitter:description" content="介绍电动汽车内部核心组成。">
+<meta name="twitter:image" content="https://www.xydida.com/2022/11/4/notes/electric-vehicle-components/ac-diagram.png">
   
     <link rel="alternate" href="/sitemap.xml" title="Hui Wang&#39;s Blog" type="application/atom+xml">
   
@@ -116,40 +122,92 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
+        <section id="main"><article id="post-electric-vehicle-components" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/11/4/notes/electric-vehicle-components/" class="article-date">
+  <time datetime="2022-11-04T06:16:28.000Z" itemprop="datePublished">2022-11-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/notes/">notes</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
     
     
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/11/4/Life/notes/electric-vehicle-components/">电动汽车核心组成</a>
+    <h1 class="article-title" itemprop="name">
+      电动汽车核心组成
     </h1>
   
 
-      <a href="/2022/11/4/Life/notes/electric-vehicle-components/" class="archive-article-date">
-  <time datetime="2022-11-04T06:16:28.000Z" itemprop="datePublished">Nov 4</time>
-</a>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
 
+        <p>近几年电动汽车异常火爆，大有取代油车的趋势，正好在b站看到有介绍电动汽车内部核心组成的视频，这篇文章就来记个笔记。</p>
+<p>电动汽车有三大件：</p>
+<pre class="mermaid">graph LR
+
+电动汽车 --> 电机
+电动汽车 --> 电池
+电动汽车 --> 电控</pre>
+<a id="more"></a>
+<p>如图，电动汽车包含三大核心器件，俗称“<strong>三电</strong>”。电池给整车供电，输出的是<strong>直流电</strong>，而电机运作需要的是交流电，所以电池的电不能直接连到电机，中间需要经过转换，否则电机就会坏，这就是电控中变频器的作用，将直流电转为<strong>三相交流电</strong>。</p>
+<blockquote>
+<p>直流电与交流电<br>
+交流电是指大小和方向都随时间变化而变化的电流，而直流电大小和方向不随时间变化，是恒定的。19世纪，爱迪生发明了直流电并大力推广。但他在发明灯泡的时候遇到很多棘手的问题，发现使用直流电，当距离较远时灯泡得不到足够的电流而无法发光。后来尼古拉-特斯拉出现，他是交流电的推广者，曾试图说服爱迪生使用交流输电，交流电机比直流电机结构更简单，容易变压，可以简单、经济、可靠地解决提高输电电压的问题。但爱迪生对特斯拉所说的交流电具有诸多好处无动于衷，交流电建议遭到了爱迪生强烈的拒绝！后来特斯拉在工作中发明了很多交流电设备，并推向了市场，这时爱迪生就眼红了一直打压交流电，从此展开了“电流大战”，现在看来，交流电还是略胜一筹。</p>
+</blockquote>
+<p>直流电与交流电相对比，直流电方向，大小都是稳定的，不随着时间发生改变，但直流电不宜远距离传输，损耗高，同时直流电路成本低，电压稳定，并且电子设备使用直流电不易发热。而交流电会做周期性变化。下图一展示了一个三相交流电的波形图，交流电的电压可以通过变压器改变。</p>
+<img src="/2022/11/4/notes/electric-vehicle-components/ac-diagram.png" alt="图一">
+<p>直流电经过变频器输出三相交流电到电机，图二展示了电机的三相电接口，三根主线对电机施加三种不同的波形，电机就会转动，电机转动的快慢决定了车的速度，要改变电机的转速，就需要改变波形的频率和振幅，加速时，增加电压频率，电机转速加快，反之，减速就要降频。</p>
+<p>电动汽车电机为什么不直接使用直流电机呢？</p>
+<p>直流电机内部含有换向器（俗称“整流子”）和电刷，换向器可以帮助直流电动机线圈在每当跃过平衡位置时改变其的电流方向，是直流永磁串激电动机上为了能够让电动机持续转动下去的一个部件。这两个部件会始终保持接触，时间长了，部件就会被磨掉，这样电机的性能就会下降，因此直流电机需要定期维护。</p>
+<img src="/2022/11/4/notes/electric-vehicle-components/induction-motor.png" alt="图二">
+<p>交流电动机又分为感应电动机（Induction Motoer，IM）和同步电动机（Synchronize Motor，SM）大部分电动汽车使用同步电动机，因为同步电机比感应电机效率高2-3%，但是成本也高一点，图四展示了感应电机的内部结构。</p>
+<img src="/2022/11/4/notes/electric-vehicle-components/motor.png" alt="图三">
+<p>减速制动时，油车中会减少向发动机喷射燃料并因发动机阻力而减速，踩下制动踏板时，刹车片与刹车盘摩擦将动能转换为热能，从而减速。对于电动机，踩制动踏板和油车一样，不介绍了。另外，电车中还有一个再生制动器的减速方法，可以将汽车动能专为电能，这种方式在制动时，发动机被视为一个发电机，产生电能通过逆变器又输送给电池。这种方式很好的回收了动能，给电池充电从而延长行驶里程，但是动能护手不是100%的，制动过程中会产生热量发散，另外，制动时一般是踏板制动和再生制动相结合的，也会损失动能。</p>
+<p>电车中的电池由一节一节小的圆柱形干电池（电芯）组成，英文名叫“cell”，由于锂离子电池能量密度高，能实现快速和深度充放电，寿命长，现在动力电池主要使用锂离子电池，根据正极材料的不同，又分为三元锂电池和磷酸铁锂电池。电芯以<strong>串联</strong>或<em>并联</em>方式组成模组（module），模组再以串联的方式，再集成热管理系统，电池管理系统等部件，最终集成为电池包（英文名称“Pack”），图四展示了一个电池包的组成。几年前特斯拉Model S就有7104节圆柱形电池，重量达到540公斤，这种电芯累计的越多，行驶里程就越远。</p>
+<img src="/2022/11/4/notes/electric-vehicle-components/cell-pack.jpeg" alt="图四">
+<p>电动汽车其实是非常高效的，只不过受制于动力电池。电车中电机的效率非常高，大约为90-96%，换做是燃油发动机，效率仅有40%左右。比如输入100W电压给电机供电，电机的机械输出有90-96W，相比之下，燃油发动机燃烧100W的燃料，只有40W的机械输出。</p>
+<hr>
+<p>参考：</p>
+<ol>
+<li><a href="https://www.bilibili.com/video/BV1cA411J7C2" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1cA411J7C2</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/93652954" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/93652954</a></li>
+<li><a href="https://www.elecfans.com/dianzichangshi/202006131229787.html" target="_blank" rel="noopener">https://www.elecfans.com/dianzichangshi/202006131229787.html</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2022/11/4/notes/electric-vehicle-components/" data-id="cla36lcfq001r8wcaz2nhrb49" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Car/">Car</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Electric-Vehicle/">Electric Vehicle</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/11/3/Life/car-life/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">车</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
@@ -159,7 +217,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Artificial-Intelligence/">Artificial Intelligence</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ComputerVision/">ComputerVision</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DSP/">DSP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Deep-learning/">Deep learning</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Devops/">Devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Digital-pathology/">Digital pathology</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Electron/">Electron</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/notes/">notes</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Networks/">Networks</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Neural-Network/">Neural Network</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Object-Oriented/">Object Oriented</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming-Language/">Programming Language</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Regular-Expression/">Regular Expression</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VPS/">VPS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Yangmao/">Yangmao</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/小程序/">小程序</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/微信/">微信</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Artificial-Intelligence/">Artificial Intelligence</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ComputerVision/">ComputerVision</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DSP/">DSP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Deep-learning/">Deep learning</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Devops/">Devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Digital-pathology/">Digital pathology</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Electron/">Electron</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Networks/">Networks</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Neural-Network/">Neural Network</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Object-Oriented/">Object Oriented</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming-Language/">Programming Language</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Regular-Expression/">Regular Expression</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VPS/">VPS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Yangmao/">Yangmao</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/小程序/">小程序</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/微信/">微信</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -191,7 +249,7 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2022/11/4/Life/notes/electric-vehicle-components/">电动汽车核心组成</a>
+            <a href="/2022/11/4/notes/electric-vehicle-components/">电动汽车核心组成</a>
           </li>
         
           <li>
