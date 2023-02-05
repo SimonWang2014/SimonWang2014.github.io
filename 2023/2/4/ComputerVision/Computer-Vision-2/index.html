@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>计算机视觉 (2) 数字图像与卷积 | Hui Wang&#39;s Blog</title>
+  <meta name="baidu-site-verification" content="yXEzwss0jm" />
+  <meta name="360-site-verification" content="878e013ea1c0235dec34a8b1c676cf65" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="PHP,Laravel,JavaScript,Jquery,Linux,前端博客">
+  
+  <meta name="description" content="RGB图像转灰度图，图像卷积过滤，降噪，边缘检测，Sobel算计检测边缘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机视觉 (2) 数字图像与卷积">
+<meta property="og:url" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/index.html">
+<meta property="og:site_name" content="Hui Wang&#39;s Blog">
+<meta property="og:description" content="RGB图像转灰度图，图像卷积过滤，降噪，边缘检测，Sobel算计检测边缘">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/digital-image.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/three-rasters-of-color-image.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/transform-as-image-processing.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/speckling-noise.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/gaussian-distribution.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/image-signal-and-noise.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/denoise-by-averaging.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/denoise-by-averaging-pixel-groups.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/average-filter.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/image-convolution.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/convolution-for-identical-image.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/convolution-for-shift-left-by-one-pixel.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/convolution-1d.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/convolution-2d.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/box-filter.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/result-of-gaussian-filter.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/gaussian-filter.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/edge-intensity.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/image-gradient.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/gradient-of-a-tiger.png">
+<meta property="og:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/sobel-filter.png">
+<meta property="article:published_time" content="2023-02-04T14:02:26.000Z">
+<meta property="article:modified_time" content="2023-02-05T06:23:01.431Z">
+<meta property="article:author" content="bilberry">
+<meta property="article:tag" content="image processing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/digital-image.png">
+  
+    <link rel="alternate" href="/sitemap.xml" title="Hui Wang&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-98739349-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-98739349-1');
+</script>
+
+
+  
+<!-- Google Adscene -->
+<script data-ad-client="ca-pub-8701685410355750" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- End Google Analytics -->
+
+
+  
+    <!-- CNZZ Analytics -->
+    <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1257809326'%3E%3C/span%3E%3Cscript src='https://s95.cnzz.com/z_stat.php%3Fid%3D1257809326' type='text/javascript'%3E%3C/script%3E"));</script>
+    <style>
+        span#cnzz_stat_icon_1257809326 {display:none;}
+    </style>
+    <!-- End CNZZ Analytics -->
+
+
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.15.1/katex.min.css" rel="stylesheet" type="text/css">
+  <!-- <link href="//lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/KaTeX/0.15.1/katex.min.css" rel="stylesheet" type="text/css"> -->
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hui Wang&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about/eng.html">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/sitemap.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.xydida.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Computer-Vision-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/2/4/ComputerVision/Computer-Vision-2/" class="article-date">
+  <time datetime="2023-02-04T14:02:26.000Z" itemprop="datePublished">2023-02-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ComputerVision/">ComputerVision</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      计算机视觉 (2) 数字图像与卷积
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">Table of content</strong>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F"><span class="toc-number">1.</span> <span class="toc-text"> 数字图像</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%B0%B1%E6%98%AF%E4%B8%80%E7%A7%8D%E5%8F%98%E6%8D%A2transform"><span class="toc-number">2.</span> <span class="toc-text"> 图像处理就是一种变换（transform）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%8D%E5%99%AA"><span class="toc-number">3.</span> <span class="toc-text"> 降噪</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%9B%BE%E5%83%8F"><span class="toc-number">3.1.</span> <span class="toc-text"> 多图像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%BC%A0%E5%9B%BE%E7%89%87"><span class="toc-number">3.2.</span> <span class="toc-text"> 单张图片</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF"><span class="toc-number">4.</span> <span class="toc-text"> 卷积</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%8D%B7%E7%A7%AF"><span class="toc-number">4.1.</span> <span class="toc-text"> 一维数据卷积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%8D%B7%E7%A7%AF"><span class="toc-number">4.2.</span> <span class="toc-text"> 二维数据卷积</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E6%A8%A1%E7%B3%8Ablurring"><span class="toc-number">5.</span> <span class="toc-text"> 图像模糊（blurring）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B"><span class="toc-number">6.</span> <span class="toc-text"> 边缘检测</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#sobel%E8%BE%B9%E7%BC%98%E7%AE%97%E5%AD%90"><span class="toc-number">6.1.</span> <span class="toc-text"> Sobel边缘算子</span></a></li></ol></li></ol>
+          </div>
+        
+
+        <h1 id="数字图像"><a class="markdownIt-Anchor" href="#数字图像"></a> 数字图像</h1>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/digital-image.png" class="" alt="灰度图像">
+<p>计算机视觉的主要任务就是分析数字图像，计算机中图像是以像素的形式构成方形的光栅（raster），常见的8位深度的图像中，0代表黑色，255代表白色，如上图是一张8位深度的灰度图（greyscale），可以将一个光栅图看作一个函数f(x,y)，参数为横纵坐标，输出结果就是像素的值即强度。</p>
+<p>三个光栅构成彩色图像，其中光栅也称为通道，分别是红（Red），绿（Green），蓝（Blue）。</p>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/three-rasters-of-color-image.png" class="" alt="彩色图像">
+<span id="more"></span>
+<p>可以使用如下公式将RGB图像转换成Greyscale图像：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>Y</mi><mo>=</mo><mn>0.3</mn><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo><mo>+</mo><mn>0.59</mn><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo><mo>+</mo><mn>0.11</mn><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Y = 0.3(R) + 0.59(G) + 0.11(B)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">3</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">5</span><span class="mord">9</span><span class="mopen">(</span><span class="mord mathnormal">G</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">1</span><span class="mord">1</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span></span></span></span></span></p>
+<p>从公式中，各部分的洗漱代表了人眼对三种颜色的响应，绿光和红光相同的强度下，人眼会感觉绿色更亮一点，差不多是红色的2倍。上述转换使用<code>Matlab</code>代码如下：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">image = imread(<span class="string">&#x27;pic.jpg&#x27;</span>);</span><br><span class="line">// 分别显示不同的通道</span><br><span class="line">// R</span><br><span class="line">imgshow(image(:,:,<span class="number">1</span>));</span><br><span class="line">// G</span><br><span class="line">imgshow(image(:,:,<span class="number">2</span>));</span><br><span class="line">// B</span><br><span class="line">imgshow(image(:,:,<span class="number">3</span>));</span><br><span class="line"></span><br><span class="line">// 转换</span><br><span class="line">grey = <span class="number">0.3</span> * image(:,:,<span class="number">1</span>) + <span class="number">0.59</span> * image(:,:,<span class="number">2</span>) + <span class="number">0.11</span> * image(:,:,<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">imgshow(grey);</span><br></pre></td></tr></table></figure>
+<h1 id="图像处理就是一种变换transform"><a class="markdownIt-Anchor" href="#图像处理就是一种变换transform"></a> 图像处理就是一种变换（transform）</h1>
+<p>图像处理任务可以看作是将原有的<code>f(x,y)</code>变换成新的函数<code>g(x,y)</code>的过程，比较常用的就是线性变换，如下图：</p>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/transform-as-image-processing.png" class="">
+<p>线性变换有如下优点：</p>
+<ul>
+<li>实用，可以检测边缘，细节锐化，降噪等</li>
+<li>配合卷积算子，效率高</li>
+</ul>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/speckling-noise.png" class="">
+<p>图像降噪是线性过滤器最常见的应用之一，图像的噪点类型多样，常见的&quot;speckling&quot;是一种热噪声，也是高斯噪声的一种，一些廉价相机在低光环境下拍出的照片通常都会有这种噪声。</p>
+<p>高斯噪声可以想象成在原始像素值上多加上一点，噪声值的分布是一个高斯分布，如下图，均值为0，标准差为10。</p>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/gaussian-distribution.png" class="">
+<h1 id="降噪"><a class="markdownIt-Anchor" href="#降噪"></a> 降噪</h1>
+<h2 id="多图像"><a class="markdownIt-Anchor" href="#多图像"></a> 多图像</h2>
+<p>如果我们将相机固定在一个位置，拍了n张一样的图，但由于一些细微因素的影响，这n张图片的像素值不可能完全一样，因为一张图片的生成包含了原始图像信号和噪声信号：</p>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/image-signal-and-noise.png" class="">
+<p>平均法是将这n张图片的每个像素值取平均，最终得到一张更清晰的图像，由于高斯噪声的均值是0，所以当照片的数量越多，n越大，平均后得到的噪声就越小，如下图：</p>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/denoise-by-averaging.png" class="">
+<p>此方法需要很多张图像来获得好的效果，卫星拍照领域广泛使用，但平时生活中使用较少。</p>
+<h2 id="单张图片"><a class="markdownIt-Anchor" href="#单张图片"></a> 单张图片</h2>
+<p>正常情况下，只有一张带有噪声的图片，由于空间连贯性（spatial coherence），相邻像素强度是类似的，可以将像素分组，使用滑动窗口在每一组内取平均作为新的像素值，也可以起到去噪的效果，如下图：</p>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/denoise-by-averaging-pixel-groups.png" class="">
+<p>一种高效的组内平均方法是使用卷积算子，如果滑动窗口大小为3x3，则卷积算子如下：</p>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/average-filter.png" class="">
+<p>操作起来就是将算子的每一个元素与窗口内对应的元素相乘，最后相加后结果四舍五入：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mn>9</mn><mo>∗</mo><mo stretchy="false">(</mo><mn>1</mn><mo>∗</mo><mn>0</mn><mo>+</mo><mn>1</mn><mo>∗</mo><mn>4</mn><mo>+</mo><mn>1</mn><mo>∗</mo><mn>0...</mn><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><mi mathvariant="normal">/</mi><mn>9</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">1/9 * (1*0 + 1*4 + 1*0 ...) = 4/9 = 0
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord">9</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mord">/</span><span class="mord">9</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span></span></p>
+<h1 id="卷积"><a class="markdownIt-Anchor" href="#卷积"></a> 卷积</h1>
+<p>上面的例子可以知道，我们通过一个卷积算子能将图像<code>f(x,y)</code>转换成<code>g(x,y)</code>，通过线性组合周围像素的方式就叫做<code>线性过滤</code>，卷积算子的每个元素为对应像素的<code>权重</code>。</p>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/image-convolution.png" class="">
+<p>不同的算子权重可以创建处不同效果的图像，上例中每个权重都是1/9即取周围9个像素像素的均值，最后生成的图片更加模糊。下面是带有不同权重的算子：</p>
+<p>结果和原始图像一样：</p>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/convolution-for-identical-image.png" class="">
+<p>图片向左移动一个像素：</p>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/convolution-for-shift-left-by-one-pixel.png" class="">
+<h2 id="一维数据卷积"><a class="markdownIt-Anchor" href="#一维数据卷积"></a> 一维数据卷积</h2>
+<p><code>f(x)</code>为输入信号，<code>h(x)</code>为过滤器：</p>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/convolution-1d.png" class="">
+<h2 id="二维数据卷积"><a class="markdownIt-Anchor" href="#二维数据卷积"></a> 二维数据卷积</h2>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/convolution-2d.png" class="">
+<h1 id="图像模糊blurring"><a class="markdownIt-Anchor" href="#图像模糊blurring"></a> 图像模糊（blurring）</h1>
+<p>上面图像去噪的例子中，是采用平均周围像素的方式，每个算子的大小都是一样的，又称作“Box filter”，可视化如下图：</p>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/box-filter.png" class="" alt="Box filter">
+<p>从结果来看，虽然是模糊的，但是图像不够顺滑，细看像一块一块的方块组成。如果换成使用高斯函数生成算子权重，即中间权重大，周围权重小，则结果会很平滑：</p>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/result-of-gaussian-filter.png" class="" alt="Gaussian filter">
+<p>高斯算子通过高斯函数生成，选择一个固定的标准差，参数<code>x,y</code>为距离中心点的偏移量，离中心的越远，生成的权重越小，因为spatial coherence的原因，距离越远，相关性就越小，</p>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/gaussian-filter.png" class="" alt="Gaussian filter">
+<h1 id="边缘检测"><a class="markdownIt-Anchor" href="#边缘检测"></a> 边缘检测</h1>
+<p>线性过滤器也可以用于边缘检测，在图像中，边缘发生在强度不连续的地方，可以使用高通过滤器（high pass filter）来检测。</p>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/edge-intensity.png" class="">
+<p>如上图，黑白中间即边所在，下面的强度图可以看到由黑到白时，强度发生了巨大的跳变，但是真实的图像中，这种变化往往不会这么明显，会稍微柔和一点。边缘分为水平和垂直方向，水平方向变化的边需要计算水平梯度（gradient），反之需要计算垂直梯度，图像梯度指向强度变化最快的方向。</p>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/image-gradient.png" class="" alt="图像梯度强度">
+<p>边又两个属性，分别是图像梯度和方向，可以分别通过公式1和公式2计算出来：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable width="100%"><mtr><mtd width="50%"></mtd><mtd><mrow><mo stretchy="false">∥</mo><mi mathvariant="normal">∇</mi><mi>f</mi><mo stretchy="false">∥</mo><mo>=</mo><msqrt><mrow><mo stretchy="false">(</mo><mfrac><mrow><mi>δ</mi><mi>f</mi></mrow><mrow><mi>δ</mi><mi>x</mi></mrow></mfrac><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false">(</mo><mfrac><mrow><mi>δ</mi><mi>f</mi></mrow><mrow><mi>δ</mi><mi>y</mi></mrow></mfrac><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></msqrt></mrow></mtd><mtd width="50%"></mtd><mtd><mtext>(1)</mtext></mtd></mtr></mtable><annotation encoding="application/x-tex">\lVert\nabla{f}\rVert = \sqrt{(\frac{\delta{f}}{\delta{x}})^{2} + (\frac{\delta{f}}{\delta{y}})^{2}} \tag{1}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">∥</span><span class="mord">∇</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span><span class="mclose">∥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.04em;vertical-align:-1.1606250000000005em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8793749999999996em;"><span class="svg-align" style="top:-5em;"><span class="pstrut" style="height:5em;"></span><span class="mord" style="padding-left:1em;"><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714399999999998em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span><span class="mord"><span class="mord mathnormal">x</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714399999999998em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804400000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.8393749999999995em;"><span class="pstrut" style="height:5em;"></span><span class="hide-tail" style="min-width:1.02em;height:3.08em;"><svg width='400em' height='3.08em' viewBox='0 0 400000 3240' preserveAspectRatio='xMinYMin slice'><path d='M473,2793
+c339.3,-1799.3,509.3,-2700,510,-2702 l0 -0
+c3.3,-7.3,9.3,-11,18,-11 H400000v40H1017.7
+s-90.5,478,-276.2,1466c-185.7,988,-279.5,1483,-281.5,1485c-2,6,-10,9,-24,9
+c-8,0,-12,-0.7,-12,-2c0,-1.3,-5.3,-32,-16,-92c-50.7,-293.3,-119.7,-693.3,-207,-1200
+c0,-1.3,-5.3,8.7,-16,30c-10.7,21.3,-21.3,42.7,-32,64s-16,33,-16,33s-26,-26,-26,-26
+s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,104,
+606zM1001 80h400000v40H1017.7z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1606250000000005em;"><span></span></span></span></span></span></span><span class="tag"><span class="strut" style="height:3.04em;vertical-align:-1.1606250000000005em;"></span><span class="mord text"><span class="mord">(</span><span class="mord"><span class="mord">1</span></span><span class="mord">)</span></span></span></span></span></span></p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable width="100%"><mtr><mtd width="50%"></mtd><mtd><mrow><mi>θ</mi><mo>=</mo><mi>t</mi><mi>a</mi><msup><mi>n</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">(</mo><mfrac><mrow><mi>δ</mi><mi>f</mi></mrow><mrow><mi>δ</mi><mi>y</mi></mrow></mfrac><mi mathvariant="normal">/</mi><mfrac><mrow><mi>δ</mi><mi>f</mi></mrow><mrow><mi>δ</mi><mi>x</mi></mrow></mfrac><mo stretchy="false">)</mo></mrow></mtd><mtd width="50%"></mtd><mtd><mtext>(2)</mtext></mtd></mtr></mtable><annotation encoding="application/x-tex">\theta = tan^{-1}(\frac{\delta{f}}{\delta{y}} / \frac{\delta{f}}{\delta{x}}) \tag{2}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.25188em;vertical-align:-0.8804400000000001em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.864108em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714399999999998em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804400000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord">/</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714399999999998em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span><span class="mord"><span class="mord mathnormal">x</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span><span class="tag"><span class="strut" style="height:2.25188em;vertical-align:-0.8804400000000001em;"></span><span class="mord text"><span class="mord">(</span><span class="mord"><span class="mord">2</span></span><span class="mord">)</span></span></span></span></span></span></p>
+<p>如下，是一只老虎的梯度图：</p>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/gradient-of-a-tiger.png" class="">
+<h2 id="sobel边缘算子"><a class="markdownIt-Anchor" href="#sobel边缘算子"></a> Sobel边缘算子</h2>
+<p>Sobel经常被用来检测边缘，同时它还有平滑图像的功能，算子如下：</p>
+<img src="/2023/2/4/ComputerVision/Computer-Vision-2/sobel-filter.png" class="">
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.xydida.com/2023/2/4/ComputerVision/Computer-Vision-2/" data-id="cldq3rjjf0000q4ca3g5m5v4i" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/image-processing/" rel="tag">image processing</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/1/30/ComputerVision/Computer-Vision-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">计算机视觉（1）什么是计算机视觉？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Artificial-Intelligence/">Artificial Intelligence</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ComputerVision/">ComputerVision</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DSP/">DSP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Deep-learning/">Deep learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Devops/">Devops</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Digital-pathology/">Digital pathology</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Electron/">Electron</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Networks/">Networks</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Neural-Network/">Neural Network</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Object-Oriented/">Object Oriented</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming-Language/">Programming Language</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Regular-Expression/">Regular Expression</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VPS/">VPS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Yangmao/">Yangmao</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">小程序</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1/">微信</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1/">设计</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2021/" style="font-size: 10px;">2021</a> <a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/API/" style="font-size: 13.33px;">API</a> <a href="/tags/Artificial-Intelligence/" style="font-size: 13.33px;">Artificial Intelligence</a> <a href="/tags/Big-Sur/" style="font-size: 10px;">Big Sur</a> <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CSS/" style="font-size: 16.67px;">CSS</a> <a href="/tags/Car/" style="font-size: 11.67px;">Car</a> <a href="/tags/DIGITS/" style="font-size: 10px;">DIGITS</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/DSP/" style="font-size: 10px;">DSP</a> <a href="/tags/Digital-pathology/" style="font-size: 11.67px;">Digital pathology</a> <a href="/tags/Electric-Vehicle/" style="font-size: 10px;">Electric Vehicle</a> <a href="/tags/Eloquent/" style="font-size: 10px;">Eloquent</a> <a href="/tags/Ethics/" style="font-size: 10px;">Ethics</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 13.33px;">Javascript</a> <a href="/tags/Laravel/" style="font-size: 11.67px;">Laravel</a> <a href="/tags/LeNet/" style="font-size: 10px;">LeNet</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Lloyds-bank/" style="font-size: 10px;">Lloyds bank</a> <a href="/tags/Lumen/" style="font-size: 10px;">Lumen</a> <a href="/tags/MNIST/" style="font-size: 10px;">MNIST</a> <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Object-Oriented/" style="font-size: 10px;">Object Oriented</a> <a href="/tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="/tags/OpenSlide/" style="font-size: 11.67px;">OpenSlide</a> <a href="/tags/Otsu/" style="font-size: 10px;">Otsu</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHPStorm/" style="font-size: 10px;">PHPStorm</a> <a href="/tags/PSR/" style="font-size: 10px;">PSR</a> <a href="/tags/Perl/" style="font-size: 10px;">Perl</a> <a href="/tags/Prolog/" style="font-size: 10px;">Prolog</a> <a href="/tags/PyTorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Pytorch/" style="font-size: 10px;">Pytorch</a> <a href="/tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SICP/" style="font-size: 10px;">SICP</a> <a href="/tags/Server/" style="font-size: 15px;">Server</a> <a href="/tags/Slim/" style="font-size: 10px;">Slim</a> <a href="/tags/Something/" style="font-size: 10px;">Something</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/Tensor/" style="font-size: 10px;">Tensor</a> <a href="/tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/UK/" style="font-size: 11.67px;">UK</a> <a href="/tags/UniApp/" style="font-size: 10px;">UniApp</a> <a href="/tags/VB-NET/" style="font-size: 10px;">VB.NET</a> <a href="/tags/VPS/" style="font-size: 10px;">VPS</a> <a href="/tags/VirtualBox/" style="font-size: 10px;">VirtualBox</a> <a href="/tags/Vue/" style="font-size: 11.67px;">Vue</a> <a href="/tags/Vultr/" style="font-size: 10px;">Vultr</a> <a href="/tags/WSI/" style="font-size: 11.67px;">WSI</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/array-key-exists/" style="font-size: 10px;">array_key_exists</a> <a href="/tags/array-search/" style="font-size: 10px;">array_search</a> <a href="/tags/audio/" style="font-size: 10px;">audio</a> <a href="/tags/autoload/" style="font-size: 10px;">autoload</a> <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/contrast/" style="font-size: 10px;">contrast</a> <a href="/tags/convolution/" style="font-size: 10px;">convolution</a> <a href="/tags/cover-view/" style="font-size: 11.67px;">cover-view</a> <a href="/tags/cryptography/" style="font-size: 10px;">cryptography</a> <a href="/tags/curl/" style="font-size: 10px;">curl</a> <a href="/tags/decrypt/" style="font-size: 10px;">decrypt</a> <a href="/tags/deep-learning/" style="font-size: 10px;">deep learning</a> <a href="/tags/edge-detect/" style="font-size: 10px;">edge detect</a> <a href="/tags/efficiency/" style="font-size: 10px;">efficiency</a> <a href="/tags/electron/" style="font-size: 11.67px;">electron</a> <a href="/tags/emoji/" style="font-size: 10px;">emoji</a> <a href="/tags/encrypt/" style="font-size: 10px;">encrypt</a> <a href="/tags/event-loop/" style="font-size: 10px;">event-loop</a> <a href="/tags/few-shot-classification/" style="font-size: 11.67px;">few-shot classification</a> <a href="/tags/filter/" style="font-size: 11.67px;">filter</a> <a href="/tags/firewall/" style="font-size: 10px;">firewall</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/image-processing/" style="font-size: 18.33px;">image processing</a> <a href="/tags/image-thresholding/" style="font-size: 10px;">image thresholding</a> <a href="/tags/in-array/" style="font-size: 10px;">in_array</a> <a href="/tags/interviews/" style="font-size: 10px;">interviews</a> <a href="/tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="/tags/kernel/" style="font-size: 10px;">kernel</a> <a href="/tags/life/" style="font-size: 11.67px;">life</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/macOS/" style="font-size: 10px;">macOS</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/matplotlib/" style="font-size: 10px;">matplotlib</a> <a href="/tags/mean/" style="font-size: 10px;">mean</a> <a href="/tags/networks/" style="font-size: 11.67px;">networks</a> <a href="/tags/neural-network/" style="font-size: 10px;">neural network</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/noise/" style="font-size: 10px;">noise</a> <a href="/tags/normalize/" style="font-size: 10px;">normalize</a> <a href="/tags/notes/" style="font-size: 16.67px;">notes</a> <a href="/tags/npm/" style="font-size: 11.67px;">npm</a> <a href="/tags/numpy/" style="font-size: 10px;">numpy</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/postgraduate/" style="font-size: 11.67px;">postgraduate</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/reading/" style="font-size: 10px;">reading</a> <a href="/tags/routing/" style="font-size: 10px;">routing</a> <a href="/tags/sobel/" style="font-size: 10px;">sobel</a> <a href="/tags/std-dev/" style="font-size: 10px;">std dev</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/ufw/" style="font-size: 10px;">ufw</a> <a href="/tags/uniApp/" style="font-size: 10px;">uniApp</a> <a href="/tags/%E5%85%AC%E4%BC%97%E5%8F%B7%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">公众号阅读笔记</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 18.33px;">小程序</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 13.33px;">微信</a> <a href="/tags/%E7%BE%8A%E6%AF%9B/" style="font-size: 10px;">羊毛</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">软件设计</a> <a href="/tags/%E9%9F%B3%E4%B9%90/" style="font-size: 10px;">音乐</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/2/4/ComputerVision/Computer-Vision-2/">计算机视觉 (2) 数字图像与卷积</a>
+          </li>
+        
+          <li>
+            <a href="/2023/1/30/ComputerVision/Computer-Vision-1/">计算机视觉（1）什么是计算机视觉？</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/16/Deep-learning/Basic-introduction-of-Tensor-in-PyTorch/">Basic introduction of Tensor in PyTorch</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/9/ComputerVision/Contrast-Stretching/">Contrast Stretching</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/4/notes/electric-vehicle-components/">电动汽车核心组成</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <div class="footer-item copyright">
+        &copy; 2023 bilberry<br>
+      Powered by <a href="http://hexo.io/" target="_blank" rel="nofollow">Hexo</a>
+      </div>
+
+      <div class="footer-item contact">
+        <p>Email: <a href="mailto:wanghui94@live.com">wanghui94@live.com</a></p>
+        <p>GitHub: <a href="https://github.com/SimonWang2014" target="_blank">SimonWang2014</a></p>
+      </div>
+
+      <div class="footer-item qrcode gh">
+        <p>WeChat:&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <img src="/css/images/qrcode_for_gh.jpg"></img>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about/eng.html" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/2.2.4/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+  <!-- <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script> -->
+  <script src="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mermaid/8.12.0/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>
