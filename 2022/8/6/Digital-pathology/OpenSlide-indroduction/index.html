@@ -17,6 +17,7 @@
 <meta property="og:site_name" content="Hui Wang&#39;s Blog">
 <meta property="og:description" content="What is OpenSlide? How to install OpenSlide and OpenSlide Python in Ubuntu and Windows? OpenSlide tutorial, read medical images with OpenSlide.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.xydida.com/2022/8/6/Digital-pathology/OpenSlide-indroduction/openslide_logo.png">
 <meta property="og:image" content="https://www.xydida.com/2022/8/6/Digital-pathology/OpenSlide-indroduction/windows-download-openslide.PNG">
 <meta property="og:image" content="https://www.xydida.com/2022/8/6/Digital-pathology/OpenSlide-indroduction/packagenotfounderror.PNG">
 <meta property="og:image" content="https://www.xydida.com/2022/8/6/Digital-pathology/OpenSlide-indroduction/pip-install.PNG">
@@ -26,13 +27,13 @@
 <meta property="og:image" content="https://www.xydida.com/2022/8/6/Digital-pathology/OpenSlide-indroduction/import-openslide.PNG">
 <meta property="og:image" content="https://www.xydida.com/2022/8/6/Digital-pathology/OpenSlide-indroduction/wsi-tissue.jpg">
 <meta property="article:published_time" content="2022-08-06T08:16:01.000Z">
-<meta property="article:modified_time" content="2022-10-01T10:22:08.571Z">
+<meta property="article:modified_time" content="2023-02-12T04:47:46.845Z">
 <meta property="article:author" content="bilberry">
 <meta property="article:tag" content="OpenSlide">
 <meta property="article:tag" content="WSI">
 <meta property="article:tag" content="Digital pathology">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.xydida.com/2022/8/6/Digital-pathology/OpenSlide-indroduction/windows-download-openslide.PNG">
+<meta name="twitter:image" content="https://www.xydida.com/2022/8/6/Digital-pathology/OpenSlide-indroduction/openslide_logo.png">
   
     <link rel="alternate" href="/sitemap.xml" title="Hui Wang&#39;s Blog" type="application/atom+xml">
   
@@ -160,9 +161,9 @@ ga('send', 'pageview');
           </div>
         
 
-        <p>1</p>
+        <img src="/2022/8/6/Digital-pathology/OpenSlide-indroduction/openslide_logo.png" class="">
 <h1 id="openslide"><a class="markdownIt-Anchor" href="#openslide"></a> OpenSlide</h1>
-<p><a href="https://openslide.org/">https://openslide.org/</a></p>
+<p><a target="_blank" rel="noopener" href="https://openslide.org/">https://openslide.org/</a></p>
 <p>OpenSlide is a C library that provides simple interfaces to process Whole-Slide-Images (also known as virtual slides). WSIs are very high resolution images used in digital pathology. These images usually have several gigabytes and can not be easily read with standard tools or libraries because the uncompressed images often occupy tens of gigabytes which consume huge of RAM. WSI is scanned with multi-resolution, while OpenSlide can support read a small amount of image data at the resolution closest to a specifical magnification level.</p>
 <p>OpenSlide supports many popular WSI format:</p>
 <ul>
@@ -181,8 +182,8 @@ ga('send', 'pageview');
 <p>In this post, I’ll introduce how ot install <code>OpenSlide</code> and <code>OpenSlide-Python</code> binding in <code>Windows</code> and <code>Ubuntu</code>, and give some examples.</p>
 <h1 id="windows-install"><a class="markdownIt-Anchor" href="#windows-install"></a> Windows install</h1>
 <p><code>OpenSlide</code> and <code>OpenSlide-Python</code> are different,that must be installed seperately. <code>OpenSlide</code> is the core library, while the other is the implementation of the interface.</p>
-<p>OpenSlide Python document: <a href="https://openslide.org/api/python/">https://openslide.org/api/python/</a></p>
-<p>Download OpenSlide: <a href="https://openslide.org/download/">https://openslide.org/download/</a></p>
+<p>OpenSlide Python document: <a target="_blank" rel="noopener" href="https://openslide.org/api/python/">https://openslide.org/api/python/</a></p>
+<p>Download OpenSlide: <a target="_blank" rel="noopener" href="https://openslide.org/download/">https://openslide.org/download/</a></p>
 <img src="/2022/8/6/Digital-pathology/OpenSlide-indroduction/windows-download-openslide.PNG" class="" alt="windows binaries">
 <p>First, download OpenSlide windows binaries and extract them to a folder.</p>
 <p>Sencond, install <code>OpenSlide Python</code> package. It is not recommended to install <code>OpenSlide Python</code> with <code>conda</code> here, I have tried several times with <code>conda</code>, but got the PackageNotFoundError:</p>
@@ -191,7 +192,7 @@ ga('send', 'pageview');
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install openslide-python</span><br></pre></td></tr></table></figure>
 <img src="/2022/8/6/Digital-pathology/OpenSlide-indroduction/pip-install.PNG" class="" alt="install with pip">
 <p>In my computer, <code>openslide-python 1.2.0</code> is installed.</p>
-<p>Then, according to the <a href="https://openslide.org/api/python/#installing">document</a>, in <code>Python</code>, import in a <code>with os.add_dll_directory()</code> statement:</p>
+<p>Then, according to the <a target="_blank" rel="noopener" href="https://openslide.org/api/python/#installing">document</a>, in <code>Python</code>, import in a <code>with os.add_dll_directory()</code> statement:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># The path can also be read from a config file, etc.</span><br><span class="line">OPENSLIDE_PATH = r&#x27;c:\path\to\openslide-win64\bin&#x27;</span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line">if hasattr(os, &#x27;add_dll_directory&#x27;):</span><br><span class="line">    # Python &gt;= 3.8 on Windows</span><br><span class="line">    with os.add_dll_directory(OPENSLIDE_PATH):</span><br><span class="line">        import openslide</span><br><span class="line">else:</span><br><span class="line">    import openslide</span><br></pre></td></tr></table></figure>
 <h1 id="problems"><a class="markdownIt-Anchor" href="#problems"></a> Problems</h1>
 <p>However, when importing the openslide’s python binding, I got the <code>WinError 127</code>, here is my error message:</p>
@@ -199,7 +200,7 @@ ga('send', 'pageview');
 <p>And it alerted “Entry point not found”:</p>
 <img src="/2022/8/6/Digital-pathology/OpenSlide-indroduction/entry-point-not-found.PNG" class="" alt="Entry point not found">
 <p>I was stucked in this problem and has tried just every solution I found with no success.</p>
-<p>Until I found a solution in <a href="https://stackoverflow.com/a/64176144">Stackoverflow</a>, It may seems that I was trapped in “DLL Hell”.</p>
+<p>Until I found a solution in <a target="_blank" rel="noopener" href="https://stackoverflow.com/a/64176144">Stackoverflow</a>, It may seems that I was trapped in “DLL Hell”.</p>
 <blockquote>
 <p>There is a Windows DLL file that is taking precedence over the DLL file python needs in this source code. You need to prepend the PATH variable in your Python binding module before calling the C openslide library with the full path of the bin folder where the C openslide library DLL files reside. This will override the Windows “zlib1.dll” file by using the OpenSlide “zlib1.dll” file. -author: MacGyver</p>
 </blockquote>
@@ -208,15 +209,15 @@ ga('send', 'pageview');
 <h1 id="ubuntu-install"><a class="markdownIt-Anchor" href="#ubuntu-install"></a> Ubuntu install</h1>
 <p>If you have <code>root</code> permission, you can install <code>openslide</code> directly by <code>apt</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">## OpenSlide</span></span><br><span class="line">apt-get install openslide-tools</span><br><span class="line"></span><br><span class="line"><span class="comment">## OpenSlide Python</span></span><br><span class="line">apt-get install python3-openslide</span><br></pre></td></tr></table></figure>
-<p>Just follow the openslide document, <a href="https://openslide.org/download/#distribution-packages">https://openslide.org/download/#distribution-packages</a></p>
+<p>Just follow the openslide document, <a target="_blank" rel="noopener" href="https://openslide.org/download/#distribution-packages">https://openslide.org/download/#distribution-packages</a></p>
 <p>But, if you are in a restricted environment where you don’t have the permission to install with <code>apt</code>, <code>conda</code> is an altenative method.</p>
-<p>Here, I will use <code>miniconda</code> which is a minimal installer for conda (<a href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a>).</p>
+<p>Here, I will use <code>miniconda</code> which is a minimal installer for conda (<a target="_blank" rel="noopener" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a>).</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</span><br><span class="line">bash Miniconda3-latest-Linux-x86_64.sh -b -p miniconda3 -s</span><br><span class="line"><span class="built_in">rm</span> Miniconda3-latest-Linux-x86_64.sh</span><br><span class="line">conda=miniconda3/bin/conda</span><br><span class="line"><span class="variable">$conda</span> create -y -n openslide</span><br></pre></td></tr></table></figure>
-<p>The commands above will download the latest miniconda and setup a <code>$conda</code> local variable for the convinent. Then create an environment called ‘openslide’. If you want to add other packages or specific python version, visit <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#viewing-a-list-of-your-environments">https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#viewing-a-list-of-your-environments</a></p>
+<p>The commands above will download the latest miniconda and setup a <code>$conda</code> local variable for the convinent. Then create an environment called ‘openslide’. If you want to add other packages or specific python version, visit <a target="_blank" rel="noopener" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#viewing-a-list-of-your-environments">https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#viewing-a-list-of-your-environments</a></p>
 <p>Until now, it works smoothly. But reached out an error when activated the environment.</p>
 <img src="/2022/8/6/Digital-pathology/OpenSlide-indroduction/conda-activate-error.PNG" class="" alt="Command Not Found Error">
 <p>Follow the instruction, I closed and reconnected to the shell, the <code>base</code> environment was activated successfully. It doesn’t matter because I can install openslide with conda.</p>
-<p>Run one of the following, <a href="https://anaconda.org/conda-forge/openslide:">https://anaconda.org/conda-forge/openslide:</a></p>
+<p>Run one of the following, <a target="_blank" rel="noopener" href="https://anaconda.org/conda-forge/openslide:">https://anaconda.org/conda-forge/openslide:</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda install -c conda-forge openslide</span><br><span class="line">conda install -c conda-forge/label/cf202003 openslide</span><br></pre></td></tr></table></figure>
 <p>Then, let’s install <code>openslide-python</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install openslide-python</span><br></pre></td></tr></table></figure>
@@ -233,7 +234,7 @@ ga('send', 'pageview');
 <p>In my task, I need to read a small part in the WSI at the target level, OpenSlide provides <code>read_region(location, level, size)</code> that can simplify my work.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">slide = openslide.OpenSlide(<span class="string">r&#x27;F17-011490.ndpi&#x27;</span>)</span><br><span class="line"><span class="comment"># first parameter location is a tuple that contains the left top point </span></span><br><span class="line"><span class="comment"># of the tissue tile, it is the original pixel in source image.</span></span><br><span class="line"><span class="comment"># third parameter size is also a tuple that contains the width and </span></span><br><span class="line"><span class="comment"># height of the tissue tile, it is the reduced size!</span></span><br><span class="line">patch = slide.read_region((<span class="number">1407</span> * <span class="number">32</span>, <span class="number">1156</span> * <span class="number">32</span>), <span class="number">5</span>, (<span class="number">240</span>, <span class="number">160</span>))</span><br><span class="line"><span class="comment"># matplotlib read the image</span></span><br><span class="line">plt.imshow(patch)</span><br><span class="line">plt.show()</span><br><span class="line">slide.close()</span><br></pre></td></tr></table></figure>
 <img src="/2022/8/6/Digital-pathology/OpenSlide-indroduction/wsi-tissue.jpg" class="" alt="WSI tissue tile">
-<p>For the full usage, please visit <a href="https://openslide.org/api/python/#basic-usage">https://openslide.org/api/python/#basic-usage</a></p>
+<p>For the full usage, please visit <a target="_blank" rel="noopener" href="https://openslide.org/api/python/#basic-usage">https://openslide.org/api/python/#basic-usage</a></p>
 <p>Happy coding.</p>
 
       
